@@ -42,6 +42,7 @@ function checkPriceRange(selectedPrice, cardPrice) {
 
 
 // Cart
+let cart = [];
 function open_cart() {
     document.getElementById("cart-product").classList.add("open");
 }
