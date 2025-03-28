@@ -42,39 +42,33 @@ function checkPriceRange(selectedPrice, cardPrice) {
 
 
 // Cart
-// متغير لتخزين عناصر السلة
-let cart = [];
-
-// فتح السلة
 function open_cart() {
     document.getElementById("cart-product").classList.add("open");
 }
 
-// إغلاق السلة
+
 function close_cart() {
     document.getElementById("cart-product").classList.remove("open");
 }
 
-// إضافة منتج إلى السلة
+
 function add_to_cart(name, price, img) {
     cart.push({ name, price, img });
     update_cart();
-    open_cart(); // فتح السلة بعد الإضافة
+    open_cart(); 
 }
 
-// حذف منتج من السلة
 function remove_from_cart(index) {
     cart.splice(index, 1);
     update_cart();
 }
 
-// تحديث السلة
 function update_cart() {
     const cart_items = document.getElementById("cart_items");
-    cart_items.innerHTML = ""; // مسح العناصر الحالية
+    cart_items.innerHTML = "";
     let total = 0;
 
-    // إضافة كل منتج في السلة
+
     cart.forEach((item, index) => {
         total += item.price;
         cart_items.innerHTML += `
@@ -90,20 +84,18 @@ function update_cart() {
             </div>
         `;
     });
-
-    // تحديث الإجمالي والعداد
     document.getElementById("cart_total").innerText = `$${total.toFixed(2)}`;
     document.getElementById("cart_count").innerText = `(${cart.length} Items in Cart)`;
 }
 
-// ربط أزرار "Add to Cart" مع الوظيفة
+
 document.querySelectorAll(".cart-button").forEach(button => {
     button.addEventListener("click", function () {
-        let card = this.closest(".card"); // الحصول على البطاقة الأم
-        let name = card.querySelector(".title").innerText; // اسم المنتج
-        let price = parseFloat(card.getAttribute("data-price")); // سعر المنتج
-        let img = card.querySelector("img").src; // صورة المنتج
-        add_to_cart(name, price, img); // إضافة المنتج إلى السلة
+        let card = this.closest(".card"); 
+        let name = card.querySelector(".title").innerText; 
+        let price = parseFloat(card.getAttribute("data-price")); 
+        let img = card.querySelector("img").src; 
+        add_to_cart(name, price, img); 
     });
 });
 
@@ -128,7 +120,6 @@ function openModal(title, price, images, oldPrice, description) {
     document.getElementById("productModal").classList.add("open");
     document.getElementById("modalOverlay").classList.add("open");
 
-    // تحديث زر السلة داخل النافذة لإضافة المنتج عند الضغط عليه
     document.querySelector(".product-modal .cart-button").onclick = function() {
         add_to_cart(title, parseFloat(price), images[0]);
     };

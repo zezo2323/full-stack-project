@@ -702,7 +702,7 @@ hr{
     display: none;
     z-index: 1000;
     border-radius: 10px;
-    overflow: hidden; /* يمنع خروج المحتوى عن النافذة */
+    overflow: hidden;
 }
 
 .product-modal.open {
@@ -712,9 +712,9 @@ hr{
 .product-content {
     display: flex;
 
-    gap: 15px; /* يضيف مسافة بين العناصر */
+    gap: 15px;
     max-height: 100%;
-    overflow-y: auto; /* يضيف شريط تمرير عند الحاجة */
+    overflow-y: auto; 
 }
 
 .product-images {
@@ -750,9 +750,9 @@ hr{
     flex-direction: column;
     max-width: 60%;
     height: auto;
-    display: block; /* يضمن أن النص ينزل على سطر جديد */
+    display: block; 
     overflow: hidden;
-    text-overflow: ellipsis; /* يضيف نقاط عند الحاجة */
+    text-overflow: ellipsis; 
 }
 
 .close {
