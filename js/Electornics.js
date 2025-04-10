@@ -69,7 +69,7 @@ function update_cart() {
     cart_items.innerHTML = "";
     let total = 0;
 
-
+    
     cart.forEach((item, index) => {
         total += item.price;
         cart_items.innerHTML += `

@@ -371,14 +371,40 @@ hr{
     border-radius: 10px;
 }
 
-.badge {
+.badge-1 {
     position: absolute;
     top: 10px;
     left: 10px;
     background: rgb(249, 1, 1);
     color: white;
-    padding: 5px 10px;
-    border-radius: 20px;
+    padding: 2px 7px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+
+}
+
+.badge-2 {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgb(123, 128, 131);
+    color: white;
+    padding: 2px 7px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+
+}
+
+.badge-3 {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgb(108, 170, 171);
+    color: white;
+    padding: 2px 7px;
+    border-radius: 5px;
     font-size: 12px;
     font-weight: bold;
 
