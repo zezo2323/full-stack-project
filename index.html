@@ -6,9 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>VOYX</title>
   <!-- favicon -->
- <link rel="shortcut icon" href="./imgs/index/favicon.png" type="image/x-icon">
+  <link rel="shortcut icon" href="./imgs/index/favicon.png" type="image/x-icon">
   <!-- link css -->
-  <link rel="stylesheet" href="./css/index.css?v=3">
+  <link rel="stylesheet" href="./css/index.css">
 
   <!-- flaticon -->
   <link rel="stylesheet"
@@ -26,8 +26,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
   <!-- footer css -->
   <style>
-
-    [data-bs-theme="dark"] footer {
+   footer {
       background-color: #1a365d !important;
     }
 
@@ -63,9 +62,15 @@
       font-size: 18px;
       font-weight: 900;
     }
+    #footer-tit span{
+      color: hsl(176, 88%, 27%);
+      font-weight: 900 !important;
+
+      
+    }
 
     .link-secondary,
-    p,
+    #footer-tit,
     .inf {
       color: #fff !important;
       font-size: 13px;
@@ -81,203 +86,230 @@
       color: hsl(176, 88%, 27%) !important;
     }
 
+    
 
 
-    .benefits-section {
-      padding: 1rem 0;
-      background: #f8f9fa;
-    }
 
-    .benefits-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      padding: 0 20px;
-    }
 
-    .benefit-card {
-      flex: 1;
-      text-align: center;
-      padding: 10px;
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
 
-    .benefit-icon {
-      font-size: 30px;
-      color: var(--first-color);
-    }
-
-    .benefit-text {
-      text-align: left;
-    }
-
-    .benefit-text h3 {
-      color: #333;
+    /* hero */
+    .hero {
       margin: 0;
-      font-size: 12px;
-      font-weight: bold;
+      padding: 0;
+      height: 100vh;
+      width: 100%;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-image: url('/imgs/index/hero7.png');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      position: relative;
+      overflow: hidden;
+      max-width: 1600px;
+      /* إضافة حد أقصى للعرض */
+      margin: 0 auto;
+      image-rendering: -webkit-optimize-contrast;
+      /* لتحسين وضوح الصورة */
+      backface-visibility: hidden;
+      border-radius: 10px;
     }
 
-    .benefit-text p {
-      color: #000000;
-      font-size: 10px;
-      margin: 5px 0 0;
+    /* طبقة شفافة لتحسين وضوح النص */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
+      z-index: 1;
     }
 
-    .benefit-card h3 {
-      color: hsl(176, 88%, 27%) !important;
-      /* اللون المطلوب */
-      font-weight: bold !important;
-      font-size: 15px;
+    .content {
+      text-align: center;
+      color: white;
+      position: relative;
+      z-index: 2;
+      opacity: 0;
+      /* نبدأ بشفافية كاملة */
+      animation: fadeInUp 1.5s ease forwards;
+      /* انيميشن ظهور المحتوى */
     }
 
-    /* أو إذا كان هناك كلاس مخصص */
-    .text {
-      color: hsl(176, 88%, 27%) !important;
-
-    }
-
-
-
-    .benefit-card p {
-      color: #000000 !important;
-      font-size: 0.9rem;
-      line-height: 1.4;
-    }
-
-
-    .promo-subtitle {
-      color: #000000 !important;
-      font-size: 1rem;
-    }
-
-    .price-tag {
-      color: #2d3748 !important;
+    .hero-title {
+      font-size: 50px;
+      /* تصغير حجم العنوان */
+      margin-bottom: 60px;
       font-weight: 600;
+      line-height: 1.2;
+      opacity: 1;
+      transform: translateY(30px);
+
+      /* تأخير انيميشن العنوان */
     }
 
-    /* Promo Banner */
-    .promo-banner {
-      max-width: 1200px;
-      margin: 50px auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 30px;
-      padding: 0 20px;
+    .hero-text {
+      font-size: 20px;
+      /* حجم النص الفرعي */
+      margin-bottom: 10px;
+      line-height: 1.6;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1s ease 0.5s forwards;
     }
 
-    .promo-card {
-      padding: 40px;
-      border-radius: 16px;
+    .hero-btn {
+      padding: 12px 30px;
+      margin-top: 20px;
+      background-color: white;
+      color: #0d7d75;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 18px;
+      display: inline-block;
+      transition: all 0.3s ease;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1s ease 1s forwards;
+      /* تأخير انيميشن الزر */
       position: relative;
       overflow: hidden;
     }
 
-    .sports-promo {
-      background: #ffffff;
-      border: 1px solid #eee;
-    }
-
-    .accessories-promo {
-      background: var(--first-color);
-      color: #fff !important;
-    }
-
-    .discount-tag {
+    /* انيميشن تأثير الموجة عند المرور بالماوس */
+    .hero-btn::before {
+      content: '';
       position: absolute;
-      top: 20px;
-      right: 20px;
-      background: var(--first-color);
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background-color: rgba(13, 125, 117, 0.2);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.6s ease, height 0.6s ease;
+      z-index: -1;
+    }
+
+    .hero-btn:hover {
+      background-color: #0d7d75;
       color: white;
-      padding: 8px 20px;
-      border-radius: 20px;
-      font-size: 14px;
-      font-weight: bold;
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     }
 
-    .promo-title {
-      font-size: 32px;
-      font-weight: 700;
-      margin-bottom: 15px;
-      color: var(--first-color);
+    .hero-btn:hover::before {
+      width: 300px;
+      height: 300px;
     }
 
-    .promo-subtitle {
-      font-size: 18px;
-      color: #888;
-      margin-bottom: 25px;
+    /* انيميشن ظهور المحتوى من الأسفل */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
-    .accessories-promo .promo-subtitle {
-      color: #ccc;
+    /* انيميشن نبض للزر */
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(13, 125, 117, 0.7);
+      }
+
+      70% {
+        box-shadow: 0 0 0 15px rgba(13, 125, 117, 0);
+      }
+
+      100% {
+        box-shadow: 0 0 0 0 rgba(13, 125, 117, 0);
+      }
     }
 
-    .price-tag {
-      font-size: 24px;
-      color: var(--first-color);
-      margin: 25px 0;
-      font-weight: bold;
+    /* إضافة انيميشن نبض للزر بعد ظهوره */
+    .hero-btn {
+      animation: fadeInUp 1s ease 1s forwards, pulse 2s infinite 2s;
     }
 
-    .cta-button {
-      background: var(--first-color);
-      color: white;
-      padding: 15px 40px;
-      border: none;
-      border-radius: 30px;
-      font-size: 16px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s;
+    /* انيميشن للخلفية */
+    .hero {
+      animation: zoomIn 20s ease infinite alternate;
     }
 
-    .cta-button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px #fff;
+    @keyframes zoomIn {
+      from {
+        background-size: 100% 100%;
+      }
+
+      to {
+        background-size: 110% 110%;
+      }
     }
 
+    /* إضافة media queries للتحكم في الحجم على الشاشات المختلفة */
+    @media (max-width: 1200px) {
+      .hero {
+        width: 90%;
+        /* يأخذ 90% من عرض الشاشة عندما يكون العرض أقل من 1200px */
+      }
+    }
+
+    /* تحسينات للشاشات الصغيرة */
     @media (max-width: 768px) {
-      .benefits-container {
-        grid-template-columns: 1fr;
-        gap: 20px;
+      .hero-text {
+        font-size: 20px;
+        white-space: normal;
       }
 
-      .promo-banner {
-        grid-template-columns: 1fr;
+      .hero-title {
+        font-size: 40px;
+
       }
 
-      .promo-card {
-        padding: 30px;
+      .hero {
+        width: 95%;
+        /* يأخذ 95% من عرض الشاشة على الأجهزة المتوسطة */
+        height: 80vh;
+        /* تقليل الارتفاع قليلاً */
       }
 
-      .promo-title {
-        font-size: 24px;
+      .btn {
+        padding: 10px 25px;
+        font-size: 16px;
       }
     }
 
-    @media (max-width: 768px) {
-      .benefits-container {
-        flex-wrap: wrap;
+    @media (max-width: 576px) {
+      .hero {
+        width: 100%;
+        /* يأخذ العرض الكامل على الشاشات الصغيرة */
+        height: 70vh;
+        /* تقليل الارتفاع أكثر */
       }
 
-      .benefit-card {
-        flex: 100%;
-        margin-bottom: 20px;
+      .content h1 {
+        font-size: 32px;
+        /* تصغير حجم الخط */
       }
     }
+
   </style>
+
 
 </head>
 
 <body class="body">
-  <!-- Promotion Bar -->
+  <!-- =====================================Promotion Bar ===================================== -->
   <div class="promotion-bar">
     <div class="container d-flex justify-content-between align-items-center">
       <span>🎁 Get 10% off your first order! Use code: WELCOME10</span>
@@ -287,7 +319,7 @@
     </div>
   </div>
 
-  <!-- Main Navigation -->
+  <!-- =====================================Main Navigation ===================================== -->
   <nav class="main-nav">
     <div class="container">
       <div class="d-flex justify-content-between align-items-center">
@@ -297,7 +329,7 @@
         </a>
 
         <!-- Search Box -->
-        <div class="col-lg-6">
+        <div class="col-lg-4">
           <div class="search-box input-group">
             <input type="text" class="form-control border-0" placeholder="Search products..." />
             <button class="btn btn-custom">
@@ -306,40 +338,28 @@
           </div>
         </div>
 
-        <!-- Icons -->
-        <div class="d-flex align-items-center">
-          <a href="#" class="nav-icon">
-            <i class="far fa-user"></i>
-          </a>
-          <a href="#" class="nav-icon position-relative">
+        <div class="d-flex align-items-center position-relative col-md-1">
+          <!-- باقي الأيقونات -->
+          <a href="#wishlistSidebar" class="nav-icon position-relative" onclick="toggleSidebar('wishlist')">
             <i class="far fa-heart"></i>
-            <span class="badge bg-danger rounded-pill" style="
-                  font-size: 0.6rem;
-                  position: absolute;
-                  top: -5px;
-                  right: -8px;
-                ">3</span>
+            <span class="badge-custom" id="wishlistBadge">0</span>
           </a>
-          <a href="#" class="nav-icon position-relative">
+          <a href="#cartSidebar" class="nav-icon position-relative" onclick="toggleSidebar('cart')">
             <i class="fas fa-shopping-cart"></i>
-            <span class="badge bg-danger rounded-pill" style="
-                  font-size: 0.6rem;
-                  position: absolute;
-                  top: -5px;
-                  right: -8px;
-                ">5</span>
+            <span class="badge-custom " id="cartBadge">0</span>
           </a>
         </div>
+
       </div>
     </div>
   </nav>
 
-  <!-- Bottom Navigation -->
+  <!-- =====================================Bottom Navigation ===================================== -->
   <nav class="bottom-nav">
     <div class="container">
       <div class="d-flex align-items-center">
         <!-- Categories Dropdown -->
-        <div class="dropdown me-4">
+        <div class="dropdown me-4" id="categoriesDropdown">
           <button class="btn btn-custom dropdown-toggle rounded-pill px-4" data-bs-toggle="dropdown">
             <i class="fas fa-bars me-2"></i>Categories
           </button>
@@ -373,7 +393,7 @@
 
             <!-- باقي الفئات -->
             <li class="dropdown-submenu">
-              <a class="dropdown-item dropdown-toggle" href="#">home & kitchen</a>
+              <a class="dropdown-item dropdown-toggle" href="#">Home & kitchen</a>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="#">Electric-ovens</a></li>
                 <li><a class="dropdown-item" href="#">Microwaves</a></li>
@@ -385,13 +405,12 @@
             </li>
 
             <li class="dropdown-submenu">
-              <a class="dropdown-item dropdown-toggle" href="#">Automotive & Motorcycles</a>
+              <a class="dropdown-item dropdown-toggle" href="#">Vehicles</a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Batteries</a></li>
-                <li><a class="dropdown-item" href="#">Car-accessories</a></li>
-                <li><a class="dropdown-item" href="#">Car-tires</a></li>
-                <li><a class="dropdown-item" href="#">Car-tools</a></li>
-                <li><a class="dropdown-item" href="#">Car-care</a></li>
+                <li><a class="dropdown-item" href="#">cars</a></li>
+                <li><a class="dropdown-item" href="#">motors</a></li>
+                <li><a class="dropdown-item" href="#">bicycles</a></li>
+
               </ul>
             </li>
           </ul>
@@ -399,17 +418,33 @@
 
         <!-- Navigation Links -->
         <div class="d-flex flex-grow-1 justify-content-center">
-          <a href="#" class="nav-link">Home</a>
-          <a href="#" class="nav-link">Products</a>
-          <a href="#" class="nav-link">Deals</a>
-          <a href="#" class="nav-link">Contact</a>
-          <a href="#" class="nav-link">FAQs</a>
+          <a href="./index.html" class="nav-link">Home</a>
+          <a href="#products" class="nav-link">Products</a>
+          <a href="#" class="nav-link">About</a>
+          <a href="#" class="nav-link">Contact US</a>
+          <a href="#" class="nav-link">Profile</a>
+          <a href="#deals" class="nav-link">Deals</a>
         </div>
+        <!-- Categories Dropdown -->
+        <div class="dropdown me-4">
+          <button class="btn btn-custom dropdown-toggle rounded-pill px-4" data-bs-toggle="dropdown">
+            <i class="far fa-user"></i>
+          </button>
+
+          <ul class="dropdown-menu dropdown-menu-end">
+            <!-- فئة مع قائمة فرعية -->
+            <li><a class="dropdown-item" href="#">Login</a></li>
+            <li><a class="dropdown-item" href="#">Signup</a></li>
+            <li><a class="dropdown-item" href="#">Logout</a></li>
+            <li><a class="dropdown-item" href="#">Profile</a></li>
+          </ul>
+        </div>
+
 
         <!-- side bar -->
         <div class="sidebar">
           <div class="sidebar-header">
-            <h4>main</h4>
+            <h4>VOYX</h4>
             <button class="btn btn-close btn-close-white close-sidebar"></button>
           </div>
 
@@ -421,27 +456,23 @@
             <div class="sub-menu">
               <a href="#" class="d-block py-2">Electronics</a>
               <a href="#" class="d-block py-2">Fashion</a>
-              <a href="#" class="d-block py-2">Home </a>
-              <a href="#" class="d-block py-2">Home </a>
-              <a href="#" class="d-block py-2">Home </a>
-              <a href="#" class="d-block py-2">Home </a>
-              <a href="#" class="d-block py-2">Home </a>
-              <a href="#" class="d-block py-2">Home </a>
-              <a href="#" class="d-block py-2">Home </a>
-              <a href="#" class="d-block py-2">Home </a>
-              <a href="#" class="d-block py-2">Home </a>
+              <a href="#" class="d-block py-2">Home & kitchen</a>
+              <a href="#" class="d-block py-2">Vehicles</a>
             </div>
           </div>
 
           <div class="sidebar-category">
             <div class="d-flex justify-content-between align-items-center">
-              <h5>pages</h5>
+              <h5>Pages</h5>
               <i class="fas fa-chevron-down"></i>
             </div>
             <div class="sub-menu">
-              <a href="#" class="d-block py-2">home</a>
-              <a href="#" class="d-block py-2">products</a>
-              <a href="#" class="d-block py-2">contact us</a>
+              <a href="#" class="d-block py-2">Home</a>
+              <a href="#" class="d-block py-2">Products</a>
+              <a href="#" class="d-block py-2">Contact us</a>
+              <a href="#" class="d-block py-2">About</a>
+              <a href="#" class="d-block py-2">Profile</a>
+              <a href="#" class="d-block py-2">Deals</a>
             </div>
           </div>
         </div>
@@ -449,36 +480,22 @@
     </div>
   </nav>
 
-  <!-- Main Content -->
+  <!-- =====================================Main Content ===================================== -->
   <div style="height:auto">
 
-    <!-- hero -->
-    <section class="relative h-screen flex items-center justify-center">
-      <!-- Background Video -->
-      <video autoplay loop muted class="absolute w-100 h-100 object-fit-cover">        <source src="./imgs/index/hero 8.mp4" type="video/mp4" />
-      </video>
+    <!-- =====================================hero ===================================== -->
+    <section class="hero">
 
-      <!-- Overlay -->
-      <div class="absolute w-full h-full bg- bg-opacity-50"></div>
-
-      <!-- Content -->
-      <div class="relative text-center">
-        <h1 id="hero-title" class="text-5xl font-bold opacity-0">
-          Welcome to Our Store
-        </h1>
-        <p id="hero-text" class="mt-4 text-lg opacity-0">
-          Find the best deals on all products
-        </p>
-        <a href="#"
-          class="mt-6 inline-block px-6 py-3 bg-green-500 text-white text-lg font-semibold rounded-lg shadow-lg transition-transform transform hover:scale-105 opacity-0"
-          id="hero-btn">
-          Shop Now
-        </a>
+      <div class="content">
+        <h1 class="hero-title">Discover a New Way to Shop</h1>
+        <p class="hero-text">Your favorite products, unbeatable deals, and a seamless experience — all in one place.</p>
+        <a href="#products" class="btn hero-btn">Exploring Now👉</a>
       </div>
+
     </section>
 
 
-    <!-- categories -->
+    <!--==================================== categories swiper ===================================== -->
     <section class="categories container section">
       <h3 class="section__title"><span>Popular</span> Categories</h3>
       <div class="categories__container swiper">
@@ -491,10 +508,10 @@
             <img src="./imgs/index/cars.jpg" alt="" class="category__img" />
             <h3 class="category__title">cars</h3>
           </a>
-          <a href="#" class="category__item swiper-slide">
-            <img src="./imgs/index/Accessories.jpg" alt="" class="category__img" />
+          <!-- <a href="#" class="category__item swiper-slide">
+            <img src="./imgs/index/Accessories5.jpeg" alt="" class="category__img" />
             <h3 class="category__title">Accessories</h3>
-          </a>
+          </a> -->
           <a href="#" class="category__item swiper-slide">
             <img src="./imgs/index/motors.jpg" alt="" class="category__img" />
             <h3 class="category__title">Motorcycles</h3>
@@ -528,8 +545,45 @@
         <div class="swiper-button-prev"></div>
       </div>
     </section>
-    <!-- products -->
-    <section class="products section container">
+
+
+<!--  =====================================Promo Banner ===================================== -->
+<section class="promo-banner" id="deals">
+  <!-- Sports Promotion -->
+  <div class="promo-card sports-promo">
+    <span class="discount-tag">20% OFF</span>
+    <h2 class="promo-title">SPORTS OUTFITS</h2>
+    <p class="promo-subtitle">Collection</p>
+    <div class="price-tag">Starting at: $190.00</div>
+    <button class="cta-button">Shop Now</button>
+    <img src="img/sports.png" alt="Sports Outfits" />
+  </div>
+
+  <!-- Accessories Promotion -->
+  <div class="promo-card accessories-promo">
+    <h2 class="promo-title">NEW ARRIVALS</h2>
+    <p class="promo-subtitle">ACCESSORIES Collection</p>
+    <div class="price-tag">Only from $190.00</div>
+    <button class="cta-button">Explore</button>
+    <img src="img/accessories.png" alt="Accessories" />
+  </div>
+
+  <!-- Repeat Cards -->
+  <div class="promo-card sports-promo">
+    <span class="discount-tag">20% OFF</span>
+    <h2 class="promo-title">SPORTS OUTFITS</h2>
+    <p class="promo-subtitle">Collection</p>
+    <div class="price-tag">Starting at: $190.00</div>
+    <button class="cta-button">Shop Now</button>
+    <img src="img/sports.png" alt="Sports Outfits" />
+  </div>
+
+
+</section>
+
+
+    <!--==================================== products ===================================== -->
+    <section class="products section container" id="products">
       <div class="tab__btns">
         <span class="tab__btn active-tab" data-target="#featured">Featured</span>
         <span class="tab__btn" data-target="#popular">Popular</span>
@@ -2261,8 +2315,8 @@
                 </a>
               </div>
             </div>
-                </div>
-              </div>
+          </div>
+        </div>
 
         <div class="tab__item " id="new-added" data-content>
           <div class="products__container grid" id="new-added-container">
@@ -2309,1021 +2363,826 @@
                 </a>
               </div>
             </div>
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="" class="product__images">
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img default" />
+          </div>
+        </div>
+      </div>
+  </div>
+  </section>
 
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img hover" />
-                </a>
+  <!-- =====================================Benefits Section ===================================== -->
+  <div class="benefits-section">
+    <div class="benefits-container">
+      <div class="benefit-card">
+        <i class="bi bi-truck benefit-icon"></i>
+        <div class="benefit-text">
+          <h3 class="text">Free Shipping & Returns</h3>
+          <p class="PP">For all orders over $99</p>
+        </div>
+      </div>
+      <div class="benefit-card">
+        <i class="bi bi-shield-check benefit-icon"></i>
+        <div class="benefit-text">
+          <h3 class="text">Secure Payment</h3>
+          <p>We ensure secure payment</p>
+        </div>
+      </div>
+      <div class="benefit-card">
+        <i class="bi bi-clock-history benefit-icon"></i>
+        <div class="benefit-text">
+          <h3 class="text">Money Back Guarantee</h3>
+          <p>Any book within 20 days</p>
+        </div>
+      </div>
+      <div class="benefit-card">
+        <i class="bi bi-headset benefit-icon"></i>
+        <div class="benefit-text">
+          <h3 class="text">Customer Support</h3>
+          <p>Call or email: 24/7 support</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rr-eye"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Add To Wishlist">
-                    <i class="fi fi-rr-heart"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rr-shuffle"></i>
-                  </a>
-                </div>
-                <div class="product__badge light-pink">Hot</div>
-              </div>
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="">
-                  <h3 class="product__title">Product Title</h3>
-                </a>
-                <div class="product__rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                  <!-- نصف نجمة -->
-                </div>
-                <div class="product__price flex">
-                  <span class="new__price">$654.85</span>
-                  <span class="old__price">$600</span>
-                </div>
-                <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-                  <i class="fi fi-rr-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="" class="product__images">
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img default" />
+  <!-- ===================================== new arrivals ===================================== -->
+<section class="new-arrivals container section">
+  <h3 class="section__title"style="margin-top: 30px;"><span>New</span>Arrivals</h3>
 
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img hover" />
-                </a>
+  <div class="new-arrivals__container swiper"> 
+    <div class="swiper-wrapper">
+      <div class="product__item swiper-slide">
+        <div class="product__banner">
+          <a href="" class="product__images">
+            <img src="/imgs/index/1.png" alt="" class="product__img default" />
+          </a>
 
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rr-eye"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Add To Wishlist">
-                    <i class="fi fi-rr-heart"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rr-shuffle"></i>
-                  </a>
-                </div>
-                <div class="product__badge light-pink">Hot</div>
-              </div>
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="">
-                  <h3 class="product__title">Product Title</h3>
-                </a>
-                <div class="product__rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                  <!-- نصف نجمة -->
-                </div>
-                <div class="product__price flex">
-                  <span class="new__price">$654.85</span>
-                  <span class="old__price">$600</span>
-                </div>
-                <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-                  <i class="fi fi-rr-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="" class="product__images">
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img default" />
+          <div class="product__actions">
+            <a href="#" class="action__btn" aria-label="Quick View">
+              <i class="fi fi-rr-eye"></i>
+            </a>
+            <a href="#" class="action__btn" aria-label="Add To Wishlist">
+              <i class="fi fi-rr-heart"></i>
+            </a>
+            <a href="#" class="action__btn" aria-label="Compare">
+              <i class="fi fi-rr-shuffle"></i>
+            </a>
+          </div>
+          <div class="product__badge light-pink">Hot</div>
+        </div>
+        <div class="product__content">
+          <span class="product__category">Clothing</span>
+          <a href="">
+            <h3 class="product__title">Product Title</h3>
+          </a>
+          <div class="product__rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+            <!-- نصف نجمة -->
+          </div>
+          <div class="product__price flex">
+            <span class="new__price">$550</span>
+            <span class="old__price">$600</span>
+          </div>
+          <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
+            <i class="fi fi-rr-shopping-bag-add"></i>
+          </a>
+        </div>
+      </div>
+      <div class="product__item swiper-slide">
+        <div class="product__banner">
+          <a href="" class="product__images">
+            <img src="/imgs/index/1.png" alt="" class="product__img default" />
+          </a>
 
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img hover" />
-                </a>
+          <div class="product__actions">
+            <a href="#" class="action__btn" aria-label="Quick View">
+              <i class="fi fi-rr-eye"></i>
+            </a>
+            <a href="#" class="action__btn" aria-label="Add To Wishlist">
+              <i class="fi fi-rr-heart"></i>
+            </a>
+            <a href="#" class="action__btn" aria-label="Compare">
+              <i class="fi fi-rr-shuffle"></i>
+            </a>
+          </div>
+          <div class="product__badge light-pink">Hot</div>
+        </div>
+        <div class="product__content">
+          <span class="product__category">Clothing</span>
+          <a href="">
+            <h3 class="product__title">Product Title</h3>
+          </a>
+          <div class="product__rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+            <!-- نصف نجمة -->
+          </div>
+          <div class="product__price flex">
+            <span class="new__price">$550</span>
+            <span class="old__price">$600</span>
+          </div>
+          <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
+            <i class="fi fi-rr-shopping-bag-add"></i>
+          </a>
+        </div>
+      </div>
+      <div class="product__item swiper-slide">
+        <div class="product__banner">
+          <a href="" class="product__images">
+            <img src="/imgs/index/1.png" alt="" class="product__img default" />
+          </a>
 
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rr-eye"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Add To Wishlist">
-                    <i class="fi fi-rr-heart"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rr-shuffle"></i>
-                  </a>
-                </div>
-                <div class="product__badge light-pink">Hot</div>
-              </div>
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="">
-                  <h3 class="product__title">Product Title</h3>
-                </a>
-                <div class="product__rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                  <!-- نصف نجمة -->
-                </div>
-                <div class="product__price flex">
-                  <span class="new__price">$654.85</span>
-                  <span class="old__price">$600</span>
-                </div>
-                <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-                  <i class="fi fi-rr-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="" class="product__images">
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img default" />
+          <div class="product__actions">
+            <a href="#" class="action__btn" aria-label="Quick View">
+              <i class="fi fi-rr-eye"></i>
+            </a>
+            <a href="#" class="action__btn" aria-label="Add To Wishlist">
+              <i class="fi fi-rr-heart"></i>
+            </a>
+            <a href="#" class="action__btn" aria-label="Compare">
+              <i class="fi fi-rr-shuffle"></i>
+            </a>
+          </div>
+          <div class="product__badge light-pink">Hot</div>
+        </div>
+        <div class="product__content">
+          <span class="product__category">Clothing</span>
+          <a href="">
+            <h3 class="product__title">Product Title</h3>
+          </a>
+          <div class="product__rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+            <!-- نصف نجمة -->
+          </div>
+          <div class="product__price flex">
+            <span class="new__price">$550</span>
+            <span class="old__price">$600</span>
+          </div>
+          <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
+            <i class="fi fi-rr-shopping-bag-add"></i>
+          </a>
+        </div>
+      </div>
+      <div class="product__item swiper-slide">
+        <div class="product__banner">
+          <a href="" class="product__images">
+            <img src="/imgs/index/1.png" alt="" class="product__img default" />
+          </a>
 
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img hover" />
-                </a>
+          <div class="product__actions">
+            <a href="#" class="action__btn" aria-label="Quick View">
+              <i class="fi fi-rr-eye"></i>
+            </a>
+            <a href="#" class="action__btn" aria-label="Add To Wishlist">
+              <i class="fi fi-rr-heart"></i>
+            </a>
+            <a href="#" class="action__btn" aria-label="Compare">
+              <i class="fi fi-rr-shuffle"></i>
+            </a>
+          </div>
+          <div class="product__badge light-pink">Hot</div>
+        </div>
+        <div class="product__content">
+          <span class="product__category">Clothing</span>
+          <a href="">
+            <h3 class="product__title">Product Title</h3>
+          </a>
+          <div class="product__rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+            <!-- نصف نجمة -->
+          </div>
+          <div class="product__price flex">
+            <span class="new__price">$550</span>
+            <span class="old__price">$600</span>
+          </div>
+          <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
+            <i class="fi fi-rr-shopping-bag-add"></i>
+          </a>
+        </div>
+      </div>
+      <div class="product__item swiper-slide">
+        <div class="product__banner">
+          <a href="" class="product__images">
+            <img src="/imgs/index/1.png" alt="" class="product__img default" />
+          </a>
 
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rr-eye"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Add To Wishlist">
-                    <i class="fi fi-rr-heart"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rr-shuffle"></i>
-                  </a>
-                </div>
-                <div class="product__badge light-pink">Hot</div>
-              </div>
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="">
-                  <h3 class="product__title">Product Title</h3>
-                </a>
-                <div class="product__rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                  <!-- نصف نجمة -->
-                </div>
-                <div class="product__price flex">
-                  <span class="new__price">$654.85</span>
-                  <span class="old__price">$600</span>
-                </div>
-                <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-                  <i class="fi fi-rr-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="" class="product__images">
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img default" />
+          <div class="product__actions">
+            <a href="#" class="action__btn" aria-label="Quick View">
+              <i class="fi fi-rr-eye"></i>
+            </a>
+            <a href="#" class="action__btn" aria-label="Add To Wishlist">
+              <i class="fi fi-rr-heart"></i>
+            </a>
+            <a href="#" class="action__btn" aria-label="Compare">
+              <i class="fi fi-rr-shuffle"></i>
+            </a>
+          </div>
+          <div class="product__badge light-pink">Hot</div>
+        </div>
+        <div class="product__content">
+          <span class="product__category">Clothing</span>
+          <a href="">
+            <h3 class="product__title">Product Title</h3>
+          </a>
+          <div class="product__rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+            <!-- نصف نجمة -->
+          </div>
+          <div class="product__price flex">
+            <span class="new__price">$550</span>
+            <span class="old__price">$600</span>
+          </div>
+          <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
+            <i class="fi fi-rr-shopping-bag-add"></i>
+          </a>
+        </div>
+      </div>
+      <div class="product__item swiper-slide">
+        <div class="product__banner">
+          <a href="" class="product__images">
+            <img src="/imgs/index/1.png" alt="" class="product__img default" />
+          </a>
 
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img hover" />
-                </a>
+          <div class="product__actions">
+            <a href="#" class="action__btn" aria-label="Quick View">
+              <i class="fi fi-rr-eye"></i>
+            </a>
+            <a href="#" class="action__btn" aria-label="Add To Wishlist">
+              <i class="fi fi-rr-heart"></i>
+            </a>
+            <a href="#" class="action__btn" aria-label="Compare">
+              <i class="fi fi-rr-shuffle"></i>
+            </a>
+          </div>
+          <div class="product__badge light-pink">Hot</div>
+        </div>
+        <div class="product__content">
+          <span class="product__category">Clothing</span>
+          <a href="">
+            <h3 class="product__title">Product Title</h3>
+          </a>
+          <div class="product__rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+            <!-- نصف نجمة -->
+          </div>
+          <div class="product__price flex">
+            <span class="new__price">$550</span>
+            <span class="old__price">$600</span>
+          </div>
+          <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
+            <i class="fi fi-rr-shopping-bag-add"></i>
+          </a>
+        </div>
+      </div>
+      <div class="product__item swiper-slide">
+        <div class="product__banner">
+          <a href="" class="product__images">
+            <img src="/imgs/index/1.png" alt="" class="product__img default" />
+          </a>
 
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rr-eye"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Add To Wishlist">
-                    <i class="fi fi-rr-heart"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rr-shuffle"></i>
-                  </a>
-                </div>
-                <div class="product__badge light-pink">Hot</div>
-              </div>
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="">
-                  <h3 class="product__title">Product Title</h3>
-                </a>
-                <div class="product__rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                  <!-- نصف نجمة -->
-                </div>
-                <div class="product__price flex">
-                  <span class="new__price">$654.85</span>
-                  <span class="old__price">$600</span>
-                </div>
-                <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-                  <i class="fi fi-rr-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="" class="product__images">
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img default" />
+          <div class="product__actions">
+            <a href="#" class="action__btn" aria-label="Quick View">
+              <i class="fi fi-rr-eye"></i>
+            </a>
+            <a href="#" class="action__btn" aria-label="Add To Wishlist">
+              <i class="fi fi-rr-heart"></i>
+            </a>
+            <a href="#" class="action__btn" aria-label="Compare">
+              <i class="fi fi-rr-shuffle"></i>
+            </a>
+          </div>
+          <div class="product__badge light-pink">Hot</div>
+        </div>
+        <div class="product__content">
+          <span class="product__category">Clothing</span>
+          <a href="">
+            <h3 class="product__title">Product Title</h3>
+          </a>
+          <div class="product__rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+            <!-- نصف نجمة -->
+          </div>
+          <div class="product__price flex">
+            <span class="new__price">$550</span>
+            <span class="old__price">$600</span>
+          </div>
+          <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
+            <i class="fi fi-rr-shopping-bag-add"></i>
+          </a>
+        </div>
+      </div>
+      <div class="product__item swiper-slide">
+        <div class="product__banner">
+          <a href="" class="product__images">
+            <img src="/imgs/index/1.png" alt="" class="product__img default" />
+          </a>
 
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img hover" />
-                </a>
+          <div class="product__actions">
+            <a href="#" class="action__btn" aria-label="Quick View">
+              <i class="fi fi-rr-eye"></i>
+            </a>
+            <a href="#" class="action__btn" aria-label="Add To Wishlist">
+              <i class="fi fi-rr-heart"></i>
+            </a>
+            <a href="#" class="action__btn" aria-label="Compare">
+              <i class="fi fi-rr-shuffle"></i>
+            </a>
+          </div>
+          <div class="product__badge light-pink">Hot</div>
+        </div>
+        <div class="product__content">
+          <span class="product__category">Clothing</span>
+          <a href="">
+            <h3 class="product__title">Product Title</h3>
+          </a>
+          <div class="product__rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+            <!-- نصف نجمة -->
+          </div>
+          <div class="product__price flex">
+            <span class="new__price">$550</span>
+            <span class="old__price">$600</span>
+          </div>
+          <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
+            <i class="fi fi-rr-shopping-bag-add"></i>
+          </a>
+        </div>
+      </div>
+     </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
+  
+</section>
 
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rr-eye"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Add To Wishlist">
-                    <i class="fi fi-rr-heart"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rr-shuffle"></i>
-                  </a>
-                </div>
-                <div class="product__badge light-pink">Hot</div>
-              </div>
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="">
-                  <h3 class="product__title">Product Title</h3>
-                </a>
-                <div class="product__rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                  <!-- نصف نجمة -->
-                </div>
-                <div class="product__price flex">
-                  <span class="new__price">$654.85</span>
-                  <span class="old__price">$600</span>
-                </div>
-                <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-                  <i class="fi fi-rr-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="" class="product__images">
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img default" />
 
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img hover" />
-                </a>
 
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rr-eye"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Add To Wishlist">
-                    <i class="fi fi-rr-heart"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rr-shuffle"></i>
-                  </a>
-                </div>
-                <div class="product__badge light-pink">Hot</div>
-              </div>
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="">
-                  <h3 class="product__title">Product Title</h3>
-                </a>
-                <div class="product__rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                  <!-- نصف نجمة -->
-                </div>
-                <div class="product__price flex">
-                  <span class="new__price">$654.85</span>
-                  <span class="old__price">$600</span>
-                </div>
-                <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-                  <i class="fi fi-rr-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="" class="product__images">
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img default" />
+<!-- ==========================================Promo Banner ===================================== -->
+<section class="promo-banner" id="deals">
+  <div class="promo-card accessories-promo">
+    <h2 class="promo-title">NEW ARRIVALS</h2>
+    <p class="promo-subtitle">ACCESSORIES Collection</p>
+    <div class="price-tag">Only from $190.00</div>
+    <button class="cta-button">Explore</button>
+    <img src="img/accessories.png" alt="Accessories" />
+  </div>
 
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img hover" />
-                </a>
+  <div class="promo-card sports-promo">
+    <span class="discount-tag">20% OFF</span>
+    <h2 class="promo-title">SPORTS OUTFITS</h2>
+    <p class="promo-subtitle">Collection</p>
+    <div class="price-tag">Starting at: $190.00</div>
+    <button class="cta-button">Shop Now</button>
+    <img src="img/sports.png" alt="Sports Outfits" />
+  </div>
 
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rr-eye"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Add To Wishlist">
-                    <i class="fi fi-rr-heart"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rr-shuffle"></i>
-                  </a>
-                </div>
-                <div class="product__badge light-pink">Hot</div>
-              </div>
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="">
-                  <h3 class="product__title">Product Title</h3>
-                </a>
-                <div class="product__rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                  <!-- نصف نجمة -->
-                </div>
-                <div class="product__price flex">
-                  <span class="new__price">$654.85</span>
-                  <span class="old__price">$600</span>
-                </div>
-                <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-                  <i class="fi fi-rr-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="" class="product__images">
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img default" />
+  <div class="promo-card accessories-promo">
+    <h2 class="promo-title">NEW ARRIVALS</h2>
+    <p class="promo-subtitle">ACCESSORIES Collection</p>
+    <div class="price-tag">Only from $190.00</div>
+    <button class="cta-button">Explore</button>
+    <img src="img/accessories.png" alt="Accessories" />
+  </div>
+</section>
 
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img hover" />
-                </a>
+<!-- ==========================================showcase ===================================== -->
+<section class="showcase">
+  <div class="showcase__container container grid">
+    <div class="showcase__wrapper">
+      <h3 class="section__title">Hot Releases</h3>
+      <div class="showcase__item">
+        <a href=""class="showcase__img-box">
+          <img src="./imgs/index/1.png" alt="" class="showcase__img">
+        </a>
+        <div class="showcase__content">
+          <a href="">
+            <h4 class="showcase__title">Product Title</h4>
+          </a>
+          <div class="showcase__price flex">
+            <span class="new__price">$550</span>
+            <span class="old__price">$600</span>
+          </div>
+        </div>
+      </div>
+      <div class="showcase__item">
+        <a href=""class="showcase__img-box">
+          <img src="./imgs/index/1.png" alt="" class="showcase__img">
+        </a>
+        <div class="showcase__content">
+          <a href="">
+            <h4 class="showcase__title">Product Title</h4>
+          </a>
+          <div class="showcase__price flex">
+            <span class="new__price">$550</span>
+            <span class="old__price">$600</span>
+          </div>
+        </div>
+      </div>
+      <div class="showcase__item">
+        <a href=""class="showcase__img-box">
+          <img src="./imgs/index/1.png" alt="" class="showcase__img">
+        </a>
+        <div class="showcase__content">
+          <a href="">
+            <h4 class="showcase__title">Product Title</h4>
+          </a>
+          <div class="showcase__price flex">
+            <span class="new__price">$550</span>
+            <span class="old__price">$600</span>
+          </div>
+        </div>
+      </div>
+      <div class="showcase__item">
+        <a href=""class="showcase__img-box">
+          <img src="./imgs/index/1.png" alt="" class="showcase__img">
+        </a>
+        <div class="showcase__content">
+          <a href="">
+            <h4 class="showcase__title">Product Title</h4>
+          </a>
+          <div class="showcase__price flex">
+            <span class="new__price">$550</span>
+            <span class="old__price">$600</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="showcase__wrapper">
+      <h3 class="section__title">Deals & outlet</h3>
+      <div class="showcase__item">
+        <a href=""class="showcase__img-box">
+          <img src="./imgs/index/1.png" alt="" class="showcase__img">
+        </a>
+        <div class="showcase__content">
+          <a href="">
+            <h4 class="showcase__title">Product Title</h4>
+          </a>
+          <div class="showcase__price flex">
+            <span class="new__price">$550</span>
+            <span class="old__price">$600</span>
+          </div>
+        </div>
+      </div>
+      <div class="showcase__item">
+        <a href=""class="showcase__img-box">
+          <img src="./imgs/index/1.png" alt="" class="showcase__img">
+        </a>
+        <div class="showcase__content">
+          <a href="">
+            <h4 class="showcase__title">Product Title</h4>
+          </a>
+          <div class="showcase__price flex">
+            <span class="new__price">$550</span>
+            <span class="old__price">$600</span>
+          </div>
+        </div>
+      </div>
+      <div class="showcase__item">
+        <a href=""class="showcase__img-box">
+          <img src="./imgs/index/1.png" alt="" class="showcase__img">
+        </a>
+        <div class="showcase__content">
+          <a href="">
+            <h4 class="showcase__title">Product Title</h4>
+          </a>
+          <div class="showcase__price flex">
+            <span class="new__price">$550</span>
+            <span class="old__price">$600</span>
+          </div>
+        </div>
+      </div>
+      <div class="showcase__item">
+        <a href=""class="showcase__img-box">
+          <img src="./imgs/index/1.png" alt="" class="showcase__img">
+        </a>
+        <div class="showcase__content">
+          <a href="">
+            <h4 class="showcase__title">Product Title</h4>
+          </a>
+          <div class="showcase__price flex">
+            <span class="new__price">$550</span>
+            <span class="old__price">$600</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="showcase__wrapper">
+      <h3 class="section__title">Top Selling</h3>
+      <div class="showcase__item">
+        <a href=""class="showcase__img-box">
+          <img src="./imgs/index/1.png" alt="" class="showcase__img">
+        </a>
+        <div class="showcase__content">
+          <a href="">
+            <h4 class="showcase__title">Product Title</h4>
+          </a>
+          <div class="showcase__price flex">
+            <span class="new__price">$550</span>
+            <span class="old__price">$600</span>
+          </div>
+        </div>
+      </div>
+      <div class="showcase__item">
+        <a href=""class="showcase__img-box">
+          <img src="./imgs/index/1.png" alt="" class="showcase__img">
+        </a>
+        <div class="showcase__content">
+          <a href="">
+            <h4 class="showcase__title">Product Title</h4>
+          </a>
+          <div class="showcase__price flex">
+            <span class="new__price">$550</span>
+            <span class="old__price">$600</span>
+          </div>
+        </div>
+      </div>
+      <div class="showcase__item">
+        <a href=""class="showcase__img-box">
+          <img src="./imgs/index/1.png" alt="" class="showcase__img">
+        </a>
+        <div class="showcase__content">
+          <a href="">
+            <h4 class="showcase__title">Product Title</h4>
+          </a>
+          <div class="showcase__price flex">
+            <span class="new__price">$550</span>
+            <span class="old__price">$600</span>
+          </div>
+        </div>
+      </div>
+      <div class="showcase__item">
+        <a href=""class="showcase__img-box">
+          <img src="./imgs/index/1.png" alt="" class="showcase__img">
+        </a>
+        <div class="showcase__content">
+          <a href="">
+            <h4 class="showcase__title">Product Title</h4>
+          </a>
+          <div class="showcase__price flex">
+            <span class="new__price">$550</span>
+            <span class="old__price">$600</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="showcase__wrapper">
+      <h3 class="section__title">Trendy</h3>
+      <div class="showcase__item">
+        <a href=""class="showcase__img-box">
+          <img src="./imgs/index/1.png" alt="" class="showcase__img">
+        </a>
+        <div class="showcase__content">
+          <a href="">
+            <h4 class="showcase__title">Product Title</h4>
+          </a>
+          <div class="showcase__price flex">
+            <span class="new__price">$550</span>
+            <span class="old__price">$600</span>
+          </div>
+        </div>
+      </div>
+      <div class="showcase__item">
+        <a href=""class="showcase__img-box">
+          <img src="./imgs/index/1.png" alt="" class="showcase__img">
+        </a>
+        <div class="showcase__content">
+          <a href="">
+            <h4 class="showcase__title">Product Title</h4>
+          </a>
+          <div class="showcase__price flex">
+            <span class="new__price">$550</span>
+            <span class="old__price">$600</span>
+          </div>
+        </div>
+      </div>
+      <div class="showcase__item">
+        <a href=""class="showcase__img-box">
+          <img src="./imgs/index/1.png" alt="" class="showcase__img">
+        </a>
+        <div class="showcase__content">
+          <a href="">
+            <h4 class="showcase__title">Product Title</h4>
+          </a>
+          <div class="showcase__price flex">
+            <span class="new__price">$550</span>
+            <span class="old__price">$600</span>
+          </div>
+        </div>
+      </div>
+      <div class="showcase__item">
+        <a href=""class="showcase__img-box">
+          <img src="./imgs/index/1.png" alt="" class="showcase__img">
+        </a>
+        <div class="showcase__content">
+          <a href="">
+            <h4 class="showcase__title">Product Title</h4>
+          </a>
+          <div class="showcase__price flex">
+            <span class="new__price">$550</span>
+            <span class="old__price">$600</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rr-eye"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Add To Wishlist">
-                    <i class="fi fi-rr-heart"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rr-shuffle"></i>
-                  </a>
-                </div>
-                <div class="product__badge light-pink">Hot</div>
-              </div>
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="">
-                  <h3 class="product__title">Product Title</h3>
-                </a>
-                <div class="product__rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                  <!-- نصف نجمة -->
-                </div>
-                <div class="product__price flex">
-                  <span class="new__price">$654.85</span>
-                  <span class="old__price">$600</span>
-                </div>
-                <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-                  <i class="fi fi-rr-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="" class="product__images">
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img default" />
 
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img hover" />
-                </a>
+    <!-- =====================================Cart Sidebar ===================================== -->
+    <div class="offcanvas-sidebar" id="cartSidebar">
+      <div class="sidebar-header">
+        <h3 class="sidebar-title">Shopping Cart</h3>
+        <button class="close-sidebar" onclick="closeSidebar('cart')">&times;</button>
+      </div>
+      <div class="cart-items" id="cartItems"></div>
+      <div class="cart-footer">
+        <div class="subtotal">
+          <span>Subtotal:</span>
+          <span id="cartTotal">$0.00</span>
+        </div>
+        <button class="checkout-btn">Proceed to Checkout</button>
+      </div>
+    </div>
+  
+    <!-- =====================================Wishlist Sidebar ===================================== -->
+    <div class="offcanvas-sidebar" id="wishlistSidebar">
+      <div class="sidebar-header">
+        <h3 class="sidebar-title">Your Wishlist</h3>
+        <button class="close-sidebar" onclick="closeSidebar('wishlist')">&times;</button>
+      </div>
+      <div class="cart-items" id="wishlistItems"></div>
+    </div>
 
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rr-eye"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Add To Wishlist">
-                    <i class="fi fi-rr-heart"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rr-shuffle"></i>
-                  </a>
-                </div>
-                <div class="product__badge light-pink">Hot</div>
-              </div>
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="">
-                  <h3 class="product__title">Product Title</h3>
-                </a>
-                <div class="product__rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                  <!-- نصف نجمة -->
-                </div>
-                <div class="product__price flex">
-                  <span class="new__price">$654.85</span>
-                  <span class="old__price">$600</span>
-                </div>
-                <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-                  <i class="fi fi-rr-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="" class="product__images">
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img default" />
+<div class="space" style="height: 60px; background-color: var(--first-color);">
 
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img hover" />
-                </a>
+</div>
+  <!-- footer-->
+  <footer class="bg-dark py-5">
+    <div class="container">
+      <div class="row g-4">
+        <!-- Logo Section -->
+        <div class="col-lg-4">
+          <!-- تغيير اللوجو هنا -->
+          <div class="d-flex justify-content-center justify-content-lg-start">
+            <img src="./imgs/index/logo.png" alt="Logo" style="height: 3rem;">
+          </div>
 
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rr-eye"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Add To Wishlist">
-                    <i class="fi fi-rr-heart"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rr-shuffle"></i>
-                  </a>
-                </div>
-                <div class="product__badge light-pink">Hot</div>
-              </div>
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="">
-                  <h3 class="product__title">Product Title</h3>
-                </a>
-                <div class="product__rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                  <!-- نصف نجمة -->
-                </div>
-                <div class="product__price flex">
-                  <span class="new__price">$654.85</span>
-                  <span class="old__price">$600</span>
-                </div>
-                <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-                  <i class="fi fi-rr-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="" class="product__images">
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img default" />
+          <p class="mt-4 text-center text-lg-start custom-text-color" id="footer-tit">
+           <span>VOYX</span> is your reliable and convenient destination for online shopping. We offer a wide range of
+            high-quality products, competitive prices, and fast, secure delivery right to your doorstep. Our platform is
+            designed to give you a smooth and enjoyable shopping experience, supported by excellent customer service and
+            24/7 support.
+          </p>
 
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img hover" />
-                </a>
+          <ul class="d-flex gap-3 justify-content-center justify-content-lg-start list-unstyled mt-4">
+            <li>
+              <a href="#" class="custom-link">
+                <i class="bi bi-facebook social-icon"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="custom-link">
+                <i class="bi bi-instagram social-icon"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="custom-link">
+                <i class="bi bi-twitter-x social-icon"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="custom-link">
+                <i class="bi bi-github social-icon"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
 
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rr-eye"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Add To Wishlist">
-                    <i class="fi fi-rr-heart"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rr-shuffle"></i>
-                  </a>
-                </div>
-                <div class="product__badge light-pink">Hot</div>
-              </div>
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="">
-                  <h3 class="product__title">Product Title</h3>
-                </a>
-                <div class="product__rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                  <!-- نصف نجمة -->
-                </div>
-                <div class="product__price flex">
-                  <span class="new__price">$654.85</span>
-                  <span class="old__price">$600</span>
-                </div>
-                <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-                  <i class="fi fi-rr-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="" class="product__images">
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img default" />
-
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rr-eye"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Add To Wishlist">
-                    <i class="fi fi-rr-heart"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rr-shuffle"></i>
-                  </a>
-                </div>
-                <div class="product__badge light-pink">Hot</div>
-              </div>
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="">
-                  <h3 class="product__title">Product Title</h3>
-                </a>
-                <div class="product__rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                  <!-- نصف نجمة -->
-                </div>
-                <div class="product__price flex">
-                  <span class="new__price">$654.85</span>
-                  <span class="old__price">$600</span>
-                </div>
-                <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-                  <i class="fi fi-rr-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="" class="product__images">
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img default" />
-
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rr-eye"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Add To Wishlist">
-                    <i class="fi fi-rr-heart"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rr-shuffle"></i>
-                  </a>
-                </div>
-                <div class="product__badge light-pink">Hot</div>
-              </div>
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="">
-                  <h3 class="product__title">Product Title</h3>
-                </a>
-                <div class="product__rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                  <!-- نصف نجمة -->
-                </div>
-                <div class="product__price flex">
-                  <span class="new__price">$654.85</span>
-                  <span class="old__price">$600</span>
-                </div>
-                <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-                  <i class="fi fi-rr-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="" class="product__images">
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img default" />
-
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rr-eye"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Add To Wishlist">
-                    <i class="fi fi-rr-heart"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rr-shuffle"></i>
-                  </a>
-                </div>
-                <div class="product__badge light-pink">Hot</div>
-              </div>
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="">
-                  <h3 class="product__title">Product Title</h3>
-                </a>
-                <div class="product__rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                  <!-- نصف نجمة -->
-                </div>
-                <div class="product__price flex">
-                  <span class="new__price">$654.85</span>
-                  <span class="old__price">$600</span>
-                </div>
-                <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-                  <i class="fi fi-rr-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="" class="product__images">
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img default" />
-
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rr-eye"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Add To Wishlist">
-                    <i class="fi fi-rr-heart"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rr-shuffle"></i>
-                  </a>
-                </div>
-                <div class="product__badge light-pink">Hot</div>
-              </div>
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="">
-                  <h3 class="product__title">Product Title</h3>
-                </a>
-                <div class="product__rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                  <!-- نصف نجمة -->
-                </div>
-                <div class="product__price flex">
-                  <span class="new__price">$654.85</span>
-                  <span class="old__price">$600</span>
-                </div>
-                <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-                  <i class="fi fi-rr-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="" class="product__images">
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img default" />
-
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rr-eye"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Add To Wishlist">
-                    <i class="fi fi-rr-heart"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rr-shuffle"></i>
-                  </a>
-                </div>
-                <div class="product__badge light-pink">Hot</div>
-              </div>
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="">
-                  <h3 class="product__title">Product Title</h3>
-                </a>
-                <div class="product__rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                  <!-- نصف نجمة -->
-                </div>
-                <div class="product__price flex">
-                  <span class="new__price">$654.85</span>
-                  <span class="old__price">$600</span>
-                </div>
-                <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-                  <i class="fi fi-rr-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="" class="product__images">
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img default" />
-
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rr-eye"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Add To Wishlist">
-                    <i class="fi fi-rr-heart"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rr-shuffle"></i>
-                  </a>
-                </div>
-                <div class="product__badge light-pink">Hot</div>
-              </div>
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="">
-                  <h3 class="product__title">Product Title</h3>
-                </a>
-                <div class="product__rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                  <!-- نصف نجمة -->
-                </div>
-                <div class="product__price flex">
-                  <span class="new__price">$654.85</span>
-                  <span class="old__price">$600</span>
-                </div>
-                <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-                  <i class="fi fi-rr-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="" class="product__images">
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img default" />
-
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rr-eye"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Add To Wishlist">
-                    <i class="fi fi-rr-heart"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rr-shuffle"></i>
-                  </a>
-                </div>
-                <div class="product__badge light-pink">Hot</div>
-              </div>
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="">
-                  <h3 class="product__title">Product Title</h3>
-                </a>
-                <div class="product__rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                  <!-- نصف نجمة -->
-                </div>
-                <div class="product__price flex">
-                  <span class="new__price">$654.85</span>
-                  <span class="old__price">$600</span>
-                </div>
-                <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-                  <i class="fi fi-rr-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-                </div>
-              </div>
-
-                </div>
-    </section>
-
-    <!-- Benefits Section -->
-    <div class="benefits-section">
-      <div class="benefits-container">
-        <div class="benefit-card">
-          <i class="bi bi-truck benefit-icon"></i>
-          <div class="benefit-text">
-            <h3 class="text">Free Shipping & Returns</h3>
-            <p class="PP">For all orders over $99</p>
-                </div>
-              </div>
-        <div class="benefit-card">
-          <i class="bi bi-shield-check benefit-icon"></i>
-          <div class="benefit-text">
-            <h3 class="text">Secure Payment</h3>
-            <p>We ensure secure payment</p>
-                </div>
-                </div>
-        <div class="benefit-card">
-          <i class="bi bi-clock-history benefit-icon"></i>
-          <div class="benefit-text">
-            <h3 class="text">Money Back Guarantee</h3>
-            <p>Any book within 20 days</p>
-              </div>
-            </div>
-        <div class="benefit-card">
-          <i class="bi bi-headset benefit-icon"></i>
-          <div class="benefit-text">
-            <h3 class="text">Customer Support</h3>
-            <p>Call or email: 24/7 support</p>
-                </div>
-              </div>
-                </div>
-                </div>
-    <!-- Promo Banner -->
-    <section class="promo-banner">
-      <!-- Sports Promotion -->
-      <div class="promo-card sports-promo">
-        <span class="discount-tag">20% OFF</span>
-        <h2 class="promo-title">SPORTS OUTFITS</h2>
-        <p class="promo-subtitle">Collection</p>
-        <div class="price-tag">Starting at: $190.00</div>
-        <button class="cta-button">Shop Now</button>
-              </div>
-
-      <!-- Accessories Promotion -->
-      <div class="promo-card accessories-promo">
-        <h2 class="promo-title">NEW ARRIVALS</h2>
-        <p class="promo-subtitle">ACCESSORIES Collection</p>
-        <div class="price-tag">Only from $190.00</div>
-        <button class="cta-button">Explore</button>
-                </div>
-    </section>
-    <!-- footer -->
-    <footer class="bg-dark py-5">
-      <div class="container">
-        <div class="row g-4">
-          <!-- Logo Section -->
-          <div class="col-lg-4">
-            <!-- تغيير اللوجو هنا -->
-            <div class="d-flex justify-content-center justify-content-lg-start">
-              <img src="/imgs/main/logo.png" alt="Logo" style="height: 3rem;">
-              </div>
-
-            <p class="mt-4 text-center text-lg-start custom-text-color">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt consequuntur amet culpa cum itaque
-              neque.
-            </p>
-
-            <ul class="d-flex gap-3 justify-content-center justify-content-lg-start list-unstyled mt-4">
-              <li>
-                <a href="#" class="custom-link">
-                  <i class="bi bi-facebook social-icon"></i>
-                </a>
-              </li>
-              <li>
-                <a href="#" class="custom-link">
-                  <i class="bi bi-instagram social-icon"></i>
-                </a>
-              </li>
-              <li>
-                <a href="#" class="custom-link">
-                  <i class="bi bi-twitter-x social-icon"></i>
-                </a>
-              </li>
-              <li>
-                <a href="#" class="custom-link">
-                  <i class="bi bi-github social-icon"></i>
-                </a>
-              </li>
-            </ul>
-                </div>
-
-          <!-- Links Sections -->
-          <div class="col-lg-8">
-            <div class="row g-4">
-              <div class="col-6 col-md-3">
-                <h5 class="mb-3 head">About Us</h5>
-                <ul class="list-unstyled">
-                  <li class="mb-2">
-                    <a href="#" class="text-decoration-none link-secondary">Company History</a>
-                  </li>
-                  <li class="mb-2">
-                    <a href="#" class="text-decoration-none link-secondary">Meet the Team</a>
-                  </li>
-                  <li class="mb-2">
-                    <a href="#" class="text-decoration-none link-secondary">Employee Handbook</a>
-                  </li>
-                  <li class="mb-2">
-                    <a href="#" class="text-decoration-none link-secondary">Careers</a>
-                  </li>
-                </ul>
-                </div>
-
-              <div class="col-6 col-md-3">
-                <h5 class="mb-3 head">Our Services</h5>
-                <ul class="list-unstyled">
-                  <li class="mb-2">
-                    <a href="#" class="text-decoration-none link-secondary">Web Development</a>
-                  </li>
-                  <li class="mb-2">
-                    <a href="#" class="text-decoration-none link-secondary">Web Design</a>
-                  </li>
-                  <li class="mb-2">
-                    <a href="#" class="text-decoration-none link-secondary">Marketing</a>
-                  </li>
-                  <li class="mb-2">
-                    <a href="#" class="text-decoration-none link-secondary">Google Ads</a>
-                  </li>
-                </ul>
-              </div>
-
-              <div class="col-6 col-md-3">
-                <h5 class="mb-3 head">Helpful Links</h5>
-                <ul class="list-unstyled">
-                  <li class="mb-2">
-                    <a href="#" class="text-decoration-none link-secondary">FAQs</a>
-                  </li>
-                  <li class="mb-2">
-                    <a href="#" class="text-decoration-none link-secondary">Support</a>
-                  </li>
-                  <!-- <li class="mb-2 d-flex align-items-center gap-2">
-                        <a href="#" class="text-decoration-none link-secondary"
-                          >Live Chat</a
-                        >
-                        <span class="position-relative" style="top: -1px">
-                          <span
-                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"
-                          ></span>
-                          <span
-                            class="relative inline-flex rounded-full h-2 w-2 bg-teal-500"
-                          ></span>
-                        </span>
-                      </li> -->
-                </ul>
+        <!-- Links Sections -->
+        <div class="col-lg-8">
+          <div class="row g-4">
+            <div class="col-6 col-md-3">
+              <h5 class="mb-3 head">Categories</h5>
+              <ul class="list-unstyled">
+                <li class="mb-2">
+                  <a href="#" class="text-decoration-none link-secondary">Electronics</a>
+                </li>
+                <li class="mb-2">
+                  <a href="#" class="text-decoration-none link-secondary">Fashion</a>
+                </li>
+                <li class="mb-2">
+                  <a href="#" class="text-decoration-none link-secondary">Home & kitchen</a>
+                </li>
+                <li class="mb-2">
+                  <a href="#" class="text-decoration-none link-secondary">Vehicles</a>
+                </li>
+              </ul>
             </div>
 
-              <div class="col-6 col-md-3">
-                <h5 class="mb-3 head">Contact Us</h5>
-                <ul class="list-unstyled">
-                  <li class="mb-3 d-flex align-items-center gap-2">
-                    <i class="bi bi-envelope contact-icon"></i>
-                    <span class="inf">john@doe.com</span>
-                  </li>
-                  <li class="mb-3 d-flex align-items-center gap-2">
-                    <i class="bi bi-telephone contact-icon"></i>
-                    <span class="inf">0123456789</span>
-                  </li>
-                  <li class="mb-3 d-flex align-items-start gap-2">
-                    <i class="bi bi-geo-alt contact-icon"></i>
-                    <span class="inf">213 Lane, London,<br />United Kingdom</span>
-                  </li>
-                </ul>
-                </div>
-              </div>
-                </div>
-                </div>
+            <div class="col-6 col-md-3">
+              <h5 class="mb-3 head">Pages</h5>
+              <ul class="list-unstyled">
+                <li class="mb-2">
+                  <a href="#" class="text-decoration-none link-secondary">Admin dashboard</a>
+                </li>
+                <li class="mb-2">
+                  <a href="#" class="text-decoration-none link-secondary">products</a>
+                </li>
+                <li class="mb-2">
+                  <a href="#" class="text-decoration-none link-secondary">Profile</a>
+                </li>
+                <li class="mb-2">
+                  <a href="#" class="text-decoration-none link-secondary">checkout</a>
+                </li>
+              </ul>
+            </div>
 
-        <!-- Copyright Section -->
-        <div class="border-top mt-4 pt-4">
-          <div class="d-flex flex-column flex-md-row justify-content-between text-center text-md-start">
-            <p class="text-secondary order-md-2 mb-0">
-              &copy; 2022 Company Name
-            </p>
+            <div class="col-6 col-md-3">
+              <h5 class="mb-3 head">Help center</h5>
+              <ul class="list-unstyled">
+                <li class="mb-2">
+                  <a href="#" class="text-decoration-none link-secondary">FAQs</a>
+                </li>
+                <li class="mb-2">
+                  <a href="#" class="text-decoration-none link-secondary">track order</a>
+                </li>
+                <li class="mb-2">
+                  <a href="#" class="text-decoration-none link-secondary">login/register</a>
+                </li>
+                <li class="mb-2">
+                  <a href="#" class="text-decoration-none link-secondary">customer support</a>
+                </li>
+              </ul>
+            </div>
 
-            <div class="order-md-1 d-flex gap-3">
-              <a href="#" class="text-decoration-none link-primary">Terms & Conditions</a>
-              <a href="#" class="text-decoration-none link-primary">Privacy Policy</a>
-                </div>
-              </div>
-                </div>
-                </div>
-    </footer>
+            <div class="col-6 col-md-3">
+              <h5 class="mb-3 head">Contact Us</h5>
+              <ul class="list-unstyled">
+                <li class="mb-3 d-flex align-items-center gap-2">
+                  <i class="bi bi-envelope contact-icon"></i>
+                  <span class="inf">zeyad@gmail.com</span>
+                </li>
+                <li class="mb-3 d-flex align-items-center gap-2">
+                  <i class="bi bi-telephone contact-icon"></i>
+                  <span class="inf">0123456789</span>
+                </li>
+                <li class="mb-3 d-flex align-items-start gap-2">
+                  <i class="bi bi-geo-alt contact-icon"></i>
+                  <span class="inf">Borg Al Arap<br />Alexandria</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Copyright Section -->
+      <div class="border-top mt-4 pt-4">
+        <div class="d-flex flex-column flex-md-row justify-content-between text-center text-md-start">
+          <p class="text-secondary order-md-2 mb-0">
+            &copy; 2025 VOYX
+          </p>
+
+          <div class="order-md-1 d-flex gap-3">
+            <a href="#" class="text-decoration-none link-primary">Terms & Conditions</a>
+            <a href="#" class="text-decoration-none link-primary">Privacy Policy</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  
 
 
 
@@ -3334,8 +3193,8 @@
 
 
 
-                </div>
-  <!-- swiper JS -->
+
+  <!-- ===================================== JavaScript ===================================== -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <!--  -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -3344,6 +3203,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="./js/index.js"></script>
   <script>
+    /*============================================ load products =============================================*/
     async function loadProducts(type, containerId) {
       const response = await fetch(`getProducts.php?type=${type}`);
       const products = await response.json();
@@ -3387,6 +3247,163 @@
     loadProducts('popular', 'popular-container');
     loadProducts('new', 'new-added-container');
 
+
+
+
+
+
+
+
+
+    /*============================================ cart and wishlist =============================================*/
+    // Initialize cart and wishlist
+    let cart = [];
+    let wishlist = [];
+    let cartCount = 0;
+    let wishlistCount = 0;
+
+    // Event Delegation for dynamic elements
+    document.body.addEventListener('click', function (e) {
+      // Add to Cart
+      if (e.target.closest('.cart__btn')) {
+        e.preventDefault();
+        const productItem = e.target.closest('.product__item');
+        const product = {
+          id: Date.now(), // استخدام timestamp كـ ID مؤقت
+          title: productItem.querySelector('.product__title').innerText,
+          price: parseFloat(productItem.querySelector('.new__price').innerText.replace('$', '')),
+          image: productItem.querySelector('.product__img').src
+        };
+        addToCart(product);
+      }
+
+      // Add to Wishlist
+      if (e.target.closest('.action__btn[aria-label="Add To Wishlist"]')) {
+        e.preventDefault();
+        const productItem = e.target.closest('.product__item');
+        const product = {
+          id: Date.now(),
+          title: productItem.querySelector('.product__title').innerText,
+          price: parseFloat(productItem.querySelector('.new__price').innerText.replace('$', '')),
+          image: productItem.querySelector('.product__img').src
+        };
+        addToWishlist(product);
+      }
+    });
+
+    // Improved Add to Cart function
+    function addToCart(product) {
+      const existingItem = cart.find(item => item.id === product.id);
+      if (existingItem) {
+        existingItem.quantity++;
+      } else {
+        cart.push({ ...product, quantity: 1 });
+      }
+      cartCount++;
+      updateCartUI();
+      showNotification(`${product.title} added to cart!`);
+    }
+
+    // Add to Wishlist function
+    function addToWishlist(product) {
+      if (!wishlist.some(item => item.id === product.id)) {
+        wishlist.push(product);
+        wishlistCount++;
+        updateWishlistUI();
+        showNotification(`${product.title} added to wishlist!`);
+      }
+    }
+
+    // Update Cart UI
+    function updateCartUI() {
+      const cartBadge = document.getElementById('cartBadge');
+      const cartItemsContainer = document.getElementById('cartItems');
+      const cartTotalElement = document.getElementById('cartTotal');
+
+      // Update Badge
+      cartBadge.textContent = cartCount;
+
+      // Update Items List
+      cartItemsContainer.innerHTML = cart.map(item => `
+    <div class="cart-item d-flex align-items-center gap-3 mb-3">
+      <img src="${item.image}" width="60" height="60" class="rounded">
+      <div class="flex-grow-1">
+        <h6 class="mb-0">${item.title}</h6>
+        <div class="d-flex align-items-center gap-2">
+          <span>$${item.price} x ${item.quantity}</span>
+                </div>
+              </div>
+      <button class="btn btn-danger btn-sm" onclick="removeCartItem(${item.id})">
+        <i class="fas fa-trash"></i>
+      </button>
+                </div>
+  `).join('');
+
+      // Update Total
+      const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+      cartTotalElement.textContent = `$${total.toFixed(2)}`;
+    }
+
+    // Update Wishlist UI
+    function updateWishlistUI() {
+      const wishlistBadge = document.getElementById('wishlistBadge');
+      const wishlistItemsContainer = document.getElementById('wishlistItems');
+
+      wishlistBadge.textContent = wishlistCount;
+
+      wishlistItemsContainer.innerHTML = wishlist.map(item => `
+    <div class="wishlist-item d-flex align-items-center gap-3 mb-3">
+      <img src="${item.image}" width="60" height="60" class="rounded">
+      <div class="flex-grow-1">
+        <h6 class="mb-0">${item.title}</h6>
+        <div>$${item.price}</div>
+                </div>
+      <button class="btn btn-danger btn-sm" onclick="removeWishlistItem(${item.id})">
+        <i class="fas fa-trash"></i>
+      </button>
+              </div>
+  `).join('');
+    }
+
+    // Remove item functions
+    function removeCartItem(id) {
+      cart = cart.filter(item => item.id !== id);
+      cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+      updateCartUI();
+    }
+
+    function removeWishlistItem(id) {
+      wishlist = wishlist.filter(item => item.id !== id);
+      wishlistCount = wishlist.length;
+      updateWishlistUI();
+    }
+
+    /*============================================ Notification system =============================================*/
+    function showNotification(message) {
+      const notification = document.createElement('div');
+      notification.className = 'notification alert alert-success position-fixed top-0 end-0 m-3';
+      notification.textContent = message;
+      document.body.appendChild(notification);
+
+      setTimeout(() => {
+        notification.remove();
+      }, 1500);
+    }
+
+    /*============================================ Sidebar =============================================*/
+    function toggleSidebar(type) {
+      const sidebar = document.getElementById(`${type}Sidebar`);
+      sidebar.classList.add("active");
+    }
+
+    function closeSidebar(type) {
+      const sidebar = document.getElementById(`${type}Sidebar`);
+      sidebar.classList.remove("active");
+    }
+    document.querySelector('.nav-icon[href="#userDropdown"]').addEventListener('click', function (e) {
+      e.preventDefault();
+      document.getElementById('userDropdown').classList.toggle('active');
+    });
 
 
   </script>

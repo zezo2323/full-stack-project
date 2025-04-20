@@ -6,12 +6,9 @@
   font-weight: 100;
   font-style: normal;
 }
-/*============= VARIABLES CSS =============*/
+/*============================================ VARIABLES CSS =============================================*/
 :root {
   --header-height: 4rem;
-
-  /*========== Colors ==========*/
-  /* Color mode HSL(hue, saturation, lightness) */
   --first-color: hsl(176, 88%, 27%);
   --first-color-alt: hsl(129, 44%, 94%);
   --second-color: hsl(34, 94%, 87%);
@@ -25,31 +22,11 @@
   --accent-color: #ff6b6b;
   --transition: ease-in-out;
 }
-
-
-
-/* Animations */
-/* @keyframes slideDown {
-  0% {
-    transform: translateY(-100%);
-  }
-  100% {
-    transform: translateY(0);
-  }
+.btn-custom{
+  background-color: var(--first-color);
 }
 
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-} */
-
-/* Top Promotion Bar */
+/*============================================ Top Promotion Bar =============================================*/
 .promotion-bar {
   background: var(--first-color);
   color: white;
@@ -65,7 +42,8 @@
   transition: transform 0.3s ease;
 }
 
-/* Bottom Navigation */
+
+/*============================================ Bottom Navigation =============================================*/
 .bottom-nav {
   background: #f8f9fa;
   padding: 1rem 0;
@@ -75,7 +53,7 @@
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Search Bar */
+/*============================================ Search Bar =============================================*/
 .search-box {
   max-width: 500px;
   border: 2px solid #eee;
@@ -111,11 +89,9 @@
   border-color: #1f4735 !important;
 }
 
-/* .search-btn:focus {
-  box-shadow: 0 0 0 0.25rem rgba(42, 92, 69, 0.5) !important;
-} */
 
-/* Icons */
+
+/*============================================ Icons =============================================*/
 .nav-icon {
   font-size: 1.2rem;
   color: var(--first-color);
@@ -146,7 +122,7 @@
   background: var(--first-color);
 }
 
-/* Responsive Design */
+/*============================================ Responsive Design =============================================*/
 @media (max-width: 992px) {
   .bottom-nav .nav-link {
     display: none;
@@ -157,7 +133,7 @@
   }
 }
 
-/* إضافة أنماط القائمة الجانبية */
+/*============================================ Sidebar =============================================*/
 .sidebar {
   position: fixed;
   top: 0;
@@ -208,6 +184,17 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   z-index: 1000; 
 }
+.badge-custom {
+  position: absolute;
+  background-color: var(--first-color);
+  color: white;
+  padding: 1px 6px;
+  font-size: 12px;
+  border-radius: 50%;
+  text-decoration: none;
+  top:-15px;
+  right: -27px;
+}
 
 /* تحسينات للجوال */
 @media (max-width: 992px) {
@@ -254,12 +241,12 @@
   display: none;
 }
 
-/* عرض القائمة الفرعية عند التمرير */
+
 .dropdown-submenu:hover > .dropdown-menu {
   display: block;
 }
 
-/* تعديلات للجوال */
+
 @media (max-width: 991px) {
   .dropdown-submenu .dropdown-menu {
     left: 0;
@@ -270,11 +257,23 @@
     display: block;
   }
 }
+@media (max-width: 896px) {
+#categoriesDropdown{
+  display: none;
+}
+.badge-custom{
+  top:-15px;
+  right: -10px;
+  font-size: 10px;
+  padding: 1px 6px;
+}
+}
 
-/* category  swiper*/
+/*============================================ category  swiper============================================*/
 .section__title {
   font-size: 30px;
   margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
 }
 .section__title span {
   color: var(--first-color);
@@ -284,14 +283,13 @@
   border: 1px solid var(--first-color);
   padding: 0.625rem 0.625rem 1.25rem;
   border-radius: 1.25rem;
-  /* إضافة حجم ثابت للحاوية */
   width: 100%;
   height: 100%;
 }
 .category__img {
   width: 100%;
-  height: 200px; /* حدد ارتفاع ثابت للصور */
-  object-fit: cover; /* يضمن تغطية كاملة للمساحة مع الحفاظ على نسبة العرض إلى الارتفاع */
+  height: 200px; 
+  object-fit: cover; 
   border-radius: 0.75rem;
   margin-bottom: 1.2rem;
 }
@@ -306,12 +304,12 @@
 .category__item a:hover {
   text-decoration: none;
 }
-/* swiper */
+/*============================================ swiper =============================================*/
 .swiper-button-next,
 .swiper-button-prev {
   position: absolute;
-  top: 50%;
-  transform: translateY(150%);
+  /* top: 50%;
+  transform: translateY(223%); */
   background-color: var(--first-color);
   color: var(--first-color);
   border: 2px solid var(--first-color);
@@ -339,7 +337,7 @@
   color: var(--first-color);
   font-weight: bold;
 }
-/* products */
+/*============================================ products =============================================*/
 .tab__btns {
   display: flex;
   column-gap: 0.75rem;
@@ -357,18 +355,11 @@
   color: #fffffffb;
 }
 
-
-
-
-
-
-
-
-/* product grid */
+/*============================================ product grid =============================================*/
 .products__container {
     display: grid;
-    grid-template-columns: repeat(5, 1fr); /* خمس أعمدة */
-    gap: 1rem; /* مسافة بين العناصر */
+    grid-template-columns: repeat(5, 1fr); 
+    gap: 1rem; 
     padding: 5px;
 }
 .product__item {
@@ -376,12 +367,10 @@
   border: 1px solid var(--first-color);
   border-radius: 1.5rem;
   margin-bottom: 1rem;
-  padding: 5px; /* زيادة الـ padding لتحسين المظهر */
+  padding: 5px;
   overflow: hidden;
   transition: all 0.2s var(--transition);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-  max-width: 250px; /* تأكيد أقصى عرض */
-
 } 
 
 
@@ -391,7 +380,7 @@
 }
 .product__banner {
   padding: 0rem ;
-  overflow: hidden; /* منع الصورة من الخروج خارج الحواف */
+  overflow: hidden;
 }
 .product__images {
   display: block;
@@ -414,22 +403,6 @@
   vertical-align: middle;
   transition: all 1.2s var(--transition);
 }
-/* .product__img.default {
-  transition: transform 1.5s var(--transition), opacity 1.5s var(--transition);
-}
-.product__item:hover .product__img.default {
-  opacity: 1;
-}
-.product__item:hover .product__img.hover {
-  opacity: 1;
-  transform: scale(1.1);
-} */
-
-/* .product__img.hover {
-  position: absolute;
-  top: 0;
-  left: 0;
-} */
 .product__actions {
   display: flex;
   position: absolute;
@@ -451,7 +424,7 @@
   color: var(--first-color);
   font-size: small;
   position: relative;
-  background-color: rgb(255, 241, 241); /* لون الخلفية */
+  background-color: rgb(255, 241, 241); 
   transition: background-color 0.3s ease-in-out;
   text-decoration: none;
 }
@@ -520,7 +493,6 @@
   font-size: medium;
   font-weight: bold;
   color: var(--first-color);
-  /* margin-block: 0.75rem 0.5rem; */
   text-decoration: none;
 }
 .product__rating {
@@ -528,11 +500,6 @@
   font-size: smaller;
   margin-bottom: 0.75rem;
 }
-/* .cart__btn{
-  position:relative;
-  bottom: 2rem;
-  right: -180px;
-} */
 .cart__btn {
   position: absolute;
   bottom: 2rem;
@@ -556,12 +523,6 @@
   font-size: small;
   font-weight: lighter;
 }
-
-/* .cart__btn img {
-  width: 18px;
-  height: 18px;
-} */
-
 .tab__item.active-tab {
   color: #000000;
   background-color: #ffffff;
@@ -569,8 +530,7 @@
 .tab__item:not(.active-tab) {
   display: none;
 }
-/* product hover */
-/* .product__img.hover, */
+
 .product__actions,
 .action__btn::before,
 .action__btn::after{
@@ -579,7 +539,7 @@
 .product__item:hover {
   box-shadow: 0 0 10px hsla(0, 0%, 0%, 0.1);
 }
-/* .product__item:hover .product__img.hover, */
+
 .product__item:hover .product__actions,
 .action__btn:hover::before,
 .action__btn:hover::after {
@@ -590,9 +550,6 @@
   transform: translateX(-50%) translateY(-0.5rem);
 }
 
-/* .product__item:hover .product__img {
-  transform: scale(1.1);
-} */
 .flex {
   display: flex;
   align-items: center;
@@ -612,29 +569,29 @@
 }
 
 .tab__item {
-  display: none; /* إخفاء جميع المحتويات افتراضيًا */
+  display: none;
 }
 
 .tab__item.active-tab {
-  display: block; /* إظهار المحتوى النشط فقط */
+  display: block; 
 }
 
 .tab__btn.active-tab {
-  background:var(--first-color); /* تنسيق التبويب النشط */
+  background:var(--first-color);
   color: white;
 }
 
 
 
-/* ❇️ استجابة للشاشات المتوسطة (أجهزة التابلت) */
+/*============================================ responsive=============================================*/
 @media (max-width: 1024px) {
   .products__container {
-    grid-template-columns: repeat(4, 1fr); /* 3 كروت في الصف */
+    grid-template-columns: repeat(4, 1fr); 
   }
 
   .cart__btn {
-    bottom: 0.75rem; /* تقليل المسافة من الأسفل */
-    right: 0.75rem; /* ضبط المسافة من اليمين */
+    bottom: 0.75rem; 
+    right: 0.75rem; 
     width: 30px;
     height: 30px;
   }
@@ -647,7 +604,7 @@
   
 }
 
-/* ❇️ استجابة للشاشات الصغيرة (الموبايل) */
+
 @media (max-width: 768px) {
   .products__container {
     grid-template-columns: repeat(3, 1fr); 
@@ -684,35 +641,18 @@
   }
 }
 
-/* ❇️ استجابة للشاشات الصغيرة جدًا (شاشات الموبايل الصغيرة) */
+
 @media (max-width: 480px) {
   .products__container {
-    grid-template-columns: repeat(2, 1fr);/* 1 كارد في الصف */
+    grid-template-columns: repeat(2, 1fr);
   }
-  /* .product__banner{
-    width: 100%;
-    height: 160px;
-  } */
-
-
-  /* .product__item {
-    padding: 8px;
-    border-radius: 0.75rem;
-    width: 180px;
-    height: 300px;
-  } */
-  
-
-  .cart__btn {
+ .cart__btn {
     width: 26px;
     height: 26px;
     bottom: 3.2rem;
     right: 0.4rem;
   }
-  /* .product__images img{
-    object-fit: contain;
-    width: 100%;
-  } */
+
   .cart__btn img {
     width: 15px;
     height: 15px;
@@ -728,9 +668,6 @@
   }
 
 }
-
-
-
 .benefits-section {
   padding: 1rem 0;
   background: #f8f9fa;
@@ -778,7 +715,7 @@
   font-size: 10px;
   margin: 5px 0 0;
 }
-/* Promo Banner */
+/*============================================ Promo Banner =============================================*/
 .promo-banner {
   max-width: 1200px;
   margin: 50px auto;
@@ -885,7 +822,439 @@
 }
 }
 
+/*============================================ Cart & Wishlist Sidebars =============================================*/
+.notification {
+  z-index: 9999;
+  min-width: 250px;
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+.offcanvas-sidebar {
+  position: fixed;
+  top: 0;
+  right: -400px;
+  width: 400px;
+  height: 100%;
+  background: white;
+  box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+  transition: right 0.3s ease;
+  z-index: 9998;
+  padding: 20px;
+  overflow-y: auto;
+
+}
+
+.offcanvas-sidebar.active {
+  right: 0;
+}
+
+.cart-item img {
+  object-fit: cover;
+}
 
 
 
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid var(--first-color);
+  padding-bottom: 1rem;
+  border-radius: 20px;
+}
+
+.sidebar-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.close-sidebar {
+  font-size: 1.5rem;
+  color: #fff;
+  transition: transform 0.3s;
+}
+
+.close-sidebar:hover {
+  transform: rotate(90deg);
+}
+
+.cart-items {
+  height: calc(100vh - 250px);
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+.cart-item {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.item-thumbnail {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.item-details {
+  flex: 1;
+}
+
+.item-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.item-price {
+  color: var(--first-color);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.quantity-control {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.quantity-btn {
+  width: 28px;
+  height: 28px;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.quantity-btn:hover {
+  background: var(--first-color);
+  color: white;
+}
+
+.remove-item {
+  color: #000;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.remove-item:hover {
+  transform: scale(1.1);
+  color: #ff4444;
+}
+
+.cart-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.5rem;
+  background: white;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+}
+
+.subtotal {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.checkout-btn {
+  width: 100%;
+  padding: 12px;
+  background: var(--first-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: transform 0.3s;
+}
+
+.checkout-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(13, 125, 117, 0.3);
+}
+
+
+
+/*============================================ showcase =============================================*/
+.showcase__container{
+  grid-template-columns: repeat(4,1fr);
+  margin-bottom: 2rem;
+}
+
+
+.showcase__wrapper .section__title{
+font-size: 15x;
+color: var(--first-color);
+border-bottom: 1px solid var(--first-color);
+padding-bottom: 0.75rem;
+margin-bottom: 2rem;
+position: relative;
+}
+.showcase__wrapper .section__title::before{
+content: "";
+position: absolute;
+bottom: -1.3px;
+left: 0;
+width: 50px;
+height: 2px;
+background-color: var(--first-color);
+
+}
+.showcase__item{
+  display: flex;
+  align-items: center;
+  column-gap: 1.5rem;
+}
+.showcase__item:not(:last-child){
+margin-bottom: 1.5rem;
+}
+.showcase__img{
+  width: 86px ;
+  background-color: var(--container-color);
+}
+.showcase__content{
+width:calc(100% - 110px);
+}
+.showcase__title{
+  font-size: small;
+  font-weight: 500;
+ white-space: nowrap;
+ overflow: hidden;
+ text-overflow: ellipsis;
+ margin-bottom: 0.5rem;
+}
+.showcase__price{
+  font-size: small;
+  font-weight: 600;
+}
+@media (max-width: 1024px) {
+  .showcase__container {
+    grid-template-columns: repeat(3, 1fr); 
+  }
+}
+
+@media (max-width: 768px) {
+  .showcase__container {
+    grid-template-columns: repeat(2, 1fr); 
+  }
+}
+
+@media (max-width: 480px) {
+  .showcase__container {
+    grid-template-columns: 1fr; 
+  }
+}
+
+
+
+
+    /*============================================ benefits section =============================================*/
+    .benefits-section {
+      padding: 1rem 0;
+      background: #f8f9fa;
+    }
+
+    .benefits-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      padding: 0 20px;
+    }
+
+    .benefit-card {
+      flex: 1;
+      text-align: center;
+      padding: 10px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+    }
+
+    .benefit-icon {
+      font-size: 30px;
+      color: var(--first-color);
+    }
+
+    .benefit-text {
+      text-align: left;
+    }
+
+    .benefit-text h3 {
+      color: #333;
+      margin: 0;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .benefit-text p {
+      color: #000000;
+      font-size: 10px;
+      margin: 5px 0 0;
+    }
+
+    .benefit-card h3 {
+      color: hsl(176, 88%, 27%) !important;
+      /* اللون المطلوب */
+      font-weight: bold !important;
+      font-size: 15px;
+    }
+
+    /* أو إذا كان هناك كلاس مخصص */
+    .text {
+      color: hsl(176, 88%, 27%) !important;
+
+    }
+
+
+
+    .benefit-card p {
+      color: #000000 !important;
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+
+
+    .promo-subtitle {
+      color: #000000 !important;
+      font-size: 1rem;
+    }
+
+    .price-tag {
+      color: #2d3748 !important;
+      font-weight: 600;
+    }
+
+
+
+
+    /*============================================ Promo Banner =============================================*/
+    .promo-banner {
+
+      max-width: 1450px;
+      margin: 40px auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      padding: 0 20px;
+    }
+
+    .promo-card {
+      padding: 20px;
+      border-radius: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .sports-promo {
+      background: #ffffff;
+      border: 1px solid #eee;
+    }
+
+    .accessories-promo {
+      background: var(--first-color);
+      color: #fff !important;
+    }
+
+    .discount-tag {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: var(--first-color);
+      color: white;
+      padding: 8px 20px;
+      border-radius: 20px;
+      font-size: 9px;
+      font-weight: bold;
+    }
+
+    .promo-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: var(--first-color);
+    }
+
+    .promo-subtitle {
+      font-size: 18px;
+      color: #888;
+      margin-bottom: 25px;
+    }
+
+    .accessories-promo .promo-subtitle {
+      color: #ccc;
+    }
+
+    .price-tag {
+      font-size: 24px;
+      color: var(--first-color);
+      margin: 25px 0;
+      font-weight: bold;
+    }
+
+    .cta-button {
+      background: var(--first-color);
+      color: white;
+      padding: 15px 40px;
+      border: none;
+      border-radius: 30px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px #fff;
+    }
+
+    @media (max-width: 768px) {
+      .benefits-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .promo-banner {
+        grid-template-columns: 1fr;
+      }
+
+      .promo-card {
+        padding: 30px;
+      }
+
+      .promo-title {
+        font-size: 24px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .benefits-container {
+        flex-wrap: wrap;
+      }
+
+      .benefit-card {
+        flex: 100%;
+        margin-bottom: 20px;
+      }
+    }
 
