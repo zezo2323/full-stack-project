@@ -12,6 +12,7 @@
 }
 
 :root {
+    --first-color:hsl(176, 88%, 27%);
     --main-color: #088179;
     --dark-color: #222222;
     --parg-color: #666666;
@@ -67,7 +68,7 @@ p {
     display: flex;
     flex-direction: column;
     left: 20px;
-    top: 20px;
+    top: 210px;
 }
 
 

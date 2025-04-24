@@ -280,15 +280,10 @@
 }
 
 @media (max-width: 768px) {
-  .badge-custom {
-    top: -15px;
-    right: -5px;
-    font-size: 10px;
-    padding: 1px 6px;
-  }
+
 
   .nav-icon {
-    right: 25px;
+    right: 10px;
   }
 }
 
