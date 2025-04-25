@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Uploader with Progress Bar</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            padding: 30px;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .upload-area {
+            border: 2px dashed #6c60ff;
+            border-radius: 8px;
+            padding: 40px 20px;
+            text-align: center;
+            cursor: pointer;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .upload-area:hover {
+            background-color: #f0f0ff;
+        }
+        
+        .upload-area.active {
+            border-color: #463aff;
+            background-color: #f0f0ff;
+        }
+        
+        .upload-area i {
+            font-size: 50px;
+            color: #6c60ff;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .upload-area h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .upload-area p {
+            color: #777;
+            margin-bottom: 10px;
+        }
+        
+        .upload-area button {
+            background-color: #6c60ff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .upload-area button:hover {
+            background-color: #463aff;
+        }
+        
+        .progress-area {
+            padding: 15px 0;
+            display: none;
+        }
+        
+        .progress-area .row {
+            background-color: #f7f7f7;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .progress-area .row .content {
+            flex: 1;
+            margin-left: 15px;
+        }
+        
+        .row .content .details {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+        
+        .progress-area .content .progress-bar {
+            height: 8px;
+            background-color: #e6e6e6;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .content .progress-bar .progress {
+            height: 100%;
+            width: 0%;
+            background-color: #6c60ff;
+            transition: width 0.3s ease;
+        }
+        
+        .uploaded-area {
+            max-height: 250px;
+            overflow-y: auto;
+            padding-right: 5px;
+            display: none;
+        }
+        
+        .uploaded-area .row {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background-color: #f7f7f7;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        
+        .uploaded-area .row .content {
+            flex: 1;
+            margin-left: 15px;
+        }
+        
+        .uploaded-area .row i {
+            color: #6c60ff;
+            font-size: 20px;
+        }
+        
+        .uploaded-area .row .details {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .uploaded-area .row .details .size {
+            color: #777;
+            font-size: 12px;
+        }
+        
+        /* Delete button styling */
+        .delete-btn {
+            background: none;
+            border: none;
+            color: #ff4444;
+            cursor: pointer;
+            padding: 5px;
+            margin-left: 10px;
+            transition: color 0.3s;
+        }
+        
+        .delete-btn:hover {
+            color: #cc0000;
+        }
+        
+        /* File type icons */
+        .file-icon {
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            background-color: #6c60ff20;
+            color: #6c60ff;
+            font-size: 18px;
+        }
+        
+        /* Cancel button styling */
+        .cancel-btn {
+            background: none;
+            border: none;
+            color: #ff4444;
+            cursor: pointer;
+            padding: 5px;
+            margin-left: 10px;
+            transition: color 0.3s;
+        }
+        
+        .cancel-btn:hover {
+            color: #cc0000;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>File Uploader</h1>
+        <div class="upload-area" id="dropArea">
+            <i class="fas fa-cloud-upload-alt"></i>
+            <h3>Drag & Drop Files</h3>
+            <p>OR</p>
+            <button id="browseBtn">Browse Files</button>
+            <input type="file" id="fileInput" hidden multiple>
+        </div>
+        
+        <div class="progress-area" id="progressArea">
+            <!-- Progress items will be added here -->
+        </div>
+        
+        <div class="uploaded-area" id="uploadedArea">
+            <!-- Uploaded items will be added here -->
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
+    <script>
+        // Initialize PDF.js worker
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.worker.min.js';
+        
+        const dropArea = document.querySelector("#dropArea");
+        const browseBtn = document.querySelector("#browseBtn");
+        const fileInput = document.querySelector("#fileInput");
+        const progressArea = document.querySelector("#progressArea");
+        const uploadedArea = document.querySelector("#uploadedArea");
+
+        // عند الضغط على زر Browse Files
+        browseBtn.onclick = function() {
+            fileInput.click(); // هذا يفتح نافذة اختيار الملفات
+        };
+
+        // عند اختيار الملفات من خلال نافذة الاختيار
+        fileInput.onchange = function() {
+            if (fileInput.files.length > 0) {
+                uploadFiles(fileInput.files);
+            }
+        };
+
+        // When drag over dropArea
+        dropArea.ondragover = (e) => {
+            e.preventDefault();
+            dropArea.classList.add("active");
+        };
+
+        // When drag leave dropArea
+        dropArea.ondragleave = () => {
+            dropArea.classList.remove("active");
+        };
+
+        // When files are dropped
+        dropArea.ondrop = (e) => {
+            e.preventDefault();
+            dropArea.classList.remove("active");
+            
+            if (e.dataTransfer.files.length > 0) {
+                uploadFiles(e.dataTransfer.files);
+            }
+        };
+
+        function uploadFiles(files) {
+            for (let i = 0; i < files.length; i++) {
+                uploadFile(files[i]);
+            }
+        }
+
+        async function uploadFile(file) {
+            // Show progress area
+            progressArea.style.display = "block";
+            
+            const fileType = file.type;
+            const validExtensions = ["image/jpeg", "image/jpg", "image/png", "application/pdf", "text/plain"];
+            
+            if (!validExtensions.includes(fileType)) {
+                alert("This file type is not supported!");
+                return;
+            }
+
+            // Get page count for PDF files
+            let pageCount = 1;
+            if (fileType === "application/pdf") {
+                try {
+                    const arrayBuffer = await file.arrayBuffer();
+                    const pdf = await pdfjsLib.getDocument({data: arrayBuffer}).promise;
+                    pageCount = pdf.numPages;
+                } catch (error) {
+                    console.error("Error getting PDF page count:", error);
+                }
+            }
+            
+            // Create progress item HTML
+            const progressHTML = `
+                <div class="row" data-filename="${file.name}">
+                    <div class="file-icon">
+                        <i class="${getFileIcon(fileType)}"></i>
+                    </div>
+                    <div class="content">
+                        <div class="details">
+                            <span class="name">${file.name}</span>
+                            <span class="percent">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress"></div>
+                        </div>
+                        ${fileType === "application/pdf" ? `<div class="page-count">عدد الصفحات: ${pageCount}</div>` : ''}
+                    </div>
+                    <button class="cancel-btn" onclick="cancelUpload('${file.name}')">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            `;
+            
+            progressArea.innerHTML += progressHTML;
+            
+            // Create a new XMLHttpRequest object
+            const xhr = new XMLHttpRequest();
+            
+            // Store the XHR object for cancellation
+            window.activeUploads = window.activeUploads || {};
+            window.activeUploads[file.name] = xhr;
+            
+            // In a real-world scenario, you would set up an actual server endpoint
+            xhr.open("POST", "https://example.com/upload");
+            
+            xhr.upload.addEventListener("progress", (event) => {
+                if (event.lengthComputable) {
+                    const loaded = Math.floor((event.loaded / event.total) * 100);
+                    const progressItem = progressArea.lastElementChild;
+                    const progressBar = progressItem.querySelector(".progress");
+                    const percent = progressItem.querySelector(".percent");
+                    
+                    percent.textContent = loaded + "%";
+                    progressBar.style.width = loaded + "%";
+                    
+                    if (loaded === 100) {
+                        // Show uploaded area
+                        uploadedArea.style.display = "block";
+                        
+                        // Create uploaded item HTML
+                        const uploadedHTML = `
+                            <div class="row" data-filename="${file.name}">
+                                <div class="file-icon">
+                                    <i class="${getFileIcon(fileType)}"></i>
+                                </div>
+                                <div class="content">
+                                    <div class="details">
+                                        <span class="name">${file.name}</span>
+                                        <span class="size">${formatFileSize(file.size)}</span>
+                                    </div>
+                                </div>
+                                <i class="fas fa-check"></i>
+                                <button class="delete-btn" onclick="deleteFile('${file.name}')">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        `;
+                        
+                        // Add uploaded item at the beginning of uploaded area
+                        uploadedArea.insertAdjacentHTML("afterbegin", uploadedHTML);
+                        
+                        // Remove progress item after 1 second
+                        setTimeout(() => {
+                            progressItem.remove();
+                            if (progressArea.children.length === 0) {
+                                progressArea.style.display = "none";
+                            }
+                        }, 1000);
+                    }
+                }
+            });
+            
+            // Mock server response - In a real app, this would be handled by your server
+            setTimeout(() => {
+                xhr.onload = () => {
+                    console.log("Upload complete");
+                    // Clean up the XHR reference
+                    delete window.activeUploads[file.name];
+                };
+                
+                // Simulate server processing
+                const fakeResponse = { status: 200, message: "File uploaded successfully" };
+                xhr.dispatchEvent(new ProgressEvent("load"));
+            }, 2000);
+            
+            // Create FormData object
+            const formData = new FormData();
+            formData.append("file", file);
+            
+            // Send the form data
+            xhr.send(formData);
+        }
+
+        // Function to cancel upload
+        function cancelUpload(filename) {
+            const xhr = window.activeUploads[filename];
+            if (xhr) {
+                xhr.abort(); // Cancel the upload
+                delete window.activeUploads[filename];
+                
+                // Remove the progress item
+                const progressItem = document.querySelector(`.progress-area .row[data-filename="${filename}"]`);
+                if (progressItem) {
+                    progressItem.remove();
+                    if (progressArea.children.length === 0) {
+                        progressArea.style.display = "none";
+                    }
+                }
+            }
+        }
+
+        // Function to delete file
+        function deleteFile(filename) {
+            // Remove from uploaded area
+            const fileElement = document.querySelector(`.uploaded-area .row[data-filename="${filename}"]`);
+            if (fileElement) {
+                fileElement.remove();
+                
+                // If no files left, hide the uploaded area
+                if (uploadedArea.children.length === 0) {
+                    uploadedArea.style.display = "none";
+                }
+            }
+            
+            // In a real application, you would also send a request to the server to delete the file
+            // Example:
+            /*
+            fetch('delete.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ filename: filename })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    console.log('File deleted successfully');
+                } else {
+                    console.error('Error deleting file');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+            */
+        }
+
+        // Get appropriate icon based on file type
+        function getFileIcon(fileType) {
+            if (fileType.includes("image")) {
+                return "far fa-image";
+            } else if (fileType.includes("pdf")) {
+                return "far fa-file-pdf";
+            } else if (fileType.includes("text")) {
+                return "far fa-file-alt";
+            } else {
+                return "far fa-file";
+            }
+        }
+
+        // Format file size
+        function formatFileSize(bytes) {
+            if (bytes < 1024) {
+                return bytes + " B";
+            } else if (bytes < 1048576) {
+                return (bytes / 1024).toFixed(2) + " KB";
+            } else {
+                return (bytes / 1048576).toFixed(2) + " MB";
+            }
+        }
+    </script>
+</body>
+</html>
