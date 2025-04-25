@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard - Amazon Clone</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background: #f0f2f5;
+      display: flex;
+      min-height: 100vh;
+    }
+    .sidebar {
+      width: 220px;
+      background-color: #2502e8;
+      color: white;
+      padding: 30px 20px;
+      border-radius: 0 25px 25px 0;
+    }
+    .sidebar h2 {
+      margin-bottom: 40px;
+    }
+    .sidebar ul {
+      list-style: none;
+    }
+    .sidebar ul li {
+      margin: 20px 0;
+      cursor: pointer;
+    }
+    .sidebar ul li:hover {
+      text-decoration: underline;
+    }
+    .main {
+      flex: 1;
+      padding: 40px;
+    }
+    .section {
+      display: none;
+    }
+    .section.active {
+      display: block;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+    .card {
+      background-color: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      text-align: center;
+    }
+    .card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+    .card p {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    .filter {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .filter input[type="date"] {
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .orders {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    table thead {
+      background: #f9fafb;
+    }
+    table th, table td {
+      padding: 12px 15px;
+      text-align: left;
+    }
+    table tbody tr {
+      border-bottom: 1px solid #eee;
+    }
+    table tbody tr.active {
+      background-color: #0052ff;
+      color: white;
+      border-radius: 10px;
+    }
+    .status {
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 0.9em;
+    }
+    .pending {
+      background-color: #ffe5e5;
+      color: #ff4d4f;
+    }
+    .completed {
+      background-color: #e6fffb;
+      color: #52c41a;
+    }
+    .dispatch {
+      background-color: #e6f7ff;
+      color: #1890ff;
+    }
+    .actions button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+    .actions button:hover {
+      color: #0052ff;
+    }
+ 
+.sidebar ul li.active {
+    background-color: white;
+    color: #0052ff;
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+  /* تصميم الجدول */
+  #productTable {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin-top: 20px;
+  }
+
+  #productTable th {
+    background-color: #041dff;
+    color: white;
+    text-align: left;
+    padding: 12px;
+  }
+
+  #productTable td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+  }
+
+  #productTable tbody tr:hover {
+    background-color: #f1f8ff;
+  }
+
+  /* الأزرار */
+  #productTable button {
+    padding: 6px 10px;
+    margin: 0 2px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+
+  #productTable button:first-child {
+    background-color: #687cee; /* تعديل */
+    color: #000;
+  }
+
+  #productTable button:last-child {
+    background-color: #174751; /* حذف */
+    color: #fff;
+  }
+
+  /* عنوان القسم */
+  #products h1 {
+    color: #000000;
+  }
+
+  /* إدخال منتج جديد */
+  #products input,
+  #products select {
+    padding: 8px;
+    margin: 5px;
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    font-size: 14px;
+  }
+
+  #products button {
+    background-color: #4083e1;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  #products button:hover {
+    background-color: #258e8b;
+  }
+
+  /* باقي الأكواد اللي عندك */
+
+  /* جدول صفحة Settings */
+  #settings table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    margin-top: 20px;
+  }
+
+  #settings th {
+    background-color: #343a40;
+    color: #fff;
+    text-align: left;
+    padding: 12px 15px;
+  }
+
+  #settings td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #eee;
+    color: #333;
+  }
+
+  #settings tr:hover {
+    background-color: #f8f9fa;
+  }
+
+  #settings button {
+    padding: 6px 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  #settings button:hover {
+    background-color: #0056b3;
+  }
+  /* تنسيق جدول المخزون */
+#stock table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+#stock th, #stock td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+}
+
+#stock th {
+  background-color: #0052ff;
+  color: white;
+}
+
+#stock button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  margin: 2px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.3s ease;
+}
+
+#stock button:hover {
+  background-color: #0056b3;
+}
+
+  #offers button {
+  margin: 10px 0;
+  padding: 8px 12px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+#offers button:hover {
+  background-color: #218838;
+}
+.styled-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+.styled-table th,
+.styled-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+.styled-table th {
+  background-color: #f2f2f2;
+}
+
+</style>
+</head>
+<body>
+  <div class="sidebar">
+    <h2>Product</h2>
+      <ul>
+        <li onclick="showSection('dashboard')">🏠 Dashboard</li>
+        <li onclick="showSection('orders')">📦 Orders</li>
+        <li onclick="showSection('statistics')">📊 Statistics</li>
+        <li onclick="showSection('products')">🛒 Products</li>
+        <li onclick="showSection('stock')">🏷️ Stock</li>
+        <li onclick="showSection('settings')">⚙️ Settings</li>
+        <li onclick="showSection('offers')">🎁 Offers</li>
+      </ul>
+  </div>
+   <div class="main">
+    <div id="dashboard" class="section active">
+
+      <h1>Dashboard</h1>
+      <div class="cards">
+        <div class="card">
+          <h3>عدد المنتجات</h3>
+          <p>120</p>
+        </div>
+        <div class="card">
+          <h3>عدد المستخدمين</h3>
+          <p>350</p>
+        </div>
+        <div class="card">
+          <h3>عدد الطلبات</h3>
+          <p>180</p>
+        </div>
+        <div class="card">
+          <h3>الإيرادات الإجمالية</h3>
+          <p>$12,340</p>
+        </div>
+      </div>
+      <p>Welcome to the Admin Dashboard.</p>
+    </div> 
+
+    <div id="orders" class="section">
+    
+      <h1>Orders Management</h1>
+
+      <div style="display: flex; justify-content: flex-end; align-items: center; gap: 20px; margin-bottom: 20px;">
+        <input id="searchInput" type="text" placeholder="ابحث عن اسم أو عنوان..." style="display: none; padding: 5px; border-radius: 5px; border: 1px solid #ccc;">
+        <span style="cursor: pointer;" onclick="toggleSearch()">🔍</span>
+        <span style="cursor: pointer;" onclick="showNotification()">🔔</span>
+        <img src="image.jpg" alt="User" style="width: 40px; height: 40px; border-radius: 50%;" />
+      </div>
+      
+      
+      <div class="filter">
+        <div>
+          <button onclick="filterOrders('all')">All Orders</button>
+          <button onclick="filterOrders('dispatch')">Dispatched</button>
+          <button onclick="filterOrders('pending')">Pending</button>
+          <button onclick="filterOrders('completed')">Completed</button>
+        </div>
+        <div>
+          <input type="date" /> to <input type="date" />
+        </div>
+      </div>
+      <div class="orders">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Address</th>
+              <th>Date</th>
+              <th>Price</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="orderBody">
+            <tr class="active">
+                <td>#2632</td>
+                <td>Zeyad</td>
+                <td>1096 Wiseman Street, CALAMA, KS</td>
+                <td>01 Aug 2020</td>
+                <td>$35.00</td>
+                <td><span class="status dispatch">Dispatch</span></td>
+                <td class="actions">
+                  <!-- <button>⚙️</button> -->
+                  <button>🗑️</button>
+                </td>
+              </tr>
+              <tr>
+                <td>#2633</td>
+                <td>Ali</td>
+                <td>306 Snider Street, VT</td>
+                <td>31 Jul 2020</td>
+                <td>$44.00</td>
+                <td><span class="status pending">Pending</span></td>
+                <td class="actions">
+                  <!-- <button>⚙️</button> -->
+                  <button>🗑️</button>
+                </td>
+              </tr>
+              <tr>
+                <td>#2634</td>
+                <td>Ahmed</td>
+                <td>1864 Thorn Street, CA</td>
+                <td>02 Aug 2020</td>
+                <td>$74.00</td>
+                <td><span class="status completed">Completed</span></td>
+                <td class="actions">
+                  <!-- <button>⚙️</button> -->
+                  <button>🗑️</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div id="statistics" class="section">
+  <h1>📊 الإحصائيات</h1>
+
+  <!-- كروت الإحصائيات -->
+  <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 20px;">
+    <div style="flex: 1; min-width: 200px; background-color: #f0f8ff; padding: 20px; border-radius: 10px; text-align: center;">
+      <h3>إجمالي الطلبات</h3>
+      <p style="font-size: 24px; font-weight: bold;">185</p>
+    </div>
+    <div style="flex: 1; min-width: 200px; background-color: #e6ffe6; padding: 20px; border-radius: 10px; text-align: center;">
+      <h3>المنتجات المباعة</h3>
+      <p style="font-size: 24px; font-weight: bold;">530</p>
+    </div>
+    <div style="flex: 1; min-width: 200px; background-color: #fff0f5; padding: 20px; border-radius: 10px; text-align: center;">
+      <h3>الإيرادات</h3>
+      <p style="font-size: 24px; font-weight: bold;">$12,340</p>
+    </div>
+    <div style="flex: 1; min-width: 200px; background-color: #fffbe6; padding: 20px; border-radius: 10px; text-align: center;">
+      <h3>عدد المستخدمين</h3>
+      <p style="font-size: 24px; font-weight: bold;">350</p>
+    </div>
+  </div>
+
+  <!-- جدول الإحصائيات اليومية -->
+  <div style="margin-top: 40px;">
+    <h3>📅 إحصائيات الأيام الأخيرة</h3>
+    <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+      <thead>
+        <tr style="background-color: #eee;">
+          <th style="padding: 10px; border: 1px solid #ccc;">اليوم</th>
+          <th style="padding: 10px; border: 1px solid #ccc;">الطلبات</th>
+          <th style="padding: 10px; border: 1px solid #ccc;">الإيرادات</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding: 10px; border: 1px solid #ccc;">السبت</td>
+          <td style="padding: 10px; border: 1px solid #ccc;">35</td>
+          <td style="padding: 10px; border: 1px solid #ccc;">$2,300</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px; border: 1px solid #ccc;">الأحد</td>
+          <td style="padding: 10px; border: 1px solid #ccc;">28</td>
+          <td style="padding: 10px; border: 1px solid #ccc;">$1,900</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px; border: 1px solid #ccc;">الإثنين</td>
+          <td style="padding: 10px; border: 1px solid #ccc;">40</td>
+          <td style="padding: 10px; border: 1px solid #ccc;">$3,100</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- مؤشرات أداء -->
+  <div style="margin-top: 40px;">
+    <h3>🔄 مؤشرات الأداء</h3>
+    <p>نسبة إنجاز الطلبات:</p>
+    <div style="background-color: #ddd; border-radius: 5px; overflow: hidden;">
+      <div style="width: 75%; background-color: #4caf50; color: white; text-align: center; padding: 5px;">75%</div>
+    </div>
+
+    <p style="margin-top: 10px;">المخزون المتوفر:</p>
+    <div style="background-color: #ddd; border-radius: 5px; overflow: hidden;">
+      <div style="width: 60%; background-color: #2196f3; color: white; text-align: center; padding: 5px;">60%</div>
+    </div>
+  </div>
+</div>
+
+    <div id="products" class="section">
+      <h1>Product Management</h1>
+    
+      <!-- ✅ 1. عرض كل المنتجات -->
+      <table border="1" cellpadding="10" cellspacing="0" width="100%" id="productTable">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>اسم المنتج</th>
+            <th>السعر</th>
+            <th>الحالة</th>
+            <th>إجراءات</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>سماعة بلوتوث</td>
+            <td>$25</td>
+            <td>متوفر</td>
+            <td>
+              <button onclick="editProduct(this)">✏️ تعديل</button>
+              <button onclick="deleteProduct(this)">🗑️ حذف</button>
+            </td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>سماعة بلوتوث</td>
+            <td>$25</td>
+            <td>متوفر</td>
+            <td>
+              <button onclick="editProduct(this)">✏️ تعديل</button>
+              <button onclick="deleteProduct(this)">🗑️ حذف</button>
+            </td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>سماعة بلوتوث</td>
+            <td>$25</td>
+            <td>متوفر</td>
+            <td>
+              <button onclick="editProduct(this)">✏️ تعديل</button>
+              <button onclick="deleteProduct(this)">🗑️ حذف</button>
+            </td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>سماعة بلوتوث</td>
+            <td>$25</td>
+            <td>متوفر</td>
+            <td>
+              <button onclick="editProduct(this)">✏️ تعديل</button>
+              <button onclick="deleteProduct(this)">🗑️ حذف</button>
+            </td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>سماعة بلوتوث</td>
+            <td>$25</td>
+            <td>متوفر</td>
+            <td>
+              <button onclick="editProduct(this)">✏️ تعديل</button>
+              <button onclick="deleteProduct(this)">🗑️ حذف</button>
+            </td>
+          </tr>
+          
+        </tbody>
+      </table>
+    
+      <br>
+    
+      <!-- ✅ 2. إضافة منتج جديد -->
+      <h3>إضافة منتج جديد</h3>
+      <input type="text" id="productName" placeholder="اسم المنتج" />
+      <input type="number" id="productPrice" placeholder="السعر" />
+      <select id="productStatus">
+        <option value="متوفر">متوفر</option>
+        <option value="غير متوفر">غير متوفر</option>
+      </select>
+      <button onclick="addProduct()">➕ أضف المنتج</button>
+    </div>
+
+    <div id="stock" class="section">
+      <h1>إدارة المخزون</h1>
+    
+      <button onclick="addStockRow()">➕ إضافة منتج</button>
+    
+      <div class="stock-table">
+        <table>
+          <thead>
+            <tr>
+              <th>اسم المنتج</th>
+              <th>الكمية</th>
+              <th>الإجراء</th>
+            </tr>
+          </thead>
+          <tbody id="stockBody">
+            <tr>
+              <td>لاب توب</td>
+              <td>10</td>
+              <td>
+                <button onclick="editRow(this)">✏️</button>
+                <button onclick="deleteRow(this)">🗑️</button>
+                <button onclick="saveRow(this)" style="display:none;">💾</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div id="settings" class="section">
+      <h1>Settings</h1>
+    
+      <!-- تغيير بيانات الأدمن -->
+      <div style="margin-top: 20px;">
+        <h3>تغيير بيانات الأدمن</h3>
+        <form id="adminForm">
+          <label>اسم الأدمن:</label><br>
+          <input type="text" id="adminName" required /><br><br>
+          <label>كلمة المرور الجديدة:</label><br>
+          <input type="password" id="adminPassword" required /><br><br>
+          <button type="submit">حفظ التغييرات</button>
+        </form>
+      </div>
+    
+      <!-- التحكم في الإشعارات -->
+      <div style="margin-top: 30px;">
+        <h3>التحكم في الإشعارات</h3>
+        <label>
+          <input type="checkbox" id="notificationsToggle" checked />
+          تفعيل الإشعارات
+        </label>
+      </div>
+    
+      <!-- إدارة صلاحيات الأدمن -->
+      <div style="margin-top: 30px;">
+        <h3>إدارة صلاحيات الأدمن</h3>
+        <table border="1" cellpadding="10">
+          <thead>
+            <tr>
+              <th>اسم الأدمن</th>
+              <th>الصلاحية</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Ahmed</td>
+              <td>
+                <select>
+                  <option>كامل</option>
+                  <option>قراءة فقط</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>Fatma</td>
+              <td>
+                <select>
+                  <option>كامل</option>
+                  <option>قراءة فقط</option>
+                </select>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div id="offers" class="section">
+  <h1>Offer & Promotions</h1>
+
+  <!-- نموذج الإضافة -->
+  <form id="offerForm" style="margin-bottom: 20px;">
+    <input type="text" id="offerTitle" placeholder="عنوان العرض" required />
+    <input type="number" id="offerDiscount" placeholder="نسبة الخصم %" required />
+    <button type="submit">➕ إضافة عرض</button>
+  </form>
+
+  <!-- جدول العروض -->
+  <table>
+    <thead>
+      <tr>
+        <th>العرض</th>
+        <th>نسبة الخصم</th>
+        <th>إجراءات</th>
+      </tr>
+    </thead>
+    <tbody id="offersBody">
+      <!-- العروض المضافة هتظهر هنا -->
+    </tbody>
+  </table>
+</div>
+
+
+   <script>
+    function filterOrders(status) {
+      const rows = document.querySelectorAll('#orderBody tr');
+      rows.forEach(row => {
+        const text = row.textContent.toLowerCase();
+        if (status === 'all' || text.includes(status)) {
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
+        }
+      });
+    }
+
+    function showSection(sectionId) {
+      document.querySelectorAll('.section').forEach(sec => {
+        sec.classList.remove('active');
+      });
+      document.getElementById(sectionId).classList.add('active');
+    }
+
+    // Add active class to sidebar menu item
+    const sidebarItems = document.querySelectorAll('.sidebar ul li');
+    sidebarItems.forEach(item => {
+      item.addEventListener('click', () => {
+        sidebarItems.forEach(el => el.classList.remove('active'));
+        item.classList.add('active');
+      });
+    });
+  document.addEventListener("DOMContentLoaded", function () {
+    function filterOrders(status) {
+      const rows = document.querySelectorAll('#orderBody tr');
+      rows.forEach(row => {
+        const text = row.textContent.toLowerCase();
+        if (status === 'all' || text.includes(status)) {
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
+        }
+      });
+    }
+
+    function showSection(sectionId) {
+      document.querySelectorAll('.section').forEach(sec => {
+        sec.classList.remove('active');
+      });
+      document.getElementById(sectionId).classList.add('active');
+    }
+
+    const sidebarItems = document.querySelectorAll('.sidebar ul li');
+    sidebarItems.forEach(item => {
+      item.addEventListener('click', () => {
+        sidebarItems.forEach(el => el.classList.remove('active'));
+        item.classList.add('active');
+      });
+    });
+
+    // حذف الطلب
+    const deleteButtons = document.querySelectorAll('.actions button:last-child');
+    deleteButtons.forEach(button => {
+      button.addEventListener('click', function () {
+        const row = this.closest('tr');
+        if (confirm("هل أنت متأكد من حذف هذا الطلب؟")) {
+          row.remove();
+        }
+      });
+    });
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      currentRow.children[1].innerText = document.getElementById("editName").value;
+      currentRow.children[2].innerText = document.getElementById("editAddress").value;
+      currentRow.children[4].innerText = document.getElementById("editPrice").value;
+      
+      const statusCell = currentRow.children[5];
+      const status = document.getElementById("editStatus").value;
+      statusCell.innerHTML = `<span class="status ${status}">${status.charAt(0).toUpperCase() + status.slice(1)}</span>`;
+
+      modal.style.display = "none";
+    });
+  });
+
+  function closeModal() {
+    document.getElementById("editModal").style.display = "none";
+  }
+  // حفظ بيانات الأدمن
+  document.getElementById("adminForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    const name = document.getElementById("adminName").value;
+    const pass = document.getElementById("adminPassword").value;
+    alert("تم تحديث بيانات الأدمن:\n" + name);
+  });
+
+  // التحكم في الإشعارات
+  document.getElementById("notificationsToggle").addEventListener("change", function () {
+    if (this.checked) {
+      alert("تم تفعيل الإشعارات ✅");
+    } else {
+      alert("تم إيقاف الإشعارات ❌");
+    }
+  });
+  // إظهار أو إخفاء مربع البحث
+  function toggleSearch() {
+    const input = document.getElementById('searchInput');
+    input.style.display = input.style.display === 'none' ? 'block' : 'none';
+    input.focus();
+  }
+
+  // البحث في جدول الطلبات
+  document.getElementById('searchInput').addEventListener('keyup', function () {
+    const searchValue = this.value.toLowerCase();
+    const rows = document.querySelectorAll('#orders table tbody tr');
+
+    rows.forEach(row => {
+      const name = row.cells[1].textContent.toLowerCase();
+      const address = row.cells[2].textContent.toLowerCase();
+      if (name.includes(searchValue) || address.includes(searchValue)) {
+        row.style.display = '';
+      } else {
+        row.style.display = 'none';
+      }
+    });
+  });
+
+  // إشعار بسيط عند الضغط على التنبيه
+  function showNotification() {
+    alert("🔔 يوجد إشعارات جديدة عن الطلبات والمخزون!");
+  }
+  function addProduct() {
+    const name = document.getElementById("productName").value;
+    const price = document.getElementById("productPrice").value;
+    const status = document.getElementById("productStatus").value;
+
+    if (name === "" || price === "") {
+      alert("يرجى إدخال اسم المنتج والسعر");
+      return;
+    }
+
+    const table = document.getElementById("productTable").getElementsByTagName('tbody')[0];
+    const row = table.insertRow();
+    row.innerHTML = `
+      <td>${table.rows.length}</td>
+      <td>${name}</td>
+      <td>$${price}</td>
+      <td>${status}</td>
+      <td>
+        <button onclick="editProduct(this)">✏️ تعديل</button>
+        <button onclick="deleteProduct(this)">🗑️ حذف</button>
+      </td>
+    `;
+
+    // تفريغ الحقول بعد الإضافة
+    document.getElementById("productName").value = '';
+    document.getElementById("productPrice").value = '';
+  }
+
+  function deleteProduct(btn) {
+    const row = btn.parentNode.parentNode;
+    row.remove();
+  }
+
+  function editProduct(btn) {
+    const row = btn.parentNode.parentNode;
+    const name = prompt("تعديل اسم المنتج", row.cells[1].textContent);
+    const price = prompt("تعديل السعر", row.cells[2].textContent.replace('$', ''));
+    const status = prompt("تعديل الحالة (متوفر / غير متوفر)", row.cells[3].textContent);
+
+    if (name && price && status) {
+      row.cells[1].textContent = name;
+      row.cells[2].textContent = `$${price}`;
+      row.cells[3].textContent = status;
+    }
+  }
+ function addStockRow() {
+  const productName = prompt("ادخل اسم المنتج:");
+  if (!productName) return;
+
+  const quantity = prompt("ادخل الكمية:");
+  if (!quantity || isNaN(quantity)) {
+    alert("الكمية لازم تكون رقم");
+    return;
+  }
+
+  const table = document.getElementById("stockBody");
+  const newRow = document.createElement("tr");
+  newRow.innerHTML = `
+    <td>${productName}</td>
+    <td>${quantity}</td>
+    <td>
+      <button onclick="editRow(this)">✏️</button>
+      <button onclick="deleteRow(this)">🗑️</button>
+      <button onclick="saveRow(this)" style="display:none;">💾</button>
+    </td>
+  `;
+  table.appendChild(newRow);
+}
+ 
+
+  function editRow(button) {
+    const row = button.parentElement.parentElement;
+    const cells = row.querySelectorAll("td");
+
+    cells[0].contentEditable = true;
+    cells[1].contentEditable = true;
+
+    button.style.display = "none";
+    row.querySelector("button[onclick='saveRow(this)']").style.display = "inline-block";
+  }
+
+  function saveRow(button) {
+    const row = button.parentElement.parentElement;
+    const cells = row.querySelectorAll("td");
+
+    cells[0].contentEditable = false;
+    cells[1].contentEditable = false;
+
+    button.style.display = "none";
+    row.querySelector("button[onclick='editRow(this)']").style.display = "inline-block";
+
+    alert("تم حفظ التعديلات بنجاح ✅");
+  }
+
+  const offerForm = document.getElementById("offerForm");
+  const offersBody = document.getElementById("offersBody");
+
+  offerForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+    const title = document.getElementById("offerTitle").value.trim();
+    const discount = document.getElementById("offerDiscount").value.trim();
+
+    if (title === "" || discount === "") return alert("من فضلك أدخل كل البيانات");
+
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td>${title}</td>
+      <td>${discount}%</td>
+      <td>
+        <button onclick="editOffer(this)">✏️</button>
+        <button onclick="deleteOffer(this)">🗑️</button>
+      </td>
+    `;
+    offersBody.appendChild(row);
+
+    offerForm.reset();
+  });
+
+  function deleteOffer(btn) {
+    const row = btn.closest("tr");
+    row.remove();
+  }
+
+  function editOffer(btn) {
+    const row = btn.closest("tr");
+    const title = row.children[0].textContent;
+    const discount = row.children[1].textContent.replace("%", "");
+
+    const newTitle = prompt("تعديل عنوان العرض:", title);
+    const newDiscount = prompt("تعديل نسبة الخصم:", discount);
+
+    if (newTitle !== null && newDiscount !== null) {
+      row.children[0].textContent = newTitle;
+      row.children[1].textContent = `${newDiscount}%`;
+    }
+  }
+</script>
+</body>
+</html>
