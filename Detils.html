@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>
+    Product Page
+  </title>
+  <link href="./css/Detils.css" rel="stylesheet" />
+  <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+    rel="stylesheet">
+  </link>
+</head>
+
+<body>
+  <div>
+  <div class="card-wrapper">
+    <div class="card">
+      <div class="product-imgs">
+        <div class="img-display">
+          <div class="img-showcase">
+            <img alt="product image 1" src="1.jpg" />
+            <img alt="product image 2" src="2.jpg" />
+            <img alt="product image 3" src="3.jpg" />
+            <img alt="product image 4" src="4.jpg" />
+          </div>
+
+          
+        </div>
+        <div class="img-select">
+          <div class="img-item">
+            <a data-id="1" href="#">
+              <img alt="product thumbnail 1" src="1.jpg" />
+            </a>
+          </div>
+          <div class="img-item">
+            <a data-id="2" href="#">
+              <img alt="product thumbnail 2" src="2.jpg" />
+            </a>
+          </div>
+          <div class="img-item">
+            <a data-id="3" href="#">
+              <img alt="product thumbnail 3" src="3.jpg" />
+            </a>
+          </div>
+          <div class="img-item">
+            <a data-id="4" href="#">
+              <img alt="product thumbnail 4" src="4.jpg" />
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="product-content">
+        <h4 class="product-title">
+          Embrace Sideboard
+        </h4>
+        <a class="product-link" href="#">
+          Marmeto
+        </a>
+        <div class="product-rating">
+          <i class="fas fa-star">
+          </i>
+          <i class="fas fa-star">
+          </i>
+          <i class="fas fa-star">
+          </i>
+          <i class="fas fa-star">
+          </i>
+          <i class="fas fa-star-half-alt">
+          </i>
+          <span>
+            4.5 (215)
+          </span>
+        </div>
+        <div class="product-price">
+          <p class="last-price">
+            Old Price:
+            <span>
+              $19,999.00
+            </span>
+          </p>
+          <p class="new-price">
+            New Price:
+            <span>
+              $12,999.00 (35% off)
+            </span>
+          </p>
+        </div>
+        <div class="color-options">
+          <div id="colorSelector">
+            <label for="color-select">
+              Choose a Color
+            </label>
+            <div class="color-box Yellow" data-color="Yellow">
+            </div>
+            <div class="color-box Green" data-color="Green">
+            </div>
+            <div class="color-box Blue" data-color="Blue">
+            </div>
+            <div class="color-box Pink" data-color="Pink">
+            </div>
+          </div>
+          <div class="size-options">
+            <label for="size-select">
+              Choose a Size:
+            </label>
+            <select id="size-select">
+              <option value="none">
+                None
+              </option>
+              <option value="small">
+                Small
+              </option>
+              <option value="medium">
+                Medium
+              </option>
+              <option value="large">
+                Large
+              </option>
+              <option value="xl">
+                Extra Large
+              </option>
+              <option value="xxl">
+                XXL
+              </option>
+            </select>
+          </div>
+          <div class="purchase-info">
+            <div class="quantity-selector">
+              <input class="quantity-input" id="quantity" max="10" min="1" type="number" value="1" />
+              <button class="btn" id="add-to-cart" type="button">
+                Add to Cart
+                <i class="fas fa-shopping-cart">
+                </i>
+              </button>
+              <button class="btn" id="buy-now" type="button">
+                Buy now
+              </button>
+            </div>
+            <div class="product-detail">
+              <h2>
+                About this item:
+              </h2>
+              <p>
+                The Embrace Sideboard is a stylish wear. With a top cloth designed to provide superior protection and
+                look great, this storage solution is both functional and attractive. It fits seamlessly into any home
+                decor,
+                with clean lines and a timeless look. Crafted from premium materials for a combination of style,
+                durability,
+                and reliability.
+              </p>
+              <ul>
+                <li>
+                  Available:
+                  <span>
+                    in stock
+                  </span>
+                </li>
+                <li>
+                  Shipping Fee:
+                  <span>
+                    Free
+                  </span>
+                </li>
+              </ul>
+            </div>
+            <div class="social-links">
+              <p>
+                Share at:
+              </p>
+              <a href="#">
+                <i class="fab fa-facebook-f">
+                </i>
+              </a>
+              <a href="#">
+                <i class="fab fa-twitter">
+                </i>
+              </a>
+              <a href="#">
+                <i class="fab fa-instagram">
+                </i>
+              </a>
+              <a href="#">
+                <i class="fab fa-whatsapp">
+                </i>
+              </a>
+              <a href="#">
+                <i class="fab fa-pinterest">
+                </i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Details tab -->
+  <section class="Details__tab-container">
+    <div class="Details__tabs">
+      <span class="Details__tab active" data-tab="info">
+        Additional Info
+      </span>
+      <span class="Details__tab" data-tab="reviews">
+        Reviews
+      </span>
+    </div>
+    <div class="tab-content active" id="info">
+      <table class="info__table">
+        <tr>
+          <th>
+            Stand Up
+          </th>
+          <td>
+            35"L x 24"W x 37-45"H(front to back wheel)
+          </td>
+        </tr>
+        <tr>
+          <th>
+            Folded (w/o wheels)
+          </th>
+          <td>
+            32.5"L x 18.5"W x 16.5"H
+          </td>
+        </tr>
+        <tr>
+          <th>
+            Folded (w/ wheels)
+          </th>
+          <td>
+            32.5"L x 24"W x 18.5"H
+          </td>
+        </tr>
+        <tr>
+          <th>
+            Door PassThrough
+          </th>
+          <td>
+            24
+          </td>
+        </tr>
+        <tr>
+          <th>
+            Frame
+          </th>
+          <td>
+            Aluminum
+          </td>
+        </tr>
+        <tr>
+          <th>
+            Weight (w/o wheels)
+          </th>
+          <td>
+            20LBS
+          </td>
+        </tr>
+        <tr>
+          <th>
+            Weight Capacity
+          </th>
+          <td>
+            60 LBS
+          </td>
+        </tr>
+        <tr>
+          <th>
+            Width
+          </th>
+          <td>
+            24"
+          </td>
+        </tr>
+        <tr>
+          <th>
+            Handle height (ground to handle)
+          </th>
+          <td>
+            17-45"
+          </td>
+        </tr>
+        <tr>
+          <th>
+            Wheels
+          </th>
+          <td>
+            12" air / wide track slick tread
+          </td>
+        </tr>
+        <tr>
+          <th>
+            Seat back height
+          </th>
+          <td>
+            21.5"
+          </td>
+        </tr>
+        <tr>
+          <th>
+            Head room (inside canopy)
+          </th>
+          <td>
+            25"
+          </td>
+        </tr>
+        <tr>
+          <th>
+            Color
+          </th>
+          <td>
+            Black, Blue, Red, White
+          </td>
+        </tr>
+        <tr>
+          <th>
+            Size
+          </th>
+          <td>
+            M, S
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="tab-content" id="reviews">
+      <div class="reviews__container">
+        <div class="review__single">
+          <div>
+            <img alt="reviewer" class="review__img" src="5789668872411007699_120.jpg" />
+            <h4 class="review__title">
+              Jacky Chan
+            </h4>
+          </div>
+          <div class="review__data">
+            <div class="review__rating">
+              <i class="fas fa-star">
+              </i>
+              <i class="fas fa-star">
+              </i>
+              <i class="fas fa-star">
+              </i>
+              <i class="fas fa-star">
+              </i>
+              <i class="fas fa-star">
+              </i>
+            </div>
+            <p class="reviews__description">
+              Thank you very fast shipping free poland only 3days.
+            </p>
+            <span class="reviews__data">
+              December 4, 2023 at 3:12 pm
+            </span>
+          </div>
+        </div>
+        <div class="review__single">
+          <div>
+            <img alt="reviewer" class="review__img" src="5789668872411007701_120.jpg" />
+            <h4 class="review__title">
+              Amanda Johnson
+            </h4>
+          </div>
+          <div class="review__data">
+            <div class="review__rating">
+              <i class="fas fa-star">
+              </i>
+              <i class="fas fa-star">
+              </i>
+              <i class="fas fa-star">
+              </i>
+              <i class="fas fa-star">
+              </i>
+              <i class="fas fa-star">
+              </i>
+            </div>
+            <p class="reviews__description">
+              Great low price and works well.
+            </p>
+            <span class="reviews__data">
+              January 15, 2024 at 5:45 pm
+            </span>
+          </div>
+        </div>
+        <div class="review__single">
+          <div>
+            <img alt="reviewer" class="review__img" src="5789668872411007700_120.jpg" />
+            <h4 class="review__title">
+              Michael Smith
+            </h4>
+          </div>
+          <div class="review__data">
+            <div class="review__rating">
+              <i class="fas fa-star">
+              </i>
+              <i class="fas fa-star">
+              </i>
+              <i class="fas fa-star">
+              </i>
+              <i class="fas fa-star">
+              </i>
+              <i class="fas fa-star">
+              </i>
+            </div>
+            <p class="reviews__description">
+              Authentic and Beautiful, Love these way more Than every
+              expected They are Great earphones.
+            </p>
+            <span class="reviews__data">
+              March 22, 2024 at 1:30 pm
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="review__form">
+        <h4 class="review__form-title">
+          Add a review
+        </h4>
+        <div class="review__product">
+          <i class="fas fa-star">
+          </i>
+          <i class="fas fa-star">
+          </i>
+          <i class="fas fa-star">
+          </i>
+          <i class="fas fa-star">
+          </i>
+          <i class="fas fa-star">
+          </i>
+        </div>
+        <form action="#" class="form" id="review-form">
+          <textarea class="form__input textarea" placeholder="Write comment" required=""></textarea>
+          <div class="form__group">
+            <input class="form__input" placeholder="Name" required="" type="text">
+            <input class="form__input" placeholder="Email" required="" type="email" />
+            </input>
+          </div>
+          <div class="form__btn">
+            <button class="but" type="submit">
+              Submit Review
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</div>
+  <script src="Detils.js">
+  </script>
+</body>
+
+</html>
