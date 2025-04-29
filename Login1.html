@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XX E-commerce Login</title>
+  <link rel="select account type" href="ChoAcc.html"/>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+
+    .top-bar {
+      background-color: #000;
+      color: white;
+      padding: 10px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    h1, h2 {
+      color: #006400; 
+    }
+
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      text-align: left;
+    }
+
+    input[type="text"], input[type="password"] {
+      width: 95%;
+      padding: 10px;
+      font-size: 10px;
+    }
+
+    .password-options {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+  
+    .login-btn, .register-btn {
+      background-color: #006400;
+      color: white;
+      border: none;
+      padding: 10px;
+      width: 100%;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    
+    .register-btn {
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 10px;
+    }
+
+    .footer {
+      background-color: black;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+  Welcome to xx,your best chance to shopping with best prices!
+  </div>
+
+  <div class="container">
+    <h1>Welcome To XX E-commerce</h1>
+    <h2>Login & Register</h2>
+
+    <form action="backend/login.php" method="POST">
+      <label for="username">Username or Email</label>
+      <input type="text" id="username" name="username" required>
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" required>
+
+      <div class="password-options">
+        <label>
+          <input type="checkbox" onclick="togglePassword()"> Show Password
+        </label>
+        <a href="#">Forget Password?</a>
+      </div>
+
+      <button type="submit" class="login-btn">Login</button>
+      
+      <p>You don't have an account yet, create one now!</p>
+
+      <button type="button" onclick="window.location.href='ChoAcc.html'"
+      style="background-color: #006400; color: white; border: none; padding: 10px; width: 100%; font-size: 16px; cursor: pointer; border-radius: 4px;">Register</button>
+    </form>
+  </div>
+
+  <div class="footer">
+      English&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Egypt<br>
+      Terms of use &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Privacy policy<br>
+      Copyright © 2025 Xx.com and its affiliated companies. All rights reserved.
+  </div>
+
+  <script>
+    function togglePassword() {
+      const password = document.getElementById("password");
+      password.type = password.type === "password" ? "text" : "password";
+    }
+  </script>
+
+</body>
+</html>

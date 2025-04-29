@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Registration</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="password"],
+    input[type="date"],
+    input[type="number"],
+    input[type="file"],
+    select {
+      width: 470px;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid black;
+      border-radius: 5px;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: white;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      width: 50%;
+      padding: 10px;
+     
+   }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #006400;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 13px;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    input, select {
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid black;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 12px;
+      background-color: #006400;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 492px;
+    }
+
+    button:hover {
+      background-color: #004d00;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 90px 15px 80px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2><b>Create Admin Account:</b></h2>
+
+    <form action="backend/admin_register.php" method="post" enctype="multipart/form-data" onsubmit="return checkPassword()">
+      <label for="image">Profile Picture</label>
+      <input type="file" id="image" name="image" accept="image/*" required>
+
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" name="phone" required>
+      
+      <label for="birthdate">Birthdate</label>
+      <input type="date" id="birthdate" name="birthdate" required>
+
+      <label for="age">Age</label>
+      <input type="number" id="age" name="age" min="18" required>
+
+      <label for="gender">Gender</label>
+      <select id="gender" name="gender" required>
+        <option value="">-- Select --</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
+
+      <label for="city">City</label>
+      <input type="text" id="city" name="city" required>
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" required>      
+
+      <label for="confirm-password">Confirm Password</label>
+      <input type="password" id="confirm-password" name="confirm-password" required>      
+
+
+      <button type="submit" oneclick="return ckeckPassword()">Create Account</button>
+    </form>
+  </div>
+
+  <script>
+    function checkPasssword(){
+      const password = document.getElementById("password").vaiue;
+      const confirmPassword = document.getElementById("confirm-password").vaiue;
+      if (password !== confirmPassword){
+        alert("Password do not match!");
+        return false;
+      }
+      return true;
+    }
+  </script>
+</body>
+</html>
