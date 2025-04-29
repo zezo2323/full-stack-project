@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Flow</title>
+    <link rel="stylesheet" href="./check_out.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#summary">Summary Order</a></li>
+            <li><a href="#billing">Billing Address</a></li>
+            <li><a href="#payment">Payment Order</a></li>
+            <li><a href="#complete">Complete Order</a></li>
+        </ul>
+    </nav>
+
+    <!-- Summary Order Page -->
+    <section id="summary">
+        <h2>Summary Order</h2>
+        <table id="summary-table">
+            <tr>
+                <td>Smartphone</td>
+                <td><input type="number" id="product1-quantity" value="1" min="1"></td>
+                <td>$500.00</td>
+                <td><img src="smartphone.jpg" alt="Smartphone"></td>
+            </tr>
+            <tr>
+                <td>Laptop</td>
+                <td><input type="number" id="product2-quantity" value="1" min="1"></td>
+                <td>$800.00</td>
+                <td><img src="laptop.jpg" alt="Laptop"></td>
+            </tr>
+            <tr>
+                <td>Smartwatch</td>
+                <td><input type="number" id="product3-quantity" value="1" min="1"></td>
+                <td>$150.00</td>
+                <td><img src="smartwatch.jpg" alt="Smartwatch"></td>
+            </tr>
+        </table>
+        <p>Total: $<span id="total-price">1450.00</span></p>
+        <button id="nextBtn">Next: Billing Address</button>
+    </section>
+
+    <!-- Billing Address Page -->
+    <section id="billing" style="display:none;">
+        <h2>Billing Address</h2>
+        <form id="billing-form">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" required><br>
+            <label for="address">Address:</label>
+            <input type="text" id="address" required><br>
+            <label for="city">City:</label>
+            <input type="text" id="city" required><br>
+            <label for="phone">Phone Number:</label>
+            <input type="text" id="phone" required><br>
+            <button type="button" id="nextBilling">Next: Payment</button>
+        </form>
+    </section>
+
+    <!-- Payment Order Page -->
+    <section id="payment" style="display:none;">
+        <h2>Payment Order</h2>
+        <form id="payment-form">
+            <label for="card-number">Card Number:</label>
+            <input type="text" id="card-number" required><br>
+            <label for="exp-date">Expiration Date:</label>
+            <input type="text" id="exp-date" required><br>
+            <label for="payment-method">Payment Method:</label>
+            <select id="payment-method">
+                <option value="credit-card">Visa</option>
+                <option value="cash-on-delivery">Cash on Delivery</option>
+            </select><br>
+            <button type="button" id="nextPayment">Next: Complete Order</button>
+        </form>
+    </section>
+
+    <!-- Complete Order Page -->
+    <section id="complete" style="display:none;">
+        <h2>Complete Order</h2>
+        <p>Thank you for your order! Your order is complete.</p>
+        <h3>Your Order Details:</h3>
+        <p><strong>Name:</strong> <span id="customer-name"></span></p>
+        <p><strong>Address:</strong> <span id="customer-address"></span></p>
+        <p><strong>City:</strong> <span id="customer-city"></span></p>
+        <p><strong>Phone:</strong> <span id="customer-phone"></span></p>
+        <p><strong>Card Number:</strong> <span id="customer-card-number"></span></p>
+        <p><strong>Payment Method:</strong> <span id="customer-payment-method"></span></p>
+        <h3>Order Summary:</h3>
+        <p><strong>Smartphone Quantity:</strong> <span id="product1-qty"></span></p>
+        <p><strong>Laptop Quantity:</strong> <span id="product2-qty"></span></p>
+        <p><strong>Smartwatch Quantity:</strong> <span id="product3-qty"></span></p>
+        <p><strong>Total Price:</strong> $<span id="final-total"></span></p>
+    </section>
+<!-- Complete Order Page -->
+<section id="complete" style="display:none;">
+    <h2>Complete Order</h2>
+    <p>Thank you for your order! Your order is complete.</p>
+
+    <!-- Adding the Map -->
+    <h3>Your Location</h3>
+    <div id="map" style="height: 400px; width: 100%;"></div>
+</section>
+
+<script>
+    function initMap() {
+        var myLocation = {lat: -34.397, lng: 150.644}; // Example coordinates
+        var map = new google.maps.Map(document.getElementById("map"), {
+            zoom: 8,
+            center: myLocation
+        });
+        var marker = new google.maps.Marker({
+            position: myLocation,
+            map: map
+        });
+    }
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+    <script src="./check_out.js"></script>
+</body>
+</html>
