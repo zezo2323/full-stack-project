@@ -1,3 +1,22 @@
+
+<?php
+include 'db_connection.php';
+
+// جلب الفئات الشعبية
+$categoriesQuery = "SELECT * FROM categories WHERE is_popular = 1";
+$categoriesResult = $conn->query($categoriesQuery);
+
+// جلب المنتجات المميزة
+$featuredQuery = "SELECT * FROM products WHERE is_featured = 1";
+$featuredResult = $conn->query($featuredQuery);
+
+// جلب الصفقات النشطة
+$dealsQuery = "SELECT * FROM deals WHERE is_active = 1";
+$dealsResult = $conn->query($dealsQuery);
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -3267,49 +3286,8 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="./js/index.js"></script>
   <script>
-    // /*============================================ load products =============================================*/
-    // async function loadProducts(type, containerId) {
-    //   const response = await fetch(`getProducts.php?type=${type}`);
-    //   const products = await response.json();
-    //   const container = document.getElementById(containerId);
-    //   container.innerHTML = '';
+  
 
-    //   products.forEach(product => {
-    //     container.innerHTML += `
-    //         <div class="product__item">
-    //           <div class="product__banner">
-    //       <a href="#" class="product__images">
-    //         <img src="${product.image_default}" class="product__img default" />
-    //         <img src="${product.image_hover}" class="product__img hover" />
-    //       </a>
-    //             <div class="product__actions">
-    //         <a href="#" class="action__btn" aria-label="Quick View"><i class="fi fi-rr-eye"></i></a>
-    //         <a href="#" class="action__btn" aria-label="Add To Wishlist"><i class="fi fi-rr-heart"></i></a>
-    //         <a href="#" class="action__btn" aria-label="Compare"><i class="fi fi-rr-shuffle"></i></a>
-    //             </div>
-    //             <div class="product__badge light-pink">Hot</div>
-    //           </div>
-    //           <div class="product__content">
-    //       <span class="product__category">${product.category_name}</span>
-    //       <a href="#"><h3 class="product__title">${product.title}</h3></a>
-    //             <div class="product__rating">
-    //         ${'<i class="fas fa-star"></i>'.repeat(Math.floor(product.rating))}
-    //         ${product.rating % 1 ? '<i class="fas fa-star-half-alt"></i>' : ''}
-    //             </div>
-    //             <div class="product__price flex">
-    //         <span class="new__price">$${product.price}</span>
-    //         <span class="old__price">$${product.old_price}</span>
-    //             </div>
-    //       <a href="#" class="action__btn cart__btn" aria-label="Add To Cart"><i class="fi fi-rr-shopping-bag-add"></i></a>
-    //           </div>
-    //         </div>
-    // `;
-    //   });
-    // }
-
-    // loadProducts('featured', 'featured-container');
-    // loadProducts('popular', 'popular-container');
-    // loadProducts('new', 'new-added-container');
 
 
   </script>

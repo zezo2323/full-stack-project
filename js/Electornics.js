@@ -301,3 +301,39 @@ function checkPriceRange(selectedPrice, cardPrice) {
         document.getElementById('userDropdown').classList.toggle('active');
       });
   
+      // test 
+
+      const category = "Electronics"; // ✨ لازم تكون نفس الاسم الموجود في قاعدة البيانات
+
+      async function loadCategoryProducts(cat) {
+        const res = await fetch(`getProducts.php?category=${cat}`);
+        const products = await res.json();
+        const container = document.getElementById('category-products-container');
+        container.innerHTML = '';
+        
+    products.forEach(p => {
+      container.innerHTML += `
+        <div class="product__item">
+          <div class="product__banner">
+            <a href="#" class="product__images">
+              <img src="${p.image_default}" class="product__img default" />
+              <img src="${p.image_hover}" class="product__img hover" />
+            </a>
+            <div class="product__badge light-pink">${p.type}</div>
+          </div>
+          <div class="product__content">
+            <span class="product__category">${p.category_name}</span>
+            <h3 class="product__title">${p.title}</h3>
+            <div class="product__rating">
+              ${'<i class="fas fa-star"></i>'.repeat(Math.floor(p.rating))}
+              ${p.rating % 1 ? '<i class="fas fa-star-half-alt"></i>' : ''}
+            </div>
+            <div class="product__price flex">
+              <span class="new__price">$${p.price}</span>
+              <span class="old__price">$${p.old_price}</span>
+            </div>
+          </div>
+        </div>
+      `;
+    });
+  }
