@@ -1,19 +1,21 @@
-
 <?php
 include 'db_connection.php';
 
-// جلب الفئات الشعبية
-$categoriesQuery = "SELECT * FROM categories WHERE is_popular = 1";
-$categoriesResult = $conn->query($categoriesQuery);
+// جلب البيانات المطلوبة
 
-// جلب المنتجات المميزة
 $featuredQuery = "SELECT * FROM products WHERE is_featured = 1";
 $featuredResult = $conn->query($featuredQuery);
 
-// جلب الصفقات النشطة
+$popularQuery = "SELECT * FROM products WHERE is_popular = 1";
+$popularResult = $conn->query($popularQuery);
+
+$newQuery = "SELECT * FROM products WHERE is_new = 1";
+$newResult = $conn->query($newQuery);
+
 $dealsQuery = "SELECT * FROM deals WHERE is_active = 1";
 $dealsResult = $conn->query($dealsQuery);
 ?>
+
 
 
 
@@ -46,7 +48,7 @@ $dealsResult = $conn->query($dealsQuery);
   <!-- footer css -->
   <style>
     /* =============================footer================================= */
-   footer {
+    footer {
       background-color: #1a365d !important;
     }
 
@@ -82,11 +84,12 @@ $dealsResult = $conn->query($dealsQuery);
       font-size: 18px;
       font-weight: 900;
     }
-    #footer-tit span{
+
+    #footer-tit span {
       color: hsl(176, 88%, 27%);
       font-weight: 900 !important;
 
-      
+
     }
 
     .link-secondary,
@@ -106,7 +109,7 @@ $dealsResult = $conn->query($dealsQuery);
       color: hsl(176, 88%, 27%) !important;
     }
 
-    
+
 
 
 
@@ -322,7 +325,6 @@ $dealsResult = $conn->query($dealsQuery);
         /* تصغير حجم الخط */
       }
     }
-
   </style>
 
 
@@ -567,1837 +569,111 @@ $dealsResult = $conn->query($dealsQuery);
     </section>
 
 
-<!--  =====================================Promo Banner ===================================== -->
+    <!--  =====================================Promo Banner ===================================== -->
+<!-- Promo Banner -->
 <section class="promo-banner" id="deals">
-  <div class="promo-card sports-promo">
-    <div class="promo-content">
-      <span class="discount-tag">20% OFF</span>
-      <h2 class="promo-title">SPORTS OUTFITS</h2>
-      <p class="promo-subtitle">Collection</p>
-      <div class="price-tag">Starting at: $190.00</div>
-      <button class="cta-button">Shop Now</button>
-    </div>
-    <div class="promo-image-wrapper">
-      <img src="./imgs/index/13.png" alt="Sports Outfits" class="promo-img" />
-    </div>
-  </div>
-
-  <!-- Accessories Promotion -->
-  <div class="promo-card accessories-promo">
-    <div class="promo-content">
-      <h2 class="promo-title" style="color: #fff;">SPORTS OUTFITS</h2>
-      <p class="promo-subtitle">Collection</p>
-      <div class="price-tag">Starting at: $190.00</div>
-      <button class="cta-button">Shop Now</button>
-    </div>
-    <div class="promo-image-wrapper">
-      <img src="./imgs/index/13.png" alt="Sports Outfits" class="promo-img" />
-    </div>
-  </div>
-
-  <!-- Repeat Cards -->
-  <div class="promo-card sports-promo">
-    <div class="promo-content">
-      <span class="discount-tag">20% OFF</span>
-      <h2 class="promo-title">SPORTS OUTFITS</h2>
-      <p class="promo-subtitle">Collection</p>
-      <div class="price-tag">Starting at: $190.00</div>
-      <button class="cta-button">Shop Now</button>
-    </div>
-    <div class="promo-image-wrapper">
-      <img src="./imgs/index/13.png" alt="Sports Outfits" class="promo-img" />
-    </div>
-  </div>
-
-
+    <?php
+    if ($dealsResult->num_rows > 0) {
+        while ($deal = $dealsResult->fetch_assoc()) {
+            echo'<div class="promo-card sports-promo">';
+            echo '<div class="promo-card '.strtolower($deal['target_type']).'-promo">';
+            echo '<div class="promo-content">';
+            echo '<span class="discount-tag">'.$deal['discount_tag'].'</span>';
+            echo '<h2 class="promo-title">'.$deal['title'].'</h2>';
+            echo '<p class="promo-subtitle">'.$deal['description'].'</p>';
+            echo '<div class="price-tag">Starting at: $'.$deal['starting_price'].'</div>';
+            echo '<a href="'.$deal['link_url'].'" class="cta-button">Shop Now</a>';
+            echo '</div>';
+            echo '<div class="promo-image-wrapper"><img src="'.$deal['image_url'].'" class="promo-img"></div>';
+            echo '</div>';
+            echo '</div>';
+        }
+    } else {
+        echo '<div class="alert alert-info">No active deals</div>';
+    }
+    ?>
 </section>
 
     <!--==================================== products ===================================== -->
     <section class="products section container" id="products">
-      <div class="tab__btns">
+    <div class="tab__btns">
         <span class="tab__btn active-tab" data-target="#featured">Featured</span>
         <span class="tab__btn" data-target="#popular">Popular</span>
         <span class="tab__btn" data-target="#new-added">New added</span>
-      </div>
-      <div class="tab__items">
-        <div class="tab__item active-tab " id="featured" data-content>
-          <div class="products__container grid" id="featured-container">
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="" class="product__images">
-                  <img src="/imgs/index/1.png" alt="" class="product__img default" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rr-eye"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Add To Wishlist">
-                    <i class="fi fi-rr-heart"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rr-shuffle"></i>
-                  </a>
-                </div>
-                <div class="product__badge light-pink">Hot</div>
-              </div>
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="">
-                  <h3 class="product__title">Product Title</h3>
-                </a>
-                <div class="product__rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                  <!-- نصف نجمة -->
-                </div>
-                <div class="product__price flex">
-                  <span class="new__price">$550</span>
-                  <span class="old__price">$600</span>
-                </div>
-                <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-                  <i class="fi fi-rr-shopping-bag-add"></i>
-                </a>
-              </div>
+    </div>
+    
+    <div class="tab__items">
+        <!-- Featured Tab -->
+        <div class="tab__item active-tab" id="featured" data-content>
+            <div class="products__container grid">
+                <?php
+                $featuredQuery = "SELECT * FROM products 
+                                WHERE is_featured = 1 
+                                AND stock_quantity > 0 
+                                ORDER BY created_at DESC";
+                $featuredResult = $conn->query($featuredQuery);
+                
+                if ($featuredResult->num_rows > 0) {
+                    while($product = $featuredResult->fetch_assoc()) {
+                        include 'product-card.php'; // ملف جزئي لعرض البطاقة
+                    }
+                } else {
+                    echo '<div class="alert alert-info">No featured products found</div>';
+                }
+                ?>
             </div>
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="" class="product__images">
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img default" />
-
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rr-eye"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Add To Wishlist">
-                    <i class="fi fi-rr-heart"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rr-shuffle"></i>
-                  </a>
-                </div>
-                <div class="product__badge light-pink">Hot</div>
-              </div>
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="">
-                  <h3 class="product__title">Product Title</h3>
-                </a>
-                <div class="product__rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                  <!-- نصف نجمة -->
-                </div>
-                <div class="product__price flex">
-                  <span class="new__price">$654.85</span>
-                  <span class="old__price">$600</span>
-                </div>
-                <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-                  <i class="fi fi-rr-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="" class="product__images">
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img default" />
-
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rr-eye"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Add To Wishlist">
-                    <i class="fi fi-rr-heart"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rr-shuffle"></i>
-                  </a>
-                </div>
-                <div class="product__badge light-pink">Hot</div>
-              </div>
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="">
-                  <h3 class="product__title">Product Title</h3>
-                </a>
-                <div class="product__rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                  <!-- نصف نجمة -->
-                </div>
-                <div class="product__price flex">
-                  <span class="new__price">$654.85</span>
-                  <span class="old__price">$600</span>
-                </div>
-                <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-                  <i class="fi fi-rr-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="" class="product__images">
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img default" />
-
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rr-eye"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Add To Wishlist">
-                    <i class="fi fi-rr-heart"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rr-shuffle"></i>
-                  </a>
-                </div>
-                <div class="product__badge light-pink">Hot</div>
-              </div>
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="">
-                  <h3 class="product__title">Product Title</h3>
-                </a>
-                <div class="product__rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                  <!-- نصف نجمة -->
-                </div>
-                <div class="product__price flex">
-                  <span class="new__price">$654.85</span>
-                  <span class="old__price">$600</span>
-                </div>
-                <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-                  <i class="fi fi-rr-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="" class="product__images">
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img default" />
-
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rr-eye"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Add To Wishlist">
-                    <i class="fi fi-rr-heart"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rr-shuffle"></i>
-                  </a>
-                </div>
-                <div class="product__badge light-pink">Hot</div>
-              </div>
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="">
-                  <h3 class="product__title">Product Title</h3>
-                </a>
-                <div class="product__rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                  <!-- نصف نجمة -->
-                </div>
-                <div class="product__price flex">
-                  <span class="new__price">$654.85</span>
-                  <span class="old__price">$600</span>
-                </div>
-                <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-                  <i class="fi fi-rr-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="" class="product__images">
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img default" />
-
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rr-eye"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Add To Wishlist">
-                    <i class="fi fi-rr-heart"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rr-shuffle"></i>
-                  </a>
-                </div>
-                <div class="product__badge light-pink">Hot</div>
-              </div>
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="">
-                  <h3 class="product__title">Product Title</h3>
-                </a>
-                <div class="product__rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                  <!-- نصف نجمة -->
-                </div>
-                <div class="product__price flex">
-                  <span class="new__price">$654.85</span>
-                  <span class="old__price">$600</span>
-                </div>
-                <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-                  <i class="fi fi-rr-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="" class="product__images">
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img default" />
-
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rr-eye"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Add To Wishlist">
-                    <i class="fi fi-rr-heart"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rr-shuffle"></i>
-                  </a>
-                </div>
-                <div class="product__badge light-pink">Hot</div>
-              </div>
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="">
-                  <h3 class="product__title">Product Title</h3>
-                </a>
-                <div class="product__rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                  <!-- نصف نجمة -->
-                </div>
-                <div class="product__price flex">
-                  <span class="new__price">$654.85</span>
-                  <span class="old__price">$600</span>
-                </div>
-                <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-                  <i class="fi fi-rr-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="" class="product__images">
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img default" />
-
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rr-eye"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Add To Wishlist">
-                    <i class="fi fi-rr-heart"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rr-shuffle"></i>
-                  </a>
-                </div>
-                <div class="product__badge light-pink">Hot</div>
-              </div>
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="">
-                  <h3 class="product__title">Product Title</h3>
-                </a>
-                <div class="product__rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                  <!-- نصف نجمة -->
-                </div>
-                <div class="product__price flex">
-                  <span class="new__price">$654.85</span>
-                  <span class="old__price">$600</span>
-                </div>
-                <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-                  <i class="fi fi-rr-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="" class="product__images">
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img default" />
-
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rr-eye"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Add To Wishlist">
-                    <i class="fi fi-rr-heart"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rr-shuffle"></i>
-                  </a>
-                </div>
-                <div class="product__badge light-pink">Hot</div>
-              </div>
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="">
-                  <h3 class="product__title">Product Title</h3>
-                </a>
-                <div class="product__rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                  <!-- نصف نجمة -->
-                </div>
-                <div class="product__price flex">
-                  <span class="new__price">$654.85</span>
-                  <span class="old__price">$600</span>
-                </div>
-                <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-                  <i class="fi fi-rr-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="" class="product__images">
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img default" />
-
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rr-eye"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Add To Wishlist">
-                    <i class="fi fi-rr-heart"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rr-shuffle"></i>
-                  </a>
-                </div>
-                <div class="product__badge light-pink">Hot</div>
-              </div>
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="">
-                  <h3 class="product__title">Product Title</h3>
-                </a>
-                <div class="product__rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                  <!-- نصف نجمة -->
-                </div>
-                <div class="product__price flex">
-                  <span class="new__price">$654.85</span>
-                  <span class="old__price">$600</span>
-                </div>
-                <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-                  <i class="fi fi-rr-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="" class="product__images">
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img default" />
-
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rr-eye"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Add To Wishlist">
-                    <i class="fi fi-rr-heart"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rr-shuffle"></i>
-                  </a>
-                </div>
-                <div class="product__badge light-pink">Hot</div>
-              </div>
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="">
-                  <h3 class="product__title">Product Title</h3>
-                </a>
-                <div class="product__rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                  <!-- نصف نجمة -->
-                </div>
-                <div class="product__price flex">
-                  <span class="new__price">$654.85</span>
-                  <span class="old__price">$600</span>
-                </div>
-                <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-                  <i class="fi fi-rr-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="" class="product__images">
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img default" />
-
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rr-eye"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Add To Wishlist">
-                    <i class="fi fi-rr-heart"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rr-shuffle"></i>
-                  </a>
-                </div>
-                <div class="product__badge light-pink">Hot</div>
-              </div>
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="">
-                  <h3 class="product__title">Product Title</h3>
-                </a>
-                <div class="product__rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                  <!-- نصف نجمة -->
-                </div>
-                <div class="product__price flex">
-                  <span class="new__price">$654.85</span>
-                  <span class="old__price">$600</span>
-                </div>
-                <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-                  <i class="fi fi-rr-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="" class="product__images">
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img default" />
-
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rr-eye"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Add To Wishlist">
-                    <i class="fi fi-rr-heart"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rr-shuffle"></i>
-                  </a>
-                </div>
-                <div class="product__badge light-pink">Hot</div>
-              </div>
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="">
-                  <h3 class="product__title">Product Title</h3>
-                </a>
-                <div class="product__rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                  <!-- نصف نجمة -->
-                </div>
-                <div class="product__price flex">
-                  <span class="new__price">$654.85</span>
-                  <span class="old__price">$600</span>
-                </div>
-                <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-                  <i class="fi fi-rr-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="" class="product__images">
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img default" />
-
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rr-eye"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Add To Wishlist">
-                    <i class="fi fi-rr-heart"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rr-shuffle"></i>
-                  </a>
-                </div>
-                <div class="product__badge light-pink">Hot</div>
-              </div>
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="">
-                  <h3 class="product__title">Product Title</h3>
-                </a>
-                <div class="product__rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                  <!-- نصف نجمة -->
-                </div>
-                <div class="product__price flex">
-                  <span class="new__price">$654.85</span>
-                  <span class="old__price">$600</span>
-                </div>
-                <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-                  <i class="fi fi-rr-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="" class="product__images">
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img default" />
-
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rr-eye"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Add To Wishlist">
-                    <i class="fi fi-rr-heart"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rr-shuffle"></i>
-                  </a>
-                </div>
-                <div class="product__badge light-pink">Hot</div>
-              </div>
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="">
-                  <h3 class="product__title">Product Title</h3>
-                </a>
-                <div class="product__rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                  <!-- نصف نجمة -->
-                </div>
-                <div class="product__price flex">
-                  <span class="new__price">$654.85</span>
-                  <span class="old__price">$600</span>
-                </div>
-                <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-                  <i class="fi fi-rr-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="" class="product__images">
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img default" />
-
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rr-eye"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Add To Wishlist">
-                    <i class="fi fi-rr-heart"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rr-shuffle"></i>
-                  </a>
-                </div>
-                <div class="product__badge light-pink">Hot</div>
-              </div>
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="">
-                  <h3 class="product__title">Product Title</h3>
-                </a>
-                <div class="product__rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                  <!-- نصف نجمة -->
-                </div>
-                <div class="product__price flex">
-                  <span class="new__price">$654.85</span>
-                  <span class="old__price">$600</span>
-                </div>
-                <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-                  <i class="fi fi-rr-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="" class="product__images">
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img default" />
-
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rr-eye"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Add To Wishlist">
-                    <i class="fi fi-rr-heart"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rr-shuffle"></i>
-                  </a>
-                </div>
-                <div class="product__badge light-pink">Hot</div>
-              </div>
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="">
-                  <h3 class="product__title">Product Title</h3>
-                </a>
-                <div class="product__rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                  <!-- نصف نجمة -->
-                </div>
-                <div class="product__price flex">
-                  <span class="new__price">$654.85</span>
-                  <span class="old__price">$600</span>
-                </div>
-                <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-                  <i class="fi fi-rr-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="" class="product__images">
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img default" />
-
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rr-eye"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Add To Wishlist">
-                    <i class="fi fi-rr-heart"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rr-shuffle"></i>
-                  </a>
-                </div>
-                <div class="product__badge light-pink">Hot</div>
-              </div>
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="">
-                  <h3 class="product__title">Product Title</h3>
-                </a>
-                <div class="product__rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                  <!-- نصف نجمة -->
-                </div>
-                <div class="product__price flex">
-                  <span class="new__price">$654.85</span>
-                  <span class="old__price">$600</span>
-                </div>
-                <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-                  <i class="fi fi-rr-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="" class="product__images">
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img default" />
-
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rr-eye"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Add To Wishlist">
-                    <i class="fi fi-rr-heart"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rr-shuffle"></i>
-                  </a>
-                </div>
-                <div class="product__badge light-pink">Hot</div>
-              </div>
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="">
-                  <h3 class="product__title">Product Title</h3>
-                </a>
-                <div class="product__rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                  <!-- نصف نجمة -->
-                </div>
-                <div class="product__price flex">
-                  <span class="new__price">$654.85</span>
-                  <span class="old__price">$600</span>
-                </div>
-                <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-                  <i class="fi fi-rr-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="" class="product__images">
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img default" />
-
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rr-eye"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Add To Wishlist">
-                    <i class="fi fi-rr-heart"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rr-shuffle"></i>
-                  </a>
-                </div>
-                <div class="product__badge light-pink">Hot</div>
-              </div>
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="">
-                  <h3 class="product__title">Product Title</h3>
-                </a>
-                <div class="product__rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                  <!-- نصف نجمة -->
-                </div>
-                <div class="product__price flex">
-                  <span class="new__price">$654.85</span>
-                  <span class="old__price">$600</span>
-                </div>
-                <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-                  <i class="fi fi-rr-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-          </div>
         </div>
 
-        <div class="tab__item " id="popular" data-content>
-          <div class="products__container grid" id="popular-container">
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="" class="product__images">
-                  <img src="/imgs/index/6.png" alt="" class="product__img default" />
-
-                  <img src="/imgs/index/12.png" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rr-eye"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Add To Wishlist">
-                    <i class="fi fi-rr-heart"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rr-shuffle"></i>
-                  </a>
-                </div>
-                <div class="product__badge light-pink">Hot</div>
-              </div>
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="">
-                  <h3 class="product__title">Product Title</h3>
-                </a>
-                <div class="product__rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                  <!-- نصف نجمة -->
-                </div>
-                <div class="product__price flex">
-                  <span class="new__price">$654.85</span>
-                  <span class="old__price">$600</span>
-                </div>
-                <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-                  <i class="fi fi-rr-shopping-bag-add"></i>
-                </a>
-              </div>
+        <!-- Popular Tab -->
+        <div class="tab__item" id="popular" data-content>
+            <div class="products__container grid">
+                <?php
+                $popularQuery = "SELECT * FROM products 
+                               WHERE is_popular = 1 
+                               AND stock_quantity > 0 
+                               ORDER BY rating DESC 
+                               LIMIT 12";
+                $popularResult = $conn->query($popularQuery);
+                
+                if ($popularResult->num_rows > 0) {
+                    while($product = $popularResult->fetch_assoc()) {
+                        include 'product-card.php';
+                    }
+                } else {
+                    echo '<div class="alert alert-info">No popular products found</div>';
+                }
+                ?>
             </div>
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="" class="product__images">
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img default" />
-
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rr-eye"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Add To Wishlist">
-                    <i class="fi fi-rr-heart"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rr-shuffle"></i>
-                  </a>
-                </div>
-                <div class="product__badge light-pink">Hot</div>
-              </div>
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="">
-                  <h3 class="product__title">Product Title</h3>
-                </a>
-                <div class="product__rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                  <!-- نصف نجمة -->
-                </div>
-                <div class="product__price flex">
-                  <span class="new__price">$654.85</span>
-                  <span class="old__price">$600</span>
-                </div>
-                <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-                  <i class="fi fi-rr-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="" class="product__images">
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img default" />
-
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rr-eye"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Add To Wishlist">
-                    <i class="fi fi-rr-heart"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rr-shuffle"></i>
-                  </a>
-                </div>
-                <div class="product__badge light-pink">Hot</div>
-              </div>
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="">
-                  <h3 class="product__title">Product Title</h3>
-                </a>
-                <div class="product__rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                  <!-- نصف نجمة -->
-                </div>
-                <div class="product__price flex">
-                  <span class="new__price">$654.85</span>
-                  <span class="old__price">$600</span>
-                </div>
-                <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-                  <i class="fi fi-rr-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="" class="product__images">
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img default" />
-
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rr-eye"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Add To Wishlist">
-                    <i class="fi fi-rr-heart"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rr-shuffle"></i>
-                  </a>
-                </div>
-                <div class="product__badge light-pink">Hot</div>
-              </div>
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="">
-                  <h3 class="product__title">Product Title</h3>
-                </a>
-                <div class="product__rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                  <!-- نصف نجمة -->
-                </div>
-                <div class="product__price flex">
-                  <span class="new__price">$654.85</span>
-                  <span class="old__price">$600</span>
-                </div>
-                <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-                  <i class="fi fi-rr-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="" class="product__images">
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img default" />
-
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rr-eye"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Add To Wishlist">
-                    <i class="fi fi-rr-heart"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rr-shuffle"></i>
-                  </a>
-                </div>
-                <div class="product__badge light-pink">Hot</div>
-              </div>
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="">
-                  <h3 class="product__title">Product Title</h3>
-                </a>
-                <div class="product__rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                  <!-- نصف نجمة -->
-                </div>
-                <div class="product__price flex">
-                  <span class="new__price">$654.85</span>
-                  <span class="old__price">$600</span>
-                </div>
-                <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-                  <i class="fi fi-rr-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="" class="product__images">
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img default" />
-
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rr-eye"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Add To Wishlist">
-                    <i class="fi fi-rr-heart"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rr-shuffle"></i>
-                  </a>
-                </div>
-                <div class="product__badge light-pink">Hot</div>
-              </div>
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="">
-                  <h3 class="product__title">Product Title</h3>
-                </a>
-                <div class="product__rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                  <!-- نصف نجمة -->
-                </div>
-                <div class="product__price flex">
-                  <span class="new__price">$654.85</span>
-                  <span class="old__price">$600</span>
-                </div>
-                <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-                  <i class="fi fi-rr-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="" class="product__images">
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img default" />
-
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rr-eye"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Add To Wishlist">
-                    <i class="fi fi-rr-heart"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rr-shuffle"></i>
-                  </a>
-                </div>
-                <div class="product__badge light-pink">Hot</div>
-              </div>
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="">
-                  <h3 class="product__title">Product Title</h3>
-                </a>
-                <div class="product__rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                  <!-- نصف نجمة -->
-                </div>
-                <div class="product__price flex">
-                  <span class="new__price">$654.85</span>
-                  <span class="old__price">$600</span>
-                </div>
-                <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-                  <i class="fi fi-rr-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="" class="product__images">
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img default" />
-
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rr-eye"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Add To Wishlist">
-                    <i class="fi fi-rr-heart"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rr-shuffle"></i>
-                  </a>
-                </div>
-                <div class="product__badge light-pink">Hot</div>
-              </div>
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="">
-                  <h3 class="product__title">Product Title</h3>
-                </a>
-                <div class="product__rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                  <!-- نصف نجمة -->
-                </div>
-                <div class="product__price flex">
-                  <span class="new__price">$654.85</span>
-                  <span class="old__price">$600</span>
-                </div>
-                <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-                  <i class="fi fi-rr-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="" class="product__images">
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img default" />
-
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rr-eye"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Add To Wishlist">
-                    <i class="fi fi-rr-heart"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rr-shuffle"></i>
-                  </a>
-                </div>
-                <div class="product__badge light-pink">Hot</div>
-              </div>
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="">
-                  <h3 class="product__title">Product Title</h3>
-                </a>
-                <div class="product__rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                  <!-- نصف نجمة -->
-                </div>
-                <div class="product__price flex">
-                  <span class="new__price">$654.85</span>
-                  <span class="old__price">$600</span>
-                </div>
-                <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-                  <i class="fi fi-rr-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="" class="product__images">
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img default" />
-
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rr-eye"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Add To Wishlist">
-                    <i class="fi fi-rr-heart"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rr-shuffle"></i>
-                  </a>
-                </div>
-                <div class="product__badge light-pink">Hot</div>
-              </div>
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="">
-                  <h3 class="product__title">Product Title</h3>
-                </a>
-                <div class="product__rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                  <!-- نصف نجمة -->
-                </div>
-                <div class="product__price flex">
-                  <span class="new__price">$654.85</span>
-                  <span class="old__price">$600</span>
-                </div>
-                <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-                  <i class="fi fi-rr-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="" class="product__images">
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img default" />
-
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rr-eye"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Add To Wishlist">
-                    <i class="fi fi-rr-heart"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rr-shuffle"></i>
-                  </a>
-                </div>
-                <div class="product__badge light-pink">Hot</div>
-              </div>
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="">
-                  <h3 class="product__title">Product Title</h3>
-                </a>
-                <div class="product__rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                  <!-- نصف نجمة -->
-                </div>
-                <div class="product__price flex">
-                  <span class="new__price">$654.85</span>
-                  <span class="old__price">$600</span>
-                </div>
-                <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-                  <i class="fi fi-rr-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="" class="product__images">
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img default" />
-
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rr-eye"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Add To Wishlist">
-                    <i class="fi fi-rr-heart"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rr-shuffle"></i>
-                  </a>
-                </div>
-                <div class="product__badge light-pink">Hot</div>
-              </div>
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="">
-                  <h3 class="product__title">Product Title</h3>
-                </a>
-                <div class="product__rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                  <!-- نصف نجمة -->
-                </div>
-                <div class="product__price flex">
-                  <span class="new__price">$654.85</span>
-                  <span class="old__price">$600</span>
-                </div>
-                <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-                  <i class="fi fi-rr-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="" class="product__images">
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img default" />
-
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rr-eye"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Add To Wishlist">
-                    <i class="fi fi-rr-heart"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rr-shuffle"></i>
-                  </a>
-                </div>
-                <div class="product__badge light-pink">Hot</div>
-              </div>
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="">
-                  <h3 class="product__title">Product Title</h3>
-                </a>
-                <div class="product__rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                  <!-- نصف نجمة -->
-                </div>
-                <div class="product__price flex">
-                  <span class="new__price">$654.85</span>
-                  <span class="old__price">$600</span>
-                </div>
-                <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-                  <i class="fi fi-rr-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="" class="product__images">
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img default" />
-
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rr-eye"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Add To Wishlist">
-                    <i class="fi fi-rr-heart"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rr-shuffle"></i>
-                  </a>
-                </div>
-                <div class="product__badge light-pink">Hot</div>
-              </div>
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="">
-                  <h3 class="product__title">Product Title</h3>
-                </a>
-                <div class="product__rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                  <!-- نصف نجمة -->
-                </div>
-                <div class="product__price flex">
-                  <span class="new__price">$654.85</span>
-                  <span class="old__price">$600</span>
-                </div>
-                <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-                  <i class="fi fi-rr-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="" class="product__images">
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img default" />
-
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rr-eye"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Add To Wishlist">
-                    <i class="fi fi-rr-heart"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rr-shuffle"></i>
-                  </a>
-                </div>
-                <div class="product__badge light-pink">Hot</div>
-              </div>
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="">
-                  <h3 class="product__title">Product Title</h3>
-                </a>
-                <div class="product__rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                  <!-- نصف نجمة -->
-                </div>
-                <div class="product__price flex">
-                  <span class="new__price">$654.85</span>
-                  <span class="old__price">$600</span>
-                </div>
-                <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-                  <i class="fi fi-rr-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="" class="product__images">
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img default" />
-
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rr-eye"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Add To Wishlist">
-                    <i class="fi fi-rr-heart"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rr-shuffle"></i>
-                  </a>
-                </div>
-                <div class="product__badge light-pink">Hot</div>
-              </div>
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="">
-                  <h3 class="product__title">Product Title</h3>
-                </a>
-                <div class="product__rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                  <!-- نصف نجمة -->
-                </div>
-                <div class="product__price flex">
-                  <span class="new__price">$654.85</span>
-                  <span class="old__price">$600</span>
-                </div>
-                <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-                  <i class="fi fi-rr-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="" class="product__images">
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img default" />
-
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rr-eye"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Add To Wishlist">
-                    <i class="fi fi-rr-heart"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rr-shuffle"></i>
-                  </a>
-                </div>
-                <div class="product__badge light-pink">Hot</div>
-              </div>
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="">
-                  <h3 class="product__title">Product Title</h3>
-                </a>
-                <div class="product__rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                  <!-- نصف نجمة -->
-                </div>
-                <div class="product__price flex">
-                  <span class="new__price">$654.85</span>
-                  <span class="old__price">$600</span>
-                </div>
-                <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-                  <i class="fi fi-rr-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="" class="product__images">
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img default" />
-
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rr-eye"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Add To Wishlist">
-                    <i class="fi fi-rr-heart"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rr-shuffle"></i>
-                  </a>
-                </div>
-                <div class="product__badge light-pink">Hot</div>
-              </div>
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="">
-                  <h3 class="product__title">Product Title</h3>
-                </a>
-                <div class="product__rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                  <!-- نصف نجمة -->
-                </div>
-                <div class="product__price flex">
-                  <span class="new__price">$654.85</span>
-                  <span class="old__price">$600</span>
-                </div>
-                <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-                  <i class="fi fi-rr-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="" class="product__images">
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img default" />
-
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rr-eye"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Add To Wishlist">
-                    <i class="fi fi-rr-heart"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rr-shuffle"></i>
-                  </a>
-                </div>
-                <div class="product__badge light-pink">Hot</div>
-              </div>
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="">
-                  <h3 class="product__title">Product Title</h3>
-                </a>
-                <div class="product__rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                  <!-- نصف نجمة -->
-                </div>
-                <div class="product__price flex">
-                  <span class="new__price">$654.85</span>
-                  <span class="old__price">$600</span>
-                </div>
-                <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-                  <i class="fi fi-rr-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="" class="product__images">
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img default" />
-
-                  <img src="/imgs/OIP.jpeg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rr-eye"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Add To Wishlist">
-                    <i class="fi fi-rr-heart"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rr-shuffle"></i>
-                  </a>
-                </div>
-                <div class="product__badge light-pink">Hot</div>
-              </div>
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="">
-                  <h3 class="product__title">Product Title</h3>
-                </a>
-                <div class="product__rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                  <!-- نصف نجمة -->
-                </div>
-                <div class="product__price flex">
-                  <span class="new__price">$654.85</span>
-                  <span class="old__price">$600</span>
-                </div>
-                <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-                  <i class="fi fi-rr-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-          </div>
         </div>
 
-        <div class="tab__item " id="new-added" data-content>
-          <div class="products__container grid" id="new-added-container">
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="" class="product__images">
-                  <img src="/imgs/main/1.png" alt="" class="product__img default" />
-
-                  <img src="/imgs/main/2.png" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rr-eye"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Add To Wishlist">
-                    <i class="fi fi-rr-heart"></i>
-                  </a>
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rr-shuffle"></i>
-                  </a>
-                </div>
-                <div class="product__badge light-pink">Hot</div>
-              </div>
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="">
-                  <h3 class="product__title">Product Title</h3>
-                </a>
-                <div class="product__rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                  <!-- نصف نجمة -->
-                </div>
-                <div class="product__price flex">
-                  <span class="new__price">$654.85</span>
-                  <span class="old__price">$600</span>
-                </div>
-                <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-                  <i class="fi fi-rr-shopping-bag-add"></i>
-                </a>
-              </div>
+        <!-- New Added Tab -->
+        <div class="tab__item" id="new-added" data-content>
+            <div class="products__container grid">
+                <?php
+                $newQuery = "SELECT * FROM products 
+                           WHERE is_new = 1 
+                           AND stock_quantity > 0 
+                           ORDER BY created_at DESC 
+                           LIMIT 8";
+                $newResult = $conn->query($newQuery);
+                
+                if ($newResult->num_rows > 0) {
+                    while($product = $newResult->fetch_assoc()) {
+                        include 'product-card.php';
+                    }
+                } else {
+                    echo '<div class="alert alert-info">No new products found</div>';
+                }
+                ?>
             </div>
-          </div>
         </div>
-      </div>
-  </div>
-  </section>
+    </div>
+</section>
+
+
+
+
+
 
   <!-- =====================================Benefits Section ===================================== -->
   <div class="benefits-section">
@@ -2433,701 +709,296 @@ $dealsResult = $conn->query($dealsQuery);
     </div>
   </div>
 
-  <!-- ===================================== new arrivals ===================================== -->
+<!-- ===================================== New Arrivals ===================================== -->
+  <?php
+include 'db_connection.php';
+
+// استعلام لجلب المنتجات الجديدة (تمت إضافتها خلال آخر 7 أيام)
+$new_arrivals_query = $conn->prepare("
+    SELECT * 
+    FROM products 
+    WHERE created_at >= NOW() - INTERVAL 7 DAY 
+    ORDER BY created_at DESC 
+    LIMIT 5
+");
+$new_arrivals_query->execute();
+$new_arrivals = $new_arrivals_query->get_result();
+?>
 <section class="new-arrivals container section">
-  <h3 class="section__title"style="margin-top: 30px;"><span>New</span>Arrivals</h3>
+    <h3 class="section__title" style="margin-top: 30px;"><span>New</span>Arrivals</h3>
 
-  <div class="new-arrivals__container swiper"> 
-    <div class="swiper-wrapper">
-      <div class="product__item swiper-slide">
-        <div class="product__banner">
-          <a href="" class="product__images">
-            <img src="./imgs/index/1.png" alt="" class="product__img default" />
-          </a>
+    <div class="new-arrivals__container swiper">
+        <div class="swiper-wrapper">
+            <?php while ($product = $new_arrivals->fetch_assoc()): ?>
+                <div class="product__item swiper-slide">
+                    <div class="product__banner">
+                        <a href="product.php?id=<?= $product['product_id'] ?>" class="product__images">
+                            <img src="<?= $product['image_url_default'] ?>" class="product__img default" />
+                        </a>
 
-          <div class="product__actions">
-            <a href="#" class="action__btn" aria-label="Quick View">
-              <i class="fi fi-rr-eye"></i>
-            </a>
-            <a href="#" class="action__btn" aria-label="Add To Wishlist">
-              <i class="fi fi-rr-heart"></i>
-            </a>
-            <a href="#" class="action__btn" aria-label="Compare">
-              <i class="fi fi-rr-shuffle"></i>
-            </a>
-          </div>
-          <div class="product__badge light-pink">Hot</div>
+                        <div class="product__actions">
+            <button class="action__btn quick-view"aria-label="Quick View" data-id="<?= $product['product_id'] ?>">
+                <i class="fi fi-rr-eye"></i>
+            </button>
+            <button class="action__btn add-wishlist" aria-label="Add To Wishlist" data-id="<?= $product['product_id'] ?>">
+                <i class="fi fi-rr-heart"></i>
+            </button>
+            <button class="action__btn compare" aria-label="Compare" data-id="<?= $product['product_id'] ?>">
+                <i class="fi fi-rr-shuffle"></i>
+            </button>
         </div>
-        <div class="product__content">
-          <span class="product__category">Clothing</span>
-          <a href="">
-            <h3 class="product__title">Product Title</h3>
-          </a>
-          <div class="product__rating">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star-half-alt"></i>
-            <!-- نصف نجمة -->
-          </div>
-          <div class="product__price flex">
-            <span class="new__price">$550</span>
-            <span class="old__price">$600</span>
-          </div>
-          <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-            <i class="fi fi-rr-shopping-bag-add"></i>
-          </a>
-        </div>
-      </div>
-      <div class="product__item swiper-slide">
-        <div class="product__banner">
-          <a href="" class="product__images">
-            <img src="./imgs/index/1.png" alt="" class="product__img default" />
-          </a>
 
-          <div class="product__actions">
-            <a href="#" class="action__btn" aria-label="Quick View">
-              <i class="fi fi-rr-eye"></i>
-            </a>
-            <a href="#" class="action__btn" aria-label="Add To Wishlist">
-              <i class="fi fi-rr-heart"></i>
-            </a>
-            <a href="#" class="action__btn" aria-label="Compare">
-              <i class="fi fi-rr-shuffle"></i>
-            </a>
-          </div>
-          <div class="product__badge light-pink">Hot</div>
-        </div>
-        <div class="product__content">
-          <span class="product__category">Clothing</span>
-          <a href="">
-            <h3 class="product__title">Product Title</h3>
-          </a>
-          <div class="product__rating">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star-half-alt"></i>
-            <!-- نصف نجمة -->
-          </div>
-          <div class="product__price flex">
-            <span class="new__price">$550</span>
-            <span class="old__price">$600</span>
-          </div>
-          <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-            <i class="fi fi-rr-shopping-bag-add"></i>
-          </a>
-        </div>
-      </div>
-      <div class="product__item swiper-slide">
-        <div class="product__banner">
-          <a href="" class="product__images">
-            <img src="./imgs/index/1.png" alt="" class="product__img default" />
-          </a>
+                        <?php if ($product['is_new']): ?>
+                            <div class="product__badge light-pink">New</div>
+                        <?php endif; ?>
+                    </div>
 
-          <div class="product__actions">
-            <a href="#" class="action__btn" aria-label="Quick View">
-              <i class="fi fi-rr-eye"></i>
-            </a>
-            <a href="#" class="action__btn" aria-label="Add To Wishlist">
-              <i class="fi fi-rr-heart"></i>
-            </a>
-            <a href="#" class="action__btn" aria-label="Compare">
-              <i class="fi fi-rr-shuffle"></i>
-            </a>
-          </div>
-          <div class="product__badge light-pink">Hot</div>
+                    <div class="product__content">
+                        <span class="product__category">
+                            <?php 
+                            $categoryQuery = "SELECT name FROM categories WHERE category_id = " . $product['category_id'];
+                            $categoryResult = $conn->query($categoryQuery);
+                            echo $categoryResult->fetch_assoc()['name'];
+                            ?>
+                        </span>
+                        <a href="product.php?id=<?= $product['product_id'] ?>">
+                            <h3 class="product__title"><?= htmlspecialchars($product['name']) ?></h3>
+                        </a>
+                        <div class="product__rating">
+                            <?php for ($i = 1; $i <= 5; $i++): ?>
+                                <?php if ($i <= floor($product['rating'])): ?>
+                                    <i class="fas fa-star"></i>
+                                <?php elseif ($i == ceil($product['rating']) && $product['rating'] - floor($product['rating']) >= 0.5): ?>
+                                    <i class="fas fa-star-half-alt"></i>
+                                <?php else: ?>
+                                    <i class="far fa-star"></i>
+                                <?php endif; ?>
+                            <?php endfor; ?>
+                        </div>
+                        <div class="product__price flex">
+                            <span class="new__price">$<?= number_format($product['price'], 2) ?></span>
+                            <?php if ($product['old_price'] > 0): ?>
+                                <span class="old__price">$<?= number_format($product['old_price'], 2) ?></span>
+                            <?php endif; ?>
+                        </div>
+                        <button class="action__btn cart__btn add-to-cart" aria-label="Add To Cart"
+                                data-id="<?= $product['product_id'] ?>" 
+                                data-price="<?= $product['price'] ?>">
+                            <i class="fi fi-rr-shopping-bag-add"></i>
+                        </button>
+                    </div>
+                </div>
+            <?php endwhile; ?>
         </div>
-        <div class="product__content">
-          <span class="product__category">Clothing</span>
-          <a href="">
-            <h3 class="product__title">Product Title</h3>
-          </a>
-          <div class="product__rating">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star-half-alt"></i>
-            <!-- نصف نجمة -->
-          </div>
-          <div class="product__price flex">
-            <span class="new__price">$550</span>
-            <span class="old__price">$600</span>
-          </div>
-          <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-            <i class="fi fi-rr-shopping-bag-add"></i>
-          </a>
-        </div>
-      </div>
-      <div class="product__item swiper-slide">
-        <div class="product__banner">
-          <a href="" class="product__images">
-            <img src="./imgs/index/1.png" alt="" class="product__img default" />
-          </a>
-
-          <div class="product__actions">
-            <a href="#" class="action__btn" aria-label="Quick View">
-              <i class="fi fi-rr-eye"></i>
-            </a>
-            <a href="#" class="action__btn" aria-label="Add To Wishlist">
-              <i class="fi fi-rr-heart"></i>
-            </a>
-            <a href="#" class="action__btn" aria-label="Compare">
-              <i class="fi fi-rr-shuffle"></i>
-            </a>
-          </div>
-          <div class="product__badge light-pink">Hot</div>
-        </div>
-        <div class="product__content">
-          <span class="product__category">Clothing</span>
-          <a href="">
-            <h3 class="product__title">Product Title</h3>
-          </a>
-          <div class="product__rating">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star-half-alt"></i>
-            <!-- نصف نجمة -->
-          </div>
-          <div class="product__price flex">
-            <span class="new__price">$550</span>
-            <span class="old__price">$600</span>
-          </div>
-          <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-            <i class="fi fi-rr-shopping-bag-add"></i>
-          </a>
-        </div>
-      </div>
-      <div class="product__item swiper-slide">
-        <div class="product__banner">
-          <a href="" class="product__images">
-            <img src="./imgs/index/1.png" alt="" class="product__img default" />
-          </a>
-
-          <div class="product__actions">
-            <a href="#" class="action__btn" aria-label="Quick View">
-              <i class="fi fi-rr-eye"></i>
-            </a>
-            <a href="#" class="action__btn" aria-label="Add To Wishlist">
-              <i class="fi fi-rr-heart"></i>
-            </a>
-            <a href="#" class="action__btn" aria-label="Compare">
-              <i class="fi fi-rr-shuffle"></i>
-            </a>
-          </div>
-          <div class="product__badge light-pink">Hot</div>
-        </div>
-        <div class="product__content">
-          <span class="product__category">Clothing</span>
-          <a href="">
-            <h3 class="product__title">Product Title</h3>
-          </a>
-          <div class="product__rating">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star-half-alt"></i>
-            <!-- نصف نجمة -->
-          </div>
-          <div class="product__price flex">
-            <span class="new__price">$550</span>
-            <span class="old__price">$600</span>
-          </div>
-          <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-            <i class="fi fi-rr-shopping-bag-add"></i>
-          </a>
-        </div>
-      </div>
-      <div class="product__item swiper-slide">
-        <div class="product__banner">
-          <a href="" class="product__images">
-            <img src="./imgs/index/1.png" alt="" class="product__img default" />
-          </a>
-
-          <div class="product__actions">
-            <a href="#" class="action__btn" aria-label="Quick View">
-              <i class="fi fi-rr-eye"></i>
-            </a>
-            <a href="#" class="action__btn" aria-label="Add To Wishlist">
-              <i class="fi fi-rr-heart"></i>
-            </a>
-            <a href="#" class="action__btn" aria-label="Compare">
-              <i class="fi fi-rr-shuffle"></i>
-            </a>
-          </div>
-          <div class="product__badge light-pink">Hot</div>
-        </div>
-        <div class="product__content">
-          <span class="product__category">Clothing</span>
-          <a href="">
-            <h3 class="product__title">Product Title</h3>
-          </a>
-          <div class="product__rating">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star-half-alt"></i>
-            <!-- نصف نجمة -->
-          </div>
-          <div class="product__price flex">
-            <span class="new__price">$550</span>
-            <span class="old__price">$600</span>
-          </div>
-          <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-            <i class="fi fi-rr-shopping-bag-add"></i>
-          </a>
-        </div>
-      </div>
-      <div class="product__item swiper-slide">
-        <div class="product__banner">
-          <a href="" class="product__images">
-            <img src="./imgs/index/1.png" alt="" class="product__img default" />
-          </a>
-
-          <div class="product__actions">
-            <a href="#" class="action__btn" aria-label="Quick View">
-              <i class="fi fi-rr-eye"></i>
-            </a>
-            <a href="#" class="action__btn" aria-label="Add To Wishlist">
-              <i class="fi fi-rr-heart"></i>
-            </a>
-            <a href="#" class="action__btn" aria-label="Compare">
-              <i class="fi fi-rr-shuffle"></i>
-            </a>
-          </div>
-          <div class="product__badge light-pink">Hot</div>
-        </div>
-        <div class="product__content">
-          <span class="product__category">Clothing</span>
-          <a href="">
-            <h3 class="product__title">Product Title</h3>
-          </a>
-          <div class="product__rating">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star-half-alt"></i>
-            <!-- نصف نجمة -->
-          </div>
-          <div class="product__price flex">
-            <span class="new__price">$550</span>
-            <span class="old__price">$600</span>
-          </div>
-          <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-            <i class="fi fi-rr-shopping-bag-add"></i>
-          </a>
-        </div>
-      </div>
-      <div class="product__item swiper-slide">
-        <div class="product__banner">
-          <a href="" class="product__images">
-            <img src="./imgs/index/1.png" alt="" class="product__img default" />
-          </a>
-
-          <div class="product__actions">
-            <a href="#" class="action__btn" aria-label="Quick View">
-              <i class="fi fi-rr-eye"></i>
-            </a>
-            <a href="#" class="action__btn" aria-label="Add To Wishlist">
-              <i class="fi fi-rr-heart"></i>
-            </a>
-            <a href="#" class="action__btn" aria-label="Compare">
-              <i class="fi fi-rr-shuffle"></i>
-            </a>
-          </div>
-          <div class="product__badge light-pink">Hot</div>
-        </div>
-        <div class="product__content">
-          <span class="product__category">Clothing</span>
-          <a href="">
-            <h3 class="product__title">Product Title</h3>
-          </a>
-          <div class="product__rating">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star-half-alt"></i>
-            <!-- نصف نجمة -->
-          </div>
-          <div class="product__price flex">
-            <span class="new__price">$550</span>
-            <span class="old__price">$600</span>
-          </div>
-          <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
-            <i class="fi fi-rr-shopping-bag-add"></i>
-          </a>
-        </div>
-      </div>
-     </div>
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
-  </div>
-  
+        <!-- إضافة أسهم التمرير إذا لزم الأمر -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
 </section>
 
 
+  <!-- ==========================================about ===================================== -->
 
-<!-- ==========================================Promo Banner ===================================== -->
-<section class="promo-banner" id="deals">
-  <div class="promo-card accessories-promo">
-    <div class="promo-content">
-      <h2 class="promo-title" style="color: #fff;">SPORTS OUTFITS</h2>
-      <p class="promo-subtitle">Collection</p>
-      <div class="price-tag">Starting at: $190.00</div>
-      <button class="cta-button">Shop Now</button>
-    </div>
-    <div class="promo-image-wrapper">
-      <img src="./imgs/index/13.png" alt="Sports Outfits" class="promo-img" />
-    </div>
-  </div>
-
-  <div class="promo-card sports-promo">
-    <div class="promo-content">
-      <span class="discount-tag">20% OFF</span>
-      <h2 class="promo-title">SPORTS OUTFITS</h2>
-      <p class="promo-subtitle">Collection</p>
-      <div class="price-tag">Starting at: $190.00</div>
-      <button class="cta-button">Shop Now</button>
-    </div>
-    <div class="promo-image-wrapper">
-      <img src="./imgs/index/13.png" alt="Sports Outfits" class="promo-img" />
-    </div>
-  </div>
-
-  <div class="promo-card accessories-promo">
-    <div class="promo-content">
-      <h2 class="promo-title" style="color: #fff;">SPORTS OUTFITS</h2>
-      <p class="promo-subtitle">Collection</p>
-      <div class="price-tag">Starting at: $190.00</div>
-      <button class="cta-button">Shop Now</button>
-    </div>
-    <div class="promo-image-wrapper">
-      <img src="./imgs/index/13.png" alt="Sports Outfits" class="promo-img" />
-    </div>
-  </div>
-</section>
-
-<!-- ==========================================about ===================================== -->
-
-<section class="About-us">
-<div class="about-us">
-  <div class="about__container">
-      <div class="about__row">
+  <section class="About-us">
+    <div class="about-us">
+      <div class="about__container">
+        <div class="about__row">
           <div class="about__flex">
-              <h2 class="about__title">About Us</h2>
-              <h3 class="about__subtitle">Discover Our Passion for Innovation & Style</h3>
-              <p class="about__text">
-                Welcome to our digital marketplace, where passion meets purpose!
-                We are a team of creative minds dedicated to redefining online shopping by blending quality,
-                 innovation, and convenience. 
-                 Since our launch, we've focused on building a platform that offers more than just products 
-                 — we offer experiences.<br>
-                
-                From the latest fashion trends to unique gadgets, we carefully select every item to match your lifestyle.
-                 Our mission is to make online shopping smarter, easier, and more enjoyable for everyone.
-                
-                We believe in:<br>
-                
-                ✅ Exceptional Customer Experience<br>
-                
-                ✅ Transparent and Secure Payments<br>
-                
-                ✅ Fast, Reliable Shipping<br>
-                
-                ✅ Constant Innovation<br>
-                </p>
-              <div class="social-links about__social-links">
-                  <a href="" class="fab fa-facebook-f about__social"></a>
-                  <a href="" class="fab fa-twitter about__social"></a>
-                  <a href="" class="fab fa-instagram about__social"></a>
-              </div>
-              <a href="" class="about__btn">Explore More</a>
+            <h2 class="about__title">About Us</h2>
+            <h3 class="about__subtitle">Discover Our Passion for Innovation & Style</h3>
+            <p class="about__text">
+              Welcome to our digital marketplace, where passion meets purpose!
+              We are a team of creative minds dedicated to redefining online shopping by blending quality,
+              innovation, and convenience.
+              Since our launch, we've focused on building a platform that offers more than just products
+              — we offer experiences.<br>
+
+              From the latest fashion trends to unique gadgets, we carefully select every item to match your lifestyle.
+              Our mission is to make online shopping smarter, easier, and more enjoyable for everyone.
+
+              We believe in:<br>
+
+              ✅ Exceptional Customer Experience<br>
+
+              ✅ Transparent and Secure Payments<br>
+
+              ✅ Fast, Reliable Shipping<br>
+
+              ✅ Constant Innovation<br>
+            </p>
+            <div class="social-links about__social-links">
+              <a href="" class="fab fa-facebook-f about__social"></a>
+              <a href="" class="fab fa-twitter about__social"></a>
+              <a href="" class="fab fa-instagram about__social"></a>
             </div>
+            <a href="" class="about__btn">Explore More</a>
           </div>
-          <img src="./imgs/index/900.png" class="about__img">
-  </div>
-</div>
-</section>
-<!-- ==========================================showcase ===================================== -->
+        </div>
+        <img src="./imgs/index/900.png" class="about__img">
+      </div>
+    </div>
+  </section>
+
+    <!-- ==========================================show case ===================================== -->
+  <?php
+include 'db_connection.php';
+
+// استعلامات لجلب البيانات لكل قسم
+$hot_releases = $conn->query("
+    SELECT * FROM products 
+    WHERE is_hot = 1 
+    ORDER BY created_at DESC 
+    LIMIT 4
+");
+
+$deals_outlet = $conn->query("
+    SELECT * FROM products 
+    WHERE old_price > 0 
+    ORDER BY (old_price - price) DESC 
+    LIMIT 4
+");
+
+$top_selling = $conn->query("
+    SELECT p.*, SUM(ci.quantity) AS total_sold 
+    FROM products p
+    LEFT JOIN cart_items ci ON p.product_id = ci.product_id
+    GROUP BY p.product_id
+    ORDER BY total_sold DESC 
+    LIMIT 4
+");
+
+$trendy = $conn->query("
+    SELECT * FROM products 
+    WHERE is_trendy = 1 
+    ORDER BY rating DESC 
+    LIMIT 4
+");
+?>
+
+<!-- ========================================== Showcase ===================================== -->
 <section class="showcase">
-  <div class="showcase__container container grid">
-    <div class="showcase__wrapper">
-      <h3 class="section__title">Hot Releases</h3>
-      <div class="showcase__item">
-        <a href=""class="showcase__img-box">
-          <img src="./imgs/index/1.png" alt="" class="showcase__img">
-        </a>
-        <div class="showcase__content">
-          <a href="">
-            <h4 class="showcase__title">Product Title</h4>
-          </a>
-          <div class="showcase__price flex">
-            <span class="new__price">$550</span>
-            <span class="old__price">$600</span>
-          </div>
+    <div class="showcase__container container grid">
+        <!-- Hot Releases -->
+        <div class="showcase__wrapper">
+            <h3 class="section__title">Hot Releases</h3>
+            <?php while($product = $hot_releases->fetch_assoc()): ?>
+                <div class="showcase__item">
+                    <a href="product.php?id=<?= $product['product_id'] ?>" class="showcase__img-box">
+                        <img src="<?= $product['image_url_default'] ?>" alt="<?= $product['name'] ?>" class="showcase__img">
+                    </a>
+                    <div class="showcase__content">
+                        <a href="product.php?id=<?= $product['product_id'] ?>">
+                            <h4 class="showcase__title"><?= htmlspecialchars($product['name']) ?></h4>
+                        </a>
+                        <div class="showcase__price flex">
+                            <span class="new__price">$<?= number_format($product['price'], 2) ?></span>
+                            <?php if($product['old_price'] > 0): ?>
+                                <span class="old__price">$<?= number_format($product['old_price'], 2) ?></span>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
+            <?php endwhile; ?>
         </div>
-      </div>
-      <div class="showcase__item">
-        <a href=""class="showcase__img-box">
-          <img src="./imgs/index/1.png" alt="" class="showcase__img">
-        </a>
-        <div class="showcase__content">
-          <a href="">
-            <h4 class="showcase__title">Product Title</h4>
-          </a>
-          <div class="showcase__price flex">
-            <span class="new__price">$550</span>
-            <span class="old__price">$600</span>
-          </div>
+
+        <!-- Deals & Outlet -->
+        <div class="showcase__wrapper">
+            <h3 class="section__title">Deals & Outlet</h3>
+            <?php while($product = $deals_outlet->fetch_assoc()): ?>
+                <div class="showcase__item">
+                    <a href="product.php?id=<?= $product['product_id'] ?>" class="showcase__img-box">
+                        <img src="<?= $product['image_url_default'] ?>" alt="<?= $product['name'] ?>" class="showcase__img">
+                    </a>
+                    <div class="showcase__content">
+                        <a href="product.php?id=<?= $product['product_id'] ?>">
+                            <h4 class="showcase__title"><?= htmlspecialchars($product['name']) ?></h4>
+                        </a>
+                        <div class="showcase__price flex">
+                            <span class="new__price">$<?= number_format($product['price'], 2) ?></span>
+                            <span class="old__price">$<?= number_format($product['old_price'], 2) ?></span>
+                        </div>
+                    </div>
+                </div>
+            <?php endwhile; ?>
         </div>
-      </div>
-      <div class="showcase__item">
-        <a href=""class="showcase__img-box">
-          <img src="./imgs/index/1.png" alt="" class="showcase__img">
-        </a>
-        <div class="showcase__content">
-          <a href="">
-            <h4 class="showcase__title">Product Title</h4>
-          </a>
-          <div class="showcase__price flex">
-            <span class="new__price">$550</span>
-            <span class="old__price">$600</span>
-          </div>
+
+        <!-- Top Selling -->
+        <div class="showcase__wrapper">
+            <h3 class="section__title">Top Selling</h3>
+            <?php while($product = $top_selling->fetch_assoc()): ?>
+                <div class="showcase__item">
+                    <a href="product.php?id=<?= $product['product_id'] ?>" class="showcase__img-box">
+                        <img src="<?= $product['image_url_default'] ?>" alt="<?= $product['name'] ?>" class="showcase__img">
+                    </a>
+                    <div class="showcase__content">
+                        <a href="product.php?id=<?= $product['product_id'] ?>">
+                            <h4 class="showcase__title"><?= htmlspecialchars($product['name']) ?></h4>
+                        </a>
+                        <div class="showcase__price flex">
+                            <span class="new__price">$<?= number_format($product['price'], 2) ?></span>
+                            <?php if($product['old_price'] > 0): ?>
+                                <span class="old__price">$<?= number_format($product['old_price'], 2) ?></span>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
+            <?php endwhile; ?>
         </div>
-      </div>
-      <div class="showcase__item">
-        <a href=""class="showcase__img-box">
-          <img src="./imgs/index/1.png" alt="" class="showcase__img">
-        </a>
-        <div class="showcase__content">
-          <a href="">
-            <h4 class="showcase__title">Product Title</h4>
-          </a>
-          <div class="showcase__price flex">
-            <span class="new__price">$550</span>
-            <span class="old__price">$600</span>
-          </div>
+
+        <!-- Trendy -->
+        <div class="showcase__wrapper">
+            <h3 class="section__title">Trendy</h3>
+            <?php while($product = $trendy->fetch_assoc()): ?>
+                <div class="showcase__item">
+                    <a href="product.php?id=<?= $product['product_id'] ?>" class="showcase__img-box">
+                        <img src="<?= $product['image_url_default'] ?>" alt="<?= $product['name'] ?>" class="showcase__img">
+                    </a>
+                    <div class="showcase__content">
+                        <a href="product.php?id=<?= $product['product_id'] ?>">
+                            <h4 class="showcase__title"><?= htmlspecialchars($product['name']) ?></h4>
+                        </a>
+                        <div class="showcase__price flex">
+                            <span class="new__price">$<?= number_format($product['price'], 2) ?></span>
+                            <?php if($product['old_price'] > 0): ?>
+                                <span class="old__price">$<?= number_format($product['old_price'], 2) ?></span>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
+            <?php endwhile; ?>
         </div>
-      </div>
     </div>
-    <div class="showcase__wrapper">
-      <h3 class="section__title">Deals & outlet</h3>
-      <div class="showcase__item">
-        <a href=""class="showcase__img-box">
-          <img src="./imgs/index/1.png" alt="" class="showcase__img">
-        </a>
-        <div class="showcase__content">
-          <a href="">
-            <h4 class="showcase__title">Product Title</h4>
-          </a>
-          <div class="showcase__price flex">
-            <span class="new__price">$550</span>
-            <span class="old__price">$600</span>
-          </div>
-        </div>
-      </div>
-      <div class="showcase__item">
-        <a href=""class="showcase__img-box">
-          <img src="./imgs/index/1.png" alt="" class="showcase__img">
-        </a>
-        <div class="showcase__content">
-          <a href="">
-            <h4 class="showcase__title">Product Title</h4>
-          </a>
-          <div class="showcase__price flex">
-            <span class="new__price">$550</span>
-            <span class="old__price">$600</span>
-          </div>
-        </div>
-      </div>
-      <div class="showcase__item">
-        <a href=""class="showcase__img-box">
-          <img src="./imgs/index/1.png" alt="" class="showcase__img">
-        </a>
-        <div class="showcase__content">
-          <a href="">
-            <h4 class="showcase__title">Product Title</h4>
-          </a>
-          <div class="showcase__price flex">
-            <span class="new__price">$550</span>
-            <span class="old__price">$600</span>
-          </div>
-        </div>
-      </div>
-      <div class="showcase__item">
-        <a href=""class="showcase__img-box">
-          <img src="./imgs/index/1.png" alt="" class="showcase__img">
-        </a>
-        <div class="showcase__content">
-          <a href="">
-            <h4 class="showcase__title">Product Title</h4>
-          </a>
-          <div class="showcase__price flex">
-            <span class="new__price">$550</span>
-            <span class="old__price">$600</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="showcase__wrapper">
-      <h3 class="section__title">Top Selling</h3>
-      <div class="showcase__item">
-        <a href=""class="showcase__img-box">
-          <img src="./imgs/index/1.png" alt="" class="showcase__img">
-        </a>
-        <div class="showcase__content">
-          <a href="">
-            <h4 class="showcase__title">Product Title</h4>
-          </a>
-          <div class="showcase__price flex">
-            <span class="new__price">$550</span>
-            <span class="old__price">$600</span>
-          </div>
-        </div>
-      </div>
-      <div class="showcase__item">
-        <a href=""class="showcase__img-box">
-          <img src="./imgs/index/1.png" alt="" class="showcase__img">
-        </a>
-        <div class="showcase__content">
-          <a href="">
-            <h4 class="showcase__title">Product Title</h4>
-          </a>
-          <div class="showcase__price flex">
-            <span class="new__price">$550</span>
-            <span class="old__price">$600</span>
-          </div>
-        </div>
-      </div>
-      <div class="showcase__item">
-        <a href=""class="showcase__img-box">
-          <img src="./imgs/index/1.png" alt="" class="showcase__img">
-        </a>
-        <div class="showcase__content">
-          <a href="">
-            <h4 class="showcase__title">Product Title</h4>
-          </a>
-          <div class="showcase__price flex">
-            <span class="new__price">$550</span>
-            <span class="old__price">$600</span>
-          </div>
-        </div>
-      </div>
-      <div class="showcase__item">
-        <a href=""class="showcase__img-box">
-          <img src="./imgs/index/1.png" alt="" class="showcase__img">
-        </a>
-        <div class="showcase__content">
-          <a href="">
-            <h4 class="showcase__title">Product Title</h4>
-          </a>
-          <div class="showcase__price flex">
-            <span class="new__price">$550</span>
-            <span class="old__price">$600</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="showcase__wrapper">
-      <h3 class="section__title">Trendy</h3>
-      <div class="showcase__item">
-        <a href=""class="showcase__img-box">
-          <img src="./imgs/index/1.png" alt="" class="showcase__img">
-        </a>
-        <div class="showcase__content">
-          <a href="">
-            <h4 class="showcase__title">Product Title</h4>
-          </a>
-          <div class="showcase__price flex">
-            <span class="new__price">$550</span>
-            <span class="old__price">$600</span>
-          </div>
-        </div>
-      </div>
-      <div class="showcase__item">
-        <a href=""class="showcase__img-box">
-          <img src="./imgs/index/1.png" alt="" class="showcase__img">
-        </a>
-        <div class="showcase__content">
-          <a href="">
-            <h4 class="showcase__title">Product Title</h4>
-          </a>
-          <div class="showcase__price flex">
-            <span class="new__price">$550</span>
-            <span class="old__price">$600</span>
-          </div>
-        </div>
-      </div>
-      <div class="showcase__item">
-        <a href=""class="showcase__img-box">
-          <img src="./imgs/index/1.png" alt="" class="showcase__img">
-        </a>
-        <div class="showcase__content">
-          <a href="">
-            <h4 class="showcase__title">Product Title</h4>
-          </a>
-          <div class="showcase__price flex">
-            <span class="new__price">$550</span>
-            <span class="old__price">$600</span>
-          </div>
-        </div>
-      </div>
-      <div class="showcase__item">
-        <a href=""class="showcase__img-box">
-          <img src="./imgs/index/1.png" alt="" class="showcase__img">
-        </a>
-        <div class="showcase__content">
-          <a href="">
-            <h4 class="showcase__title">Product Title</h4>
-          </a>
-          <div class="showcase__price flex">
-            <span class="new__price">$550</span>
-            <span class="old__price">$600</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 </section>
 
 
-    <!-- =====================================Cart Sidebar ===================================== -->
-    <div class="offcanvas-sidebar" id="cartSidebar">
-      <div class="sidebar-header">
-        <h3 class="sidebar-title">Shopping Cart</h3>
-        <button class="close-sidebar" onclick="closeSidebar('cart')">&times;</button>
-      </div>
-      <div class="cart-items" id="cartItems"></div>
-      <div class="cart-footer">
-        <div class="subtotal">
-          <span>Subtotal:</span>
-          <span id="cartTotal">$0.00</span>
-        </div>
-        <button class="checkout-btn">Proceed to Checkout</button>
-      </div>
+  <!-- =====================================Cart Sidebar ===================================== -->
+  <div class="offcanvas-sidebar" id="cartSidebar">
+    <div class="sidebar-header">
+      <h3 class="sidebar-title">Shopping Cart</h3>
+      <button class="close-sidebar" onclick="closeSidebar('cart')">&times;</button>
     </div>
-  
-    <!-- =====================================Wishlist Sidebar ===================================== -->
-    <div class="offcanvas-sidebar" id="wishlistSidebar">
-      <div class="sidebar-header">
-        <h3 class="sidebar-title">Your Wishlist</h3>
-        <button class="close-sidebar" onclick="closeSidebar('wishlist')">&times;</button>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-footer">
+      <div class="subtotal">
+        <span>Subtotal:</span>
+        <span id="cartTotal">$0.00</span>
       </div>
-      <div class="cart-items" id="wishlistItems"></div>
+      <button class="checkout-btn">Proceed to Checkout</button>
     </div>
-<!-- ===================================== space ===================================== -->
-<div class="space" style="height: 60px; background-color: var(--first-color);">
+  </div>
 
-</div>
+  <!-- =====================================Wishlist Sidebar ===================================== -->
+  <div class="offcanvas-sidebar" id="wishlistSidebar">
+    <div class="sidebar-header">
+      <h3 class="sidebar-title">Your Wishlist</h3>
+      <button class="close-sidebar" onclick="closeSidebar('wishlist')">&times;</button>
+    </div>
+    <div class="cart-items" id="wishlistItems"></div>
+  </div>
+  <!-- ===================================== space ===================================== -->
+  <div class="space" style="height: 60px; background-color: var(--first-color);">
+
+  </div>
   <!-- footer-->
   <footer class="bg-dark py-5">
     <div class="container">
@@ -3140,7 +1011,7 @@ $dealsResult = $conn->query($dealsQuery);
           </div>
 
           <p class="mt-4 text-center text-lg-start custom-text-color" id="footer-tit">
-           <span>VOYX</span> is your reliable and convenient destination for online shopping. We offer a wide range of
+            <span>VOYX</span> is your reliable and convenient destination for online shopping. We offer a wide range of
             high-quality products, competitive prices, and fast, secure delivery right to your doorstep. Our platform is
             designed to give you a smooth and enjoyable shopping experience, supported by excellent customer service and
             24/7 support.
@@ -3265,7 +1136,7 @@ $dealsResult = $conn->query($dealsQuery);
   </footer>
 
 
-  
+
 
 
 
@@ -3286,9 +1157,21 @@ $dealsResult = $conn->query($dealsQuery);
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="./js/index.js"></script>
   <script>
-  
 
-
+// Tab Switching Logic
+document.querySelectorAll('.tab__btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        // Remove active class from all
+        document.querySelectorAll('.tab__btn').forEach(b => b.classList.remove('active-tab'));
+        document.querySelectorAll('.tab__item').forEach(item => item.classList.remove('active-tab'));
+        
+        // Add active class to clicked
+        btn.classList.add('active-tab');
+        const target = document.querySelector(btn.dataset.target);
+        target.classList.add('active-tab');
+    });
+});
+<?php $conn->close(); ?>
 
   </script>
 </body>

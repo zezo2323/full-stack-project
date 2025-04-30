@@ -1218,7 +1218,7 @@
 /*============================================ Promo Banner =============================================*/
 .promo-banner {
 
-  max-width: 1450px;
+  max-width: 1500px;
   margin: 40px auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1230,7 +1230,6 @@
 .promo-image-wrapper {
   flex-shrink: 0;
   width: 120px;
-  /* العرض اللي تحبه */
   height: auto;
 }
 
