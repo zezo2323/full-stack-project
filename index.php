@@ -391,21 +391,21 @@ $dealsResult = $conn->query($dealsQuery);
             <li class="dropdown-submenu">
               <a class="dropdown-item dropdown-toggle" href="./Electronics.php">Electronics</a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="./Electronics/Smart_phones.html">Mobiles</a></li>
-                <li><a class="dropdown-item" href="./Electronics/Televisions.html">Tvs</a></li>
-                <li><a class="dropdown-item" href="./Electronics/Laptops.html">Computers</a></li>
-                <li><a class="dropdown-item" href="./Electronics/Accessories.html">Accessories</a></li>
-                <li><a class="dropdown-item" href="./Electronics/Tablets.html">Tablets</a></li>
-                <li><a class="dropdown-item" href="./Electronics/Cameras.html">Cameras</a></li>
-                <li><a class="dropdown-item" href="./Electronics/Headphones.html">Headphones</a></li>
-                <li><a class="dropdown-item" href="./Electronics/Smart_watches.html">Smart Watches</a></li>
-                <li><a class="dropdown-item" href="./Electronics/Gaming.html">Gaming</a></li>
+                <li><a class="dropdown-item" href="./Electronics/Smart_phones.php">Mobiles</a></li>
+                <li><a class="dropdown-item" href="./Electronics/Televisions.php">Tvs</a></li>
+                <li><a class="dropdown-item" href="./Electronics/Computers.php">Computers</a></li>
+                <li><a class="dropdown-item" href="./Electronics/Accessories.php">Accessories</a></li>
+                <li><a class="dropdown-item" href="./Electronics/Tablets.php">Tablets</a></li>
+                <li><a class="dropdown-item" href="./Electronics/Cameras.php">Cameras</a></li>
+                <li><a class="dropdown-item" href="./Electronics/Headphones.php">Headphones</a></li>
+                <li><a class="dropdown-item" href="./Electronics/Smart_watches.php">Smart Watches</a></li>
+                <li><a class="dropdown-item" href="./Electronics/Gaming.php">Gaming</a></li>
               </ul>
             </li>
 
             <!-- فئة أخرى -->
             <li class="dropdown-submenu">
-              <a class="dropdown-item dropdown-toggle" href="#">Fashion</a>
+              <a class="dropdown-item dropdown-toggle" href="./Fashion.php">Fashion</a>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="#">Men's Wear</a></li>
                 <li><a class="dropdown-item" href="#">Women's Wear</a></li>
@@ -442,7 +442,7 @@ $dealsResult = $conn->query($dealsQuery);
         <div class="d-flex flex-grow-1 justify-content-center">
           <a href="./index.html" class="nav-link">Home</a>
           <a href="#products" class="nav-link">Products</a>
-          <a href="#" class="nav-link">About</a>
+          <a href="#About" class="nav-link">About</a>
           <a href="#" class="nav-link">Contact US</a>
           <a href="#" class="nav-link">Profile</a>
           <a href="#deals" class="nav-link">Deals</a>
@@ -799,7 +799,7 @@ $new_arrivals = $new_arrivals_query->get_result();
 
   <!-- ==========================================about ===================================== -->
 
-  <section class="About-us">
+  <section class="About-us" id="About">
     <div class="about-us">
       <div class="about__container">
         <div class="about__row">
@@ -983,7 +983,7 @@ $trendy = $conn->query("
         <span>Subtotal:</span>
         <span id="cartTotal">$0.00</span>
       </div>
-      <button class="checkout-btn">Proceed to Checkout</button>
+      <button class="checkout-btn"><a href="./check_out.html">Proceed to Checkout</a></button>
     </div>
   </div>
 
