@@ -204,7 +204,7 @@
 
         <!-- Navigation Links -->
         <div class="d-flex flex-grow-1 justify-content-center">
-          <a href="./index.html" class="nav-link">Home</a>
+          <a href="./index.php" class="nav-link">Home</a>
           <a href="#products" class="nav-link">Products</a>
           <a href="#" class="nav-link">About</a>
           <a href="#" class="nav-link">Contact US</a>
@@ -427,7 +427,7 @@
 
 
     <!-- Products Section -->
-    <section class="products111-container">
+    <section class="products-container">
         <!-- Name of page -->
         <div class="Name">
             <h1>Electr<span>onics</span></h1>
@@ -498,8 +498,8 @@ $products_query->execute();
 $products = $products_query->get_result();
 ?>
 
+<section class="products section container">
 <?php if ($products->num_rows > 0): ?>
-  <section class="products section container">
                 <?php while ($product = $products->fetch_assoc()): ?>
                     <!-- بداية بطاقة المنتج -->
                     <div class="product__item">

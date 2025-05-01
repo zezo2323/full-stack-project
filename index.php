@@ -389,7 +389,7 @@ $dealsResult = $conn->query($dealsQuery);
           <ul class="dropdown-menu dropdown-menu-end">
             <!-- فئة مع قائمة فرعية -->
             <li class="dropdown-submenu">
-              <a class="dropdown-item dropdown-toggle" href="./Electronics.html">Electronics</a>
+              <a class="dropdown-item dropdown-toggle" href="./Electronics.php">Electronics</a>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="./Electronics/Smart_phones.html">Mobiles</a></li>
                 <li><a class="dropdown-item" href="./Electronics/Televisions.html">Tvs</a></li>
@@ -522,7 +522,7 @@ $dealsResult = $conn->query($dealsQuery);
       <h3 class="section__title"><span>Popular</span> Categories</h3>
       <div class="categories__container swiper">
         <div class="swiper-wrapper">
-          <a href="./Electronics.html" class="category__item swiper-slide">
+          <a href="./Electronics.php" class="category__item swiper-slide">
             <img src="./imgs/index/Electronics products.jpg" alt="" class="category__img" />
             <h3 class="category__title">Electronics</h3>
           </a>
