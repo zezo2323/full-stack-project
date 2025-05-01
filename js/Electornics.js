@@ -301,3 +301,15 @@ function checkPriceRange(selectedPrice, cardPrice) {
         document.getElementById('userDropdown').classList.toggle('active');
       });
   
+
+
+
+      const productsContainer = document.getElementById("products");
+      const message = document.getElementById("no-products-message");
+  
+      // Check after the page loads to see if products are injected
+      window.addEventListener("load", () => {
+        if (productsContainer.children.length > 0) {
+          message.style.display = "none"; // Hide the message if products exist
+        }
+      });

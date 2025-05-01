@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Admin Dashboard</title>
+<link rel="stylesheet" href="./css/dash.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<!-- favicon -->
+<link rel="shortcut icon" href="./imgs/index/favicon.png" type="image/x-icon">
+
+<!-- flaticon -->
+<link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-rounded/css/uicons-solid-rounded.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-thin-straight/css/uicons-thin-straight.css" />
+<link rel="stylesheet"
+  href="https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css" />
+<!-- Bootstrap 5 CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+</head>
+
+<body>
+  <!-- Navbar -->
+
+  <!-- =====================================Promotion Bar ===================================== -->
+  <div class="promotion-bar">
+    <div class="container d-flex justify-content-between align-items-center">
+      <span>🎁 Get 10% off your first order! Use code: WELCOME10</span>
+      <button class="btn btn-link text-white p-0 close-promo">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- =====================================Main Navigation ===================================== -->
+  <nav class="main-nav">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center">
+        <!-- Logo -->
+        <a href="#" class="navbar-brand">
+          <img src="./imgs/index/logo.png" alt="Logo" style="height: 50px; width: 100px" />
+        </a>
+
+        <!-- Search Box -->
+        <div class="col-lg-4">
+          <div class="search-box input-group">
+            <input type="text" class="form-control border-0" placeholder="Search products..." />
+            <button class="btn btn-custom">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="nav-icons d-flex align-items-center position-relative col-md-1">
+          <!-- باقي الأيقونات -->
+          <a href="#wishlistSidebar" class="nav-icon position-relative" onclick="toggleSidebar('wishlist')">
+            <i class="far fa-heart"></i>
+            <span class="badge-custom" id="wishlistBadge">0</span>
+          </a>
+          <a href="#cartSidebar" class="nav-icon position-relative" onclick="toggleSidebar('cart')">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="badge-custom " id="cartBadge">0</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </nav>
+
+  <!-- =====================================Bottom Navigation ===================================== -->
+  <nav class="bottom-nav">
+    <div class="container">
+      <div class="d-flex align-items-center">
+        <!-- Categories Dropdown -->
+        <div class="dropdown me-4" id="categoriesDropdown">
+          <button class="btn btn-custom dropdown-toggle rounded-pill px-4" data-bs-toggle="dropdown">
+            <i class="fas fa-bars me-2"></i>Categories
+          </button>
+
+          <ul class="dropdown-menu dropdown-menu-end">
+            <!-- فئة مع قائمة فرعية -->
+            <li class="dropdown-submenu">
+              <a class="dropdown-item dropdown-toggle" href="./Electronics.html">Electronics</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="./Electronics/Smart_phones.html">Mobiles</a></li>
+                <li><a class="dropdown-item" href="./Electronics/Televisions.html">Tvs</a></li>
+                <li><a class="dropdown-item" href="./Electronics/Laptops.html">Computers</a></li>
+                <li><a class="dropdown-item" href="./Electronics/Accessories.html">Accessories</a></li>
+                <li><a class="dropdown-item" href="./Electronics/Tablets.html">Tablets</a></li>
+                <li><a class="dropdown-item" href="./Electronics/Cameras.html">Cameras</a></li>
+                <li><a class="dropdown-item" href="./Electronics/Headphones.html">Headphones</a></li>
+                <li><a class="dropdown-item" href="./Electronics/Smart_watches.html">Smart Watches</a></li>
+                <li><a class="dropdown-item" href="./Electronics/Gaming.html">Gaming</a></li>
+              </ul>
+            </li>
+
+            <!-- فئة أخرى -->
+            <li class="dropdown-submenu">
+              <a class="dropdown-item dropdown-toggle" href="#">Fashion</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Men's Wear</a></li>
+                <li><a class="dropdown-item" href="#">Women's Wear</a></li>
+                <li><a class="dropdown-item" href="#">Kids</a></li>
+              </ul>
+            </li>
+
+            <!-- باقي الفئات -->
+            <li class="dropdown-submenu">
+              <a class="dropdown-item dropdown-toggle" href="#">Home & kitchen</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Electric-ovens</a></li>
+                <li><a class="dropdown-item" href="#">Microwaves</a></li>
+                <li><a class="dropdown-item" href="#">Refrigerators</a></li>
+                <li><a class="dropdown-item" href="#">Air-conditioners</a></li>
+                <li><a class="dropdown-item" href="#">Water-heaters</a></li>
+                <li><a class="dropdown-item" href="#">Fans</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown-submenu">
+              <a class="dropdown-item dropdown-toggle" href="#">Vehicles</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">cars</a></li>
+                <li><a class="dropdown-item" href="#">motors</a></li>
+                <li><a class="dropdown-item" href="#">bicycles</a></li>
+
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Navigation Links -->
+        <div class="d-flex flex-grow-1 justify-content-center">
+          <a href="./index.html" class="nav-link">Home</a>
+          <a href="#products" class="nav-link">Products</a>
+          <a href="#" class="nav-link">About</a>
+          <a href="#" class="nav-link">Contact US</a>
+          <a href="#" class="nav-link">Profile</a>
+          <a href="#deals" class="nav-link">Deals</a>
+        </div>
+        <!-- Categories Dropdown -->
+        <div class="dropdown me-4">
+          <button class="btn btn-custom dropdown-toggle rounded-pill px-4" data-bs-toggle="dropdown">
+            <i class="far fa-user"></i>
+          </button>
+
+          <ul class="dropdown-menu dropdown-menu-end">
+            <!-- فئة مع قائمة فرعية -->
+            <li><a class="dropdown-item" href="#">Login</a></li>
+            <li><a class="dropdown-item" href="#">Signup</a></li>
+            <li><a class="dropdown-item" href="#">Logout</a></li>
+            <li><a class="dropdown-item" href="#">Profile</a></li>
+          </ul>
+        </div>
+
+
+        <!-- side bar -->
+        <div class="sidebar">
+          <div class="sidebar-header">
+            <h4>VOYX</h4>
+            <button class="btn btn-close btn-close-white close-sidebar"></button>
+          </div>
+
+          <div class="sidebar-category">
+            <div class="d-flex justify-content-between align-items-center">
+              <h5>Categories</h5>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="sub-menu">
+              <a href="#" class="d-block py-2">Electronics</a>
+              <a href="#" class="d-block py-2">Fashion</a>
+              <a href="#" class="d-block py-2">Home & kitchen</a>
+              <a href="#" class="d-block py-2">Vehicles</a>
+            </div>
+          </div>
+
+          <div class="sidebar-category">
+            <div class="d-flex justify-content-between align-items-center">
+              <h5>Pages</h5>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="sub-menu">
+              <a href="#" class="d-block py-2">Home</a>
+              <a href="#" class="d-block py-2">Products</a>
+              <a href="#" class="d-block py-2">Contact us</a>
+              <a href="#" class="d-block py-2">About</a>
+              <a href="#" class="d-block py-2">Profile</a>
+              <a href="#" class="d-block py-2">Deals</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-dash">
+    <div class="sidebar-dash">
+      <h2>Product</h2>
+      <ul>
+        <li onclick="showSection('dashboard')">🏠 Dashboard</li>
+        <li onclick="showSection('orders')">📦 Orders</li>
+        <li onclick="showSection('statistics')">📊 Statistics</li>
+        <li onclick="showSection('products')">🛒 Products</li>
+        <li onclick="showSection('stock')">🏷️ Stock</li>
+        <li onclick="showSection('settings')">⚙️ Settings</li>
+        <li onclick="showSection('offers')">🎁 Offers</li>
+      </ul>
+    </div>
+    <div class="main">
+      <div id="dashboard" class="section active">
+
+        <h1>Dashboard</h1>
+        <div class="cards">
+          <div class="card">
+            <h3>Number of produts</h3>
+            <p>120</p>
+          </div>
+          <div class="card">
+            <h3>Number of users</h3>
+            <p>350</p>
+          </div>
+          <div class="card">
+            <h3>Number of requests</h3>
+            <p>180</p>
+          </div>
+          <div class="card">
+            <h3>Totar revenue</h3>
+            <p>$12,340</p>
+          </div>
+        </div>
+        <p>Welcome to the Admin Dashboard.</p>
+      </div>
+
+      <div id="orders" class="section">
+
+        <h1>Orders Management</h1>
+
+        <div style="display: flex; justify-content: flex-end; align-items: center; gap: 20px; margin-bottom: 20px;">
+          <input id="searchInput" type="text" placeholder="ابحث عن اسم أو عنوان..."
+            style="display: none; padding: 5px; border-radius: 5px; border: 1px solid #ccc;">
+          <span style="cursor: pointer;" onclick="toggleSearch()">🔍</span>
+          <span style="cursor: pointer;" onclick="showNotification()">🔔</span>
+          <img src="./imgs/Admin Dashboard/image.jpg" alt="User"
+            style="width: 40px; height: 40px; border-radius: 50%;" />
+        </div>
+
+
+        <div class="filter">
+          <div>
+            <button onclick="filterOrders('all')">All Orders</button>
+            <button onclick="filterOrders('dispatch')">Dispatched</button>
+            <button onclick="filterOrders('pending')">Pending</button>
+            <button onclick="filterOrders('completed')">Completed</button>
+          </div>
+          <div>
+            <input type="date" /> to <input type="date" />
+          </div>
+        </div>
+        <div class="orders">
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Date</th>
+                <th>Price</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="orderBody">
+              <tr class="active">
+                <td>#2632</td>
+                <td>Zeyad</td>
+                <td>1096 Wiseman Street, CALAMA, KS</td>
+                <td>01 Aug 2020</td>
+                <td>$35.00</td>
+                <td><span class="status dispatch">Dispatch</span></td>
+                <td class="actions">
+                  <button>🗑️</button>
+                </td>
+              </tr>
+              <tr>
+                <td>#2633</td>
+                <td>Ali</td>
+                <td>306 Snider Street, VT</td>
+                <td>31 Jul 2020</td>
+                <td>$44.00</td>
+                <td><span class="status pending">Pending</span></td>
+                <td class="actions">
+                  <button>🗑️</button>
+                </td>
+              </tr>
+              <tr>
+                <td>#2634</td>
+                <td>Ahmed</td>
+                <td>1864 Thorn Street, CA</td>
+                <td>02 Aug 2020</td>
+                <td>$74.00</td>
+                <td><span class="status completed">Completed</span></td>
+                <td class="actions">
+                  <button>🗑️</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div id="statistics" class="section">
+        <h1>📊 Statistis</h1>
+
+        <!-- كروت الإحصائيات -->
+        <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 20px;">
+          <div
+            style="flex: 1; min-width: 200px; background-color: #f0f8ff; padding: 20px; border-radius: 10px; text-align: center;">
+            <h3>Total orders</h3>
+            <p style="font-size: 24px; font-weight: bold;">185</p>
+          </div>
+          <div
+            style="flex: 1; min-width: 200px; background-color: #e6ffe6; padding: 20px; border-radius: 10px; text-align: center;">
+            <h3>Produts sold</h3>
+            <p style="font-size: 24px; font-weight: bold;">530</p>
+          </div>
+          <div
+            style="flex: 1; min-width: 200px; background-color: #fff0f5; padding: 20px; border-radius: 10px; text-align: center;">
+            <h3>Revenue</h3>
+            <p style="font-size: 24px; font-weight: bold;">$12,340</p>
+          </div>
+          <div
+            style="flex: 1; min-width: 200px; background-color: #fffbe6; padding: 20px; border-radius: 10px; text-align: center;">
+            <h3>Number of users</h3>
+            <p style="font-size: 24px; font-weight: bold;">350</p>
+          </div>
+        </div>
+
+        <!-- جدول الإحصائيات اليومية -->
+        <div style="margin-top: 40px;">
+          <h3>📅 Statistics for the last few days</h3>
+          <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+            <thead>
+              <tr style="background-color: #eee;">
+                <th style="padding: 10px; border: 1px solid #ccc;">Today</th>
+                <th style="padding: 10px; border: 1px solid #ccc;">Orders</th>
+                <th style="padding: 10px; border: 1px solid #ccc;">Revenue</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding: 10px; border: 1px solid #ccc;">Saturday</td>
+                <td style="padding: 10px; border: 1px solid #ccc;">35</td>
+                <td style="padding: 10px; border: 1px solid #ccc;">$2,300</td>
+              </tr>
+              <tr>
+                <td style="padding: 10px; border: 1px solid #ccc;">Sunday</td>
+                <td style="padding: 10px; border: 1px solid #ccc;">28</td>
+                <td style="padding: 10px; border: 1px solid #ccc;">$1,900</td>
+              </tr>
+              <tr>
+                <td style="padding: 10px; border: 1px solid #ccc;">Monday</td>
+                <td style="padding: 10px; border: 1px solid #ccc;">40</td>
+                <td style="padding: 10px; border: 1px solid #ccc;">$3,100</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- مؤشرات أداء -->
+        <div style="margin-top: 40px;">
+          <h3>🔄 Performance indicators</h3>
+          <p>Order completion rate</p>
+          <div style="background-color: #ddd; border-radius: 5px; overflow: hidden;">
+            <div style="width: 75%; background-color: #4caf50; color: white; text-align: center; padding: 5px;">75%
+            </div>
+          </div>
+
+          <p style="margin-top: 10px;">Available inventory</p>
+          <div style="background-color: #ddd; border-radius: 5px; overflow: hidden;">
+            <div style="width: 60%; background-color: #2196f3; color: white; text-align: center; padding: 5px;">60%
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="products" class="section">
+        <h1>Product management </h1>
+
+        <!-- ✅ 1. عرض كل المنتجات -->
+        <table border="1" cellpadding="10" cellspacing="0" width="100%" id="productTable">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Product Name</th>
+              <th>Price</th>
+              <th>Old_Price</th>
+              <th>Condition</th>
+              <th>Procedures</th>
+              <th>Description</th>
+              <th>Image</th>
+            </tr>
+          </thead>
+          <!-- المنتجات الي هتنضاف -->
+        </table>
+
+        <br>
+
+        <!-- ✅ 2. إضافة منتج جديد -->
+        <h3>Add new product</h3>
+        <input type="text" id="productName" placeholder="Product name" />
+        <input type="number" id="productPrice" placeholder="Price" />
+        <input type="number" id="productPrice" placeholder="Old_Price" />
+        <input type="number" id="productPrice" placeholder="Condition" />
+        <input type="number" id="productPrice" placeholder="Procedures" />
+        <input type="text" id="productPrice" placeholder="Description" />
+        <input type="image" id="productPrice" placeholder="Image" />
+        <select id="productStatus">
+          <option value="Available">Available</option>
+          <option value="Not available">Not available</option>
+        </select>
+        <button onclick="addProduct()">➕Add product</button>
+      </div>
+
+      <div id="stock" class="section">
+        <h1>Inventory management</h1>
+        <div class="stock-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Procedure</th>
+                <th>Image</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody id="stockBody">
+              <!-- المنتج الي هينضاف -->
+            </tbody>
+            <br>
+            <h3>Add new product</h3>
+            <input type="text" id="productName" placeholder="Product name" />
+            <input type="number" id="productPrice" placeholder="Price" />
+            <input type="text" id="productPrice" placeholder="Description" />
+            <input type="image" id="productPrice" placeholder="Image" />
+            <select id="productStatus">
+              <option value="Available">Available</option>
+              <option value="Not available">Not available</option>
+            </select>
+            <button onclick="addProduct()">➕ Add product</button>
+        </div>
+        </table>
+      </div>
+    </div>
+
+    <div id="settings" class="section">
+      <h1>Settings</h1>
+
+      <!-- تغيير بيانات الأدمن -->
+      <div style="margin-top: 20px;">
+        <h3>Add admin</h3>
+        <form id="adminForm">
+          <label>Admin name</label><br>
+          <input type="text" id="adminName" required /><br><br>
+          <label>Password</label><br>
+          <input type="password" id="adminPassword" required /><br><br>
+          <button type="submit"> Save</button>
+        </form>
+      </div>
+      <!-- إدارة صلاحيات الأدمن -->
+      <div style="margin-top: 30px;">
+        <h3>Admin Permissions management</h3>
+        <table border="1" cellpadding="10">
+          <thead>
+            <tr>
+              <th>Admin Name</th>
+              <th>Authority</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Ahmed</td>
+              <td>
+                <select>
+                  <option>Complete</option>
+                  <option>Read only</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>Fatma</td>
+              <td>
+                <select>
+                  <option>Complete</option>
+                  <option>Read only</option>
+                </select>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div id="offers" class="section">
+      <h1>Offer & Promotions</h1>
+      <!-- جدول العروض -->
+      <table>
+        <thead>
+          <tr>
+            <th>Offer</th>
+            <th>Discount rate</th>
+            <th>Image</th>
+            <th>Description</th>
+            <th>Procedures</th>
+          </tr>
+        </thead>
+        <tbody id="offersBody">
+          <!-- العروض المضافة هتظهر هنا -->
+        </tbody>
+        <br>
+        <h3>Add a new product</h3>
+        <input type="text" id="productName" placeholder="Presentation" />
+        <input type="number" id="productPrice" placeholder="discount rate%" />
+        <input type="text" id="productPrice" placeholder="Description" />
+        <input type="image" id="productPrice" placeholder="Image" />
+        </select>
+        <button onclick="addProduct()">➕ Add the product</button>
+    </div>
+  </div>
+    </table>
+  </div>
+
+
+  <!-- =====================================Cart Sidebar ===================================== -->
+  <div class="offcanvas-sidebar" id="cartSidebar">
+    <div class="sidebar-header">
+      <h3 class="sidebar-title">Shopping Cart</h3>
+      <button class="close-sidebar" onclick="closeSidebar('cart')">&times;</button>
+    </div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-footer">
+      <div class="subtotal">
+        <span>Subtotal:</span>
+        <span id="cartTotal">$0.00</span>
+      </div>
+      <button class="checkout-btn">Proceed to Checkout</button>
+    </div>
+  </div>
+
+  <!-- =====================================Wishlist Sidebar ===================================== -->
+  <div class="offcanvas-sidebar" id="wishlistSidebar">
+    <div class="sidebar-header">
+      <h3 class="sidebar-title">Your Wishlist</h3>
+      <button class="close-sidebar" onclick="closeSidebar('wishlist')">&times;</button>
+    </div>
+    <div class="cart-items" id="wishlistItems"></div>
+  </div>
+
+  <!-- ===================================== JavaScript ===================================== -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <!--  -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+  <script>
+    function filterOrders(status) {
+      const rows = document.querySelectorAll('#orderBody tr');
+      rows.forEach(row => {
+        const text = row.textContent.toLowerCase();
+        if (status === 'all' || text.includes(status)) {
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
+        }
+      });
+    }
+
+    function showSection(sectionId) {
+      document.querySelectorAll('.section').forEach(sec => {
+        sec.classList.remove('active');
+      });
+      document.getElementById(sectionId).classList.add('active');
+    }
+
+    // Add active class to sidebar menu item
+    const sidebarItems = document.querySelectorAll('.sidebar ul li');
+    sidebarItems.forEach(item => {
+      item.addEventListener('click', () => {
+        sidebarItems.forEach(el => el.classList.remove('active'));
+        item.classList.add('active');
+      });
+    });
+    document.addEventListener("DOMContentLoaded", function () {
+      function filterOrders(status) {
+        const rows = document.querySelectorAll('#orderBody tr');
+        rows.forEach(row => {
+          const text = row.textContent.toLowerCase();
+          if (status === 'all' || text.includes(status)) {
+            row.style.display = '';
+          } else {
+            row.style.display = 'none';
+          }
+        });
+      }
+
+      function showSection(sectionId) {
+        document.querySelectorAll('.section').forEach(sec => {
+          sec.classList.remove('active');
+        });
+        document.getElementById(sectionId).classList.add('active');
+      }
+
+      const sidebarItems = document.querySelectorAll('.sidebar ul li');
+      sidebarItems.forEach(item => {
+        item.addEventListener('click', () => {
+          sidebarItems.forEach(el => el.classList.remove('active'));
+          item.classList.add('active');
+        });
+      });
+
+      // حذف الطلب
+      const deleteButtons = document.querySelectorAll('.actions button:last-child');
+      deleteButtons.forEach(button => {
+        button.addEventListener('click', function () {
+          const row = this.closest('tr');
+          if (confirm("هل أنت متأكد من حذف هذا الطلب؟")) {
+            row.remove();
+          }
+        });
+      });
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        currentRow.children[1].innerText = document.getElementById("editName").value;
+        currentRow.children[2].innerText = document.getElementById("editAddress").value;
+        currentRow.children[4].innerText = document.getElementById("editPrice").value;
+
+        const statusCell = currentRow.children[5];
+        const status = document.getElementById("editStatus").value;
+        statusCell.innerHTML = `<span class="status ${status}">${status.charAt(0).toUpperCase() + status.slice(1)}</span>`;
+
+        modal.style.display = "none";
+      });
+    });
+
+    function closeModal() {
+      document.getElementById("editModal").style.display = "none";
+    }
+    // حفظ بيانات الأدمن
+    document.getElementById("adminForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const name = document.getElementById("adminName").value;
+      const pass = document.getElementById("adminPassword").value;
+      alert("تم تحديث بيانات الأدمن:\n" + name);
+    });
+
+    // التحكم في الإشعارات
+    document.getElementById("notificationsToggle").addEventListener("change", function () {
+      if (this.checked) {
+        alert("تم تفعيل الإشعارات ✅");
+      } else {
+        alert("تم إيقاف الإشعارات ❌");
+      }
+    });
+    // إظهار أو إخفاء مربع البحث
+    function toggleSearch() {
+      const input = document.getElementById('searchInput');
+      input.style.display = input.style.display === 'none' ? 'block' : 'none';
+      input.focus();
+    }
+
+    // البحث في جدول الطلبات
+    document.getElementById('searchInput').addEventListener('keyup', function () {
+      const searchValue = this.value.toLowerCase();
+      const rows = document.querySelectorAll('#orders table tbody tr');
+
+      rows.forEach(row => {
+        const name = row.cells[1].textContent.toLowerCase();
+        const address = row.cells[2].textContent.toLowerCase();
+        if (name.includes(searchValue) || address.includes(searchValue)) {
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
+        }
+      });
+    });
+
+    // إشعار بسيط عند الضغط على التنبيه
+    function showNotification() {
+      alert("🔔 يوجد إشعارات جديدة عن الطلبات والمخزون!");
+    }
+    function addProduct() {
+      const name = document.getElementById("productName").value;
+      const price = document.getElementById("productPrice").value;
+      const status = document.getElementById("productStatus").value;
+
+      if (name === "" || price === "") {
+        alert("يرجى إدخال اسم المنتج والسعر");
+        return;
+      }
+
+      const table = document.getElementById("productTable").getElementsByTagName('tbody')[0];
+      const row = table.insertRow();
+      row.innerHTML = `
+      <td>${table.rows.length}</td>
+      <td>${name}</td>
+      <td>$${price}</td>
+      <td>${status}</td>
+      <td>
+        <button onclick="editProduct(this)">✏️ تعديل</button>
+        <button onclick="deleteProduct(this)">🗑️ حذف</button>
+      </td>
+    `;
+
+      // تفريغ الحقول بعد الإضافة
+      document.getElementById("productName").value = '';
+      document.getElementById("productPrice").value = '';
+    }
+
+    function deleteProduct(btn) {
+      const row = btn.parentNode.parentNode;
+      row.remove();
+    }
+
+    function editProduct(btn) {
+      const row = btn.parentNode.parentNode;
+      const name = prompt("تعديل اسم المنتج", row.cells[1].textContent);
+      const price = prompt("تعديل السعر", row.cells[2].textContent.replace('$', ''));
+      const status = prompt("تعديل الحالة (متوفر / غير متوفر)", row.cells[3].textContent);
+
+      if (name && price && status) {
+        row.cells[1].textContent = name;
+        row.cells[2].textContent = `$${price}`;
+        row.cells[3].textContent = status;
+      }
+    }
+    function addStockRow() {
+      const productName = prompt("ادخل اسم المنتج:");
+      if (!productName) return;
+
+      const quantity = prompt("ادخل الكمية:");
+      if (!quantity || isNaN(quantity)) {
+        alert("الكمية لازم تكون رقم");
+        return;
+      }
+
+      const table = document.getElementById("stockBody");
+      const newRow = document.createElement("tr");
+      newRow.innerHTML = `
+    <td>${productName}</td>
+    <td>${quantity}</td>
+    <td>
+      <button onclick="editRow(this)">✏️</button>
+      <button onclick="deleteRow(this)">🗑️</button>
+      <button onclick="saveRow(this)" style="display:none;">💾</button>
+    </td>
+  `;
+      table.appendChild(newRow);
+    }
+
+
+    function editRow(button) {
+      const row = button.parentElement.parentElement;
+      const cells = row.querySelectorAll("td");
+
+      cells[0].contentEditable = true;
+      cells[1].contentEditable = true;
+
+      button.style.display = "none";
+      row.querySelector("button[onclick='saveRow(this)']").style.display = "inline-block";
+    }
+
+    function saveRow(button) {
+      const row = button.parentElement.parentElement;
+      const cells = row.querySelectorAll("td");
+
+      cells[0].contentEditable = false;
+      cells[1].contentEditable = false;
+
+      button.style.display = "none";
+      row.querySelector("button[onclick='editRow(this)']").style.display = "inline-block";
+
+      alert("تم حفظ التعديلات بنجاح ✅");
+    }
+
+    const offerForm = document.getElementById("offerForm");
+    const offersBody = document.getElementById("offersBody");
+
+    offerForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const title = document.getElementById("offerTitle").value.trim();
+      const discount = document.getElementById("offerDiscount").value.trim();
+
+      if (title === "" || discount === "") return alert("من فضلك أدخل كل البيانات");
+
+      const row = document.createElement("tr");
+      row.innerHTML = `
+      <td>${title}</td>
+      <td>${discount}%</td>
+      <td>
+        <button onclick="editOffer(this)">✏️</button>
+        <button onclick="deleteOffer(this)">🗑️</button>
+      </td>
+    `;
+      offersBody.appendChild(row);
+
+      offerForm.reset();
+    });
+
+    function deleteOffer(btn) {
+      const row = btn.closest("tr");
+      row.remove();
+    }
+
+    function editOffer(btn) {
+      const row = btn.closest("tr");
+      const title = row.children[0].textContent;
+      const discount = row.children[1].textContent.replace("%", "");
+
+      const newTitle = prompt("تعديل عنوان العرض:", title);
+      const newDiscount = prompt("تعديل نسبة الخصم:", discount);
+
+      if (newTitle !== null && newDiscount !== null) {
+        row.children[0].textContent = newTitle;
+        row.children[1].textContent = `${newDiscount}%`;
+      }
+    }
+
+
+
+    /*============================================ Close promotion bar =============================================*/
+    // Close promotion bar
+    document.querySelector(".close-promo").addEventListener("click", () => {
+      document.querySelector(".promotion-bar").style.display = "none";
+    });
+
+    /*============================================ Hide/show navbars on scroll =============================================*/
+    // Hide/show navbars on scroll
+    let lastScroll = 0;
+    const promotionBar = document.querySelector(".promotion-bar");
+    const mainNav = document.querySelector(".main-nav");
+
+    window.addEventListener("scroll", () => {
+      const currentScroll = window.pageYOffset;
+
+      if (currentScroll > lastScroll && currentScroll > 100) {
+        // Scroll down
+        promotionBar.style.transform = "translateY(-100%)";
+        mainNav.style.transform = "translateY(-100%)";
+      } else {
+        // Scroll up
+        promotionBar.style.transform = "translateY(0)";
+        mainNav.style.transform = "translateY(0)";
+      }
+      lastScroll = currentScroll;
+    });
+
+    /*============================================ Mobile menu toggle =============================================*/
+    // Mobile menu toggle
+    const mobileMenuButton = document.createElement("button");
+    mobileMenuButton.className = "btn btn-custom d-lg-none";
+    mobileMenuButton.innerHTML = '<i class="fas fa-bars"></i>';
+    document
+      .querySelector(".bottom-nav .container")
+      .prepend(mobileMenuButton);
+
+    mobileMenuButton.addEventListener("click", () => {
+      document
+        .querySelector(".categories-wrapper .dropdown-menu")
+        .classList.toggle("show");
+    });
+
+    /*============================================ Sidebar =============================================*/
+    // التحكم في القائمة الجانبية
+    const bottomNav = document.querySelector(".bottom-nav");
+    const sidebar = document.querySelector(".sidebar");
+    const closeBtn = document.querySelector(".close-sidebar");
+
+    //  فتح القائمة عند النقر علي
+    mobileMenuButton.addEventListener("click", () => {
+      sidebar.classList.add("active");
+    });
+
+    // إغلاق القائمة
+    closeBtn.addEventListener("click", () => {
+      sidebar.classList.remove("active");
+    });
+
+    // إغلاق القائمة عند النقر خارجها
+    document.addEventListener("click", (e) => {
+      if (!sidebar.contains(e.target) && !bottomNav.contains(e.target)) {
+        sidebar.classList.remove("active");
+      }
+    });
+
+    // تبديل القوائم الفرعية
+    document.querySelectorAll(".sidebar-category").forEach((category) => {
+      category.addEventListener("click", () => {
+        category.classList.toggle("active");
+      });
+    });
+    // للتحكم في القوائم الفرعية على الجوال
+    document.querySelectorAll(".dropdown-submenu a").forEach((item) => {
+      item.addEventListener("click", (e) => {
+        if (window.innerWidth < 992) {
+          e.preventDefault();
+          e.stopPropagation();
+          const submenu = e.target.nextElementSibling;
+          submenu.style.display =
+            submenu.style.display === "block" ? "none" : "block";
+        }
+      });
+    });
+
+    gsap.to("#hero-title", {
+      opacity: 1,
+      y: -20,
+      duration: 1,
+      ease: "power3.out",
+    });
+    gsap.to("#hero-text", {
+      opacity: 1,
+      y: -10,
+      duration: 1.2,
+      delay: 0.5,
+      ease: "power3.out",
+    });
+    gsap.to("#hero-btn", {
+      opacity: 1,
+      y: 0,
+      duration: 1.5,
+      delay: 1,
+      ease: "power3.out",
+    });
+
+
+
+
+
+
+
+    /*============================================ cart and wishlist =============================================*/
+    // Initialize cart and wishlist
+    let cart = [];
+    let wishlist = [];
+    let cartCount = 0;
+    let wishlistCount = 0;
+
+    // Event Delegation for dynamic elements
+    document.body.addEventListener('click', function (e) {
+      // Add to Cart
+      if (e.target.closest('.cart__btn')) {
+        e.preventDefault();
+        const productItem = e.target.closest('.product__item');
+        const product = {
+          id: Date.now(), // استخدام timestamp كـ ID مؤقت
+          title: productItem.querySelector('.product__title').innerText,
+          price: parseFloat(productItem.querySelector('.new__price').innerText.replace('$', '')),
+          image: productItem.querySelector('.product__img').src
+        };
+        addToCart(product);
+      }
+
+      // Add to Wishlist
+      if (e.target.closest('.action__btn[aria-label="Add To Wishlist"]')) {
+        e.preventDefault();
+        const productItem = e.target.closest('.product__item');
+        const product = {
+          id: Date.now(),
+          title: productItem.querySelector('.product__title').innerText,
+          price: parseFloat(productItem.querySelector('.new__price').innerText.replace('$', '')),
+          image: productItem.querySelector('.product__img').src
+        };
+        addToWishlist(product);
+      }
+    });
+
+    // Improved Add to Cart function
+    function addToCart(product) {
+      const existingItem = cart.find(item => item.id === product.id);
+      if (existingItem) {
+        existingItem.quantity++;
+      } else {
+        cart.push({ ...product, quantity: 1 });
+      }
+      cartCount++;
+      updateCartUI();
+      showNotification(`${product.title} added to cart!`);
+    }
+
+    // Add to Wishlist function
+    function addToWishlist(product) {
+      if (!wishlist.some(item => item.id === product.id)) {
+        wishlist.push(product);
+        wishlistCount++;
+        updateWishlistUI();
+        showNotification(`${product.title} added to wishlist!`);
+      }
+    }
+
+    // Update Cart UI
+    function updateCartUI() {
+      const cartBadge = document.getElementById('cartBadge');
+      const cartItemsContainer = document.getElementById('cartItems');
+      const cartTotalElement = document.getElementById('cartTotal');
+
+      // Update Badge
+      cartBadge.textContent = cartCount;
+
+      // Update Items List
+      cartItemsContainer.innerHTML = cart.map(item => `
+      <div class="cart-item d-flex align-items-center gap-3 mb-3">
+        <img src="${item.image}" width="60" height="60" class="rounded">
+        <div class="flex-grow-1">
+          <h6 class="mb-0">${item.title}</h6>
+          <div class="d-flex align-items-center gap-2">
+            <span>$${item.price} x ${item.quantity}</span>
+                  </div>
+                </div>
+        <button class="btn btn-danger btn-sm" onclick="removeCartItem(${item.id})">
+          <i class="fas fa-trash"></i>
+        </button>
+                  </div>
+    `).join('');
+
+      // Update Total
+      const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+      cartTotalElement.textContent = `$${total.toFixed(2)}`;
+    }
+
+    // Update Wishlist UI
+    function updateWishlistUI() {
+      const wishlistBadge = document.getElementById('wishlistBadge');
+      const wishlistItemsContainer = document.getElementById('wishlistItems');
+
+      wishlistBadge.textContent = wishlistCount;
+
+      wishlistItemsContainer.innerHTML = wishlist.map(item => `
+      <div class="wishlist-item d-flex align-items-center gap-3 mb-3">
+        <img src="${item.image}" width="60" height="60" class="rounded">
+        <div class="flex-grow-1">
+          <h6 class="mb-0">${item.title}</h6>
+          <div>$${item.price}</div>
+                  </div>
+        <button class="btn btn-danger btn-sm" onclick="removeWishlistItem(${item.id})">
+          <i class="fas fa-trash"></i>
+        </button>
+                </div>
+    `).join('');
+    }
+
+    // Remove item functions
+    function removeCartItem(id) {
+      cart = cart.filter(item => item.id !== id);
+      cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+      updateCartUI();
+    }
+
+    function removeWishlistItem(id) {
+      wishlist = wishlist.filter(item => item.id !== id);
+      wishlistCount = wishlist.length;
+      updateWishlistUI();
+    }
+
+    /*============================================ Notification system =============================================*/
+    function showNotification(message) {
+      const notification = document.createElement('div');
+      notification.className = 'notification alert alert-success position-fixed top-0 end-0 m-3';
+      notification.textContent = message;
+      document.body.appendChild(notification);
+
+      setTimeout(() => {
+        notification.remove();
+      }, 1500);
+    }
+
+    /*============================================ Sidebar =============================================*/
+    function toggleSidebar(type) {
+      const sidebar = document.getElementById(`${type}Sidebar`);
+      sidebar.classList.add("active");
+    }
+
+    function closeSidebar(type) {
+      const sidebar = document.getElementById(`${type}Sidebar`);
+      sidebar.classList.remove("active");
+    }
+    document.querySelector('.nav-icon[href="#userDropdown"]').addEventListener('click', function (e) {
+      e.preventDefault();
+      document.getElementById('userDropdown').classList.toggle('active');
+    });
+
+  </script>
+</body>
+
+</html>
