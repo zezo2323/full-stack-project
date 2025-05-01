@@ -534,7 +534,7 @@ $dealsResult = $conn->query($dealsQuery);
             <img src="./imgs/index/Accessories5.jpeg" alt="" class="category__img" />
             <h3 class="category__title">Accessories</h3>
           </a> -->
-          <a href="#" class="category__item swiper-slide">
+          <a href="/vehicles.php" class="category__item swiper-slide">
             <img src="./imgs/index/motors.jpg" alt="" class="category__img" />
             <h3 class="category__title">Motorcycles</h3>
           </a>
@@ -542,7 +542,7 @@ $dealsResult = $conn->query($dealsQuery);
             <img src="./imgs/index/computers.jpg" alt="" class="category__img" />
             <h3 class="category__title">Computers</h3>
           </a>
-          <a href="#" class="category__item swiper-slide">
+          <a href="./Electronics/Gaming.php" class="category__item swiper-slide">
             <img src="./imgs/index/games.jpg" alt="" class="category__img" />
             <h3 class="category__title">Games</h3>
           </a>
