@@ -10,12 +10,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <!-- favicon -->
     <link rel="shortcut icon" href="../imgs/index/favicon.png" type="image/x-icon">
-<<<<<<< HEAD
-
-=======
-    <!-- link bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
->>>>>>> 8f339d0368b3378e8f412f937b61d6a7cb961cbd
     <!-- flaticon -->
     <link rel="stylesheet"
         href="https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-rounded/css/uicons-solid-rounded.css" />
@@ -24,7 +18,6 @@
         href="https://cdn-uicons.flaticon.com/2.6.0/uicons-thin-straight/css/uicons-thin-straight.css" />
     <link rel="stylesheet"
         href="https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css" />
-<<<<<<< HEAD
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
@@ -276,13 +269,6 @@
             </div>
         </div>
     </nav>
-=======
-</head>
-
-<body>
-    <!-- Navbar -->
-    <nav></nav>
->>>>>>> 8f339d0368b3378e8f412f937b61d6a7cb961cbd
 
     <!-- Sidebar Filters -->
 
@@ -520,7 +506,6 @@
             </div>
 
             <div class="brand-img">
-<<<<<<< HEAD
                 <a href="../Electronics/Tornado.php"><img src="../imgs/Electronics/Electronics/brand16.png"
                         alt="brand"></a>
                 <a href="../Electronics/LG.php"><img src="../imgs/Electronics/Electronics/brand14.png" alt="brand"></a>
@@ -529,21 +514,10 @@
                 <a href="../Electronics/Fresh.php"><img src="../imgs/Electronics/Electronics/brand10.png"
                         alt="brand"></a>
                 <a href="../Electronics/Toshiba.php"><img src="../imgs/Electronics/Electronics/brand9.png"
-=======
-                <a href="../Electronics/Tornado.html"><img src="../imgs/Electronics/Electronics/brand16.png"
-                        alt="brand"></a>
-                <a href="../Electronics/LG.html"><img src="../imgs/Electronics/Electronics/brand14.png" alt="brand"></a>
-                <a href="../Electronics/Sharp.html"><img src="../imgs/Electronics/Electronics/brand15.png"
-                        alt="brand"></a>
-                <a href="../Electronics/Fresh.html"><img src="../imgs/Electronics/Electronics/brand10.png"
-                        alt="brand"></a>
-                <a href="../Electronics/Toshiba.html"><img src="../imgs/Electronics/Electronics/brand9.png"
->>>>>>> 8f339d0368b3378e8f412f937b61d6a7cb961cbd
                         alt="brand"></a>
             </div>
         </div>
         <hr>
-<<<<<<< HEAD
         <!-- products -->
         <section class="products section container" id="products">
 
@@ -832,13 +806,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 
-=======
-        <!-- Products -->
-    </section>
-
-    <!-- Footer -->
-    <footer></footer>
->>>>>>> 8f339d0368b3378e8f412f937b61d6a7cb961cbd
 
 
     <!-- link js page -->

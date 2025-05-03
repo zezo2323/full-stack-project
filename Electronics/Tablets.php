@@ -10,12 +10,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <!-- favicon -->
     <link rel="shortcut icon" href="../imgs/index/favicon.png" type="image/x-icon">
-<<<<<<< HEAD
-
-=======
-    <!-- link bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
->>>>>>> 8f339d0368b3378e8f412f937b61d6a7cb961cbd
     <!-- flaticon -->
     <link rel="stylesheet"
         href="https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-rounded/css/uicons-solid-rounded.css" />
@@ -24,7 +18,6 @@
         href="https://cdn-uicons.flaticon.com/2.6.0/uicons-thin-straight/css/uicons-thin-straight.css" />
     <link rel="stylesheet"
         href="https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css" />
-<<<<<<< HEAD
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
@@ -276,13 +269,6 @@
             </div>
         </div>
     </nav>
-=======
-</head>
-
-<body>
-    <!-- Navbar -->
-    <nav></nav>
->>>>>>> 8f339d0368b3378e8f412f937b61d6a7cb961cbd
 
     <!-- Sidebar Filters -->
 
@@ -290,17 +276,12 @@
         <div class="container">
             <h2>Filters</h2>
             <div class="box">
-<<<<<<< HEAD
                 <div class="arrow-left"><a href="../Electronics.php"><i class="fa-solid fa-arrow-left"></i></a></div>
-=======
-                <div class="arrow-left"><a href="../Electronics.html"><i class="fa-solid fa-arrow-left"></i></a></div>
->>>>>>> 8f339d0368b3378e8f412f937b61d6a7cb961cbd
                 <h5>Electronics</h5>
                 <h3>Category</h3>
                 <ul class="category-list">
                     <ul class="category">
                         <li class="has-submenu">
-<<<<<<< HEAD
                             <a href="../Electronics/Smart_phones.php"><span>Mobile</span></a>
                             <span class="arrow">▶</span>
                             <ul class="subcategory">
@@ -309,16 +290,6 @@
                                 <li><a href="../Electronics/Xiaomi.php">Xiaomi</a></li>
                                 <li><a href="../Electronics/Honor.php">Honor</a></li>
                                 <li><a href="../Electronics/Oppo.php">Oppo</a></li>
-=======
-                            <a href="../Electronics/Smart_phones.html"><span>Mobile</span></a>
-                            <span class="arrow">▶</span>
-                            <ul class="subcategory">
-                                <li><a href="../Electronics/Apple.html">Apple</a></li>
-                                <li><a href="../Electronics/Samsung.html">Samsung</a></li>
-                                <li><a href="../Electronics/Xiaomi.html">Xiaomi</a></li>
-                                <li><a href="../Electronics/Honor.html">Honor</a></li>
-                                <li><a href="../Electronics/Oppo.html">Oppo</a></li>
->>>>>>> 8f339d0368b3378e8f412f937b61d6a7cb961cbd
                             </ul>
 
 
@@ -469,7 +440,6 @@
             <h1>Tab<span>lits</span></h1>
         </div>
         <hr>
-<<<<<<< HEAD
         <!-- products -->
         <section class="products section container" id="products">
 
@@ -763,14 +733,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-=======
-        <!-- Products -->
-    </section>
-
-    <!-- Footer -->
-    <footer></footer>
-
->>>>>>> 8f339d0368b3378e8f412f937b61d6a7cb961cbd
 
     <!-- link js page -->
     <script src="../js/Electornics.js"></script>
