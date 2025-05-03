@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gaming</title>
+    <title>Computers</title>
     <link rel="stylesheet" href="../css/Electronics.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
@@ -159,7 +159,7 @@
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="../Electronics/Smart_phones.php">Mobiles</a></li>
                                 <li><a class="dropdown-item" href="../Electronics/Televisions.php">Tvs</a></li>
-                                <li><a class="dropdown-item" href="../Electronics/Computers.php"">Computers</a></li>
+                                <li><a class="dropdown-item" href="../Electronics/Computers.php">Computers</a></li>
                                 <li><a class="dropdown-item" href="../Electronics/Accessories.php">Accessories</a></li>
                                 <li><a class="dropdown-item" href="../Electronics/Tablets.php">Tablets</a></li>
                                 <li><a class="dropdown-item" href="../Electronics/Cameras.php">Cameras</a></li>
@@ -268,6 +268,7 @@
         </div>
     </nav>
 
+    
     <!-- Sidebar Filters -->
 
     <section class="slider">
@@ -337,6 +338,7 @@
 
 
 
+
                 <div class="box">
                     <h3>Filter by Price</h3>
                     <ul class="price-filter">
@@ -362,11 +364,52 @@
                                 above</label></li>
                     </ul>
 
-                </div>
 
+                    <div class="box">
+                        <h3>Brands</h3>
+                        <div class="brand">
+
+                            <div>
+                                <li><a href="../Electronics/Computers/HP.php">Hp</a></li>
+                                <span>Computers</span>
+                            </div>
+                        </div>
+
+                        <div class="brand">
+
+                            <div>
+                                <li><a href="../Electronics/Computers/Dell.php">Dell</a></li>
+                                <span>Computers</span>
+                            </div>
+                        </div>
+
+                        <div class="brand">
+
+                            <div>
+                                <li><a href="../Electronics/Lenovo.php">Lenovo</a></li>
+                                <span>Computers</span>
+                            </div>
+                        </div>
+
+                        <div class="brand">
+
+                            <div>
+                                <li><a href="../Electronics/Mac.php">Mac</a></li>
+                                <span>Computers</span>
+                            </div>
+                        </div>
+
+                        <div class="brand">
+
+                            <div>
+                                <li><a href="../Electronics/Asus.php">Asus</a></li>
+                                <span>Computers</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
             </div>
-        </div>
-        </div>
         </div>
     </section>
 
@@ -375,10 +418,25 @@
     <section class="products-container">
         <!-- Name of page -->
         <div class="Name">
-            <h1>Gam<span>ing</span></h1>
+            <h1>Comp<span>uters</span></h1>
+        </div>
+
+
+        <!-- brands -->
+        <div class="brand-products">
+            <div class="brands-name">
+                <h3>Shop by <span>brand</span></h3>
+            </div>
+
+            <div class="brand-img">
+                <a href="../Electronics/HP.php"><img src="../imgs/Electronics/Electronics/brand6.png" alt="brand"></a>
+                <a href="../Electronics/Dell.php"><img src="../imgs/Electronics/Electronics/brand17.png" alt="brand"></a>
+                <a href="../Electronics/Lenovo.php"><img src="../imgs/Electronics/Electronics/brand4.png" alt="brand"></a>
+                <a href="../Electronics/Mac.php"><img src="../imgs/Electronics/Electronics/brand18.png" alt="brand"></a>
+                <a href="../Electronics/Asus.php"><img src="../imgs/Electronics/Electronics/brand3.png" alt="brand"></a>
+            </div>
         </div>
         <hr>
-        <!-- Products -->
         <!-- products -->
         <section class="products section container" id="products">
 
@@ -388,7 +446,7 @@
                 include '../db_connection.php'; // ملف يحتوي على اتصال قاعدة البيانات
 
                 // الحصول على الفئة "Electronics" (category_id = 1)
-                $category_id = 13;
+                $category_id = 7;
 
                 // جلب معلومات الفئة
                 $category_query = $conn->prepare("SELECT * FROM categories WHERE category_id = ?");
@@ -492,7 +550,6 @@
             </div>
 
         </section>
-
     </section>
 
     <!-- =====================================Cart Sidebar ===================================== -->

@@ -13,7 +13,7 @@
 
 :root {
     --first-color:hsl(176, 88%, 27%);
-    --main-color: #088179;
+    --main-color: hsl(176, 88%, 27%);
     --dark-color: #222222;
     --parg-color: #666666;
     --dark-red: #d01418;

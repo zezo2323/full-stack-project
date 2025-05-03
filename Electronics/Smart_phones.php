@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gaming</title>
+    <title>Mobiles</title>
     <link rel="stylesheet" href="../css/Electronics.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
@@ -92,10 +92,10 @@
             color: hsl(176, 88%, 27%) !important;
         }
     </style>
-
 </head>
 
 <body>
+
     <!-- Navbar -->
     <!-- =====================================Promotion Bar ===================================== -->
     <div class="promotion-bar">
@@ -159,12 +159,13 @@
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="../Electronics/Smart_phones.php">Mobiles</a></li>
                                 <li><a class="dropdown-item" href="../Electronics/Televisions.php">Tvs</a></li>
-                                <li><a class="dropdown-item" href="../Electronics/Computers.php"">Computers</a></li>
+                                <li><a class="dropdown-item" href="../Electronics/Computers.php">Computers</a></li>
                                 <li><a class="dropdown-item" href="../Electronics/Accessories.php">Accessories</a></li>
                                 <li><a class="dropdown-item" href="../Electronics/Tablets.php">Tablets</a></li>
                                 <li><a class="dropdown-item" href="../Electronics/Cameras.php">Cameras</a></li>
                                 <li><a class="dropdown-item" href="../Electronics/Headphones.php">Headphones</a></li>
-                                <li><a class="dropdown-item" href="../Electronics/Smart_watches.php">Smart Watches</a></li>
+                                <li><a class="dropdown-item" href="../Electronics/Smart_watches.php">Smart Watches</a>
+                                </li>
                                 <li><a class="dropdown-item" href="../Electronics/Gaming.php">Gaming</a></li>
                             </ul>
                         </li>
@@ -185,9 +186,11 @@
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="../home catagory/Stove.php">Stoves</a></li>
                                 <li><a class="dropdown-item" href="../home catagory/Freezers.php">Freezers</a></li>
-                                <li><a class="dropdown-item" href="../home catagory/Refrigerators.php">Refrigerators</a></li>
+                                <li><a class="dropdown-item" href="../home catagory/Refrigerators.php">Refrigerators</a>
+                                </li>
                                 <li><a class="dropdown-item" href="../home catagory/Kitchen.php">Kitchens</a></li>
-                                <li><a class="dropdown-item" href="../home catagory/Washing machines.php">Washing</a></li>
+                                <li><a class="dropdown-item" href="../home catagory/Washing machines.php">Washing</a>
+                                </li>
                                 <li><a class="dropdown-item" href="../home catagory/Fans.php">Fans</a></li>
                             </ul>
                         </li>
@@ -270,6 +273,7 @@
 
     <!-- Sidebar Filters -->
 
+
     <section class="slider">
         <div class="container">
             <h2>Filters</h2>
@@ -337,6 +341,7 @@
 
 
 
+
                 <div class="box">
                     <h3>Filter by Price</h3>
                     <ul class="price-filter">
@@ -362,12 +367,72 @@
                                 above</label></li>
                     </ul>
 
-                </div>
 
+                    <div class="box">
+                        <h3>Filter by Capacity</h3>
+                        <ul class="price-filter">
+                            <li><label><input type="checkbox" name="capacity" value="32" onclick="applyFilters()">
+                                    32
+                                    GB</label></li>
+                            <li><label><input type="checkbox" name="capacity" value="64" onclick="applyFilters()">
+                                    64
+                                    GB</label></li>
+                            <li><label><input type="checkbox" name="capacity" value="128" onclick="applyFilters()">
+                                    128
+                                    GB</label></li>
+                            <li><label><input type="checkbox" name="capacity" value="256" onclick="applyFilters()">
+                                    256 GB</label></li>
+                            <li><label><input type="checkbox" name="capacity" value="512" onclick="applyFilters()">
+                                    512 GB</label></li>
+                        </ul>
+
+
+                        <div class="box">
+                            <h3>Brands</h3>
+                            <div class="brand">
+
+                                <div>
+                                    <li><a href="../Electronics/Apple.php">Apple</a></li>
+                                    <span>Mobiles</span>
+                                </div>
+                            </div>
+
+                            <div class="brand">
+
+                                <div>
+                                    <li><a href="../Electronics/Samsung.php">Samsung</a></li>
+                                    <span>Mobiles</span>
+                                </div>
+                            </div>
+
+                            <div class="brand">
+
+                                <div>
+                                    <li><a href="../Electronics/Xiaomi.php">Xiaomi</a></li>
+                                    <span>Mobiles</span>
+                                </div>
+                            </div>
+
+                            <div class="brand">
+
+                                <div>
+                                    <li><a href="../Electronics/Honor.php">Honor</a></li>
+                                    <span>Mobiles</span>
+                                </div>
+                            </div>
+
+                            <div class="brand">
+
+                                <div>
+                                    <li><a href="../Electronics/Oppo.php">Oppo</a></li>
+                                    <span>Mobiles</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-        </div>
-        </div>
     </section>
 
 
@@ -375,10 +440,29 @@
     <section class="products-container">
         <!-- Name of page -->
         <div class="Name">
-            <h1>Gam<span>ing</span></h1>
+            <h1>Mob<span>iles</span></h1>
+        </div>
+
+        <!-- brands -->
+        <div class="brand-products">
+            <div class="brands-name">
+                <h3>Shop by <span>brand</span></h3>
+            </div>
+
+            <div class="brand-img">
+                <a href="../Electronics/Samsung.php"><img src="../imgs/Electronics/Electronics/brand1.png"
+                        alt="brand"></a>
+                <a href="../Electronics/Honor.php"><img src="../imgs/Electronics/Electronics/brand2.png"
+                        alt="brand"></a>
+                <a href="../Electronics/Apple.php"><img src="../imgs/Electronics/Electronics/brand11.png"
+                        alt="brand"></a>
+                <a href="../Electronics/Oppo.php"><img src="../imgs/Electronics/Electronics/brand12.png"
+                        alt="brand"></a>
+                <a href="../Electronics/Xiaomi.php"><img src="../imgs/Electronics/Electronics/brand13.png"
+                        alt="brand"></a>
+            </div>
         </div>
         <hr>
-        <!-- Products -->
         <!-- products -->
         <section class="products section container" id="products">
 
@@ -388,7 +472,7 @@
                 include '../db_connection.php'; // ملف يحتوي على اتصال قاعدة البيانات
 
                 // الحصول على الفئة "Electronics" (category_id = 1)
-                $category_id = 13;
+                $category_id = 5;
 
                 // جلب معلومات الفئة
                 $category_query = $conn->prepare("SELECT * FROM categories WHERE category_id = ?");
@@ -492,7 +576,6 @@
             </div>
 
         </section>
-
     </section>
 
     <!-- =====================================Cart Sidebar ===================================== -->
@@ -671,7 +754,6 @@
 
     <!-- link js page -->
     <script src="../js/Electornics.js"></script>
-
 </body>
 
 </html>
