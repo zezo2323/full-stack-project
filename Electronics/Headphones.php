@@ -10,7 +10,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <!-- favicon -->
     <link rel="shortcut icon" href="../imgs/index/favicon.png" type="image/x-icon">
+<<<<<<< HEAD
 
+=======
+    <!-- link bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+>>>>>>> 8f339d0368b3378e8f412f937b61d6a7cb961cbd
     <!-- flaticon -->
     <link rel="stylesheet"
         href="https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-rounded/css/uicons-solid-rounded.css" />
@@ -19,6 +24,7 @@
         href="https://cdn-uicons.flaticon.com/2.6.0/uicons-thin-straight/css/uicons-thin-straight.css" />
     <link rel="stylesheet"
         href="https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css" />
+<<<<<<< HEAD
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
@@ -271,6 +277,13 @@
         </div>
     </nav>
 
+=======
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav></nav>
+>>>>>>> 8f339d0368b3378e8f412f937b61d6a7cb961cbd
 
     <!-- Sidebar Filters -->
 
@@ -278,12 +291,17 @@
         <div class="container">
             <h2>Filters</h2>
             <div class="box">
+<<<<<<< HEAD
                 <div class="arrow-left"><a href="../Electronics.php"><i class="fa-solid fa-arrow-left"></i></a></div>
+=======
+                <div class="arrow-left"><a href="../Electronics.html"><i class="fa-solid fa-arrow-left"></i></a></div>
+>>>>>>> 8f339d0368b3378e8f412f937b61d6a7cb961cbd
                 <h5>Electronics</h5>
                 <h3>Category</h3>
                 <ul class="category-list">
                     <ul class="category">
                         <li class="has-submenu">
+<<<<<<< HEAD
                             <a href="../Electronics/Smart_phones.php"><span>Mobile</span></a>
                             <span class="arrow">▶</span>
                             <ul class="subcategory">
@@ -292,10 +310,21 @@
                                 <li><a href="../Electronics/Xiaomi.php">Xiaomi</a></li>
                                 <li><a href="../Electronics/Honor.php">Honor</a></li>
                                 <li><a href="../Electronics/Oppo.php">Oppo</a></li>
+=======
+                            <a href="../Electronics/Smart_phones.html"><span>Mobile</span></a>
+                            <span class="arrow">▶</span>
+                            <ul class="subcategory">
+                                <li><a href="../Electronics/Apple.html">Apple</a></li>
+                                <li><a href="../Electronics/Samsung.html">Samsung</a></li>
+                                <li><a href="../Electronics/Xiaomi.html">Xiaomi</a></li>
+                                <li><a href="../Electronics/Honor.html">Honor</a></li>
+                                <li><a href="../Electronics/Oppo.html">Oppo</a></li>
+>>>>>>> 8f339d0368b3378e8f412f937b61d6a7cb961cbd
                             </ul>
 
 
                         <li class="has-submenu">
+<<<<<<< HEAD
                             <a href="../Electronics/Televisions.php"><span>Tvs</span></a>
                             <span class="arrow">▶</span>
                             <ul class="subcategory">
@@ -315,10 +344,32 @@
                                 <li><a href="../Electronics/Lenovo.php">Lenovo</a></li>
                                 <li><a href="../Electronics/Mac.php">Mac</a></li>
                                 <li><a href="../Electronics/Asus.php">Asus</a></li>
+=======
+                            <a href="../Electronics/Televisions.html"><span>Tvs</span></a>
+                            <span class="arrow">▶</span>
+                            <ul class="subcategory">
+                                <li><a href="../Electronics/Tornado.html">Tornado</a></li>
+                                <li><a href="../Electronics/LG.html">LG</a></li>
+                                <li><a href="../Electronics/Sharp.html">Sharp</a></li>
+                                <li><a href="../Electronics/Fresh.html">Fresh</a></li>
+                                <li><a href="../Electronics/Toshiba.html">Toshiba</a></li>
+                            </ul>
+
+                        <li class="has-submenu">
+                            <a href="../Electronics/Computers.html"><span>Computers</span></a>
+                            <span class="arrow">▶</span>
+                            <ul class="subcategory">
+                                <li><a href="../Electronics/HP.html">HP</a></li>
+                                <li><a href="../Electronics/Dell.html">Dell</a></li>
+                                <li><a href="../Electronics/Lenovo.html">Lenovo</a></li>
+                                <li><a href="../Electronics/Mac.html">Mac</a></li>
+                                <li><a href="../Electronics/Asus.html">Asus</a></li>
+>>>>>>> 8f339d0368b3378e8f412f937b61d6a7cb961cbd
                             </ul>
 
 
                         <li class="has-submenu">
+<<<<<<< HEAD
                             <a href="../Electronics/Accessories.php"><span>Accessories</span></a>
                             <span class="arrow">▶</span>
                             <ul class="subcategory">
@@ -334,6 +385,23 @@
                         <li><a href="../Electronics/Headphones.php">Headphones</a></li>
                         <li><a href="../Electronics/Smart_watches.php">Smart Watches</a></li>
                         <li><a href="../Electronics/Gaming.php">Gaming</a></li>
+=======
+                            <a href="../Electronics/Accessories.html"><span>Accessories</span></a>
+                            <span class="arrow">▶</span>
+                            <ul class="subcategory">
+                                <li><a href="../Electronics/Computers_Accessories.html">Computers</a></li>
+                                <li><a href="../Electronics/Mobiles_Accessories.html">Mobiles</a></li>
+                            </ul>
+
+
+                        <li><a href="../Electronics/Tablets.html">Tablets</a></li>
+                        <li><a href="../Electronics/Cameras.html">Cameras</a></li>
+
+
+                        <li><a href="../Electronics/Headphones.html">Headphones</a></li>
+                        <li><a href="../Electronics/Smart_watches.html">Smart Watches</a></li>
+                        <li><a href="../Electronics/Gaming.html">Gaming</a></li>
+>>>>>>> 8f339d0368b3378e8f412f937b61d6a7cb961cbd
                         </li>
                     </ul>
                 </ul>
@@ -342,6 +410,10 @@
 
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8f339d0368b3378e8f412f937b61d6a7cb961cbd
                 <div class="box">
                     <h3>Filter by Price</h3>
                     <ul class="price-filter">
@@ -383,6 +455,7 @@
             <h1>Head<span>phones</span></h1>
         </div>
         <hr>
+<<<<<<< HEAD
         <!-- products -->
         <section class="products section container" id="products">
 
@@ -677,6 +750,13 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
+=======
+        <!-- Products -->
+    </section>
+
+    <!-- Footer -->
+    <footer></footer>
+>>>>>>> 8f339d0368b3378e8f412f937b61d6a7cb961cbd
 
 
     <!-- link js page -->
