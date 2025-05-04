@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Order Flow</title>
+    <title>Checkout Page</title>
     <link rel="stylesheet" href="./css/check_out.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
     <nav>
@@ -17,31 +18,31 @@
     </nav>
 
     <!-- Summary Order Page -->
-    <section id="summary">
-        <h2>Summary Order</h2>
-        <table id="summary-table">
-            <tr>
-                <td>Smartphone</td>
-                <td><input type="number" id="product1-quantity" value="1" min="1"></td>
-                <td>$500.00</td>
-                <td><img src="smartphone.jpg" alt="Smartphone"></td>
-            </tr>
-            <tr>
-                <td>Laptop</td>
-                <td><input type="number" id="product2-quantity" value="1" min="1"></td>
-                <td>$800.00</td>
-                <td><img src="laptop.jpg" alt="Laptop"></td>
-            </tr>
-            <tr>
-                <td>Smartwatch</td>
-                <td><input type="number" id="product3-quantity" value="1" min="1"></td>
-                <td>$200.00</td>
-                <td><img src="smartwatch.jpg" alt="Smartwatch"></td>
-            </tr>
-        </table>
-        <p>Total: $<span id="total-price">1450.00</span></p>
-        <button id="nextBtn">Next: Billing Address</button>
-    </section>
+<!-- Summary Order Section -->
+<section id="summary">
+    <h2>Summary Order</h2>
+<!-- بدل الجدول القديم بهذا -->
+<table id="summary-table">
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Image</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- سيتم ملؤه بالجافاسكريبت -->
+    </tbody>
+  </table>
+    <div class="cart-summary">
+      <p>Total: $<span id="total-price">0.00</span></p>
+      <button id="nextBtn" class="checkout-btn">Next: Billing Address</button>
+    </div>
+  </section>
+  
+  <!-- Rest of your checkout sections... -->
 
     <!-- Billing Address Page -->
     <section id="billing" style="display:none;">
@@ -88,36 +89,27 @@
         <p><strong>Card Number:</strong> <span id="customer-card-number"></span></p>
         <p><strong>Payment Method:</strong> <span id="customer-payment-method"></span></p>
         <h3>Order Summary:</h3>
-        <p><strong>Smartphone Quantity:</strong> <span id="product1-qty"></span></p>
-        <p><strong>Laptop Quantity:</strong> <span id="product2-qty"></span></p>
-        <p><strong>Smartwatch Quantity:</strong> <span id="product3-qty"></span></p>
+        <div id="final-order-summary"></div>
         <p><strong>Total Price:</strong> $<span id="final-total"></span></p>
+
+        <h3>Your Location</h3>
+        <div id="map" style="height: 400px; width: 100%;"></div>
     </section>
-<!-- Complete Order Page -->
-<section id="complete" style="display:none;">
-    <h2>Complete Order</h2>
-    <p>Thank you for your order! Your order is complete.</p>
 
-    <!-- Adding the Map -->
-    <h3>Your Location</h3>
-    <div id="map" style="height: 400px; width: 100%;"></div>
-</section>
-
-<script>
-    function initMap() {
-        var myLocation = {lat: -34.397, lng: 150.644}; // Example coordinates
-        var map = new google.maps.Map(document.getElementById("map"), {
-            zoom: 8,
-            center: myLocation
-        });
-        var marker = new google.maps.Marker({
-            position: myLocation,
-            map: map
-        });
-    }
-</script>
-
-<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+    <script>
+        function initMap() {
+            var myLocation = {lat: -34.397, lng: 150.644};
+            var map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 8,
+                center: myLocation
+            });
+            var marker = new google.maps.Marker({
+                position: myLocation,
+                map: map
+            });
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
     <script src="./js/check_out.js"></script>
 </body>
 </html>
