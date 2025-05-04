@@ -5,20 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home and kitchen</title>
-    <link rel="stylesheet" href="./css/Electronics.css">
+    <link rel="stylesheet" href="./css/home.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <!-- favicon -->
     <link rel="shortcut icon" href="./imgs/index/favicon.png" type="image/x-icon">
 
     <!-- flaticon -->
-    <link rel="stylesheet"
-        href="https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-rounded/css/uicons-solid-rounded.css" />
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-rounded/css/uicons-solid-rounded.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <link rel="stylesheet"
-        href="https://cdn-uicons.flaticon.com/2.6.0/uicons-thin-straight/css/uicons-thin-straight.css" />
-    <link rel="stylesheet"
-        href="https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css" />
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-thin-straight/css/uicons-thin-straight.css" />
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css" />
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
@@ -26,68 +23,65 @@
 
     <style>
         /* footer */
+        
         footer {
             background-color: #1a365d !important;
         }
-
-
+        
         .custom-link {
             color: hsl(176, 88%, 27%) !important;
         }
-
+        
         .custom-link:hover {
             color: hsl(176, 88%, 27%) !important;
         }
-
+        
         .social-icon {
             font-size: 1.25rem;
             transition: transform 0.3s ease;
             color: hsl(176, 88%, 27%);
         }
-
+        
         .social-icon:hover {
             transform: translateY(-2px);
             color: hsl(176, 88%, 27%);
         }
-
+        
         .contact-icon {
             width: 24px;
             height: 24px;
             flex-shrink: 0;
             color: hsl(176, 88%, 27%);
         }
-
+        
         .head {
             color: hsl(176, 88%, 27%);
             font-size: 18px;
             font-weight: 900;
         }
-
+        
         #footer-tit span {
             color: hsl(176, 88%, 27%);
             font-weight: 900 !important;
-
-
         }
-
+        
         #footer-tit,
         .inf {
             color: white !important;
             font-size: 13px;
             font-weight: 200;
         }
-
+        
         .inf:hover {
             color: hsl(176, 88%, 27%) !important;
-
         }
-
+        
         .link-secondary {
             color: white !important;
             font-size: 13px;
             font-weight: 200;
         }
-
+        
         .link-secondary:hover {
             color: hsl(176, 88%, 27%) !important;
         }
@@ -103,8 +97,8 @@
         <div class="container d-flex justify-content-between align-items-center">
             <span>🎁 Get 10% off your first order! Use code: WELCOME10</span>
             <button class="btn btn-link text-white p-0 close-promo">
-                <i class="fas fa-times"></i>
-            </button>
+        <i class="fas fa-times"></i>
+      </button>
         </div>
     </div>
 
@@ -122,8 +116,8 @@
                     <div class="search-box input-group">
                         <input type="text" class="form-control border-0" placeholder="Search products..." />
                         <button class="btn btn-custom">
-                            <i class="fas fa-search"></i>
-                        </button>
+              <i class="fas fa-search"></i>
+            </button>
                     </div>
                 </div>
 
@@ -150,55 +144,55 @@
                 <!-- Categories Dropdown -->
                 <div class="dropdown me-4" id="categoriesDropdown">
                     <button class="btn btn-custom dropdown-toggle rounded-pill px-4" data-bs-toggle="dropdown">
-                        <i class="fas fa-bars me-2"></i>Categories
-                    </button>
+            <i class="fas fa-bars me-2"></i>Categories
+          </button>
 
                     <ul class="dropdown-menu dropdown-menu-end">
                         <!-- فئة مع قائمة فرعية -->
                         <li class="dropdown-submenu">
-                            <a class="dropdown-item dropdown-toggle" href="./Electronics.php">Electronics</a>
+                            <a class="dropdown-item dropdown-toggle" href="./Electronics.html">Electronics</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="./Electronics/Smart_phones.php">Mobiles</a></li>
-                                <li><a class="dropdown-item" href="./Electronics/Televisions.php">Tvs</a></li>
-                                <li><a class="dropdown-item" href="./Electronics/Computers.php">Computers</a></li>
-                                <li><a class="dropdown-item" href="./Electronics/Accessories.php">Accessories</a></li>
-                                <li><a class="dropdown-item" href="./Electronics/Tablets.php">Tablets</a></li>
-                                <li><a class="dropdown-item" href="./Electronics/Cameras.php">Cameras</a></li>
-                                <li><a class="dropdown-item" href="./Electronics/Headphones.php">Headphones</a></li>
-                                <li><a class="dropdown-item" href="./Electronics/Smart_watches.php">Smart Watches</a></li>
-                                <li><a class="dropdown-item" href="./Electronics/Gaming.php">Gaming</a></li>
+                                <li><a class="dropdown-item" href="./Electronics/Smart_phones.html">Mobiles</a></li>
+                                <li><a class="dropdown-item" href="./Electronics/Televisions.html">Tvs</a></li>
+                                <li><a class="dropdown-item" href="./Electronics/Laptops.html">Computers</a></li>
+                                <li><a class="dropdown-item" href="./Electronics/Accessories.html">Accessories</a></li>
+                                <li><a class="dropdown-item" href="./Electronics/Tablets.html">Tablets</a></li>
+                                <li><a class="dropdown-item" href="./Electronics/Cameras.html">Cameras</a></li>
+                                <li><a class="dropdown-item" href="./Electronics/Headphones.html">Headphones</a></li>
+                                <li><a class="dropdown-item" href="./Electronics/Smart_watches.html">Smart Watches</a></li>
+                                <li><a class="dropdown-item" href="./Electronics/Gaming.html">Gaming</a></li>
                             </ul>
                         </li>
 
                         <!-- فئة أخرى -->
                         <li class="dropdown-submenu">
-                            <a class="dropdown-item dropdown-toggle" href="./Fashion.php">Fashion</a>
+                            <a class="dropdown-item dropdown-toggle" href="#">Fashion</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="./Fashions/men's.php">Men's Wear</a></li>
-                                <li><a class="dropdown-item" href="./Fashions/women's.php">Women's Wear</a></li>
-                                <li><a class="dropdown-item" href="./Fashions/kids.php">Kids</a></li>
+                                <li><a class="dropdown-item" href="#">Men's Wear</a></li>
+                                <li><a class="dropdown-item" href="#">Women's Wear</a></li>
+                                <li><a class="dropdown-item" href="#">Kids</a></li>
                             </ul>
                         </li>
 
                         <!-- باقي الفئات -->
                         <li class="dropdown-submenu">
-                            <a class="dropdown-item dropdown-toggle" href="./home.php">Home & kitchen</a>
+                            <a class="dropdown-item dropdown-toggle" href="#">Home & kitchen</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="./home catagory/Stove.php">Stoves</a></li>
-                                <li><a class="dropdown-item" href="./home catagory/Freezers.php">Freezers</a></li>
-                                <li><a class="dropdown-item" href="./home catagory/Refrigerators.php">Refrigerators</a></li>
-                                <li><a class="dropdown-item" href="./home catagory/Kitchen.php">Kitchens</a></li>
-                                <li><a class="dropdown-item" href="./home catagory/Washing machines.php">Washing</a></li>
-                                <li><a class="dropdown-item" href="./home catagory/Fans.php">Fans</a></li>
+                                <li><a class="dropdown-item" href="#">Electric-ovens</a></li>
+                                <li><a class="dropdown-item" href="#">Microwaves</a></li>
+                                <li><a class="dropdown-item" href="#">Refrigerators</a></li>
+                                <li><a class="dropdown-item" href="#">Air-conditioners</a></li>
+                                <li><a class="dropdown-item" href="#">Water-heaters</a></li>
+                                <li><a class="dropdown-item" href="#">Fans</a></li>
                             </ul>
                         </li>
 
                         <li class="dropdown-submenu">
-                            <a class="dropdown-item dropdown-toggle" href="./Vehicles.php">Vehicles</a>
+                            <a class="dropdown-item dropdown-toggle" href="#">Vehicles</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="./Vehicles/cars.php">Cars</a></li>
-                                <li><a class="dropdown-item" href="./Vehicles/motors.php">motors</a></li>
-                                <li><a class="dropdown-item" href="./Vehicles/bicycles.php">bicycles</a></li>
+                                <li><a class="dropdown-item" href="#">cars</a></li>
+                                <li><a class="dropdown-item" href="#">motors</a></li>
+                                <li><a class="dropdown-item" href="#">bicycles</a></li>
 
                             </ul>
                         </li>
@@ -207,7 +201,7 @@
 
                 <!-- Navigation Links -->
                 <div class="d-flex flex-grow-1 justify-content-center">
-                    <a href="./index.php" class="nav-link">Home</a>
+                    <a href="./index.html" class="nav-link">Home</a>
                     <a href="#products" class="nav-link">Products</a>
                     <a href="#" class="nav-link">About</a>
                     <a href="#" class="nav-link">Contact US</a>
@@ -217,8 +211,8 @@
                 <!-- Categories Dropdown -->
                 <div class="dropdown me-4">
                     <button class="btn btn-custom dropdown-toggle rounded-pill px-4" data-bs-toggle="dropdown">
-                        <i class="far fa-user"></i>
-                    </button>
+            <i class="far fa-user"></i>
+          </button>
 
                     <ul class="dropdown-menu dropdown-menu-end">
                         <!-- فئة مع قائمة فرعية -->
@@ -243,10 +237,10 @@
                             <i class="fas fa-chevron-down"></i>
                         </div>
                         <div class="sub-menu">
-                            <a href="./Electronics.php" class="d-block py-2">Electronics</a>
-                            <a href="./Fashion.php" class="d-block py-2">Fashion</a>
-                            <a href="./home.php" class="d-block py-2">Home & kitchen</a>
-                            <a href="./Vehicles.php" class="d-block py-2">Vehicles</a>
+                            <a href="#" class="d-block py-2">Electronics</a>
+                            <a href="#" class="d-block py-2">Fashion</a>
+                            <a href="#" class="d-block py-2">Home & kitchen</a>
+                            <a href="#" class="d-block py-2">Vehicles</a>
                         </div>
                     </div>
 
@@ -282,91 +276,91 @@
                 <ul class="category-list">
                     <ul class="category">
                         <li class="has-submenu">
-                            <a href="./home catagory/Refrigerators.php"><span>Refrigerators</span></a>
+                            <a href="./home catagory/Refrigerators.html"><span>Refrigerators</span></a>
                             <span class="arrow">▶</span>
                             <ul class="subcategory">
                                 <li>
-                                    <a href="./home catagory/Samsung_Refrigerators.php">Samsung</a>
+                                    <a href="./home catagory/Samsung_Refrigerators.html">Samsung</a>
                                 </li>
                                 <li>
-                                    <a href="./home catagory/Toshiba_Refrigerators.php">Toshiba</a>
+                                    <a href="./home catagory/Toshiba_Refrigerators.html">Toshiba</a>
                                 </li>
                                 <li>
-                                    <a href="./home catagory/kiriazi_Refrigrators.php">Kiriazi</a>
+                                    <a href="./home catagory/kiriazi_Refrigrators.html">Kiriazi</a>
                                 </li>
 
                             </ul>
 
 
-                        <li class="has-submenu">
-                            <a href="./home catagory/Fans.php"><span>Fans</span></a>
-                            <span class="arrow">▶</span>
-                            <ul class="subcategory">
-                                <li>
-                                    <a href="./home catagory/Fresh_Fans.php">Fresh</a>
-                                </li>
-                                <li>
-                                    <a href="./home catagory/ATA_Fans.php">ATA</a>
-                                </li>
-                                <li>
-                                    <a href="./home catagory/Toshiba_Fans.php">Toshiba</a>
-                                </li>
-                            </ul>
+                            <li class="has-submenu">
+                                <a href="./home catagory/Fans.html"><span>Fans</span></a>
+                                <span class="arrow">▶</span>
+                                <ul class="subcategory">
+                                    <li>
+                                        <a href="./home catagory/Fresh_Fans.html">Fresh</a>
+                                    </li>
+                                    <li>
+                                        <a href="./home catagory/ATA_Fans.html">ATA</a>
+                                    </li>
+                                    <li>
+                                        <a href="./home catagory/Toshiba_Fans.html">Toshiba</a>
+                                    </li>
+                                </ul>
 
-                        <li class="has-submenu">
-                            <a href="./home catagory/Freezers.php"><span>Freezers</span></a>
-                            <span class="arrow">▶</span>
-                            <ul class="subcategory">
-                                <li>
-                                    <a href="./home catagory/Kiriazi_Freezers.php">Kiriazi</a>
-                                </li>
-                                <li>
-                                    <a href="./home catagory/Toshiba_Freezers.php">Toshiba</a>
-                                </li>
-                                <li>
-                                    <a href="./home catagory/Tornado_Freezers.php">Tornado</a>
-                                </li>
+                                <li class="has-submenu">
+                                    <a href="./home catagory/Freezers.html"><span>Freezers</span></a>
+                                    <span class="arrow">▶</span>
+                                    <ul class="subcategory">
+                                        <li>
+                                            <a href="./home catagory/Kiriazi_Freezers.html">Kiriazi</a>
+                                        </li>
+                                        <li>
+                                            <a href="./home catagory/Toshiba_Freezers.html">Toshiba</a>
+                                        </li>
+                                        <li>
+                                            <a href="./home catagory/Tornado_Freezers.html">Tornado</a>
+                                        </li>
 
-                            </ul>
-
-
-                        <li class=" has-submenu ">
-                            <a href="./home catagory/Stove.php"><span>Stoves</span></a>
-                            <span class="arrow ">▶</span>
-                            <ul class="subcategory ">
-                                <li>
-                                    <a href="./home catagory/Fresh_Stove.php">Fresh</a>
-                                </li>
-                                <li>
-                                    <a href="./home catagory/Unionaire_Stove.php">Unionaire</a>
-                                </li>
-                                <li>
-                                    <a href="./home catagory/Zanosi_Stove.php">Zaonsi</a>
-                                </li>
-                            </ul>
-
-                        <li class=" has-submenu ">
-                            <a href="./home catagory/Washing machines.php"><span>Washing Machines</span></a>
-                            <span class="arrow ">▶</span>
-                            <ul class="subcategory ">
-                                <li>
-                                    <a href="./home catagory/Fresh_Washing.php">Fresh</a>
-                                </li>
-                                <li>
-                                    <a href="./home catagory/Toshiba_Washing.php">Toshiba</a>
-                                </li>
-                                <li>
-                                    <a href="./home catagory/Zanosi_Washing.php">Zaonsi</a>
-                                </li>
-                            </ul>
+                                    </ul>
 
 
-                        <li>
-                            <a href="./home catagory/Electrical appliances.php">Appliances</a>
-                        </li>
-                        <li>
-                            <a href="./home catagory/Kitchen.php">Kitchens</a>
-                        </li>
+                                    <li class=" has-submenu ">
+                                        <a href="./home catagory/Stove.html"><span>Stoves</span></a>
+                                        <span class="arrow ">▶</span>
+                                        <ul class="subcategory ">
+                                            <li>
+                                                <a href="./home catagory/Fresh_Stove.html ">Fresh</a>
+                                            </li>
+                                            <li>
+                                                <a href="./home catagory/Unionaire_Stove.html ">Unionaire</a>
+                                            </li>
+                                            <li>
+                                                <a href="./home catagory/Zanosi_Stove.html ">Zaonsi</a>
+                                            </li>
+                                        </ul>
+
+                                        <li class=" has-submenu ">
+                                            <a href="./home catagory/Washing machines.html"><span>Washing Machines</span></a>
+                                            <span class="arrow ">▶</span>
+                                            <ul class="subcategory ">
+                                                <li>
+                                                    <a href="./home catagory/Fresh_Washing.html">Fresh</a>
+                                                </li>
+                                                <li>
+                                                    <a href="./home catagory/Toshiba_Washing.html ">Toshiba</a>
+                                                </li>
+                                                <li>
+                                                    <a href="./home catagory/Zanosi_Washing.html ">Zaonsi</a>
+                                                </li>
+                                            </ul>
+
+
+                                            <li>
+                                                <a href="./home catagory/Electrical appliances.html ">Appliances</a>
+                                            </li>
+                                            <li>
+                                                <a href="./home catagory/Kitchen.html ">Kitchens</a>
+                                            </li>
                     </ul>
                 </ul>
 
@@ -403,7 +397,7 @@
                         <div class="brand ">
 
                             <div>
-                                <li><a href="./home catagory/Samsung.php">Samsung</a></li>
+                                <li><a href="./home catagory/Samsung.html ">Samsung</a></li>
                                 <span>Electrical Devices</span>
                             </div>
                         </div>
@@ -412,7 +406,7 @@
 
                             <div>
                                 <li>
-                                    <a href="./home catagory/Fresh.php">Fresh</a>
+                                    <a href="./home catagory/Fresh.html ">Fresh</a>
                                 </li>
                                 <span>Electrical Devices</span>
                             </div>
@@ -422,7 +416,7 @@
 
                             <div>
                                 <li>
-                                    <a href="./home catagory/Toshiba .ht ">Toshiba</a>
+                                    <a href="./home catagory/Toshiba .html ">Toshiba</a>
                                 </li>
                                 <span>Electrical Devices</span>
                             </div>
@@ -452,7 +446,7 @@
 
                             <div>
                                 <li>
-                                    <a href="./home catagory/Zanosi.php">Zanosi</a>
+                                    <a href="./home catagory/Zanosi.html ">Zanosi</a>
                                 </li>
                                 <span>Electrical Devices</span>
                             </div>
@@ -462,7 +456,7 @@
 
                             <div>
                                 <li>
-                                    <a href="./home catagory/Kiriazi.php">Kiriazi</a>
+                                    <a href="./home catagory/Kiriazi.html ">Kiriazi</a>
                                 </li>
                                 <span>Electrical Devices</span>
                             </div>
@@ -484,12 +478,12 @@
         <!-- banners -->
         <div class="banners ">
 
-            <a href="./home catagory/Kitchen.php"><img src="./imgs/home/banner1 (1).jpg " alt="banner "></a>
+            <a href="./home catagory/Kitchen.html "><img src="./imgs/home/banner1 (1).jpg " alt="banner "></a>
         </div>
         <!-- posters -->
         <div class="posters ">
-            <a href="./home catagory/Electrical appliances.php"><img src="./imgs/home/kit6.jpg " alt="poster "></a>
-            <a href="./home catagory/Toshiba_Refrigerators.php"><img src="./imgs/home/test.jpg" alt="poster "></a>
+            <a href="./home catagory/Electrical appliances.html "><img src="./imgs/home/kit6.jpg " alt="poster "></a>
+            <a href="./home catagory/Toshiba_Refrigerators.html "><img src="./imgs/home/test.jpg" alt="poster "></a>
         </div>
         <!-- brands -->
         <div class="brand-products ">
@@ -498,139 +492,27 @@
             </div>
 
             <div class="brand-img ">
-                <a href="./home catagory/Zanosi_Washing.php"><img src="./imgs/home/f8.jpg " alt="brand "></a>
+                <a href="./home catagory/Zanosi_Washing.html "><img src="./imgs/home/f8.jpg " alt="brand "></a>
 
-                <a href="./home catagory/Toshiba_Refrigerators.php"><img src="./imgs/home/f (3).jpg "
-                        alt="brand "></a>
+                <a href="./home catagory/Toshiba_Refrigerators.html "><img src="./imgs/home/f (3).jpg " alt="brand "></a>
 
-                <a href="./home catagory/Tornado_Freezers.php"><img src="./imgs/home/f (2).jpg " alt="brand "></a>
+                <a href="./home catagory/Tornado_Freezers.html"><img src="./imgs/home/f (2).jpg " alt="brand "></a>
 
-                <a href="./home catagory/Unionaire_Stove.php"><img src="./imgs/home/f7.jpg " alt="brand "></a>
+                <a href="./home catagory/Unionaire_Stove.html "><img src="./imgs/home/f7.jpg " alt="brand "></a>
 
-                <a href="./home catagory/Fresh_Fans.php"><img src="./imgs/home/f 1.jpg " alt="brand "></a>
+                <a href="./home catagory/Fresh_Fans.html "><img src="./imgs/home/f 1.jpg " alt="brand "></a>
 
 
 
             </div>
         </div>
         <hr>
-
-        <!-- products -->
-        <section class="products section container" id="products">
-
-
-            <div class="products__container grid">
-                <?php
-                include 'db_connection.php'; // ملف يحتوي على اتصال قاعدة البيانات
-
-                // الحصول على الفئة "Electronics" (category_id = 1)
-                $category_id = 3;
-
-                // جلب معلومات الفئة
-                $category_query = $conn->prepare("SELECT * FROM categories WHERE category_id = ?");
-                $category_query->bind_param("i", $category_id);
-                $category_query->execute();
-                $category = $category_query->get_result()->fetch_assoc();
-
-                // جلب المنتجات التابعة للفئة
-                $products_query = $conn->prepare("
-SELECT * FROM products 
-WHERE category_id = ? 
-AND stock_quantity > 0
-ORDER BY created_at DESC
-");
-                $products_query->bind_param("i", $category_id);
-                $products_query->execute();
-                $products = $products_query->get_result();
-
-                if ($products->num_rows > 0) {
-                    while ($product = $products->fetch_assoc()) {
-                ?>
-                        <div class="product__item">
-                            <div class="product__banner">
-                                <a href="Detils.php?id=<?= $product['product_id'] ?>" class="product__images">
-                                    <img src="<?= $product['image_url_default'] ?>" class="product__img default" />
-                                    <img src="<?= $product['image_url_hover'] ?>" class="product__img hover" />
-                                </a>
-
-                                <div class="product__actions">
-                                    <a class="action__btn quick-view" aria-label="Quick View" href="Detils.php?id=<?= $product['product_id'] ?>">
-                                        <i class="fi fi-rr-eye"></i>
-                                    </a>
-                                    <button class="action__btn add-wishlist" aria-label="Add To Wishlist" data-id="<?= $product['product_id'] ?>">
-                                        <i class="fi fi-rr-heart"></i>
-                                    </button>
-                                    <button class="action__btn compare" aria-label="Compare" data-id="<?= $product['product_id'] ?>">
-                                        <i class="fi fi-rr-shuffle"></i>
-                                    </button>
-                                </div>
-
-                                <?php if ($product['badge_id']): ?>
-                                    <?php
-                                    $badgeQuery = "SELECT * FROM product_badges WHERE badge_id = " . $product['badge_id'];
-                                    $badgeResult = $conn->query($badgeQuery);
-                                    $badge = $badgeResult->fetch_assoc();
-                                    ?>
-                                    <div class="product__badge <?= $badge['badge_text'] === 'Sale' ? 'sale-badge' : 'new-badge' ?>">
-                                        <?= $badge['badge_text'] ?>
-                                    </div>
-                                <?php endif; ?>
-                            </div>
-
-                            <div class="product__content">
-                                <span class="product__category">
-                                    <?php
-                                    $categoryQuery = "SELECT name FROM categories WHERE category_id = " . $product['category_id'];
-                                    $categoryResult = $conn->query($categoryQuery);
-                                    echo $categoryResult->fetch_assoc()['name'];
-                                    ?>
-                                </span>
-
-
-                                <h3 class="product__title">
-                                    <a href="Detils.php?id=<?= $product['product_id'] ?>">
-                                        <?= htmlspecialchars($product['name']) ?>
-                                    </a>
-                                </h3>
-
-                                <div class="product__rating">
-                                    <?php for ($i = 1; $i <= 5; $i++): ?>
-                                        <?php if ($i <= floor($product['rating'])): ?>
-                                            <i class="fas fa-star"></i>
-                                        <?php elseif ($i == ceil($product['rating']) && $product['rating'] - floor($product['rating']) >= 0.5): ?>
-                                            <i class="fas fa-star-half-alt"></i>
-                                        <?php else: ?>
-                                            <i class="far fa-star"></i>
-                                        <?php endif; ?>
-                                    <?php endfor; ?>
-                                </div>
-
-                                <div class="product__price flex">
-                                    <span class="new__price">$<?= number_format($product['price'], 2) ?></span>
-                                    <?php if ($product['old_price'] > 0): ?>
-                                        <span class="old__price">$<?= number_format($product['old_price'], 2) ?></span>
-                                    <?php endif; ?>
-                                </div>
-
-                                <button class="action__btn cart__btn add-to-cart" aria-label="Add To Cart"
-                                    data-id="<?= $product['product_id'] ?>"
-                                    data-price="<?= $product['price'] ?>">
-                                    <i class="fi fi-rr-shopping-bag-add"></i>
-                                </button>
-                            </div>
-                        </div>
-                <?php
-                    }
-                } else {
-                    echo '<div class="alert alert-info">No products found in category</div>';
-                }
-                ?>
-            </div>
-        </section>
-
     </section>
 
+    <!-- products -->
+    <section>
 
+    </section>
 
 
     <!-- =====================================Cart Sidebar ===================================== -->
@@ -645,7 +527,7 @@ ORDER BY created_at DESC
                 <span>Subtotal:</span>
                 <span id="cartTotal ">$0.00</span>
             </div>
-            <button class="checkout-btn"><a href="./check_out.html">Proceed to Checkout</a></button>
+            <button class="checkout-btn ">Proceed to Checkout</button>
         </div>
     </div>
 
@@ -673,11 +555,8 @@ ORDER BY created_at DESC
                     </div>
 
                     <p class="mt-4 text-center text-lg-start custom-text-color " id="footer-tit ">
-                        <span>VOYX</span> is your reliable and convenient destination for online shopping. We offer a
-                        wide range of high-quality products, competitive prices, and fast, secure delivery right to your
-                        doorstep. Our platform is designed to
-                        give you a smooth and enjoyable shopping experience, supported by excellent customer service and
-                        24/7 support.
+                        <span>VOYX</span> is your reliable and convenient destination for online shopping. We offer a wide range of high-quality products, competitive prices, and fast, secure delivery right to your doorstep. Our platform is designed to
+                        give you a smooth and enjoyable shopping experience, supported by excellent customer service and 24/7 support.
                     </p>
 
                     <ul class="d-flex gap-3 justify-content-center justify-content-lg-start list-unstyled mt-4 ">
@@ -711,16 +590,16 @@ ORDER BY created_at DESC
                             <h5 class="mb-3 head ">Categories</h5>
                             <ul class="list-unstyled ">
                                 <li class="mb-2 ">
-                                    <a href="./Electronics.php" class="text-decoration-none link-secondary ">Electronics</a>
+                                    <a href="# " class="text-decoration-none link-secondary ">Electronics</a>
                                 </li>
                                 <li class="mb-2 ">
-                                    <a href="./Fashion.php" class="text-decoration-none link-secondary ">Fashion</a>
+                                    <a href="# " class="text-decoration-none link-secondary ">Fashion</a>
                                 </li>
                                 <li class="mb-2 ">
-                                    <a href="./home.php" class="text-decoration-none link-secondary ">Home & kitchen</a>
+                                    <a href="# " class="text-decoration-none link-secondary ">Home & kitchen</a>
                                 </li>
                                 <li class="mb-2 ">
-                                    <a href="./Vehicles.php" class="text-decoration-none link-secondary ">Vehicles</a>
+                                    <a href="# " class="text-decoration-none link-secondary ">Vehicles</a>
                                 </li>
                             </ul>
                         </div>
@@ -790,8 +669,7 @@ ORDER BY created_at DESC
                     </p>
 
                     <div class="order-md-1 d-flex gap-3 ">
-                        <a href="./Terms&Conditions.html " class="text-decoration-none link-primary ">Terms &
-                            Conditions</a>
+                        <a href="./Terms&Conditions.html " class="text-decoration-none link-primary ">Terms & Conditions</a>
                         <a href="./Privacy_Policy.html " class="text-decoration-none link-primary ">Privacy Policy</a>
                     </div>
                 </div>
@@ -809,7 +687,7 @@ ORDER BY created_at DESC
 
 
     <!-- link js page -->
-    <script src="./js/Electornics.js"></script>
+    <script src="./js/home.js "></script>
 
 </body>
 

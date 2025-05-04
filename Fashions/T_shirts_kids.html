@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fashions</title>
-    <link rel="stylesheet" href="./css/Fashions.css">
+    <link rel="stylesheet" href="../css/Fashions.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <!-- favicon -->
-    <link rel="shortcut icon" href="./imgs/index/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../imgs/index/favicon.png" type="image/x-icon">
     <!-- link bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <!-- flaticon -->
@@ -32,6 +32,8 @@
         <div class="container">
             <h2>Filters</h2>
             <div class="box">
+                <div class="arrow-left"><a href="../Fashion.html"><i class="fa-solid fa-arrow-left"></i></a></div>
+                <h5>Fashions</h5>
                 <h3>Category</h3>
                 <ul class="category-list">
                     <ul class="category">
@@ -39,9 +41,9 @@
                             <span>Men's Ware</span>
                             <span class="arrow">▶</span>
                             <ul class="subcategory">
-                                <li><a href="./Fashions/T_shirts_men's.html">T-Shirts</a></li>
-                                <li><a href="./Fashions/Pants_men's.html">Pants</a></li>
-                                <li><a href="./Fashions/Shoes_men's.html">Shoes</a></li>
+                                <li><a href="../Fashions/T_shirts_men's.html">T-Shirts</a></li>
+                                <li><a href="../Fashions/Pants_men's.html">Pants</a></li>
+                                <li><a href="../Fashions/Shoes_men's.html">Shoes</a></li>
                             </ul>
 
 
@@ -49,21 +51,24 @@
                             <span>Women's Ware</span>
                             <span class="arrow">▶</span>
                             <ul class="subcategory">
-                                <li><a href="./Fashions/T_shirts_women's.html">T-Shirts</a></li>
-                                <li><a href="./Fashions/Pants_women's.html">Pants</a></li>
-                                <li><a href="./Fashions/Shoes_women's.html">Shoes</a></li>
+                                <li><a href="../Fashions/T_shirts_women's.html">T-Shirts</a></li>
+                                <li><a href="../Fashions/Pants_women's.html">Pants</a></li>
+                                <li><a href="../Fashions/Shoes_women's.html">Shoes</a></li>
                             </ul>
 
                         <li class="has-submenu">
                             <span>Kids Ware</span>
                             <span class="arrow">▶</span>
                             <ul class="subcategory">
-                                <li><a href="./Fashions/T_shirts_kids.html">T-Shirts</a></li>
-                                <li><a href="./Fashions/Pants_kids.html">Pants</a></li>
-                                <li><a href="./Fashions/Shoes_kids.html">Shoes</a></li>
+                                <li><a href="../Fashions/T_shirts_kids.html">T-Shirts</a></li>
+                                <li><a href="../Fashions/Pants_kids.html">Pants</a></li>
+                                <li><a href="../Fashions/Shoes_kids.html">Shoes</a></li>
                             </ul>
                     </ul>
                 </ul>
+
+
+
 
                 <div class="box">
                     <h3>Filter by Price</h3>
@@ -90,42 +95,26 @@
                                 above</label></li>
                     </ul>
 
-                    <div class="box">
-                        <h3>Filter by Size</h3>
-                        <ul class="price-filter">
-                            <li><label><input type="checkbox" name="size" value="M" onclick="applyFilters()">
-                                    Medium</label></li>
-                            <li><label><input type="checkbox" name="size" value="L" onclick="applyFilters()">
-                                    Large</label></li>
-                            <li><label><input type="checkbox" name="size" value="XL" onclick="applyFilters()"> X
-                                    Large</label></li>
-                            <li><label><input type="checkbox" name="size" value="XXL" onclick="applyFilters()"> XX
-                                    Large</label></li>
-                        </ul>
-                    </div>
+                    
+                <div class="box">
+                    <h3>Filter by Size</h3>
+                    <ul class="price-filter">
+                        <li><label><input type="checkbox" name="size" value="M" onclick="applyFilters()"> Medium</label></li>
+                        <li><label><input type="checkbox" name="size" value="L" onclick="applyFilters()"> Large</label></li>
+                        <li><label><input type="checkbox" name="size" value="XL" onclick="applyFilters()"> X Large</label></li>
+                        <li><label><input type="checkbox" name="size" value="XXL" onclick="applyFilters()"> XX Large</label></li>
+                    </ul>
                 </div>
             </div>
+        </div>
     </section>
+
 
     <!-- Products Section -->
     <section class="products-container">
         <!-- Name of page -->
         <div class="Name">
-            <h1>Fash<span>ions</span></h1>
-        </div>
-        <!-- banners -->
-        <div class="banners">
-            <a href="./Fashions/T_shirts_men's.html"><img src="./imgs/Fashions/Fashions/banner2.jpg" alt="banner"></a>
-            
-        </div>
-        <!-- posters -->
-        <div class="posters">
-            <a href="./Fashions/T_shirts_men's.html"><img src="./imgs/Fashions/Fashions/poster1.jpg"
-                    alt="poster"></a>
-            <a href="./Fashions/Shoes_men's.html"><img src="./imgs/Fashions/Fashions/poster3.jpg" alt="poster"></a>
-        </div>
-        <div class="banners">
-            <a href="./Fashions/T_shirts_women's.html"><img src="./imgs/Fashions/Fashions/banner3.jpg" alt="banner"></a>
+            <h1>Ki<span>ds</span></h1>
         </div>
         <hr>
     </section>
@@ -140,7 +129,7 @@
 
 
     <!-- link js page -->
-    <script src="./js/Fashions.js"></script>
+    <script src="../js/Fashions.js"></script>
 
 </body>
 
