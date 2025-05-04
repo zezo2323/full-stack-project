@@ -438,13 +438,13 @@
     <!-- banners -->
     <div class="banners">
       <img src="./imgs/Electronics/Electronics/banner1.png" alt="banner">
-      <a href="./Electronics/Apple.php"><img src="./imgs/Electronics/Electronics/banner2.png" alt="banner"></a>
+      <a href="./Electronics/Smart_phones.php"><img src="./imgs/Electronics/Electronics/banner2.png" alt="banner"></a>
     </div>
     <!-- posters -->
     <div class="posters">
-      <a href="./Electronics/Mobiles_Accessories.php"><img src="./imgs/Electronics/Electronics/poster1.png"
+      <a href="./Electronics/Accessories.php"><img src="./imgs/Electronics/Electronics/poster1.png"
           alt="poster"></a>
-      <a href="./Electronics/Tornado.php"><img src="./imgs/Electronics/Electronics/poster2.png" alt="poster"></a>
+      <a href="./Electronics/Televisions.php"><img src="./imgs/Electronics/Electronics/poster2.png" alt="poster"></a>
     </div>
     <!-- brands -->
     <div class="brand-products">
