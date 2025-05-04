@@ -4,12 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mobiles</title>
+    <title>Accessories</title>
     <link rel="stylesheet" href="../css/Electronics.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <!-- favicon -->
     <link rel="shortcut icon" href="../imgs/index/favicon.png" type="image/x-icon">
+
     <!-- flaticon -->
     <link rel="stylesheet"
         href="https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-rounded/css/uicons-solid-rounded.css" />
@@ -270,8 +271,8 @@
         </div>
     </nav>
 
-    <!-- Sidebar Filters -->
 
+    <!-- Sidebar Filters -->
 
     <section class="slider">
         <div class="container">
@@ -365,72 +366,12 @@
                                 above</label></li>
                     </ul>
 
-
-                    <div class="box">
-                        <h3>Filter by Capacity</h3>
-                        <ul class="price-filter">
-                            <li><label><input type="checkbox" name="capacity" value="32" onclick="applyFilters()">
-                                    32
-                                    GB</label></li>
-                            <li><label><input type="checkbox" name="capacity" value="64" onclick="applyFilters()">
-                                    64
-                                    GB</label></li>
-                            <li><label><input type="checkbox" name="capacity" value="128" onclick="applyFilters()">
-                                    128
-                                    GB</label></li>
-                            <li><label><input type="checkbox" name="capacity" value="256" onclick="applyFilters()">
-                                    256 GB</label></li>
-                            <li><label><input type="checkbox" name="capacity" value="512" onclick="applyFilters()">
-                                    512 GB</label></li>
-                        </ul>
-
-
-                        <div class="box">
-                            <h3>Brands</h3>
-                            <div class="brand">
-
-                                <div>
-                                    <li><a href="../Electronics/Apple.php">Apple</a></li>
-                                    <span>Mobiles</span>
-                                </div>
-                            </div>
-
-                            <div class="brand">
-
-                                <div>
-                                    <li><a href="../Electronics/Samsung.php">Samsung</a></li>
-                                    <span>Mobiles</span>
-                                </div>
-                            </div>
-
-                            <div class="brand">
-
-                                <div>
-                                    <li><a href="../Electronics/Xiaomi.php">Xiaomi</a></li>
-                                    <span>Mobiles</span>
-                                </div>
-                            </div>
-
-                            <div class="brand">
-
-                                <div>
-                                    <li><a href="../Electronics/Honor.php">Honor</a></li>
-                                    <span>Mobiles</span>
-                                </div>
-                            </div>
-
-                            <div class="brand">
-
-                                <div>
-                                    <li><a href="../Electronics/Oppo.php">Oppo</a></li>
-                                    <span>Mobiles</span>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
                 </div>
+
             </div>
+        </div>
+        </div>
+        </div>
     </section>
 
 
@@ -438,27 +379,7 @@
     <section class="products-container">
         <!-- Name of page -->
         <div class="Name">
-            <h1>Mob<span>iles</span></h1>
-        </div>
-
-        <!-- brands -->
-        <div class="brand-products">
-            <div class="brands-name">
-                <h3>Shop by <span>brand</span></h3>
-            </div>
-
-            <div class="brand-img">
-                <a href="../Electronics/Samsung.php"><img src="../imgs/Electronics/Electronics/brand1.png"
-                        alt="brand"></a>
-                <a href="../Electronics/Honor.php"><img src="../imgs/Electronics/Electronics/brand2.png"
-                        alt="brand"></a>
-                <a href="../Electronics/Apple.php"><img src="../imgs/Electronics/Electronics/brand11.png"
-                        alt="brand"></a>
-                <a href="../Electronics/Oppo.php"><img src="../imgs/Electronics/Electronics/brand12.png"
-                        alt="brand"></a>
-                <a href="../Electronics/Xiaomi.php"><img src="../imgs/Electronics/Electronics/brand13.png"
-                        alt="brand"></a>
-            </div>
+            <h1>Acces<span>sories</span></h1>
         </div>
         <hr>
         <!-- products -->
@@ -468,9 +389,9 @@
             <div class="products__container grid">
                 <?php
                 include '../db_connection.php'; // ملف يحتوي على اتصال قاعدة البيانات
-
+                
                 // الحصول على الفئة "Electronics" (category_id = 1)
-                $category_id = 5;
+                $category_id = 8;
 
                 // جلب معلومات الفئة
                 $category_query = $conn->prepare("SELECT * FROM categories WHERE category_id = ?");
@@ -491,7 +412,7 @@
 
                 if ($products->num_rows > 0) {
                     while ($product = $products->fetch_assoc()) {
-                ?>
+                        ?>
                         <div class="product__item">
                             <div class="product__banner">
                                 <a href="Detils.php?id=<?= $product['product_id'] ?>" class="product__images">
@@ -500,13 +421,16 @@
                                 </a>
 
                                 <div class="product__actions">
-                                    <a class="action__btn quick-view" aria-label="Quick View" href="../Detils.php?id=<?= $product['product_id'] ?>">
+                                    <a class="action__btn quick-view" aria-label="Quick View"
+                                        href="../Detils.php?id=<?= $product['product_id'] ?>">
                                         <i class="fi fi-rr-eye"></i>
                                     </a>
-                                    <button class="action__btn add-wishlist" aria-label="Add To Wishlist" data-id="<?= $product['product_id'] ?>">
+                                    <button class="action__btn add-wishlist" aria-label="Add To Wishlist"
+                                        data-id="<?= $product['product_id'] ?>">
                                         <i class="fi fi-rr-heart"></i>
                                     </button>
-                                    <button class="action__btn compare" aria-label="Compare" data-id="<?= $product['product_id'] ?>">
+                                    <button class="action__btn compare" aria-label="Compare"
+                                        data-id="<?= $product['product_id'] ?>">
                                         <i class="fi fi-rr-shuffle"></i>
                                     </button>
                                 </div>
@@ -559,13 +483,12 @@
                                 </div>
 
                                 <button class="action__btn cart__btn add-to-cart" aria-label="Add To Cart"
-                                    data-id="<?= $product['product_id'] ?>"
-                                    data-price="<?= $product['price'] ?>">
+                                    data-id="<?= $product['product_id'] ?>" data-price="<?= $product['price'] ?>">
                                     <i class="fi fi-rr-shopping-bag-add"></i>
                                 </button>
                             </div>
                         </div>
-                <?php
+                        <?php
                     }
                 } else {
                     echo '<div class="alert alert-info">No products found in category</div>';
@@ -574,7 +497,11 @@
             </div>
 
         </section>
+
     </section>
+
+
+
 
     <!-- =====================================Cart Sidebar ===================================== -->
     <div class="offcanvas-sidebar" id="cartSidebar">
@@ -616,9 +543,12 @@
                     </div>
 
                     <p class="mt-4 text-center text-lg-start custom-text-color" id="footer-tit">
-                        <span>VOYX</span> is your reliable and convenient destination for online shopping. We offer a wide range of
-                        high-quality products, competitive prices, and fast, secure delivery right to your doorstep. Our platform is
-                        designed to give you a smooth and enjoyable shopping experience, supported by excellent customer service and
+                        <span>VOYX</span> is your reliable and convenient destination for online shopping. We offer a
+                        wide range of
+                        high-quality products, competitive prices, and fast, secure delivery right to your doorstep. Our
+                        platform is
+                        designed to give you a smooth and enjoyable shopping experience, supported by excellent customer
+                        service and
                         24/7 support.
                     </p>
 
@@ -653,7 +583,8 @@
                             <h5 class="mb-3 head">Categories</h5>
                             <ul class="list-unstyled">
                                 <li class="mb-2">
-                                    <a href="../Electronics.php" class="text-decoration-none link-secondary">Electronics</a>
+                                    <a href="../Electronics.php"
+                                        class="text-decoration-none link-secondary">Electronics</a>
                                 </li>
                                 <li class="mb-2">
                                     <a href="../Fashion.php" class="text-decoration-none link-secondary">Fashion</a>
@@ -732,7 +663,8 @@
                     </p>
 
                     <div class="order-md-1 d-flex gap-3">
-                        <a href="./Terms&Conditions.html" class="text-decoration-none link-primary">Terms & Conditions</a>
+                        <a href="./Terms&Conditions.html" class="text-decoration-none link-primary">Terms &
+                            Conditions</a>
                         <a href="./Privacy_Policy.html" class="text-decoration-none link-primary">Privacy Policy</a>
                     </div>
                 </div>
@@ -750,8 +682,10 @@
 
 
 
+
     <!-- link js page -->
     <script src="../js/Electornics.js"></script>
+
 </body>
 
 </html>

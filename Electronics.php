@@ -156,49 +156,49 @@
           <ul class="dropdown-menu dropdown-menu-end">
             <!-- فئة مع قائمة فرعية -->
             <li class="dropdown-submenu">
-              <a class="dropdown-item dropdown-toggle" href="./Electronics.html">Electronics</a>
+              <a class="dropdown-item dropdown-toggle" href="./Electronics.php">Electronics</a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="./Electronics/Smart_phones.html">Mobiles</a></li>
-                <li><a class="dropdown-item" href="./Electronics/Televisions.html">Tvs</a></li>
-                <li><a class="dropdown-item" href="./Electronics/Laptops.html">Computers</a></li>
-                <li><a class="dropdown-item" href="./Electronics/Accessories.html">Accessories</a></li>
-                <li><a class="dropdown-item" href="./Electronics/Tablets.html">Tablets</a></li>
-                <li><a class="dropdown-item" href="./Electronics/Cameras.html">Cameras</a></li>
-                <li><a class="dropdown-item" href="./Electronics/Headphones.html">Headphones</a></li>
-                <li><a class="dropdown-item" href="./Electronics/Smart_watches.html">Smart Watches</a></li>
-                <li><a class="dropdown-item" href="./Electronics/Gaming.html">Gaming</a></li>
+                <li><a class="dropdown-item" href="./Electronics/Smart_phones.php">Mobiles</a></li>
+                <li><a class="dropdown-item" href="./Electronics/Televisions.php">Tvs</a></li>
+                <li><a class="dropdown-item" href="./Electronics/Computers.php">Computers</a></li>
+                <li><a class="dropdown-item" href="./Electronics/Accessories.php">Accessories</a></li>
+                <li><a class="dropdown-item" href="./Electronics/Tablets.php">Tablets</a></li>
+                <li><a class="dropdown-item" href="./Electronics/Cameras.php">Cameras</a></li>
+                <li><a class="dropdown-item" href="./Electronics/Headphones.php">Headphones</a></li>
+                <li><a class="dropdown-item" href="./Electronics/Smart_watches.php">Smart Watches</a></li>
+                <li><a class="dropdown-item" href="./Electronics/Gaming.php">Gaming</a></li>
               </ul>
             </li>
 
             <!-- فئة أخرى -->
             <li class="dropdown-submenu">
-              <a class="dropdown-item dropdown-toggle" href="#">Fashion</a>
+              <a class="dropdown-item dropdown-toggle" href="./Fashion.php">Fashion</a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Men's Wear</a></li>
-                <li><a class="dropdown-item" href="#">Women's Wear</a></li>
-                <li><a class="dropdown-item" href="#">Kids</a></li>
+                <li><a class="dropdown-item" href="./Fashions/men's.php">Men's Wear</a></li>
+                <li><a class="dropdown-item" href="./Fashions/women's.php">Women's Wear</a></li>
+                <li><a class="dropdown-item" href="./Fashions/kids.php">Kids</a></li>
               </ul>
             </li>
 
             <!-- باقي الفئات -->
             <li class="dropdown-submenu">
-              <a class="dropdown-item dropdown-toggle" href="#">Home & kitchen</a>
+              <a class="dropdown-item dropdown-toggle" href="./home.php">Home & kitchen</a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Electric-ovens</a></li>
-                <li><a class="dropdown-item" href="#">Microwaves</a></li>
-                <li><a class="dropdown-item" href="#">Refrigerators</a></li>
-                <li><a class="dropdown-item" href="#">Air-conditioners</a></li>
-                <li><a class="dropdown-item" href="#">Water-heaters</a></li>
-                <li><a class="dropdown-item" href="#">Fans</a></li>
+                <li><a class="dropdown-item" href="./home catagory/Stove.php">Stoves</a></li>
+                <li><a class="dropdown-item" href="./home catagory/Freezers.php">Freezers</a></li>
+                <li><a class="dropdown-item" href="./home catagory/Refrigerators.php">Refrigerators</a></li>
+                <li><a class="dropdown-item" href="./home catagory/Kitchen.php">Kitchens</a></li>
+                <li><a class="dropdown-item" href="./home catagory/Washing machines.php">Washing</a></li>
+                <li><a class="dropdown-item" href="./home catagory/Fans.php">Fans</a></li>
               </ul>
             </li>
 
             <li class="dropdown-submenu">
-              <a class="dropdown-item dropdown-toggle" href="#">Vehicles</a>
+              <a class="dropdown-item dropdown-toggle" href="./Vehicles.php">Vehicles</a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">cars</a></li>
-                <li><a class="dropdown-item" href="#">motors</a></li>
-                <li><a class="dropdown-item" href="#">bicycles</a></li>
+                <li><a class="dropdown-item" href="./Vehicles/cars.php">Cars</a></li>
+                <li><a class="dropdown-item" href="./Vehicles/motors.php">motors</a></li>
+                <li><a class="dropdown-item" href="./Vehicles/bicycles.php">bicycles</a></li>
 
               </ul>
             </li>
@@ -243,10 +243,10 @@
               <i class="fas fa-chevron-down"></i>
             </div>
             <div class="sub-menu">
-              <a href="#" class="d-block py-2">Electronics</a>
-              <a href="#" class="d-block py-2">Fashion</a>
-              <a href="#" class="d-block py-2">Home & kitchen</a>
-              <a href="#" class="d-block py-2">Vehicles</a>
+              <a href="./Electronics.php" class="d-block py-2">Electronics</a>
+              <a href="./Fashion.php" class="d-block py-2">Fashion</a>
+              <a href="./home.php" class="d-block py-2">Home & kitchen</a>
+              <a href="./Vehicles.php" class="d-block py-2">Vehicles</a>
             </div>
           </div>
 
@@ -282,56 +282,56 @@
         <ul class="category-list">
           <ul class="category">
             <li class="has-submenu">
-              <a href="./Electronics/Smart_phones.html"><span>Mobile</span></a>
+              <a href="./Electronics/Smart_phones.php"><span>Mobile</span></a>
               <span class="arrow">▶</span>
               <ul class="subcategory">
-                <li><a href="./Electronics/Apple.html">Apple</a></li>
-                <li><a href="./Electronics/Samsung.html">Samsung</a></li>
-                <li><a href="./Electronics/Xiaomi.html">Xiaomi</a></li>
-                <li><a href="./Electronics/Honor.html">Honor</a></li>
-                <li><a href="./Electronics/Oppo.html">Oppo</a></li>
+                <li><a href="./Electronics/Apple.php">Apple</a></li>
+                <li><a href="./Electronics/Samsung.php">Samsung</a></li>
+                <li><a href="./Electronics/Xiaomi.php">Xiaomi</a></li>
+                <li><a href="./Electronics/Honor.php">Honor</a></li>
+                <li><a href="./Electronics/Oppo.php">Oppo</a></li>
               </ul>
 
 
             <li class="has-submenu">
-              <a href="./Electronics/Televisions.html"><span>Tvs</span></a>
+              <a href="./Electronics/Televisions.php"><span>Tvs</span></a>
               <span class="arrow">▶</span>
               <ul class="subcategory">
-                <li><a href="./Electronics/Tornado.html">Tornado</a></li>
-                <li><a href="./Electronics/LG.html">LG</a></li>
-                <li><a href="./Electronics/Sharp.html">Sharp</a></li>
-                <li><a href="./Electronics/Fresh.html">Fresh</a></li>
-                <li><a href="./Electronics/Toshiba.html">Toshiba</a></li>
+                <li><a href="./Electronics/Tornado.php">Tornado</a></li>
+                <li><a href="./Electronics/LG.php">LG</a></li>
+                <li><a href="./Electronics/Sharp.php">Sharp</a></li>
+                <li><a href="./Electronics/Fresh.php">Fresh</a></li>
+                <li><a href="./Electronics/Toshiba.php">Toshiba</a></li>
               </ul>
 
             <li class="has-submenu">
-              <a href="./Electronics/Computers.html"><span>Computers</span></a>
+              <a href="./Electronics/Computers.php"><span>Computers</span></a>
               <span class="arrow">▶</span>
               <ul class="subcategory">
-                <li><a href="./Electronics/HP.html">HP</a></li>
-                <li><a href="./Electronics/Dell.html">Dell</a></li>
-                <li><a href="./Electronics/Lenovo.html">Lenovo</a></li>
-                <li><a href="./Electronics/Mac.html">Mac</a></li>
-                <li><a href="./Electronics/Asus.html">Asus</a></li>
+                <li><a href="./Electronics/HP.php">HP</a></li>
+                <li><a href="./Electronics/Dell.php">Dell</a></li>
+                <li><a href="./Electronics/Lenovo.php">Lenovo</a></li>
+                <li><a href="./Electronics/Mac.php">Mac</a></li>
+                <li><a href="./Electronics/Asus.php">Asus</a></li>
               </ul>
 
 
             <li class="has-submenu">
-              <a href="./Electronics/Accessories.html"><span>Accessories</span></a>
+              <a href="./Electronics/Accessories.php"><span>Accessories</span></a>
               <span class="arrow">▶</span>
               <ul class="subcategory">
-                <li><a href="./Electronics/Computers_Accessories.html">Computers</a></li>
-                <li><a href="./Electronics/Mobiles_Accessories.html">Mobiles</a></li>
+                <li><a href="./Electronics/Computers_Accessories.php">Computers</a></li>
+                <li><a href="./Electronics/Mobiles_Accessories.php">Mobiles</a></li>
               </ul>
 
 
-            <li><a href="./Electronics/Tablets.html">Tablets</a></li>
-            <li><a href="./Electronics/Cameras.html">Cameras</a></li>
+            <li><a href="./Electronics/Tablets.php">Tablets</a></li>
+            <li><a href="./Electronics/Cameras.php">Cameras</a></li>
 
 
-            <li><a href="./Electronics/Headphones.html">Headphones</a></li>
-            <li><a href="./Electronics/Smart_watches.html">Smart Watches</a></li>
-            <li><a href="./Electronics/Gaming.html">Gaming</a></li>
+            <li><a href="./Electronics/Headphones.php">Headphones</a></li>
+            <li><a href="./Electronics/Smart_watches.php">Smart Watches</a></li>
+            <li><a href="./Electronics/Gaming.php">Gaming</a></li>
             </li>
           </ul>
         </ul>
@@ -369,7 +369,7 @@
             <div class="brand">
 
               <div>
-                <li><a href="./Electronics/Samsung.html">Samsung</a></li>
+                <li><a href="./Electronics/Samsung.php">Samsung</a></li>
                 <span>Mobiles</span>
               </div>
             </div>
@@ -377,7 +377,7 @@
             <div class="brand">
 
               <div>
-                <li><a href="./Electronics/HP.html">Hp</a></li>
+                <li><a href="./Electronics/HP.php">Hp</a></li>
                 <span>Computers</span>
               </div>
             </div>
@@ -385,7 +385,7 @@
             <div class="brand">
 
               <div>
-                <li><a href="./Electronics/Apple_watche.html">Apple Watche</a></li>
+                <li><a href="./Electronics/Apple_watche.php">Apple Watche</a></li>
                 <span>Watches</span>
               </div>
             </div>
@@ -393,7 +393,7 @@
             <div class="brand">
 
               <div>
-                <li><a href="./Electronics/Toshiba.html">Toshiba</a></li>
+                <li><a href="./Electronics/Toshiba.php">Toshiba</a></li>
                 <span>Tvs</span>
               </div>
             </div>
@@ -401,7 +401,7 @@
             <div class="brand">
 
               <div>
-                <li><a href="./Electronics/playstation.html">Playstation</a></li>
+                <li><a href="./Electronics/playstation.php">Playstation</a></li>
                 <span>Gaming</span>
               </div>
             </div>
@@ -409,7 +409,7 @@
             <div class="brand">
 
               <div>
-                <li><a href="./Electronics/Tapo.html">Tapo</a></li>
+                <li><a href="./Electronics/Tapo.php">Tapo</a></li>
                 <span>Cameras</span>
               </div>
             </div>
@@ -417,7 +417,7 @@
             <div class="brand">
 
               <div>
-                <li><a href="./Electronics/Ipad_pro.html">Ipad pro</a></li>
+                <li><a href="./Electronics/Ipad_pro.php">Ipad pro</a></li>
                 <span>Tablets</span>
               </div>
             </div>
@@ -438,13 +438,13 @@
     <!-- banners -->
     <div class="banners">
       <img src="./imgs/Electronics/Electronics/banner1.png" alt="banner">
-      <a href="./Electronics/Apple.html"><img src="./imgs/Electronics/Electronics/banner2.png" alt="banner"></a>
+      <a href="./Electronics/Smart_phones.php"><img src="./imgs/Electronics/Electronics/banner2.png" alt="banner"></a>
     </div>
     <!-- posters -->
     <div class="posters">
-      <a href="./Electronics/Mobiles_Accessories.html"><img src="./imgs/Electronics/Electronics/poster1.png"
+      <a href="./Electronics/Accessories.php"><img src="./imgs/Electronics/Electronics/poster1.png"
           alt="poster"></a>
-      <a href="./Electronics/Tornado.html"><img src="./imgs/Electronics/Electronics/poster2.png" alt="poster"></a>
+      <a href="./Electronics/Televisions.php"><img src="./imgs/Electronics/Electronics/poster2.png" alt="poster"></a>
     </div>
     <!-- brands -->
     <div class="brand-products">
@@ -453,27 +453,27 @@
       </div>
 
       <div class="brand-img">
-        <a href="./Electronics/Samsung.html"><img src="./imgs/Electronics/Electronics/brand1.png"
+        <a href="./Electronics/Samsung.php"><img src="./imgs/Electronics/Electronics/brand1.png"
             alt="brand"></a>
-        <a href="./Electronics/Honor.html"><img src="./imgs/Electronics/Electronics/brand2.png" alt="brand"></a>
-        <a href="./Electronics/Asus.html"><img src="./imgs/Electronics/Electronics/brand3.png" alt="brand"></a>
-        <a href="./Electronics/Lenovo.html"><img src="./imgs/Electronics/Electronics/brand4.png"
+        <a href="./Electronics/Honor.php"><img src="./imgs/Electronics/Electronics/brand2.png" alt="brand"></a>
+        <a href="./Electronics/Asus.php"><img src="./imgs/Electronics/Electronics/brand3.png" alt="brand"></a>
+        <a href="./Electronics/Lenovo.php"><img src="./imgs/Electronics/Electronics/brand4.png"
             alt="brand"></a>
-        <a href="./Electronics/Apple_brand.html"><img src="./imgs/Electronics/Electronics/brand5.png"
+        <a href="./Electronics/Apple_brand.php"><img src="./imgs/Electronics/Electronics/brand5.png"
             alt="brand"></a>
-        <a href="./Electronics/HP.html"><img src="./imgs/Electronics/Electronics/brand6.png" alt="brand"></a>
-        <a href="./Electronics/Xiaomi.html"><img src="./imgs/Electronics/Electronics/brand7.png"
+        <a href="./Electronics/HP.php"><img src="./imgs/Electronics/Electronics/brand6.png" alt="brand"></a>
+        <a href="./Electronics/Xiaomi.php"><img src="./imgs/Electronics/Electronics/brand7.png"
             alt="brand"></a>
-        <a href="./Electronics/JBL.html"><img src="./imgs/Electronics/Electronics/brand8.png" alt="brand"></a>
-        <a href="./Electronics/Toshiba.html"><img src="./imgs/Electronics/Electronics/brand9.png"
+        <a href="./Electronics/JBL.php"><img src="./imgs/Electronics/Electronics/brand8.png" alt="brand"></a>
+        <a href="./Electronics/Toshiba.php"><img src="./imgs/Electronics/Electronics/brand9.png"
             alt="brand"></a>
-        <a href="./Electronics/Fresh.html"><img src="./imgs/Electronics/Electronics/brand10.png"
+        <a href="./Electronics/Fresh.php"><img src="./imgs/Electronics/Electronics/brand10.png"
             alt="brand"></a>
       </div>
     </div>
     <hr>
 
-
+    <!-- products -->
     <section class="products section container" id="products">
 
 
@@ -580,31 +580,23 @@
         <?php
           }
         } else {
-          echo '<div class="alert alert-info">No products found in Electronics category</div>';
+          echo '<div class="alert alert-info">No products found in category</div>';
         }
         ?>
       </div>
 
-
-
-
-
-
     </section>
-
-
   </section>
 
-  <!-- products -->
 
 
 
   <!-- pagination -->
   <div class="pagination">
-    <a href="./Electronics.html">&laquo;</a>
-    <a href="./Electronics.html" class="active">1</a>
-    <a href="./Electronics/Electronics_2.html">2</a>
-    <a href="./Electronics/Electronics_2.html">&raquo;</a>
+    <a href="./Electronics.php">&laquo;</a>
+    <a href="./Electronics.php" class="active">1</a>
+    <a href="./Electronics/Electronics_2.php">2</a>
+    <a href="./Electronics/Electronics_2.php">&raquo;</a>
   </div>
 
 
@@ -620,7 +612,8 @@
         <span>Subtotal:</span>
         <span id="cartTotal">$0.00</span>
       </div>
-      <button class="checkout-btn">Proceed to Checkout</button>
+      <button onclick="goToCheckout()">Proceed to Checkout</button>
+
     </div>
   </div>
 
@@ -685,16 +678,16 @@
               <h5 class="mb-3 head">Categories</h5>
               <ul class="list-unstyled">
                 <li class="mb-2">
-                  <a href="#" class="text-decoration-none link-secondary">Electronics</a>
+                  <a href="./Electronics.php" class="text-decoration-none link-secondary">Electronics</a>
                 </li>
                 <li class="mb-2">
-                  <a href="#" class="text-decoration-none link-secondary">Fashion</a>
+                  <a href="./Fashion.php" class="text-decoration-none link-secondary">Fashion</a>
                 </li>
                 <li class="mb-2">
-                  <a href="#" class="text-decoration-none link-secondary">Home & kitchen</a>
+                  <a href="./home.php" class="text-decoration-none link-secondary">Home & kitchen</a>
                 </li>
                 <li class="mb-2">
-                  <a href="#" class="text-decoration-none link-secondary">Vehicles</a>
+                  <a href="./Vehicles.php" class="text-decoration-none link-secondary">Vehicles</a>
                 </li>
               </ul>
             </div>

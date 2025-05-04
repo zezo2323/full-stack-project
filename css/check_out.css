@@ -88,3 +88,49 @@ button {
 button:hover {
     background-color: #159a78;
 }
+
+
+
+/* تنسيق الجدول */
+#summary-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+  }
+  
+  #summary-table th, #summary-table td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  #summary-table img {
+    max-width: 50px;
+    height: auto;
+    border-radius: 4px;
+  }
+  
+  /* تنسيق أزرار الحذف */
+  .remove-btn {
+    background:white;
+    color: rgb(0, 0, 0);
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-size: 18px;
+  }
+  
+  .remove-btn:hover {
+    background:white;
+    color: rgb(255, 0, 0);
+  }
+  
+  /* حقل الكمية */
+  .quantity-input {
+    width: 60px;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }

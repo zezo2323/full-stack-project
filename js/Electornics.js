@@ -337,3 +337,67 @@ function checkPriceRange(selectedPrice, cardPrice) {
       `;
     });
   }
+
+
+
+
+
+function addToCart(product) {
+  const existingItem = cart.find(item => 
+    item.id === product.id && 
+    item.title === product.title && 
+    item.price === product.price
+  );
+
+  if (existingItem) {
+    existingItem.quantity += product.quantity || 1;
+  } else {
+    cart.push({ 
+      ...product, 
+      quantity: product.quantity || 1 
+    });
+  }
+  
+  cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+  updateCartUI();
+  showNotification(`${product.title} added to cart!`);
+}
+
+// Go to Checkout function
+function goToCheckout() {
+  if (cart.length === 0) {
+    showNotification("Your cart is empty!");
+    return;
+  }
+  
+  // Group identical items before saving
+  const groupedCart = groupCartItems(cart);
+  
+  localStorage.setItem('cart', JSON.stringify(groupedCart));
+  localStorage.setItem('cartTotal', calculateCartTotal(groupedCart));
+  window.location.href = 'check_out.html';
+}
+
+// Helper function to group identical items
+function groupCartItems(cartItems) {
+  const grouped = {};
+  
+  cartItems.forEach(item => {
+    const key = `${item.id}-${item.title}-${item.price}`;
+    if (!grouped[key]) {
+      grouped[key] = { ...item };
+    } else {
+      grouped[key].quantity += item.quantity;
+    }
+  });
+  
+  return Object.values(grouped);
+}
+
+// Calculate total
+function calculateCartTotal(cartItems) {
+  return cartItems.reduce((total, item) => 
+    total + (item.price * item.quantity), 0);
+}
+
+// Rest of your existing cart functions...
