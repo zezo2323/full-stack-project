@@ -294,7 +294,6 @@
 
 
                         <li class="has-submenu">
-<<<<<<< HEAD
                             <a href="../Electronics/Televisions.php"><span>Tvs</span></a>
                             <span class="arrow">▶</span>
                             <ul class="subcategory">
@@ -314,32 +313,10 @@
                                 <li><a href="../Electronics/Lenovo.php">Lenovo</a></li>
                                 <li><a href="../Electronics/Mac.php">Mac</a></li>
                                 <li><a href="../Electronics/Asus.php">Asus</a></li>
-=======
-                            <a href="../Electronics/Televisions.html"><span>Tvs</span></a>
-                            <span class="arrow">▶</span>
-                            <ul class="subcategory">
-                                <li><a href="../Electronics/Tornado.html">Tornado</a></li>
-                                <li><a href="../Electronics/LG.html">LG</a></li>
-                                <li><a href="../Electronics/Sharp.html">Sharp</a></li>
-                                <li><a href="../Electronics/Fresh.html">Fresh</a></li>
-                                <li><a href="../Electronics/Toshiba.html">Toshiba</a></li>
-                            </ul>
-
-                        <li class="has-submenu">
-                            <a href="../Electronics/Computers.html"><span>Computers</span></a>
-                            <span class="arrow">▶</span>
-                            <ul class="subcategory">
-                                <li><a href="../Electronics/HP.html">HP</a></li>
-                                <li><a href="../Electronics/Dell.html">Dell</a></li>
-                                <li><a href="../Electronics/Lenovo.html">Lenovo</a></li>
-                                <li><a href="../Electronics/Mac.html">Mac</a></li>
-                                <li><a href="../Electronics/Asus.html">Asus</a></li>
->>>>>>> 8f339d0368b3378e8f412f937b61d6a7cb961cbd
                             </ul>
 
 
                         <li class="has-submenu">
-<<<<<<< HEAD
                             <a href="../Electronics/Accessories.php"><span>Accessories</span></a>
                             <span class="arrow">▶</span>
                             <ul class="subcategory">
@@ -355,23 +332,6 @@
                         <li><a href="../Electronics/Headphones.php">Headphones</a></li>
                         <li><a href="../Electronics/Smart_watches.php">Smart Watches</a></li>
                         <li><a href="../Electronics/Gaming.php">Gaming</a></li>
-=======
-                            <a href="../Electronics/Accessories.html"><span>Accessories</span></a>
-                            <span class="arrow">▶</span>
-                            <ul class="subcategory">
-                                <li><a href="../Electronics/Computers_Accessories.html">Computers</a></li>
-                                <li><a href="../Electronics/Mobiles_Accessories.html">Mobiles</a></li>
-                            </ul>
-
-
-                        <li><a href="../Electronics/Tablets.html">Tablets</a></li>
-                        <li><a href="../Electronics/Cameras.html">Cameras</a></li>
-
-
-                        <li><a href="../Electronics/Headphones.html">Headphones</a></li>
-                        <li><a href="../Electronics/Smart_watches.html">Smart Watches</a></li>
-                        <li><a href="../Electronics/Gaming.html">Gaming</a></li>
->>>>>>> 8f339d0368b3378e8f412f937b61d6a7cb961cbd
                         </li>
                     </ul>
                 </ul>
@@ -380,10 +340,6 @@
 
 
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 8f339d0368b3378e8f412f937b61d6a7cb961cbd
                 <div class="box">
                     <h3>Filter by Price</h3>
                     <ul class="price-filter">
@@ -569,7 +525,7 @@
                 <span>Subtotal:</span>
                 <span id="cartTotal">$0.00</span>
             </div>
-            <button class="checkout-btn">Proceed to Checkout</button>
+            <button class="checkout-btn"><a href="../check_out.html">Proceed to Checkout</a></button>
         </div>
     </div>
 
