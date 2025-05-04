@@ -479,7 +479,7 @@
 
       <div class="products__container grid">
         <?php
-        include 'db_connection.php'; // ملف يحتوي على اتصال قاعدة البيانات
+        include './db_connection.php'; // ملف يحتوي على اتصال قاعدة البيانات
 
         // الحصول على الفئة "Electronics" (category_id = 1)
         $category_id = 1;

@@ -1,50 +1,6 @@
 <?php
 require_once 'config.php';
 
-if (!isset($_SESSION['user_id'])) {
-    if (isset($_COOKIE['session_token'])) {
-        $token = $_COOKIE['session_token'];
-        $db = Database::getInstance();
-        
-        $session = $db->fetchOne(
-            "SELECT * FROM sessions WHERE session_token = ? AND expires_at > NOW()",
-            [$token]
-        );
-        
-        if ($session) {
-            if ($session['user_id']) {
-                $user = $db->fetchOne(
-                    "SELECT * FROM users WHERE id = ?",
-                    [$session['user_id']]
-                );
-                
-                if ($user) {
-                    $_SESSION['user_id'] = $user['id'];
-                    $_SESSION['is_admin'] = false;
-                    $_SESSION['username'] = $user['username'];
-                }
-            } elseif ($session['admin_id']) {
-                
-                $admin = $db->fetchOne(
-                    "SELECT * FROM admins WHERE id = ?",
-                    [$session['admin_id']]
-                );
-                
-                if ($admin) {
-                    $_SESSION['user_id'] = $admin['id'];
-                    $_SESSION['is_admin'] = true;
-                    $_SESSION['username'] = $admin['full_name'];
-                }
-            }
-        }
-    }
-    
-    if (!isset($_SESSION['user_id'])) {
-        header("Location: ../Login1.html");
-        exit;
-    }
-}
-
 $userId = $_SESSION['user_id'];
 $isAdmin = $_SESSION['is_admin'];
 $username = $_SESSION['username'];
@@ -65,61 +21,47 @@ if ($isAdmin) {
 }
 
 if (!$userData) {
-    header("Location: logout.php");
+    header("Location: ../login/logout.php");
     exit;
 }
 ?>
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>لوحة التحكم</title>
     <style>
-        * {
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', sans-serif;
         }
-
-        body {
-            background-color: #f5f5f5;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-        }
-
+        
         .container {
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            width: 100%;
             max-width: 800px;
-            padding: 30px;
-            margin-top: 20px;
+            margin: 50px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-
+        
         h1 {
             color: #006400;
-            margin-bottom: 20px;
             text-align: center;
         }
-
+        
         .user-info {
-            margin-bottom: 30px;
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
         }
-
+        
         .user-info p {
-            margin-bottom: 10px;
-            font-size: 16px;
-        }
-
-        .user-info strong {
-            color: #006400;
+            margin: 10px 0;
         }
 
         .profile-picture {
@@ -155,31 +97,26 @@ if (!$userData) {
 </head>
 <body>
     <div class="container">
-        <h1>Welcome to Your Dashboard</h1>
+        <h1>مرحباً بك في لوحة التحكم</h1>
         
         <div class="user-info">
-            <?php if ($isAdmin && $userData['profile_picture']): ?>
-                <img src="../<?php echo htmlspecialchars($userData['profile_picture']); ?>" alt="Profile Picture" class="profile-picture">
+            <?php if ($isAdmin && isset($userData['profile_picture']) && $userData['profile_picture']): ?>
+                <img src="../<?php echo htmlspecialchars($userData['profile_picture']); ?>" alt="صورة الملف الشخصي" class="profile-picture">
             <?php endif; ?>
             
-            <p><strong>Username:</strong> <?php echo htmlspecialchars($username); ?></p>
-            <p><strong>Email:</strong> <?php echo htmlspecialchars($userData['email']); ?></p>
-            <p><strong>Account Type:</strong> <?php echo $isAdmin ? 'Admin' : 'Regular User'; ?></p>
+            <p><strong>الاسم:</strong> <?php echo htmlspecialchars($username); ?></p>
+            <p><strong>البريد الإلكتروني:</strong> <?php echo htmlspecialchars($userData['email']); ?></p>
             
-            <?php if ($isAdmin): ?>
-                <p><strong>Phone:</strong> <?php echo htmlspecialchars($userData['phone']); ?></p>
-                <p><strong>City:</strong> <?php echo htmlspecialchars($userData['city']); ?></p>
-                <p><strong>Age:</strong> <?php echo htmlspecialchars($userData['age']); ?></p>
-                <p><strong>Gender:</strong> <?php echo htmlspecialchars($userData['gender']); ?></p>
+            <?php if (isset($userData['registration_date'])): ?>
+                <p><strong>تاريخ التسجيل:</strong> <?php echo htmlspecialchars($userData['registration_date']); ?></p>
             <?php endif; ?>
             
-            <p><strong>Registration Date:</strong> <?php echo htmlspecialchars($userData['registration_date']); ?></p>
-            <?php if ($userData['last_login']): ?>
-                <p><strong>Last Login:</strong> <?php echo htmlspecialchars($userData['last_login']); ?></p>
+            <?php if (isset($userData['last_login']) && $userData['last_login']): ?>
+                <p><strong>آخر تسجيل دخول:</strong> <?php echo htmlspecialchars($userData['last_login']); ?></p>
             <?php endif; ?>
         </div>
         
-        <a href="logout.php"><button class="logout-btn">Logout</button></a>
+        <a href="../login/logout.php"><button class="logout-btn">تسجيل الخروج</button></a>
     </div>
 </body>
 </html>

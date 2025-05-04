@@ -857,23 +857,67 @@
 
   .promo-banner {
     grid-template-columns: 1fr;
+    gap: 20px;
   }
-
+  
   .promo-card {
-    padding: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
   }
-
+  
   .promo-title {
     font-size: 24px;
+    margin-bottom: 10px;
   }
-
+  
+  .promo-subtitle {
+    font-size: 14px;
+    margin-bottom: 15px;
+  }
+  
+  .price-tag {
+    font-size: 18px;
+    margin: 15px 0;
+  }
+  
+  .cta-button {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+  
+  .discount-tag {
+    font-size: 12px;
+    padding: 5px 15px;
+  }
   .benefits-container {
     flex-wrap: wrap;
   }
 
+
   .benefit-card {
     flex: 100%;
     margin-bottom: 10px;
+  }
+}
+
+/* تحسينات إضافية للشاشات الصغيرة<|im_start|> */
+@media (max-width: 480px) {
+  .promo-card {
+    padding: 15px;
+  }
+  
+  .promo-title {
+    font-size: 20px;
+  }
+  
+  .promo-subtitle {
+    font-size: 12px;
+  }
+  
+  .cta-button {
+    width: 100%;
+    text-align: center;
   }
 }
 
@@ -1481,4 +1525,24 @@
     padding: 8px 15px;
     margin-bottom: 30px;
   }
+}
+
+/* تنسيق قائمة اقتراحات البحث */
+#searchSuggestions {
+  border: 1px solid #eee;
+  border-top: none;
+  max-height: 300px;
+  overflow-y: auto;
+  border-radius: 0 0 8px 8px;
+}
+
+.suggestion-item {
+  transition: background-color 0.2s;
+  cursor: pointer;
+  padding: 8px 12px;
+}
+
+.suggestion-item:hover {
+  background-color: #f8f9fa;
+  color: var(--first-color);
 }
