@@ -126,7 +126,7 @@ button:hover {
     background:white;
     color: rgb(255, 0, 0);
   }
-  
+
   /* حقل الكمية */
   .quantity-input {
     width: 60px;
@@ -134,3 +134,62 @@ button:hover {
     border: 1px solid #ddd;
     border-radius: 4px;
   }
+
+
+
+  
+
+  /* تنسيق رسائل الخطأ */
+#error-message {
+    background-color: #ffebee;
+    color: #c62828;
+    padding: 12px;
+    margin: 15px 0;
+    border-radius: 4px;
+    border-left: 4px solid #c62828;
+    display: none;
+}
+
+/* تنسيق الحقول غير الصالحة */
+.invalid-field {
+    border: 1px solid #ff5252 !important;
+    background-color: #ffebee;
+}
+
+/* تنسيق صفحة الإكمال */
+.order-complete-message {
+    text-align: center;
+    margin: 20px 0;
+    padding: 20px;
+    background: #e8f5e9;
+    border-radius: 8px;
+}
+
+.order-complete-message i {
+    color: #4caf50;
+    font-size: 50px;
+    margin-bottom: 15px;
+}
+
+.detail-row {
+    display: flex;
+    margin-bottom: 10px;
+    padding: 10px;
+    background: #f5f5f5;
+    border-radius: 4px;
+}
+
+.detail-label {
+    font-weight: bold;
+    width: 150px;
+}
+
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding: 15px;
+    background: #e3f2fd;
+    border-radius: 4px;
+    font-size: 18px;
+}

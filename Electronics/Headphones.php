@@ -509,7 +509,7 @@
                 <span>Subtotal:</span>
                 <span id="cartTotal">$0.00</span>
             </div>
-            <button class="checkout-btn"><a href="../check_out.html">Proceed to Checkout</a></button>
+            <button class="checkout-btn" onclick="goToCheckout()">Proceed to Checkout</button>
         </div>
     </div>
 

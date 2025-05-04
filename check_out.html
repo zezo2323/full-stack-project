@@ -6,6 +6,23 @@
     <title>Checkout Page</title>
     <link rel="stylesheet" href="./css/check_out.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <!-- favicon -->
+    <link rel="shortcut icon" href="./imgs/index/favicon.png" type="image/x-icon">
+  
+    <!-- flaticon -->
+    <link rel="stylesheet"
+      href="https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-rounded/css/uicons-solid-rounded.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet"
+      href="https://cdn-uicons.flaticon.com/2.6.0/uicons-thin-straight/css/uicons-thin-straight.css" />
+    <link rel="stylesheet"
+      href="https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css" />
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 </head>
 <body>
     <nav>
@@ -21,27 +38,22 @@
     <section id="summary">
         <h2>Summary Order</h2>
         <table id="summary-table">
-            <tr>
-                <td>Smartphone</td>
-                <td><input type="number" id="product1-quantity" value="1" min="1"></td>
-                <td>$500.00</td>
-                <td><img src="smartphone.jpg" alt="Smartphone"></td>
-            </tr>
-            <tr>
-                <td>Laptop</td>
-                <td><input type="number" id="product2-quantity" value="1" min="1"></td>
-                <td>$800.00</td>
-                <td><img src="laptop.jpg" alt="Laptop"></td>
-            </tr>
-            <tr>
-                <td>Smartwatch</td>
-                <td><input type="number" id="product3-quantity" value="1" min="1"></td>
-                <td>$150.00</td>
-                <td><img src="smartwatch.jpg" alt="Smartwatch"></td>
-            </tr>
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Image</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- سيتم ملؤه بالجافاسكريبت -->
+            </tbody>
         </table>
-        <p>Total: $<span id="total-price">1450.00</span></p>
-        <button id="nextBtn">Next: Billing Address</button>
+        <div id="error-message" style="color:red; display:none;"></div>
+        <p>Total: $<span id="total-price">0.00</span></p>
+        <button type="button" id="nextBtn">Next: Billing Address</button>
     </section>
 
     <!-- Billing Address Page -->
@@ -56,6 +68,7 @@
             <input type="text" id="city" required><br>
             <label for="phone">Phone Number:</label>
             <input type="text" id="phone" required><br>
+            <button type="button" id="prevBilling">Back: Summary</button>
             <button type="button" id="nextBilling">Next: Payment</button>
         </form>
     </section>
@@ -64,15 +77,21 @@
     <section id="payment" style="display:none;">
         <h2>Payment Order</h2>
         <form id="payment-form">
-            <label for="card-number">Card Number:</label>
-            <input type="text" id="card-number" required><br>
-            <label for="exp-date">Expiration Date:</label>
-            <input type="text" id="exp-date" required><br>
             <label for="payment-method">Payment Method:</label>
-            <select id="payment-method">
+            <select id="payment-method" onchange="toggleVisaFields()">
                 <option value="credit-card">Visa</option>
                 <option value="cash-on-delivery">Cash on Delivery</option>
             </select><br>
+
+            <!-- Visa Fields -->
+            <div id="visa-fields" style="display:none;">
+                <label for="card-number">Card Number:</label>
+                <input type="text" id="card-number"><br>
+                <label for="exp-date">Expiration Date:</label>
+                <input type="text" id="exp-date"><br>
+            </div>
+
+            <button type="button" id="prevPayment">Back: Billing</button>
             <button type="button" id="nextPayment">Next: Complete Order</button>
         </form>
     </section>
@@ -80,35 +99,50 @@
     <!-- Complete Order Page -->
     <section id="complete" style="display:none;">
         <h2>Complete Order</h2>
-        <p>Thank you for your order! Your order is complete.</p>
-        <h3>Your Order Details:</h3>
-        <p><strong>Name:</strong> <span id="customer-name"></span></p>
-        <p><strong>Address:</strong> <span id="customer-address"></span></p>
-        <p><strong>City:</strong> <span id="customer-city"></span></p>
-        <p><strong>Phone:</strong> <span id="customer-phone"></span></p>
-        <p><strong>Card Number:</strong> <span id="customer-card-number"></span></p>
-        <p><strong>Payment Method:</strong> <span id="customer-payment-method"></span></p>
-        <h3>Order Summary:</h3>
-        <div id="final-order-summary"></div>
-        <p><strong>Total Price:</strong> $<span id="final-total"></span></p>
+        <div class="order-complete-message">
+            <i class="fas fa-check-circle"></i>
+            <p>Thank you for your order! Your order is complete.</p>
+        </div>
 
-        <h3>Your Location</h3>
-        <div id="map" style="height: 400px; width: 100%;"></div>
+        <div class="order-details">
+            <h3>Your Order Details:</h3>
+            <div class="detail-row">
+                <span class="detail-label">Name:</span>
+                <span id="customer-name" class="detail-value"></span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-label">Address:</span>
+                <span id="customer-address" class="detail-value"></span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-label">City:</span>
+                <span id="customer-city" class="detail-value"></span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-label">Phone:</span>
+                <span id="customer-phone" class="detail-value"></span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-label">Card Number:</span>
+                <span id="customer-card-number" class="detail-value"></span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-label">Payment Method:</span>
+                <span id="customer-payment-method" class="detail-value"></span>
+            </div>
+        </div>
+
+        <div class="order-summary">
+            <h3>Order Summary:</h3>
+            <div id="final-order-summary"></div>
+            <div class="total-row">
+                <span class="total-label">Total Price:</span>
+                <span id="final-total" class="total-amount"></span>
+            </div>
+        </div>
+        <button type="button" id="prevComplete">Back: Payment</button>
     </section>
 
-    <script>
-        function initMap() {
-            var myLocation = {lat: -34.397, lng: 150.644};
-            var map = new google.maps.Map(document.getElementById("map"), {
-                zoom: 8,
-                center: myLocation
-            });
-            var marker = new google.maps.Marker({
-                position: myLocation,
-                map: map
-            });
-        }
-    </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
     <script src="./js/check_out.js"></script>
 </body>
