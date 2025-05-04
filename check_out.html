@@ -18,31 +18,31 @@
     </nav>
 
     <!-- Summary Order Page -->
-<!-- Summary Order Section -->
-<section id="summary">
-    <h2>Summary Order</h2>
-<!-- بدل الجدول القديم بهذا -->
-<table id="summary-table">
-    <thead>
-      <tr>
-        <th>Product</th>
-        <th>Quantity</th>
-        <th>Price</th>
-        <th>Image</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <!-- سيتم ملؤه بالجافاسكريبت -->
-    </tbody>
-  </table>
-    <div class="cart-summary">
-      <p>Total: $<span id="total-price">0.00</span></p>
-      <button id="nextBtn" class="checkout-btn">Next: Billing Address</button>
-    </div>
-  </section>
-  
-  <!-- Rest of your checkout sections... -->
+    <section id="summary">
+        <h2>Summary Order</h2>
+        <table id="summary-table">
+            <tr>
+                <td>Smartphone</td>
+                <td><input type="number" id="product1-quantity" value="1" min="1"></td>
+                <td>$500.00</td>
+                <td><img src="smartphone.jpg" alt="Smartphone"></td>
+            </tr>
+            <tr>
+                <td>Laptop</td>
+                <td><input type="number" id="product2-quantity" value="1" min="1"></td>
+                <td>$800.00</td>
+                <td><img src="laptop.jpg" alt="Laptop"></td>
+            </tr>
+            <tr>
+                <td>Smartwatch</td>
+                <td><input type="number" id="product3-quantity" value="1" min="1"></td>
+                <td>$150.00</td>
+                <td><img src="smartwatch.jpg" alt="Smartwatch"></td>
+            </tr>
+        </table>
+        <p>Total: $<span id="total-price">1450.00</span></p>
+        <button id="nextBtn">Next: Billing Address</button>
+    </section>
 
     <!-- Billing Address Page -->
     <section id="billing" style="display:none;">
