@@ -4,12 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mobiles</title>
+    <title>Stove</title>
     <link rel="stylesheet" href="../css/Electronics.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <!-- favicon -->
     <link rel="shortcut icon" href="../imgs/index/favicon.png" type="image/x-icon">
+
     <!-- flaticon -->
     <link rel="stylesheet"
         href="https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-rounded/css/uicons-solid-rounded.css" />
@@ -94,7 +95,6 @@
 </head>
 
 <body>
-
     <!-- Navbar -->
     <!-- =====================================Promotion Bar ===================================== -->
     <div class="promotion-bar">
@@ -270,72 +270,114 @@
         </div>
     </nav>
 
-    <!-- Sidebar Filters -->
 
+    <!-- Sidebar Filters -->
 
     <section class="slider">
         <div class="container">
             <h2>Filters</h2>
             <div class="box">
-                <div class="arrow-left"><a href="../Electronics.php"><i class="fa-solid fa-arrow-left"></i></a></div>
-                <h5>Electronics</h5>
+                <div class="arrow-left"><a href="../home.php"><i class="fa-solid fa-arrow-left"></i></a></div>
+                <h5>Home & Kitchen</h5>
                 <h3>Category</h3>
                 <ul class="category-list">
                     <ul class="category">
                         <li class="has-submenu">
-                            <a href="../Electronics/Smart_phones.php"><span>Mobile</span></a>
+                            <a href="../home catagory/Fans.php"><span>Fans</span></a>
                             <span class="arrow">▶</span>
                             <ul class="subcategory">
-                                <li><a href="../Electronics/Apple.php">Apple</a></li>
-                                <li><a href="../Electronics/Samsung.php">Samsung</a></li>
-                                <li><a href="../Electronics/Xiaomi.php">Xiaomi</a></li>
-                                <li><a href="../Electronics/Honor.php">Honor</a></li>
-                                <li><a href="../Electronics/Oppo.php">Oppo</a></li>
+                                <li>
+                                    <a href="../home catagory/Fresh.php">Fresh</a>
+                                </li>
+                                <li>
+                                    <a href="../home catagory/ATA.php">ATA</a>
+                                </li>
+                                <li>
+                                    <a href="../home catagory/Toshiba.php">Toshiba</a>
+                                </li>
+
                             </ul>
 
 
                         <li class="has-submenu">
-                            <a href="../Electronics/Televisions.php"><span>Tvs</span></a>
+                            <a href="../home catagory/Refrigerators.php"><span>Refrigerators</span></a>
                             <span class="arrow">▶</span>
                             <ul class="subcategory">
-                                <li><a href="../Electronics/Tornado.php">Tornado</a></li>
-                                <li><a href="../Electronics/LG.php">LG</a></li>
-                                <li><a href="../Electronics/Sharp.php">Sharp</a></li>
-                                <li><a href="../Electronics/Fresh.php">Fresh</a></li>
-                                <li><a href="../Electronics/Toshiba.php">Toshiba</a></li>
+                                <li>
+                                    <a href="../home catagory/Toshiba.php">Toshiba</a>
+                                </li>
+                                <li>
+                                    <a href="../home catagory/kiriazi.php">Kiriazi</a>
+                                </li>
+                                <li>
+                                    <a href="../home catagory/Samsung.php">Samsung</a>
+                                </li>
+
                             </ul>
 
                         <li class="has-submenu">
-                            <a href="../Electronics/Computers.php"><span>Computers</span></a>
+                            <a href="../home catagory/Stove.php"><span>Stove</span></a>
                             <span class="arrow">▶</span>
                             <ul class="subcategory">
-                                <li><a href="../Electronics/HP.php">HP</a></li>
-                                <li><a href="../Electronics/Dell.php">Dell</a></li>
-                                <li><a href="../Electronics/Lenovo.php">Lenovo</a></li>
-                                <li><a href="../Electronics/Mac.php">Mac</a></li>
-                                <li><a href="../Electronics/Asus.php">Asus</a></li>
+                                <li>
+                                    <a href="../home catagory/Fresh.php">Fresh</a>
+                                </li>
+                                <li>
+                                    <a href="../home catagory/Unionaire.php">Unionaire</a>
+                                </li>
+                                <li>
+                                    <a href="../home catagory/Zanosi.php">Zanosi</a>
+                                </li>
+
                             </ul>
 
 
                         <li class="has-submenu">
-                            <a href="../Electronics/Accessories.php"><span>Accessories</span></a>
+                            <a href="../home catagory/Freezers.php"><span>Freezers</span></a>
                             <span class="arrow">▶</span>
                             <ul class="subcategory">
-                                <li><a href="../Electronics/Computers_Accessories.php">Computers</a></li>
-                                <li><a href="../Electronics/Mobiles_Accessories.php">Mobiles</a></li>
+                                <li>
+                                    <a href="../home catagory/Kiriazi.php">Kiriazi</a>
+                                </li>
+
+                                <li>
+                                    <a href="../home catagory/Tornado.php">Tornado</a>
+                                </li>
+                                <li>
+                                    <a href="../home catagory/Toshiba.php">Toshiba</a>
+                                </li>
                             </ul>
 
 
-                        <li><a href="../Electronics/Tablets.php">Tablets</a></li>
-                        <li><a href="../Electronics/Cameras.php">Cameras</a></li>
+                        <li class="has-submenu">
+                            <a href="../home catagory/Washing machines.php"><span>Washing Machines</span></a>
+                            <span class="arrow">▶</span>
+                            <ul class="subcategory">
+                                <li>
+                                    <a href="../home catagory/Fresh.php">Fresh</a>
+                                </li>
+
+                                <li>
+                                    <a href="../home catagory/Zanosi.php">Zanosi</a>
+                                </li>
+                                <li>
+                                    <a href="../home catagory/Toshiba.php">Toshiba</a>
+                                </li>
+                            </ul>
 
 
-                        <li><a href="../Electronics/Headphones.php">Headphones</a></li>
-                        <li><a href="../Electronics/Smart_watches.php">Smart Watches</a></li>
-                        <li><a href="../Electronics/Gaming.php">Gaming</a></li>
+                        <li>
+                            <a href="../home catagory/Kitchen.php">Kitchen</a>
+                        </li>
+                        <li>
+                            <a href="../home catagory/Electrical appliances.php">Electrical appliances</a>
+                        </li>
+
+
                         </li>
                     </ul>
                 </ul>
+
 
 
 
@@ -365,100 +407,17 @@
                                 above</label></li>
                     </ul>
 
-
-                    <div class="box">
-                        <h3>Filter by Capacity</h3>
-                        <ul class="price-filter">
-                            <li><label><input type="checkbox" name="capacity" value="32" onclick="applyFilters()">
-                                    32
-                                    GB</label></li>
-                            <li><label><input type="checkbox" name="capacity" value="64" onclick="applyFilters()">
-                                    64
-                                    GB</label></li>
-                            <li><label><input type="checkbox" name="capacity" value="128" onclick="applyFilters()">
-                                    128
-                                    GB</label></li>
-                            <li><label><input type="checkbox" name="capacity" value="256" onclick="applyFilters()">
-                                    256 GB</label></li>
-                            <li><label><input type="checkbox" name="capacity" value="512" onclick="applyFilters()">
-                                    512 GB</label></li>
-                        </ul>
-
-
-                        <div class="box">
-                            <h3>Brands</h3>
-                            <div class="brand">
-
-                                <div>
-                                    <li><a href="../Electronics/Apple.php">Apple</a></li>
-                                    <span>Mobiles</span>
-                                </div>
-                            </div>
-
-                            <div class="brand">
-
-                                <div>
-                                    <li><a href="../Electronics/Samsung.php">Samsung</a></li>
-                                    <span>Mobiles</span>
-                                </div>
-                            </div>
-
-                            <div class="brand">
-
-                                <div>
-                                    <li><a href="../Electronics/Xiaomi.php">Xiaomi</a></li>
-                                    <span>Mobiles</span>
-                                </div>
-                            </div>
-
-                            <div class="brand">
-
-                                <div>
-                                    <li><a href="../Electronics/Honor.php">Honor</a></li>
-                                    <span>Mobiles</span>
-                                </div>
-                            </div>
-
-                            <div class="brand">
-
-                                <div>
-                                    <li><a href="../Electronics/Oppo.php">Oppo</a></li>
-                                    <span>Mobiles</span>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
                 </div>
-            </div>
-    </section>
 
+            </div>
+        </div>
+    </section>
 
     <!-- Products Section -->
     <section class="products-container">
         <!-- Name of page -->
         <div class="Name">
-            <h1>Mob<span>iles</span></h1>
-        </div>
-
-        <!-- brands -->
-        <div class="brand-products">
-            <div class="brands-name">
-                <h3>Shop by <span>brand</span></h3>
-            </div>
-
-            <div class="brand-img">
-                <a href="../Electronics/Samsung.php"><img src="../imgs/Electronics/Electronics/brand1.png"
-                        alt="brand"></a>
-                <a href="../Electronics/Honor.php"><img src="../imgs/Electronics/Electronics/brand2.png"
-                        alt="brand"></a>
-                <a href="../Electronics/Apple.php"><img src="../imgs/Electronics/Electronics/brand11.png"
-                        alt="brand"></a>
-                <a href="../Electronics/Oppo.php"><img src="../imgs/Electronics/Electronics/brand12.png"
-                        alt="brand"></a>
-                <a href="../Electronics/Xiaomi.php"><img src="../imgs/Electronics/Electronics/brand13.png"
-                        alt="brand"></a>
-            </div>
+            <h1>St<span>ove</span></h1>
         </div>
         <hr>
         <!-- products -->
@@ -468,9 +427,9 @@
             <div class="products__container grid">
                 <?php
                 include '../db_connection.php'; // ملف يحتوي على اتصال قاعدة البيانات
-
+                
                 // الحصول على الفئة "Electronics" (category_id = 1)
-                $category_id = 5;
+                $category_id = 17;
 
                 // جلب معلومات الفئة
                 $category_query = $conn->prepare("SELECT * FROM categories WHERE category_id = ?");
@@ -480,33 +439,36 @@
 
                 // جلب المنتجات التابعة للفئة
                 $products_query = $conn->prepare("
-        SELECT * FROM products 
-        WHERE category_id = ? 
-        AND stock_quantity > 0
-        ORDER BY created_at DESC
-    ");
+SELECT * FROM products
+WHERE category_id = ?
+AND stock_quantity > 0
+ORDER BY created_at DESC
+");
                 $products_query->bind_param("i", $category_id);
                 $products_query->execute();
                 $products = $products_query->get_result();
 
                 if ($products->num_rows > 0) {
                     while ($product = $products->fetch_assoc()) {
-                ?>
+                        ?>
                         <div class="product__item">
                             <div class="product__banner">
-                                <a href="Detils.php?id=<?= $product['product_id'] ?>" class="product__images">
-                                    <img src="<?= $product['image_url_default'] ?>" class="product__img default" />
-                                    <img src="<?= $product['image_url_hover'] ?>" class="product__img hover" />
+                                <a href="Detils.php?id=<?php echo $product['product_id'] ?>" class="product__images">
+                                    <img src="<?php echo $product['image_url_default'] ?>" class="product__img default" />
+                                    <img src="<?php echo $product['image_url_hover'] ?>" class="product__img hover" />
                                 </a>
 
                                 <div class="product__actions">
-                                    <a class="action__btn quick-view" aria-label="Quick View" href="../Detils.php?id=<?= $product['product_id'] ?>">
+                                    <a class="action__btn quick-view" aria-label="Quick View"
+                                        href="../Detils.php?id=<?php echo $product['product_id'] ?>">
                                         <i class="fi fi-rr-eye"></i>
                                     </a>
-                                    <button class="action__btn add-wishlist" aria-label="Add To Wishlist" data-id="<?= $product['product_id'] ?>">
+                                    <button class="action__btn add-wishlist" aria-label="Add To Wishlist"
+                                        data-id="<?php echo $product['product_id'] ?>">
                                         <i class="fi fi-rr-heart"></i>
                                     </button>
-                                    <button class="action__btn compare" aria-label="Compare" data-id="<?= $product['product_id'] ?>">
+                                    <button class="action__btn compare" aria-label="Compare"
+                                        data-id="<?php echo $product['product_id'] ?>">
                                         <i class="fi fi-rr-shuffle"></i>
                                     </button>
                                 </div>
@@ -517,8 +479,9 @@
                                     $badgeResult = $conn->query($badgeQuery);
                                     $badge = $badgeResult->fetch_assoc();
                                     ?>
-                                    <div class="product__badge <?= $badge['badge_text'] === 'Sale' ? 'sale-badge' : 'new-badge' ?>">
-                                        <?= $badge['badge_text'] ?>
+                                    <div
+                                        class="product__badge                                                              <?php echo $badge['badge_text'] === 'Sale' ? 'sale-badge' : 'new-badge' ?>">
+                                        <?php echo $badge['badge_text'] ?>
                                     </div>
                                 <?php endif; ?>
                             </div>
@@ -534,8 +497,8 @@
 
 
                                 <h3 class="product__title">
-                                    <a href="Detils.php?id=<?= $product['product_id'] ?>">
-                                        <?= htmlspecialchars($product['name']) ?>
+                                    <a href="Detils.php?id=<?php echo $product['product_id'] ?>">
+                                        <?php echo htmlspecialchars($product['name']) ?>
                                     </a>
                                 </h3>
 
@@ -552,20 +515,19 @@
                                 </div>
 
                                 <div class="product__price flex">
-                                    <span class="new__price">$<?= number_format($product['price'], 2) ?></span>
+                                    <span class="new__price">$<?php echo number_format($product['price'], 2) ?></span>
                                     <?php if ($product['old_price'] > 0): ?>
-                                        <span class="old__price">$<?= number_format($product['old_price'], 2) ?></span>
+                                        <span class="old__price">$<?php echo number_format($product['old_price'], 2) ?></span>
                                     <?php endif; ?>
                                 </div>
 
                                 <button class="action__btn cart__btn add-to-cart" aria-label="Add To Cart"
-                                    data-id="<?= $product['product_id'] ?>"
-                                    data-price="<?= $product['price'] ?>">
+                                    data-id="<?php echo $product['product_id'] ?>" data-price="<?php echo $product['price'] ?>">
                                     <i class="fi fi-rr-shopping-bag-add"></i>
                                 </button>
                             </div>
                         </div>
-                <?php
+                        <?php
                     }
                 } else {
                     echo '<div class="alert alert-info">No products found in category</div>';
@@ -616,9 +578,12 @@
                     </div>
 
                     <p class="mt-4 text-center text-lg-start custom-text-color" id="footer-tit">
-                        <span>VOYX</span> is your reliable and convenient destination for online shopping. We offer a wide range of
-                        high-quality products, competitive prices, and fast, secure delivery right to your doorstep. Our platform is
-                        designed to give you a smooth and enjoyable shopping experience, supported by excellent customer service and
+                        <span>VOYX</span> is your reliable and convenient destination for online shopping. We offer a
+                        wide range of
+                        high-quality products, competitive prices, and fast, secure delivery right to your doorstep. Our
+                        platform is
+                        designed to give you a smooth and enjoyable shopping experience, supported by excellent customer
+                        service and
                         24/7 support.
                     </p>
 
@@ -653,7 +618,8 @@
                             <h5 class="mb-3 head">Categories</h5>
                             <ul class="list-unstyled">
                                 <li class="mb-2">
-                                    <a href="../Electronics.php" class="text-decoration-none link-secondary">Electronics</a>
+                                    <a href="../Electronics.php"
+                                        class="text-decoration-none link-secondary">Electronics</a>
                                 </li>
                                 <li class="mb-2">
                                     <a href="../Fashion.php" class="text-decoration-none link-secondary">Fashion</a>
@@ -732,7 +698,8 @@
                     </p>
 
                     <div class="order-md-1 d-flex gap-3">
-                        <a href="./Terms&Conditions.html" class="text-decoration-none link-primary">Terms & Conditions</a>
+                        <a href="./Terms&Conditions.html" class="text-decoration-none link-primary">Terms &
+                            Conditions</a>
                         <a href="./Privacy_Policy.html" class="text-decoration-none link-primary">Privacy Policy</a>
                     </div>
                 </div>
@@ -752,6 +719,8 @@
 
     <!-- link js page -->
     <script src="../js/Electornics.js"></script>
+
+
 </body>
 
 </html>
