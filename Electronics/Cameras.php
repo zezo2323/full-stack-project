@@ -436,7 +436,7 @@ $isLoggedIn = isset($_SESSION['user_id']);
                 if ($products->num_rows > 0) {
                     while ($product = $products->fetch_assoc()) {
                         ?>
-                        <div class="product__item">
+                        <div class="product__item" data-product-id="<?= $product['product_id'] ?>">
                             <div class="product__banner">
                                 <a href="Detils.php?id=<?= $product['product_id'] ?>" class="product__images">
                                     <img src="<?= $product['image_url_default'] ?>" class="product__img default" />
