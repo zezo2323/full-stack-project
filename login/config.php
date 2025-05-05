@@ -116,6 +116,12 @@ class Database {
             return false;
         }
     }
+
+    public function __destruct() {
+        if ($this->conn) {
+            $this->conn->close();
+        }
+    }
 }
 
 // Helper functions

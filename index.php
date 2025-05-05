@@ -476,11 +476,11 @@ $dealsResult = $conn->query($dealsQuery);
                 <a class="dropdown-item" href="./user_profile.php">Profile</a>
             <?php endif; ?>
         </li>
-        <li><a class="dropdown-item" href="./login/auth.php?action=logout">Logout</a></li>
+        <li><a class="dropdown-item" href="/login/auth.php?action=logout">Logout</a></li>
     <?php else: ?>
         <!-- روابط لغير المسجلين دخولهم -->
-        <li><a class="dropdown-item" href="./login/auth.php?mode=login">Login</a></li>
-        <li><a class="dropdown-item" href="./login/auth.php?mode=choose">Signup</a></li>
+        <li><a class="dropdown-item" href="/login/auth.php?mode=login">Login</a></li>
+        <li><a class="dropdown-item" href="/login/auth.php?mode=choose">Signup</a></li>
     <?php endif; ?>
 </ul>
         </div>
