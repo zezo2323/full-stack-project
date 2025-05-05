@@ -278,14 +278,14 @@ $category = $category_result->fetch_assoc();
               // إذا لم تكن هناك صور إضافية، استخدم الصورة الرئيسية
               if ($images_result->num_rows === 0) {
                 // استخدم الصور الافتراضية من المنتج
-                echo '<img alt="product image 1" src="' . htmlspecialchars($product['image_url_default'] ?? '1.jpg') . '" />';
+                echo '<img id="main-image" alt="product image 1" src="' . htmlspecialchars($product['image_url_default'] ?? '1.jpg') . '" />';
                 echo '<img alt="product image 2" src="' . htmlspecialchars($product['image_url_hover'] ?? '2.jpg') . '" />';
                 echo '<img alt="product image 3" src="3.jpg" />';
                 echo '<img alt="product image 4" src="4.jpg" />';
               } else {
                 // عرض جميع صور المنتج
                 while ($image = $images_result->fetch_assoc()) {
-                  echo '<img alt="product image" src="' . htmlspecialchars($image['image_url']) . '" />';
+                  echo '<img id="main-image" alt="product image" src="' . htmlspecialchars($image['image_url']) . '" />';
                 }
               }
               ?>
@@ -683,7 +683,24 @@ $category = $category_result->fetch_assoc();
       }
     });
 
+    document.addEventListener('DOMContentLoaded', function () {
+      const imgBtns = document.querySelectorAll('.img-select a');
+      const mainImage = document.getElementById('main-image');
+      const imgItems = document.querySelectorAll('.img-item');
 
+      imgBtns.forEach((btn, index) => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+
+          // تغيير الصورة الرئيسية مباشرة
+          mainImage.src = btn.querySelector('img').src;
+
+          // تحديث الحالة النشطة للصور المصغرة
+          imgItems.forEach(item => item.classList.remove('active'));
+          imgItems[index].classList.add('active');
+        });
+      });
+    });
 
 
 
