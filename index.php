@@ -457,7 +457,7 @@ $dealsResult = $conn->query($dealsQuery);
           <a href="./index.php#products" class="nav-link">Products</a>
           <a href="./index.php#deals" class="nav-link">Deals</a>
           <a href="./index.php#About" class="nav-link">About</a>
-          <a href="./Contact-US.html" class="nav-link">Contact US</a>
+          <a href="./Contact us.php" class="nav-link">Contact US</a>
           <a href="./index.php#NewArrivals" class="nav-link">NewArrivals</a>
           <a href="./index.php#showcase" class="nav-link">showcase</a>
         </div>
