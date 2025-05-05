@@ -124,7 +124,7 @@ $isLoggedIn = isset($_SESSION['user_id']);
     <div class="container">
       <div class="d-flex justify-content-between align-items-center">
         <!-- Logo -->
-        <a href="./index.php" class="navbar-brand">
+        <a href="#" class="navbar-brand">
           <img src="./imgs/index/logo.png" alt="Logo" style="height: 50px; width: 100px" />
         </a>
 
@@ -185,36 +185,35 @@ $isLoggedIn = isset($_SESSION['user_id']);
                 <li><a class="dropdown-item" href="./Electronics/Gaming.php">Gaming</a></li>
               </ul>
             </li>
-
             <!-- فئة أخرى -->
             <li class="dropdown-submenu">
               <a class="dropdown-item dropdown-toggle" href="./Fashion.php">Fashion</a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Men's Wear</a></li>
-                <li><a class="dropdown-item" href="#">Women's Wear</a></li>
-                <li><a class="dropdown-item" href="#">Kids</a></li>
+                <li><a class="dropdown-item" href="./Fashions/men's.php">Men's Wear</a></li>
+                <li><a class="dropdown-item" href="./Fashions/women's.php">Women's Wear</a></li>
+                <li><a class="dropdown-item" href="./Fashions/kids.php">Kids</a></li>
               </ul>
             </li>
 
             <!-- باقي الفئات -->
             <li class="dropdown-submenu">
-              <a class="dropdown-item dropdown-toggle" href="#">Home & kitchen</a>
+              <a class="dropdown-item dropdown-toggle" href="./home.php">Home & kitchen</a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Electric-ovens</a></li>
-                <li><a class="dropdown-item" href="#">Microwaves</a></li>
-                <li><a class="dropdown-item" href="#">Refrigerators</a></li>
-                <li><a class="dropdown-item" href="#">Air-conditioners</a></li>
-                <li><a class="dropdown-item" href="#">Water-heaters</a></li>
-                <li><a class="dropdown-item" href="#">Fans</a></li>
+                <li><a class="dropdown-item" href="./home catagory/Stove.php">Stoves</a></li>
+                <li><a class="dropdown-item" href="./home catagory/Freezers.php">Freezers</a></li>
+                <li><a class="dropdown-item" href="./home catagory/Refrigerators.php">Refrigerators</a></li>
+                <li><a class="dropdown-item" href="./home catagory/Kitchen.php">Kitchens</a></li>
+                <li><a class="dropdown-item" href="./home catagory/Washing machines.php">Washing</a></li>
+                <li><a class="dropdown-item" href="./home catagory/Fans.php">Fans</a></li>
               </ul>
             </li>
 
             <li class="dropdown-submenu">
-              <a class="dropdown-item dropdown-toggle" href="#">Vehicles</a>
+              <a class="dropdown-item dropdown-toggle" href="./Vehicles.php">Vehicles</a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">cars</a></li>
-                <li><a class="dropdown-item" href="#">motors</a></li>
-                <li><a class="dropdown-item" href="#">bicycles</a></li>
+                <li><a class="dropdown-item" href="./Vehicles/cars.php">Cars</a></li>
+                <li><a class="dropdown-item" href="./Vehicles/motors.php">motors</a></li>
+                <li><a class="dropdown-item" href="./Vehicles/bicycles.php">bicycles</a></li>
 
               </ul>
             </li>
