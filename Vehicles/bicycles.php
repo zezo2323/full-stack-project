@@ -120,8 +120,8 @@ $isLoggedIn = isset($_SESSION['user_id']);
     <div class="container">
       <div class="d-flex justify-content-between align-items-center">
         <!-- Logo -->
-        <a href="#" class="navbar-brand">
-          <img src="./imgs/index/logo.png" alt="Logo" style="height: 50px; width: 100px" />
+        <a href="../index.php" class="navbar-brand">
+          <img src="../imgs/index/logo.png" alt="Logo" style="height: 50px; width: 100px" />
         </a>
 
         <!-- Search Box -->
@@ -170,46 +170,46 @@ $isLoggedIn = isset($_SESSION['user_id']);
             <li class="dropdown-submenu">
               <a class="dropdown-item dropdown-toggle" href="./Electronics.php">Electronics</a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="./Electronics/Smart_phones.php">Mobiles</a></li>
-                <li><a class="dropdown-item" href="./Electronics/Televisions.php">Tvs</a></li>
-                <li><a class="dropdown-item" href="./Electronics/Computers.php">Computers</a></li>
-                <li><a class="dropdown-item" href="./Electronics/Accessories.php">Accessories</a></li>
-                <li><a class="dropdown-item" href="./Electronics/Tablets.php">Tablets</a></li>
-                <li><a class="dropdown-item" href="./Electronics/Cameras.php">Cameras</a></li>
-                <li><a class="dropdown-item" href="./Electronics/Headphones.php">Headphones</a></li>
-                <li><a class="dropdown-item" href="./Electronics/Smart_watches.php">Smart Watches</a></li>
-                <li><a class="dropdown-item" href="./Electronics/Gaming.php">Gaming</a></li>
+                <li><a class="dropdown-item" href="../Electronics/Smart_phones.php">Mobiles</a></li>
+                <li><a class="dropdown-item" href="../Electronics/Televisions.php">Tvs</a></li>
+                <li><a class="dropdown-item" href="../Electronics/Computers.php">Computers</a></li>
+                <li><a class="dropdown-item" href="../Electronics/Accessories.php">Accessories</a></li>
+                <li><a class="dropdown-item" href="../Electronics/Tablets.php">Tablets</a></li>
+                <li><a class="dropdown-item" href="../Electronics/Cameras.php">Cameras</a></li>
+                <li><a class="dropdown-item" href="../Electronics/Headphones.php">Headphones</a></li>
+                <li><a class="dropdown-item" href="../Electronics/Smart_watches.php">Smart Watches</a></li>
+                <li><a class="dropdown-item" href="../Electronics/Gaming.php">Gaming</a></li>
               </ul>
             </li>
             <!-- فئة أخرى -->
             <li class="dropdown-submenu">
-              <a class="dropdown-item dropdown-toggle" href="./Fashion.php">Fashion</a>
+              <a class="dropdown-item dropdown-toggle" href="../Fashion.php">Fashion</a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="./Fashions/men's.php">Men's Wear</a></li>
-                <li><a class="dropdown-item" href="./Fashions/women's.php">Women's Wear</a></li>
-                <li><a class="dropdown-item" href="./Fashions/kids.php">Kids</a></li>
+                <li><a class="dropdown-item" href="../Fashions/men's.php">Men's Wear</a></li>
+                <li><a class="dropdown-item" href="../Fashions/women's.php">Women's Wear</a></li>
+                <li><a class="dropdown-item" href="../Fashions/kids.php">Kids</a></li>
               </ul>
             </li>
 
             <!-- باقي الفئات -->
             <li class="dropdown-submenu">
-              <a class="dropdown-item dropdown-toggle" href="./home.php">Home & kitchen</a>
+              <a class="dropdown-item dropdown-toggle" href="../home.php">Home & kitchen</a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="./home catagory/Stove.php">Stoves</a></li>
-                <li><a class="dropdown-item" href="./home catagory/Freezers.php">Freezers</a></li>
-                <li><a class="dropdown-item" href="./home catagory/Refrigerators.php">Refrigerators</a></li>
-                <li><a class="dropdown-item" href="./home catagory/Kitchen.php">Kitchens</a></li>
-                <li><a class="dropdown-item" href="./home catagory/Washing machines.php">Washing</a></li>
-                <li><a class="dropdown-item" href="./home catagory/Fans.php">Fans</a></li>
+                <li><a class="dropdown-item" href="../home catagory/Stove.php">Stoves</a></li>
+                <li><a class="dropdown-item" href="../home catagory/Freezers.php">Freezers</a></li>
+                <li><a class="dropdown-item" href="../home catagory/Refrigerators.php">Refrigerators</a></li>
+                <li><a class="dropdown-item" href="../home catagory/Kitchen.php">Kitchens</a></li>
+                <li><a class="dropdown-item" href="../home catagory/Washing machines.php">Washing</a></li>
+                <li><a class="dropdown-item" href="../home catagory/Fans.php">Fans</a></li>
               </ul>
             </li>
 
             <li class="dropdown-submenu">
-              <a class="dropdown-item dropdown-toggle" href="./Vehicles.php">Vehicles</a>
+              <a class="dropdown-item dropdown-toggle" href="../Vehicles.php">Vehicles</a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="./Vehicles/cars.php">Cars</a></li>
-                <li><a class="dropdown-item" href="./Vehicles/motors.php">motors</a></li>
-                <li><a class="dropdown-item" href="./Vehicles/bicycles.php">bicycles</a></li>
+                <li><a class="dropdown-item" href="../Vehicles/cars.php">Cars</a></li>
+                <li><a class="dropdown-item" href="../Vehicles/motors.php">motors</a></li>
+                <li><a class="dropdown-item" href="../Vehicles/bicycles.php">bicycles</a></li>
 
               </ul>
             </li>
@@ -218,13 +218,13 @@ $isLoggedIn = isset($_SESSION['user_id']);
 
         <!-- Navigation Links -->
         <div class="d-flex flex-grow-1 justify-content-center">
-          <a href="./index.php" class="nav-link">Home</a>
-          <a href="./index.php#products" class="nav-link">Products</a>
-          <a href="./index.php#deals" class="nav-link">Deals</a>
-          <a href="./index.php#About" class="nav-link">About</a>
-          <a href="./Contact-US.html" class="nav-link">Contact US</a>
-          <a href="./index.php#NewArrivals" class="nav-link">NewArrivals</a>
-          <a href="./index.php#showcase" class="nav-link">showcase</a>
+          <a href="../index.php" class="nav-link">Home</a>
+          <a href="../index.php#products" class="nav-link">Products</a>
+          <a href="../index.php#deals" class="nav-link">Deals</a>
+          <a href="../index.php#About" class="nav-link">About</a>
+          <a href="../Contact-US.html" class="nav-link">Contact US</a>
+          <a href="../index.php#NewArrivals" class="nav-link">NewArrivals</a>
+          <a href="../index.php#showcase" class="nav-link">showcase</a>
         </div>
         <!-- Categories Dropdown -->
         <div class="dropdown me-4">
@@ -265,10 +265,10 @@ $isLoggedIn = isset($_SESSION['user_id']);
               <i class="fas fa-chevron-down"></i>
             </div>
             <div class="sub-menu">
-              <a href="./Electronics.php" class="d-block py-2">Electronics</a>
-              <a href="./Fashion.php" class="d-block py-2">Fashion</a>
-              <a href="./home.php" class="d-block py-2">Home & kitchen</a>
-              <a href="./Vehicles.php" class="d-block py-2">Vehicles</a>
+              <a href="../Electronics.php" class="d-block py-2">Electronics</a>
+              <a href="../Fashion.php" class="d-block py-2">Fashion</a>
+              <a href="../home.php" class="d-block py-2">Home & kitchen</a>
+              <a href="../Vehicles.php" class="d-block py-2">Vehicles</a>
             </div>
           </div>
 
@@ -278,12 +278,12 @@ $isLoggedIn = isset($_SESSION['user_id']);
               <i class="fas fa-chevron-down"></i>
             </div>
             <div class="sub-menu">
-              <a href="./index.php" class="d-block py-2">Home</a>
-              <a href="./index.php#products" class="d-block py-2">Products</a>
-              <a href="./Contact-us.html" class="d-block py-2">Contact us</a>
-              <a href="./index.php#About" class="d-block py-2">About</a>
-              <a href="./index.php#NewArrivals" class="nav-link">NewArrivals</a>
-              <a href="./index.php#deals" class="d-block py-2">Deals</a>
+              <a href="../index.php" class="d-block py-2">Home</a>
+              <a href="../index.php#products" class="d-block py-2">Products</a>
+              <a href="../Contact-us.html" class="d-block py-2">Contact us</a>
+              <a href="../index.php#About" class="d-block py-2">About</a>
+              <a href="../index.php#NewArrivals" class="nav-link">NewArrivals</a>
+              <a href="../index.php#deals" class="d-block py-2">Deals</a>
             </div>
           </div>
         </div>
