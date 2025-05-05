@@ -1,3 +1,9 @@
+<?php
+session_start();
+$isLoggedIn = isset($_SESSION['user_id']);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -94,176 +100,196 @@
 
 <body>
     <!-- Navbar -->
-    <!-- =====================================Promotion Bar ===================================== -->
-    <div class="promotion-bar">
-        <div class="container d-flex justify-content-between align-items-center">
-            <span>🎁 Get 10% off your first order! Use code: WELCOME10</span>
-            <button class="btn btn-link text-white p-0 close-promo">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
+  <!-- =====================================Promotion Bar ===================================== -->
+  <div class="promotion-bar">
+    <div class="container d-flex justify-content-between align-items-center">
+      <span>
+        <?php if (isset($_SESSION['user_id']) && isset($_SESSION['username'])): ?>
+          hello <?php echo htmlspecialchars($_SESSION['username']); ?> -
+        <?php endif; ?>
+        🎁 Get 10% off your first order! Use code: WELCOME10
+      </span>
+      <button class="btn btn-link text-white p-0 close-promo">
+        <i class="fas fa-times"></i>
+      </button>
     </div>
+  </div>
 
-    <!-- =====================================Main Navigation ===================================== -->
-    <nav class="main-nav">
-        <div class="container">
+  <!-- =====================================Main Navigation ===================================== -->
+  <nav class="main-nav">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center">
+        <!-- Logo -->
+        <a href="#" class="navbar-brand">
+          <img src="./imgs/index/logo.png" alt="Logo" style="height: 50px; width: 100px" />
+        </a>
+
+        <!-- Search Box -->
+        <div class="col-lg-4">
+          <form action="search.php" method="GET" class="w-100 position-relative">
+            <div class="search-box input-group">
+              <input type="text" name="query" id="searchInput" class="form-control border-0"
+                placeholder="Search products..." autocomplete="off" required />
+              <button type="submit" class="btn btn-custom">
+                <i class="fas fa-search"></i>
+              </button>
+            </div>
+            <div id="searchSuggestions" class="position-absolute w-100 bg-white shadow-sm rounded-bottom d-none"
+              style="z-index:99999999 ;"></div>
+          </form>
+        </div>
+
+        <div class="nav-icons d-flex align-items-center position-relative col-md-1">
+          <!-- باقي الأيقونات -->
+          <a href="#wishlistSidebar" class="nav-icon position-relative" onclick="toggleSidebar('wishlist')">
+            <i class="far fa-heart"></i>
+            <span class="badge-custom" id="wishlistBadge">0</span>
+          </a>
+          <a href="#cartSidebar" class="nav-icon position-relative" onclick="toggleSidebar('cart')">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="badge-custom " id="cartBadge">0</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </nav>
+
+  <!-- =====================================Bottom Navigation ===================================== -->
+  <nav class="bottom-nav">
+    <div class="container">
+      <div class="d-flex align-items-center">
+        <!-- Categories Dropdown -->
+        <div class="dropdown me-4" id="categoriesDropdown">
+          <button class="btn btn-custom dropdown-toggle rounded-pill px-4" data-bs-toggle="dropdown">
+            <i class="fas fa-bars me-2"></i>Categories
+          </button>
+
+          <ul class="dropdown-menu dropdown-menu-end">
+            <!-- فئة مع قائمة فرعية -->
+            <li class="dropdown-submenu">
+              <a class="dropdown-item dropdown-toggle" href="./Electronics.php">Electronics</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="./Electronics/Smart_phones.php">Mobiles</a></li>
+                <li><a class="dropdown-item" href="./Electronics/Televisions.php">Tvs</a></li>
+                <li><a class="dropdown-item" href="./Electronics/Computers.php">Computers</a></li>
+                <li><a class="dropdown-item" href="./Electronics/Accessories.php">Accessories</a></li>
+                <li><a class="dropdown-item" href="./Electronics/Tablets.php">Tablets</a></li>
+                <li><a class="dropdown-item" href="./Electronics/Cameras.php">Cameras</a></li>
+                <li><a class="dropdown-item" href="./Electronics/Headphones.php">Headphones</a></li>
+                <li><a class="dropdown-item" href="./Electronics/Smart_watches.php">Smart Watches</a></li>
+                <li><a class="dropdown-item" href="./Electronics/Gaming.php">Gaming</a></li>
+              </ul>
+            </li>
+            <!-- فئة أخرى -->
+            <li class="dropdown-submenu">
+              <a class="dropdown-item dropdown-toggle" href="./Fashion.php">Fashion</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="./Fashions/men's.php">Men's Wear</a></li>
+                <li><a class="dropdown-item" href="./Fashions/women's.php">Women's Wear</a></li>
+                <li><a class="dropdown-item" href="./Fashions/kids.php">Kids</a></li>
+              </ul>
+            </li>
+
+            <!-- باقي الفئات -->
+            <li class="dropdown-submenu">
+              <a class="dropdown-item dropdown-toggle" href="./home.php">Home & kitchen</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="./home catagory/Stove.php">Stoves</a></li>
+                <li><a class="dropdown-item" href="./home catagory/Freezers.php">Freezers</a></li>
+                <li><a class="dropdown-item" href="./home catagory/Refrigerators.php">Refrigerators</a></li>
+                <li><a class="dropdown-item" href="./home catagory/Kitchen.php">Kitchens</a></li>
+                <li><a class="dropdown-item" href="./home catagory/Washing machines.php">Washing</a></li>
+                <li><a class="dropdown-item" href="./home catagory/Fans.php">Fans</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown-submenu">
+              <a class="dropdown-item dropdown-toggle" href="./Vehicles.php">Vehicles</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="./Vehicles/cars.php">Cars</a></li>
+                <li><a class="dropdown-item" href="./Vehicles/motors.php">motors</a></li>
+                <li><a class="dropdown-item" href="./Vehicles/bicycles.php">bicycles</a></li>
+
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Navigation Links -->
+        <div class="d-flex flex-grow-1 justify-content-center">
+          <a href="./index.php" class="nav-link">Home</a>
+          <a href="./index.php#products" class="nav-link">Products</a>
+          <a href="./index.php#deals" class="nav-link">Deals</a>
+          <a href="./index.php#About" class="nav-link">About</a>
+          <a href="./Contact-US.html" class="nav-link">Contact US</a>
+          <a href="./index.php#NewArrivals" class="nav-link">NewArrivals</a>
+          <a href="./index.php#showcase" class="nav-link">showcase</a>
+        </div>
+        <!-- Categories Dropdown -->
+        <div class="dropdown me-4">
+          <button class="btn btn-custom dropdown-toggle rounded-pill px-4" data-bs-toggle="dropdown">
+            <i class="far fa-user"></i>
+          </button>
+
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+            <?php if ($isLoggedIn): ?>
+              <!-- روابط للمستخدمين المسجلين دخولهم -->
+              <li>
+                <?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']): ?>
+                  <a class="dropdown-item" href="#">Profile</a>
+                <?php else: ?>
+                  <a class="dropdown-item" href="/user_profile.php">Profile</a>
+                <?php endif; ?>
+              </li>
+              <li><a class="dropdown-item" href="/login/auth.php?action=logout">Logout</a></li>
+            <?php else: ?>
+              <!-- روابط لغير المسجلين دخولهم -->
+              <li><a class="dropdown-item" href="/login/auth.php?mode=login">Login</a></li>
+              <li><a class="dropdown-item" href="/login/auth.php?mode=choose">Signup</a></li>
+            <?php endif; ?>
+          </ul>
+        </div>
+
+
+        <!-- side bar -->
+        <div class="sidebar">
+          <div class="sidebar-header">
+            <h4>VOYX</h4>
+            <button class="btn btn-close btn-close-white close-sidebar"></button>
+          </div>
+
+          <div class="sidebar-category">
             <div class="d-flex justify-content-between align-items-center">
-                <!-- Logo -->
-                <a href="#" class="navbar-brand">
-                    <img src="./imgs/index/logo.png" alt="Logo" style="height: 50px; width: 100px" />
-                </a>
-
-                <!-- Search Box -->
-                <div class="col-lg-4">
-                    <div class="search-box input-group">
-                        <input type="text" class="form-control border-0" placeholder="Search products..." />
-                        <button class="btn btn-custom">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="nav-icons d-flex align-items-center position-relative col-md-1">
-                    <!-- باقي الأيقونات -->
-                    <a href="#wishlistSidebar" class="nav-icon position-relative" onclick="toggleSidebar('wishlist')">
-                        <i class="far fa-heart"></i>
-                        <span class="badge-custom" id="wishlistBadge">0</span>
-                    </a>
-                    <a href="#cartSidebar" class="nav-icon position-relative" onclick="toggleSidebar('cart')">
-                        <i class="fas fa-shopping-cart"></i>
-                        <span class="badge-custom " id="cartBadge">0</span>
-                    </a>
-                </div>
-
+              <h5>Categories</h5>
+              <i class="fas fa-chevron-down"></i>
             </div>
-        </div>
-    </nav>
-
-    <!-- =====================================Bottom Navigation ===================================== -->
-    <nav class="bottom-nav">
-        <div class="container">
-            <div class="d-flex align-items-center">
-                <!-- Categories Dropdown -->
-                <div class="dropdown me-4" id="categoriesDropdown">
-                    <button class="btn btn-custom dropdown-toggle rounded-pill px-4" data-bs-toggle="dropdown">
-                        <i class="fas fa-bars me-2"></i>Categories
-                    </button>
-
-                    <ul class="dropdown-menu dropdown-menu-end">
-                        <!-- فئة مع قائمة فرعية -->
-                        <li class="dropdown-submenu">
-                            <a class="dropdown-item dropdown-toggle" href="./Electronics.php">Electronics</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="./Electronics/Smart_phones.php">Mobiles</a></li>
-                                <li><a class="dropdown-item" href="./Electronics/Televisions.php">Tvs</a></li>
-                                <li><a class="dropdown-item" href="./Electronics/Computers.php"">Computers</a></li>
-                                <li><a class="dropdown-item" href="./Electronics/Accessories.php">Accessories</a></li>
-                                <li><a class="dropdown-item" href="./Electronics/Tablets.php">Tablets</a></li>
-                                <li><a class="dropdown-item" href="./Electronics/Cameras.php">Cameras</a></li>
-                                <li><a class="dropdown-item" href="./Electronics/Headphones.php">Headphones</a></li>
-                                <li><a class="dropdown-item" href="./Electronics/Smart_watches.php">Smart Watches</a></li>
-                                <li><a class="dropdown-item" href="./Electronics/Gaming.php">Gaming</a></li>
-                            </ul>
-                        </li>
-
-                        <!-- فئة أخرى -->
-                        <li class="dropdown-submenu">
-                            <a class="dropdown-item dropdown-toggle" href="./Fashion.php">Fashion</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="./Fashions/men's.php">Men's Wear</a></li>
-                                <li><a class="dropdown-item" href="./Fashions/women's.php">Women's Wear</a></li>
-                                <li><a class="dropdown-item" href="./Fashions/kids.php">Kids</a></li>
-                            </ul>
-                        </li>
-
-                        <!-- باقي الفئات -->
-                        <li class="dropdown-submenu">
-                            <a class="dropdown-item dropdown-toggle" href="./home.php">Home & kitchen</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="./home catagory/Stove.php">Stoves</a></li>
-                                <li><a class="dropdown-item" href="./home catagory/Freezers.php">Freezers</a></li>
-                                <li><a class="dropdown-item" href="./home catagory/Refrigerators.php">Refrigerators</a></li>
-                                <li><a class="dropdown-item" href="./home catagory/Kitchen.php">Kitchens</a></li>
-                                <li><a class="dropdown-item" href="./home catagory/Washing machines.php">Washing</a></li>
-                                <li><a class="dropdown-item" href="./home catagory/Fans.php">Fans</a></li>
-                            </ul>
-                        </li>
-
-                        <li class="dropdown-submenu">
-                            <a class="dropdown-item dropdown-toggle" href="./Vehicles.php">Vehicles</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="./Vehicles/cars.php">Cars</a></li>
-                                <li><a class="dropdown-item" href="./Vehicles/motors.php">motors</a></li>
-                                <li><a class="dropdown-item" href="./Vehicles/bicycles.php">bicycles</a></li>
-
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Navigation Links -->
-                <div class="d-flex flex-grow-1 justify-content-center">
-                    <a href="./index.php" class="nav-link">Home</a>
-                    <a href="#products" class="nav-link">Products</a>
-                    <a href="#" class="nav-link">About</a>
-                    <a href="#" class="nav-link">Contact US</a>
-                    <a href="#" class="nav-link">Profile</a>
-                    <a href="#deals" class="nav-link">Deals</a>
-                </div>
-                <!-- Categories Dropdown -->
-                <div class="dropdown me-4">
-                    <button class="btn btn-custom dropdown-toggle rounded-pill px-4" data-bs-toggle="dropdown">
-                        <i class="far fa-user"></i>
-                    </button>
-
-                    <ul class="dropdown-menu dropdown-menu-end">
-                        <!-- فئة مع قائمة فرعية -->
-                        <li><a class="dropdown-item" href="#">Login</a></li>
-                        <li><a class="dropdown-item" href="#">Signup</a></li>
-                        <li><a class="dropdown-item" href="#">Logout</a></li>
-                        <li><a class="dropdown-item" href="#">Profile</a></li>
-                    </ul>
-                </div>
-
-
-                <!-- side bar -->
-                <div class="sidebar">
-                    <div class="sidebar-header">
-                        <h4>VOYX</h4>
-                        <button class="btn btn-close btn-close-white close-sidebar"></button>
-                    </div>
-
-                    <div class="sidebar-category">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <h5>Categories</h5>
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                        <div class="sub-menu">
-                            <a href="./Electronics.php" class="d-block py-2">Electronics</a>
-                            <a href="./Fashion.php" class="d-block py-2">Fashion</a>
-                            <a href="./home.php" class="d-block py-2">Home & kitchen</a>
-                            <a href="./Vehicles.php" class="d-block py-2">Vehicles</a>
-                        </div>
-                    </div>
-
-                    <div class="sidebar-category">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <h5>Pages</h5>
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                        <div class="sub-menu">
-                            <a href="#" class="d-block py-2">Home</a>
-                            <a href="#" class="d-block py-2">Products</a>
-                            <a href="#" class="d-block py-2">Contact us</a>
-                            <a href="#" class="d-block py-2">About</a>
-                            <a href="#" class="d-block py-2">Profile</a>
-                            <a href="#" class="d-block py-2">Deals</a>
-                        </div>
-                    </div>
-                </div>
+            <div class="sub-menu">
+              <a href="./Electronics.php" class="d-block py-2">Electronics</a>
+              <a href="./Fashion.php" class="d-block py-2">Fashion</a>
+              <a href="./home.php" class="d-block py-2">Home & kitchen</a>
+              <a href="./Vehicles.php" class="d-block py-2">Vehicles</a>
             </div>
+          </div>
+
+          <div class="sidebar-category">
+            <div class="d-flex justify-content-between align-items-center">
+              <h5>Pages</h5>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="sub-menu">
+              <a href="./index.php" class="d-block py-2">Home</a>
+              <a href="./index.php#products" class="d-block py-2">Products</a>
+              <a href="./Contact-us.html" class="d-block py-2">Contact us</a>
+              <a href="./index.php#About" class="d-block py-2">About</a>
+              <a href="./index.php#NewArrivals" class="nav-link">NewArrivals</a>
+              <a href="./index.php#deals" class="d-block py-2">Deals</a>
+            </div>
+          </div>
         </div>
-    </nav>
+      </div>
+    </div>
+  </nav>
 
     <!-- Sidebar Filters -->
 

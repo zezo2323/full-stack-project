@@ -1,3 +1,7 @@
+/* fonts */
+
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap");
+
 :root {
     --first-color: hsl(176, 88%, 27%);
     --light-color: #f3f3f3;

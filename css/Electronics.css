@@ -1354,22 +1354,23 @@ hr{
 }
 
 /* ============================================ SEARCH BAR ============================================= */
-.search-box {
-    max-width: 500px;
-    border: 2px solid #eee;
-    border-radius: 30px;
-    overflow: hidden;
-    transition: all 0.3s;
+
+/* تنسيق قائمة اقتراحات البحث */
+#searchSuggestions {
+  border: 1px solid #eee;
+  border-top: none;
+  max-height: 300px;
+  overflow-y: auto;
+  border-radius: 0 0 8px 8px;
 }
-  
-.search-input {
-    border-radius: 25px;
-    padding: 8px 20px;
-    border: 2px solid #ddd;
-    transition: all 0.3s ease;
+
+.suggestion-item {
+  transition: background-color 0.2s;
+  cursor: pointer;
+  padding: 8px 12px;
 }
-  
-.search-input:focus {
-    border-color: var(--first-color);
-    box-shadow: 0 0 10px rgba(42, 92, 69, 0.2);
+
+.suggestion-item:hover {
+  background-color: #f8f9fa;
+  color: var(--first-color);
 }

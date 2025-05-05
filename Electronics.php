@@ -1,3 +1,9 @@
+<?php
+session_start();
+$isLoggedIn = isset($_SESSION['user_id']);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -101,7 +107,12 @@
   <!-- =====================================Promotion Bar ===================================== -->
   <div class="promotion-bar">
     <div class="container d-flex justify-content-between align-items-center">
-      <span>🎁 Get 10% off your first order! Use code: WELCOME10</span>
+      <span>
+        <?php if (isset($_SESSION['user_id']) && isset($_SESSION['username'])): ?>
+          hello <?php echo htmlspecialchars($_SESSION['username']); ?> -
+        <?php endif; ?>
+        🎁 Get 10% off your first order! Use code: WELCOME10
+      </span>
       <button class="btn btn-link text-white p-0 close-promo">
         <i class="fas fa-times"></i>
       </button>
@@ -113,18 +124,23 @@
     <div class="container">
       <div class="d-flex justify-content-between align-items-center">
         <!-- Logo -->
-        <a href="#" class="navbar-brand">
+        <a href="./index.php" class="navbar-brand">
           <img src="./imgs/index/logo.png" alt="Logo" style="height: 50px; width: 100px" />
         </a>
 
         <!-- Search Box -->
         <div class="col-lg-4">
-          <div class="search-box input-group">
-            <input type="text" class="form-control border-0" placeholder="Search products..." />
-            <button class="btn btn-custom">
-              <i class="fas fa-search"></i>
-            </button>
-          </div>
+          <form action="search.php" method="GET" class="w-100 position-relative">
+            <div class="search-box input-group">
+              <input type="text" name="query" id="searchInput" class="form-control border-0"
+                placeholder="Search products..." autocomplete="off" required />
+              <button type="submit" class="btn btn-custom">
+                <i class="fas fa-search"></i>
+              </button>
+            </div>
+            <div id="searchSuggestions" class="position-absolute w-100 bg-white shadow-sm rounded-bottom d-none"
+              style="z-index:99999999 ;"></div>
+          </form>
         </div>
 
         <div class="nav-icons d-flex align-items-center position-relative col-md-1">
@@ -174,31 +190,31 @@
             <li class="dropdown-submenu">
               <a class="dropdown-item dropdown-toggle" href="./Fashion.php">Fashion</a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="./Fashions/men's.php">Men's Wear</a></li>
-                <li><a class="dropdown-item" href="./Fashions/women's.php">Women's Wear</a></li>
-                <li><a class="dropdown-item" href="./Fashions/kids.php">Kids</a></li>
+                <li><a class="dropdown-item" href="#">Men's Wear</a></li>
+                <li><a class="dropdown-item" href="#">Women's Wear</a></li>
+                <li><a class="dropdown-item" href="#">Kids</a></li>
               </ul>
             </li>
 
             <!-- باقي الفئات -->
             <li class="dropdown-submenu">
-              <a class="dropdown-item dropdown-toggle" href="./home.php">Home & kitchen</a>
+              <a class="dropdown-item dropdown-toggle" href="#">Home & kitchen</a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="./home catagory/Stove.php">Stoves</a></li>
-                <li><a class="dropdown-item" href="./home catagory/Freezers.php">Freezers</a></li>
-                <li><a class="dropdown-item" href="./home catagory/Refrigerators.php">Refrigerators</a></li>
-                <li><a class="dropdown-item" href="./home catagory/Kitchen.php">Kitchens</a></li>
-                <li><a class="dropdown-item" href="./home catagory/Washing machines.php">Washing</a></li>
-                <li><a class="dropdown-item" href="./home catagory/Fans.php">Fans</a></li>
+                <li><a class="dropdown-item" href="#">Electric-ovens</a></li>
+                <li><a class="dropdown-item" href="#">Microwaves</a></li>
+                <li><a class="dropdown-item" href="#">Refrigerators</a></li>
+                <li><a class="dropdown-item" href="#">Air-conditioners</a></li>
+                <li><a class="dropdown-item" href="#">Water-heaters</a></li>
+                <li><a class="dropdown-item" href="#">Fans</a></li>
               </ul>
             </li>
 
             <li class="dropdown-submenu">
-              <a class="dropdown-item dropdown-toggle" href="./Vehicles.php">Vehicles</a>
+              <a class="dropdown-item dropdown-toggle" href="#">Vehicles</a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="./Vehicles/cars.php">Cars</a></li>
-                <li><a class="dropdown-item" href="./Vehicles/motors.php">motors</a></li>
-                <li><a class="dropdown-item" href="./Vehicles/bicycles.php">bicycles</a></li>
+                <li><a class="dropdown-item" href="#">cars</a></li>
+                <li><a class="dropdown-item" href="#">motors</a></li>
+                <li><a class="dropdown-item" href="#">bicycles</a></li>
 
               </ul>
             </li>
@@ -208,11 +224,12 @@
         <!-- Navigation Links -->
         <div class="d-flex flex-grow-1 justify-content-center">
           <a href="./index.php" class="nav-link">Home</a>
-          <a href="#products" class="nav-link">Products</a>
-          <a href="#" class="nav-link">About</a>
-          <a href="#" class="nav-link">Contact US</a>
-          <a href="#" class="nav-link">Profile</a>
-          <a href="#deals" class="nav-link">Deals</a>
+          <a href="./index.php#products" class="nav-link">Products</a>
+          <a href="./index.php#deals" class="nav-link">Deals</a>
+          <a href="./index.php#About" class="nav-link">About</a>
+          <a href="./Contact-US.html" class="nav-link">Contact US</a>
+          <a href="./index.php#NewArrivals" class="nav-link">NewArrivals</a>
+          <a href="./index.php#showcase" class="nav-link">showcase</a>
         </div>
         <!-- Categories Dropdown -->
         <div class="dropdown me-4">
@@ -220,12 +237,22 @@
             <i class="far fa-user"></i>
           </button>
 
-          <ul class="dropdown-menu dropdown-menu-end">
-            <!-- فئة مع قائمة فرعية -->
-            <li><a class="dropdown-item" href="#">Login</a></li>
-            <li><a class="dropdown-item" href="#">Signup</a></li>
-            <li><a class="dropdown-item" href="#">Logout</a></li>
-            <li><a class="dropdown-item" href="#">Profile</a></li>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+            <?php if ($isLoggedIn): ?>
+              <!-- روابط للمستخدمين المسجلين دخولهم -->
+              <li>
+                <?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']): ?>
+                  <a class="dropdown-item" href="#">Profile</a>
+                <?php else: ?>
+                  <a class="dropdown-item" href="/user_profile.php">Profile</a>
+                <?php endif; ?>
+              </li>
+              <li><a class="dropdown-item" href="/login/auth.php?action=logout">Logout</a></li>
+            <?php else: ?>
+              <!-- روابط لغير المسجلين دخولهم -->
+              <li><a class="dropdown-item" href="/login/auth.php?mode=login">Login</a></li>
+              <li><a class="dropdown-item" href="/login/auth.php?mode=choose">Signup</a></li>
+            <?php endif; ?>
           </ul>
         </div>
 
@@ -256,20 +283,18 @@
               <i class="fas fa-chevron-down"></i>
             </div>
             <div class="sub-menu">
-              <a href="#" class="d-block py-2">Home</a>
-              <a href="#" class="d-block py-2">Products</a>
-              <a href="#" class="d-block py-2">Contact us</a>
-              <a href="#" class="d-block py-2">About</a>
-              <a href="#" class="d-block py-2">Profile</a>
-              <a href="#" class="d-block py-2">Deals</a>
+              <a href="./index.php" class="d-block py-2">Home</a>
+              <a href="./index.php#products" class="d-block py-2">Products</a>
+              <a href="./Contact-us.html" class="d-block py-2">Contact us</a>
+              <a href="./index.php#About" class="d-block py-2">About</a>
+              <a href="./index.php#NewArrivals" class="nav-link">NewArrivals</a>
+              <a href="./index.php#deals" class="d-block py-2">Deals</a>
             </div>
           </div>
         </div>
       </div>
     </div>
   </nav>
-
-
 
 
   <!-- Sidebar Filters -->
@@ -442,8 +467,7 @@
     </div>
     <!-- posters -->
     <div class="posters">
-      <a href="./Electronics/Accessories.php"><img src="./imgs/Electronics/Electronics/poster1.png"
-          alt="poster"></a>
+      <a href="./Electronics/Accessories.php"><img src="./imgs/Electronics/Electronics/poster1.png" alt="poster"></a>
       <a href="./Electronics/Televisions.php"><img src="./imgs/Electronics/Electronics/poster2.png" alt="poster"></a>
     </div>
     <!-- brands -->
@@ -453,22 +477,16 @@
       </div>
 
       <div class="brand-img">
-        <a href="./Electronics/Samsung.php"><img src="./imgs/Electronics/Electronics/brand1.png"
-            alt="brand"></a>
+        <a href="./Electronics/Samsung.php"><img src="./imgs/Electronics/Electronics/brand1.png" alt="brand"></a>
         <a href="./Electronics/Honor.php"><img src="./imgs/Electronics/Electronics/brand2.png" alt="brand"></a>
         <a href="./Electronics/Asus.php"><img src="./imgs/Electronics/Electronics/brand3.png" alt="brand"></a>
-        <a href="./Electronics/Lenovo.php"><img src="./imgs/Electronics/Electronics/brand4.png"
-            alt="brand"></a>
-        <a href="./Electronics/Apple_brand.php"><img src="./imgs/Electronics/Electronics/brand5.png"
-            alt="brand"></a>
+        <a href="./Electronics/Lenovo.php"><img src="./imgs/Electronics/Electronics/brand4.png" alt="brand"></a>
+        <a href="./Electronics/Apple_brand.php"><img src="./imgs/Electronics/Electronics/brand5.png" alt="brand"></a>
         <a href="./Electronics/HP.php"><img src="./imgs/Electronics/Electronics/brand6.png" alt="brand"></a>
-        <a href="./Electronics/Xiaomi.php"><img src="./imgs/Electronics/Electronics/brand7.png"
-            alt="brand"></a>
+        <a href="./Electronics/Xiaomi.php"><img src="./imgs/Electronics/Electronics/brand7.png" alt="brand"></a>
         <a href="./Electronics/JBL.php"><img src="./imgs/Electronics/Electronics/brand8.png" alt="brand"></a>
-        <a href="./Electronics/Toshiba.php"><img src="./imgs/Electronics/Electronics/brand9.png"
-            alt="brand"></a>
-        <a href="./Electronics/Fresh.php"><img src="./imgs/Electronics/Electronics/brand10.png"
-            alt="brand"></a>
+        <a href="./Electronics/Toshiba.php"><img src="./imgs/Electronics/Electronics/brand9.png" alt="brand"></a>
+        <a href="./Electronics/Fresh.php"><img src="./imgs/Electronics/Electronics/brand10.png" alt="brand"></a>
       </div>
     </div>
     <hr>
@@ -480,7 +498,7 @@
       <div class="products__container grid">
         <?php
         include './db_connection.php'; // ملف يحتوي على اتصال قاعدة البيانات
-
+        
         // الحصول على الفئة "Electronics" (category_id = 1)
         $category_id = 1;
 
@@ -503,7 +521,7 @@
 
         if ($products->num_rows > 0) {
           while ($product = $products->fetch_assoc()) {
-        ?>
+            ?>
             <div class="product__item">
               <div class="product__banner">
                 <a href="Detils.php?id=<?= $product['product_id'] ?>" class="product__images">
@@ -512,10 +530,12 @@
                 </a>
 
                 <div class="product__actions">
-                  <a class="action__btn quick-view" aria-label="Quick View" href="Detils.php?id=<?= $product['product_id'] ?>">
+                  <a class="action__btn quick-view" aria-label="Quick View"
+                    href="Detils.php?id=<?= $product['product_id'] ?>">
                     <i class="fi fi-rr-eye"></i>
                   </a>
-                  <button class="action__btn add-wishlist" aria-label="Add To Wishlist" data-id="<?= $product['product_id'] ?>">
+                  <button class="action__btn add-wishlist" aria-label="Add To Wishlist"
+                    data-id="<?= $product['product_id'] ?>">
                     <i class="fi fi-rr-heart"></i>
                   </button>
                   <button class="action__btn compare" aria-label="Compare" data-id="<?= $product['product_id'] ?>">
@@ -571,13 +591,12 @@
                 </div>
 
                 <button class="action__btn cart__btn add-to-cart" aria-label="Add To Cart"
-                  data-id="<?= $product['product_id'] ?>"
-                  data-price="<?= $product['price'] ?>">
+                  data-id="<?= $product['product_id'] ?>" data-price="<?= $product['price'] ?>">
                   <i class="fi fi-rr-shopping-bag-add"></i>
                 </button>
               </div>
             </div>
-        <?php
+            <?php
           }
         } else {
           echo '<div class="alert alert-info">No products found in category</div>';
