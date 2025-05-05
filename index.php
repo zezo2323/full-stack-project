@@ -2,32 +2,6 @@
 session_start();
 $isLoggedIn = isset($_SESSION['user_id']);
 
-// // التحقق من تسجيل الدخول وإنشاء سجلات السلة وقائمة المفضلة
-// if ($isLoggedIn) {
-//     require_once 'login/config.php'; // استدعاء ملف التهيئة لاستخدام فئة Database
-//     $userId = $_SESSION['user_id'];
-
-//     // إنشاء سجل في جدول carts إذا لم يكن موجودًا
-//     $db = Database::getInstance();
-//     $cart = $db->fetchOne("SELECT * FROM carts WHERE user_id = ?", [$userId]);
-//     if (!$cart) {
-//         $db->insert("INSERT INTO carts (user_id) VALUES (?)", [$userId]);
-//         // جلب cart_id الجديد
-//         $cart = $db->fetchOne("SELECT cart_id FROM carts WHERE user_id = ?", [$userId]);
-//     }
-
-//     // إنشاء سجل في جدول wishlists إذا لم يكن موجودًا
-//     $wishlist = $db->fetchOne("SELECT * FROM wishlists WHERE user_id = ?", [$userId]);
-//     if (!$wishlist) {
-//         $db->insert("INSERT INTO wishlists (user_id) VALUES (?)", [$userId]);
-//         // جلب wishlist_id الجديد
-//         $wishlist = $db->fetchOne("SELECT wishlist_id FROM wishlists WHERE user_id = ?", [$userId]);
-//     }
-// } else {
-//     // إذا لم يكن المستخدم مسجل دخول، يمكن توجيهه إلى صفحة تسجيل الدخول
-//     header("Location: /login/auth.php?mode=login");
-//     exit;
-// }
 ?>
 <?php
 include 'db_connection.php';
@@ -498,7 +472,7 @@ $dealsResult = $conn->query($dealsQuery);
         <!-- روابط للمستخدمين المسجلين دخولهم -->
         <li>
             <?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']): ?>
-                <a class="dropdown-item" href="#">Profile</a>
+                <a class="dropdown-item" href="./Admin Dashboard/dash.html">Profile</a>
             <?php else: ?>
                 <a class="dropdown-item" href="/user_profile.php">Profile</a>
             <?php endif; ?>

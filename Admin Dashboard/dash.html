@@ -1,920 +1,1050 @@
 <!DOCTYPE html>
 <html lang="en">
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Admin Dashboard - Amazon Clone</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    * {
-      box-sizing: border-box;
-      font-family: 'Inter', sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-    body {
-      background: #f0f2f5;
-      display: flex;
-      min-height: 100vh;
-    }
-    .sidebar {
-      width: 220px;
-      background-color: #2502e8;
-      color: white;
-      padding: 30px 20px;
-      border-radius: 0 25px 25px 0;
-    }
-    .sidebar h2 {
-      margin-bottom: 40px;
-    }
-    .sidebar ul {
-      list-style: none;
-    }
-    .sidebar ul li {
-      margin: 20px 0;
-      cursor: pointer;
-    }
-    .sidebar ul li:hover {
-      text-decoration: underline;
-    }
-    .main {
-      flex: 1;
-      padding: 40px;
-    }
-    .section {
-      display: none;
-    }
-    .section.active {
-      display: block;
-    }
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 20px;
-      margin-bottom: 40px;
-    }
-    .card {
-      background-color: white;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-      text-align: center;
-    }
-    .card h3 {
-      font-size: 1.2rem;
-      margin-bottom: 10px;
-    }
-    .card p {
-      font-size: 1.5rem;
-      font-weight: bold;
-    }
-    .filter {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-    }
-    .filter input[type="date"] {
-      padding: 5px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-    .orders {
-      background: white;
-      border-radius: 12px;
-      padding: 20px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-    table thead {
-      background: #f9fafb;
-    }
-    table th, table td {
-      padding: 12px 15px;
-      text-align: left;
-    }
-    table tbody tr {
-      border-bottom: 1px solid #eee;
-    }
-    table tbody tr.active {
-      background-color: #0052ff;
-      color: white;
-      border-radius: 10px;
-    }
-    .status {
-      padding: 5px 10px;
-      border-radius: 20px;
-      font-size: 0.9em;
-    }
-    .pending {
-      background-color: #ffe5e5;
-      color: #ff4d4f;
-    }
-    .completed {
-      background-color: #e6fffb;
-      color: #52c41a;
-    }
-    .dispatch {
-      background-color: #e6f7ff;
-      color: #1890ff;
-    }
-    .actions button {
-      background: none;
-      border: none;
-      cursor: pointer;
-      margin-right: 10px;
-    }
-    .actions button:hover {
-      color: #0052ff;
-    }
- 
-.sidebar ul li.active {
-    background-color: white;
-    color: #0052ff;
-    padding: 10px;
-    border-radius: 10px;
-    font-weight: bold;
-    transition: 0.3s;
-  }
-  /* تصميم الجدول */
-  #productTable {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: #fff;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    margin-top: 20px;
-  }
-
-  #productTable th {
-    background-color: #041dff;
-    color: white;
-    text-align: left;
-    padding: 12px;
-  }
-
-  #productTable td {
-    padding: 12px;
-    border-bottom: 1px solid #eee;
-  }
-
-  #productTable tbody tr:hover {
-    background-color: #f1f8ff;
-  }
-
-  /* الأزرار */
-  #productTable button {
-    padding: 6px 10px;
-    margin: 0 2px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 14px;
-  }
-
-  #productTable button:first-child {
-    background-color: #687cee; /* تعديل */
-    color: #000;
-  }
-
-  #productTable button:last-child {
-    background-color: #174751; /* حذف */
-    color: #fff;
-  }
-
-  /* عنوان القسم */
-  #products h1 {
-    color: #000000;
-  }
-
-  /* إدخال منتج جديد */
-  #products input,
-  #products select {
-    padding: 8px;
-    margin: 5px;
-    border: 1px solid #cccccc;
-    border-radius: 6px;
-    font-size: 14px;
-  }
-
-  #products button {
-    background-color: #4083e1;
-    color: white;
-    padding: 8px 12px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-  }
-
-  #products button:hover {
-    background-color: #258e8b;
-  }
-
-  /* باقي الأكواد اللي عندك */
-
-  /* جدول صفحة Settings */
-  #settings table {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: #fff;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    margin-top: 20px;
-  }
-
-  #settings th {
-    background-color: #343a40;
-    color: #fff;
-    text-align: left;
-    padding: 12px 15px;
-  }
-
-  #settings td {
-    padding: 12px 15px;
-    border-bottom: 1px solid #eee;
-    color: #333;
-  }
-
-  #settings tr:hover {
-    background-color: #f8f9fa;
-  }
-
-  #settings button {
-    padding: 6px 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-  }
-
-  #settings button:hover {
-    background-color: #0056b3;
-  }
-  /* تنسيق جدول المخزون */
-#stock table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-  background-color: #fff;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-#stock th, #stock td {
-  padding: 12px;
-  border-bottom: 1px solid #ddd;
-  text-align: center;
-}
-
-#stock th {
-  background-color: #0052ff;
-  color: white;
-}
-
-#stock button {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 6px 10px;
-  margin: 2px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 14px;
-  transition: 0.3s ease;
-}
-
-#stock button:hover {
-  background-color: #0056b3;
-}
-
-  #offers button {
-  margin: 10px 0;
-  padding: 8px 12px;
-  background-color: #28a745;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-}
-#offers button:hover {
-  background-color: #218838;
-}
-.styled-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 10px;
-}
-.styled-table th,
-.styled-table td {
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: center;
-}
-.styled-table th {
-  background-color: #f2f2f2;
-}
-
-</style>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard - Amazon Clone</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background: #f0f2f5;
+            display: flex;
+            min-height: 100vh;
+        }
+        .sidebar {
+            width: 220px;
+            background-color: #2502e8;
+            color: white;
+            padding: 30px 20px;
+            border-radius: 0 25px 25px 0;
+        }
+        .sidebar h2 {
+            margin-bottom: 40px;
+        }
+        .sidebar ul {
+            list-style: none;
+        }
+        .sidebar ul li {
+            margin: 20px 0;
+            cursor: pointer;
+        }
+        .sidebar ul li:hover {
+            text-decoration: underline;
+        }
+        .main {
+            flex: 1;
+            padding: 40px;
+        }
+        .section {
+            display: none;
+        }
+        .section.active {
+            display: block;
+        }
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .card {
+            background-color: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        .card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        .card p {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .filter {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .filter input[type="date"] {
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .orders {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table thead {
+            background: #f9fafb;
+        }
+        table th, table td {
+            padding: 12px 15px;
+            text-align: left;
+        }
+        table tbody tr {
+            border-bottom: 1px solid #eee;
+        }
+        table tbody tr.active {
+            background-color: #0052ff;
+            color: white;
+            border-radius: 10px;
+        }
+        .status {
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.9em;
+        }
+        .pending { background-color: #ffe5e5; color: #ff4d4f; }
+        .completed { background-color: #e6fffb; color: #52c41a; }
+        .dispatch { background-color: #e6f7ff; color: #1890ff; }
+        .actions button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        .actions button:hover { color: #0052ff; }
+        .sidebar ul li.active {
+            background-color: white;
+            color: #0052ff;
+            padding: 10px;
+            border-radius: 10px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        #productTable {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-top: 20px;
+        }
+        #productTable th {
+            background-color: #041dff;
+            color: white;
+            text-align: left;
+            padding: 12px;
+        }
+        #productTable td {
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+        }
+        #productTable tbody tr:hover { background-color: #f1f8ff; }
+        #productTable button {
+            padding: 6px 10px;
+            margin: 0 2px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        #productTable button:first-child { background-color: #687cee; color: #000; }
+        #productTable button:last-child { background-color: #174751; color: #fff; }
+        #products h1 { color: #000000; }
+        #products input, #products select, #products textarea {
+            padding: 8px;
+            margin: 5px;
+            border: 1px solid #cccccc;
+            border-radius: 6px;
+            font-size: 14px;
+            width: 100%;
+        }
+        #products button {
+            background-color: #4083e1;
+            color: white;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        #products button:hover { background-color: #258e8b; }
+        #settings table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            margin-top: 20px;
+        }
+        #settings th {
+            background-color: #343a40;
+            color: #fff;
+            text-align: left;
+            padding: 12px 15px;
+        }
+        #settings td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+            color: #333;
+        }
+        #settings tr:hover { background-color: #f8f9fa; }
+        #settings button {
+            padding: 6px 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        #settings button:hover { background-color: #0056b3; }
+        #stock table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        #stock th, #stock td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+            text-align: center;
+        }
+        #stock th { background-color: #0052ff; color: white; }
+        #stock button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 6px 10px;
+            margin: 2px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: 0.3s ease;
+        }
+        #stock button:hover { background-color: #0056b3; }
+        #offers table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        #offers th, #offers td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+            text-align: center;
+        }
+        #offers th { background-color: #343a40; color: white; }
+        #offers button {
+            margin: 10px 0;
+            padding: 8px 12px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        #offers button:hover { background-color: #218838; }
+        .styled-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        .styled-table th, .styled-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        .styled-table th { background-color: #f2f2f2; }
+        .notification {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            padding: 10px;
+            background: #28a745;
+            color: white;
+            border-radius: 5px;
+            z-index: 1000;
+        }
+        .alert-danger { background: #dc3545; }
+    </style>
 </head>
 <body>
-  <div class="sidebar">
-    <h2>Product</h2>
-      <ul>
-        <li onclick="showSection('dashboard')">🏠 Dashboard</li>
-        <li onclick="showSection('orders')">📦 Orders</li>
-        <li onclick="showSection('statistics')">📊 Statistics</li>
-        <li onclick="showSection('products')">🛒 Products</li>
-        <li onclick="showSection('stock')">🏷️ Stock</li>
-        <li onclick="showSection('settings')">⚙️ Settings</li>
-        <li onclick="showSection('offers')">🎁 Offers</li>
-      </ul>
-  </div>
-   <div class="main">
-    <div id="dashboard" class="section active">
-
-      <h1>Dashboard</h1>
-      <div class="cards">
-        <div class="card">
-          <h3>Number of produts</h3>
-          <p>120</p>
+    <div class="sidebar">
+        <h2>Product</h2>
+        <ul>
+            <li onclick="showSection('dashboard')" class="active">🏠 Dashboard</li>
+            <li onclick="showSection('orders')">📦 Orders</li>
+            <li onclick="showSection('statistics')">📊 Statistics</li>
+            <li onclick="showSection('products')">🛒 Products</li>
+            <li onclick="showSection('stock')">🏷️ Stock</li>
+            <li onclick="showSection('settings')">⚙️ Settings</li>
+            <li onclick="showSection('offers')">🎁 Offers</li>
+        </ul>
+    </div>
+    <div class="main">
+        <div id="dashboard" class="section active">
+            <h1>Dashboard</h1>
+            <div class="cards">
+                <div class="card">
+                    <h3>Number of products</h3>
+                    <p id="productsCount">0</p>
+                </div>
+                <div class="card">
+                    <h3>Number of users</h3>
+                    <p id="usersCount">0</p>
+                </div>
+                <div class="card">
+                    <h3>Number of requests</h3>
+                    <p id="ordersCount">0</p>
+                </div>
+                <div class="card">
+                    <h3>Total revenue</h3>
+                    <p id="totalRevenue">$0.00</p>
+                </div>
+                <div class="card">
+                    <h3>Items in carts</h3>
+                    <p id="cartItemsCount">0</p>
+                </div>
+                <div class="card">
+                    <h3>Items in wishlists</h3>
+                    <p id="wishlistItemsCount">0</p>
+                </div>
+            </div>
+            <p>Welcome to the Admin Dashboard.</p>
         </div>
-        <div class="card">
-          <h3>Nuber of users</h3>
-          <p>350</p>
+
+        <div id="orders" class="section">
+            <h1>Orders Management</h1>
+            <div style="display: flex; justify-content: flex-end; align-items: center; gap: 20px; margin-bottom: 20px;">
+                <input id="searchInput" type="text" placeholder="ابحث عن اسم أو عنوان..." style="display: none; padding: 5px; border-radius: 5px; border: 1px solid #ccc;">
+                <span style="cursor: pointer;" onclick="toggleSearch()">🔍</span>
+                <span style="cursor: pointer;" onclick="showNotification()">🔔</span>
+                <img src="image.jpg" alt="User" style="width: 40px; height: 40px; border-radius: 50%;" />
+            </div>
+            <div class="filter">
+                <div>
+                    <button onclick="filterOrders('all')">All Orders</button>
+                    <button onclick="filterOrders('dispatch')">Dispatched</button>
+                    <button onclick="filterOrders('pending')">Pending</button>
+                    <button onclick="filterOrders('completed')">Completed</button>
+                </div>
+                <div>
+                    <input type="date" id="startDate" /> to <input type="date" id="endDate" />
+                </div>
+            </div>
+            <div class="orders">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Address</th>
+                            <th>Date</th>
+                            <th>Price</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="orderBody">
+                        <!-- Orders will be loaded dynamically -->
+                    </tbody>
+                </table>
+            </div>
         </div>
-        <div class="card">
-          <h3>Number of requests</h3>
-          <p>180</p>
+
+        <div id="statistics" class="section">
+            <h1>📊 Statistics</h1>
+            <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 20px;">
+                <div style="flex: 1; min-width: 200px; background-color: #f0f8ff; padding: 20px; border-radius: 10px; text-align: center;">
+                    <h3>Total orders</h3>
+                    <p style="font-size: 24px; font-weight: bold;" id="totalOrdersStats">0</p>
+                </div>
+                <div style="flex: 1; min-width: 200px; background-color: #e6ffe6; padding: 20px; border-radius: 10px; text-align: center;">
+                    <h3>Products sold</h3>
+                    <p style="font-size: 24px; font-weight: bold;" id="productsSoldStats">0</p>
+                </div>
+                <div style="flex: 1; min-width: 200px; background-color: #fff0f5; padding: 20px; border-radius: 10px; text-align: center;">
+                    <h3>Revenue</h3>
+                    <p style="font-size: 24px; font-weight: bold;" id="revenueStats">$0.00</p>
+                </div>
+                <div style="flex: 1; min-width: 200px; background-color: #fffbe6; padding: 20px; border-radius: 10px; text-align: center;">
+                    <h3>Number of users</h3>
+                    <p style="font-size: 24px; font-weight: bold;" id="usersStats">0</p>
+                </div>
+            </div>
+            <div style="margin-top: 40px;">
+                <h3>📅 Statistics for the last few days</h3>
+                <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+                    <thead>
+                        <tr style="background-color: #eee;">
+                            <th style="padding: 10px; border: 1px solid #ccc;">Day</th>
+                            <th style="padding: 10px; border: 1px solid #ccc;">Orders</th>
+                            <th style="padding: 10px; border: 1px solid #ccc;">Revenue</th>
+                        </tr>
+                    </thead>
+                    <tbody id="dailyStats">
+                        <!-- Daily stats will be loaded dynamically -->
+                    </tbody>
+                </table>
+            </div>
+            <div style="margin-top: 40px;">
+                <h3>🔄 Performance indicators</h3>
+                <p>Order completion rate</p>
+                <div style="background-color: #ddd; border-radius: 5px; overflow: hidden;">
+                    <div id="completionRate" style="width: 0%; background-color: #4caf50; color: white; text-align: center; padding: 5px;">0%</div>
+                </div>
+                <p style="margin-top: 10px;">Available inventory</p>
+                <div style="background-color: #ddd; border-radius: 5px; overflow: hidden;">
+                    <div id="inventoryRate" style="width: 0%; background-color: #2196f3; color: white; text-align: center; padding: 5px;">0%</div>
+                </div>
+            </div>
         </div>
-        <div class="card">
-          <h3>Totar revenue</h3>
-          <p>$12,340</p>
+
+        <div id="products" class="section">
+            <h1>Product Management</h1>
+            <table id="productTable">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Product Name</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                        <th>Old Price</th>
+                        <th>Condition</th>
+                        <th>Procedures</th>
+                        <th>Description</th>
+                        <th>Image</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="productTableBody">
+                    <!-- Products will be loaded dynamically -->
+                </tbody>
+            </table>
+            <br>
+            <h3>Add New Product</h3>
+            <input type="text" id="productName" placeholder="Product Name" required/>
+            <select id="productCategory" required>
+                <option value="">Select Category</option>
+                <!-- Categories will be loaded dynamically -->
+            </select>
+            <input type="number" id="productPrice" placeholder="Price" step="0.01" required/>
+            <input type="number" id="productOldPrice" placeholder="Old Price (optional)" step="0.01"/>
+            <input type="number" id="productStockQuantity" placeholder="Stock Quantity" required/>
+            <input type="number" id="productRating" placeholder="Rating (0-5)" step="0.1" min="0" max="5"/>
+            <textarea id="productDescription" placeholder="Description"></textarea>
+            <input type="file" id="productImage" accept="image/*" required/>
+            <input type="text" id="productTags" placeholder="Tags (comma separated)"/>
+            <select id="productBadge">
+                <option value="">Select Badge (optional)</option>
+                <!-- Badges will be loaded dynamically -->
+            </select>
+            <label><input type="checkbox" id="productIsFeatured"/> Is Featured</label>
+            <label><input type="checkbox" id="productIsPopular"/> Is Popular</label>
+            <label><input type="checkbox" id="productIsNew"/> Is New</label>
+            <label><input type="checkbox" id="productIsArrival"/> Is Arrival</label>
+            <label><input type="checkbox" id="productIsHot"/> Is Hot</label>
+            <label><input type="checkbox" id="productIsTrendy"/> Is Trendy</label>
+            <button onclick="addProduct()">➕ Add Product</button>
         </div>
-      </div>
-      <p>Welcome to the Admin Dashboard.</p>
-    </div> 
 
-    <div id="orders" class="section">
-    
-      <h1>Orders Management</h1>
-
-      <div style="display: flex; justify-content: flex-end; align-items: center; gap: 20px; margin-bottom: 20px;">
-        <input id="searchInput" type="text" placeholder="ابحث عن اسم أو عنوان..." style="display: none; padding: 5px; border-radius: 5px; border: 1px solid #ccc;">
-        <span style="cursor: pointer;" onclick="toggleSearch()">🔍</span>
-        <span style="cursor: pointer;" onclick="showNotification()">🔔</span>
-        <img src="image.jpg" alt="User" style="width: 40px; height: 40px; border-radius: 50%;" />
-      </div>
-      
-      
-      <div class="filter">
-        <div>
-          <button onclick="filterOrders('all')">All Orders</button>
-          <button onclick="filterOrders('dispatch')">Dispatched</button>
-          <button onclick="filterOrders('pending')">Pending</button>
-          <button onclick="filterOrders('completed')">Completed</button>
+        <div id="stock" class="section">
+            <h1>Inventory Management</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Quantity</th>
+                        <th>Procedure</th>
+                        <th>Image</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody id="stockBody">
+                    <!-- Stock will be loaded dynamically -->
+                </tbody>
+            </table>
+            <br>
+            <h3>Add New Product to Stock</h3>
+            <input type="text" id="stockProductName" placeholder="Product Name" required/>
+            <input type="number" id="stockQuantity" placeholder="Quantity" required/>
+            <input type="text" id="stockDescription" placeholder="Description"/>
+            <input type="file" id="stockImage" accept="image/*" required/>
+            <select id="stockStatus">
+                <option value="Available">Available</option>
+                <option value="Not available">Not available</option>
+            </select>
+            <button onclick="addStockRow()">➕ Add Product</button>
         </div>
-        <div>
-          <input type="date" /> to <input type="date" />
+
+        <div id="settings" class="section">
+            <h1>Settings</h1>
+            <div style="margin-top: 20px;">
+                <h3>Add Admin</h3>
+                <form id="adminForm">
+                    <label>Admin Name</label><br>
+                    <input type="text" id="adminName" required /><br><br>
+                    <label>Email</label><br>
+                    <input type="email" id="adminEmail" required /><br><br>
+                    <label>Password</label><br>
+                    <input type="password" id="adminPassword" required /><br><br>
+                    <button type="submit">Save</button>
+                </form>
+            </div>
+            <div style="margin-top: 30px;">
+                <h3>Admin Permissions Management</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Admin Name</th>
+                            <th>Authority</th>
+                        </tr>
+                    </thead>
+                    <tbody id="adminPermissions">
+                        <!-- Admin permissions will be loaded dynamically -->
+                    </tbody>
+                </table>
+            </div>
         </div>
-      </div>
-      <div class="orders">
-        <table>
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Name</th>
-              <th>Address</th>
-              <th>Date</th>
-              <th>Price</th>
-              <th>Status</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody id="orderBody">
-            <tr class="active">
-                <td>#2632</td>
-                <td>Zeyad</td>
-                <td>1096 Wiseman Street, CALAMA, KS</td>
-                <td>01 Aug 2020</td>
-                <td>$35.00</td>
-                <td><span class="status dispatch">Dispatch</span></td>
-                <td class="actions">
-                  <button>🗑️</button>
-                </td>
-              </tr>
-              <tr>
-                <td>#2633</td>
-                <td>Ali</td>
-                <td>306 Snider Street, VT</td>
-                <td>31 Jul 2020</td>
-                <td>$44.00</td>
-                <td><span class="status pending">Pending</span></td>
-                <td class="actions">
-                  <button>🗑️</button>
-                </td>
-              </tr>
-              <tr>
-                <td>#2634</td>
-                <td>Ahmed</td>
-                <td>1864 Thorn Street, CA</td>
-                <td>02 Aug 2020</td>
-                <td>$74.00</td>
-                <td><span class="status completed">Completed</span></td>
-                <td class="actions">
-                  <button>🗑️</button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          </tbody>
-        </table>
-      </div>
+
+        <div id="offers" class="section">
+            <h1>Offer & Promotions</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Offer</th>
+                        <th>Discount Rate</th>
+                        <th>Product</th>
+                        <th>Image</th>
+                        <th>Description</th>
+                        <th>Procedures</th>
+                    </tr>
+                </thead>
+                <tbody id="offersBody">
+                    <!-- Offers will be loaded dynamically -->
+                </tbody>
+            </table>
+            <br>
+            <h3>Add a New Offer</h3>
+            <input type="text" id="offerTitle" placeholder="Presentation" required/>
+            <input type="number" id="offerDiscount" placeholder="Discount Rate %" step="0.01" required/>
+            <input type="date" id="offerStartDate" placeholder="Start Date"/>
+            <input type="date" id="offerEndDate" placeholder="End Date"/>
+            <select id="offerProduct">
+                <option value="">Select a Product (optional)</option>
+                <!-- Products will be loaded dynamically -->
+            </select>
+            <input type="text" id="offerDescription" placeholder="Description"/>
+            <input type="file" id="offerImage" accept="image/*" required/>
+            <button onclick="addOffer()">➕ Add the Offer</button>
+        </div>
     </div>
 
-    <div id="statistics" class="section">
-  <h1>📊 Statistis</h1>
-
-  <!-- كروت الإحصائيات -->
-  <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 20px;">
-    <div style="flex: 1; min-width: 200px; background-color: #f0f8ff; padding: 20px; border-radius: 10px; text-align: center;">
-      <h3>Total orders</h3>
-      <p style="font-size: 24px; font-weight: bold;">185</p>
-    </div>
-    <div style="flex: 1; min-width: 200px; background-color: #e6ffe6; padding: 20px; border-radius: 10px; text-align: center;">
-      <h3>Produts sold</h3>
-      <p style="font-size: 24px; font-weight: bold;">530</p>
-    </div>
-    <div style="flex: 1; min-width: 200px; background-color: #fff0f5; padding: 20px; border-radius: 10px; text-align: center;">
-      <h3>Revenue</h3>
-      <p style="font-size: 24px; font-weight: bold;">$12,340</p>
-    </div>
-    <div style="flex: 1; min-width: 200px; background-color: #fffbe6; padding: 20px; border-radius: 10px; text-align: center;">
-      <h3>Number of users</h3>
-      <p style="font-size: 24px; font-weight: bold;">350</p>
-    </div>
-  </div>
-
-  <!-- جدول الإحصائيات اليومية -->
-  <div style="margin-top: 40px;">
-    <h3>📅 Statistics for the last few days</h3>
-    <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
-      <thead>
-        <tr style="background-color: #eee;">
-          <th style="padding: 10px; border: 1px solid #ccc;">Today</th>
-          <th style="padding: 10px; border: 1px solid #ccc;">Orders</th>
-          <th style="padding: 10px; border: 1px solid #ccc;">Revenue</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td style="padding: 10px; border: 1px solid #ccc;">Saturday</td>
-          <td style="padding: 10px; border: 1px solid #ccc;">35</td>
-          <td style="padding: 10px; border: 1px solid #ccc;">$2,300</td>
-        </tr>
-        <tr>
-          <td style="padding: 10px; border: 1px solid #ccc;">Sunday</td>
-          <td style="padding: 10px; border: 1px solid #ccc;">28</td>
-          <td style="padding: 10px; border: 1px solid #ccc;">$1,900</td>
-        </tr>
-        <tr>
-          <td style="padding: 10px; border: 1px solid #ccc;">Monday</td>
-          <td style="padding: 10px; border: 1px solid #ccc;">40</td>
-          <td style="padding: 10px; border: 1px solid #ccc;">$3,100</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- مؤشرات أداء -->
-  <div style="margin-top: 40px;">
-    <h3>🔄 Performance indicators</h3>
-    <p>Order completion rate</p>
-    <div style="background-color: #ddd; border-radius: 5px; overflow: hidden;">
-      <div style="width: 75%; background-color: #4caf50; color: white; text-align: center; padding: 5px;">75%</div>
-    </div>
-
-    <p style="margin-top: 10px;">Available inventory</p>
-    <div style="background-color: #ddd; border-radius: 5px; overflow: hidden;">
-      <div style="width: 60%; background-color: #2196f3; color: white; text-align: center; padding: 5px;">60%</div>
-    </div>
-  </div>
-</div>
-
-    <div id="products" class="section">
-      <h1>Product management </h1>
-    
-      <!-- ✅ 1. عرض كل المنتجات -->
-      <table border="1" cellpadding="10" cellspacing="0" width="100%" id="productTable">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Product Name</th>
-            <th>Price</th>
-            <th>Old_Price</th>
-            <th>Condition</th>
-            <th>Procedures</th>
-            <th>Description</th>
-            <th>Image</th>
-          </tr>
-        </thead>
-        <!-- المنتجات الي هتنضاف -->
-      </table>
-    
-      <br>
-    
-      <!-- ✅ 2. إضافة منتج جديد -->
-      <h3>Add new product</h3>
-      <input type="text" id="productName" placeholder="Product name"/>
-      <input type="number" id="productPrice" placeholder="Price"/>
-      <input type="number" id="productOldPrice" placeholder="Old_Price"/>
-      <input type="number" id="productCondition" placeholder="Condition"/>
-      <input type="number" id="productProcedures" placeholder="Procedures"/>
-      <textarea id="productDescription" placeholder="Description"></textarea>
-      <input type="text" id="productTags" placeholder="Tags (comma separated)"/>
-      <input type="file" id="productImage" placeholder="Image"/>
-      <select id="productStatus">
-        <option value="Available">Available</option>
-        <option value="Not available">Not available</option>
-      </select>
-      <button onclick="addProduct()">➕Add product</button>
-    </div>
-
-    <div id="stock" class="section">
-      <h1>Inventory management</h1>
-      <div class="stock-table">
-        <table>
-          <thead>
-            <tr>
-              <th>Product Name</th>
-              <th>Quantity</th>
-              <th>Procedure</th>
-              <th>Image</th>
-              <th>Description</th>
-            </tr>
-          </thead>
-          <tbody id="stockBody">
-            <!-- المنتج الي هينضاف -->
-          </tbody>
-          <br>
-      <h3>Add new product</h3>
-      <input type="text" id="productName" placeholder="Product name" />
-      <input type="number" id="productPrice" placeholder="Price" />
-      <input type="text" id="productPrice" placeholder="Description"/>
-      <input type="image" id="productPrice" placeholder="Image"/>
-      <select id="productStatus">
-        <option value="Available">Available</option>
-        <option value="Not available">Not available</option>
-      </select>
-      <button onclick="addProduct()">➕ Add product</button>
-    </div>
-        </table>
-      </div>
-    </div>
-
-    <div id="settings" class="section">
-      <h1>Settings</h1>
-    
-      <!-- تغيير بيانات الأدمن -->
-      <div style="margin-top: 20px;">
-        <h3>Add admin</h3>
-        <form id="adminForm">
-          <label>Admin name</label><br>
-          <input type="text" id="adminName" required /><br><br>
-          <label>Password</label><br>
-          <input type="password" id="adminPassword" required /><br><br>
-          <button type="submit"> Save</button>
-        </form>
-      </div>
-      <!-- إدارة صلاحيات الأدمن -->
-      <div style="margin-top: 30px;">
-        <h3>Admin Permissions management</h3>
-        <table border="1" cellpadding="10">
-          <thead>
-            <tr>
-              <th>Admin Name</th>
-              <th>Authority</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Ahmed</td>
-              <td>
-                <select>
-                  <option>Complete</option>
-                  <option>Read only</option>
-                </select>
-              </td>
-            </tr>
-            <tr>
-              <td>Fatma</td>
-              <td>
-                <select>
-                  <option>Complete</option>
-                  <option>Read only</option>
-                </select>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <div id="offers" class="section">
-  <h1>Offer & Promotions</h1>
-  <!-- جدول العروض -->
-  <table>
-    <thead>
-      <tr>
-        <th>Offer</th>
-        <th>Discount rate</th>
-        <th>Image</th>
-        <th>Description</th>
-        <th>Procedures</th>
-      </tr>
-    </thead>
-    <tbody id="offersBody">
-      <!-- العروض المضافة هتظهر هنا -->
-    </tbody>
-    <br>
-      <h3>Add a new product</h3>
-      <input type="text" id="productName" placeholder="Presentation"/>
-      <input type="number" id="productPrice" placeholder="discount rate%" />
-      <input type="text" id="productPrice" placeholder="Description"/>
-      <input type="image" id="productPrice" placeholder="Image"/>
-      </select>
-      <button onclick="addProduct()">➕ Add the product</button>
-    </div>
-  </table>
-</div>
-
-
-   <script>
-    function filterOrders(status) {
-      const rows = document.querySelectorAll('#orderBody tr');
-      rows.forEach(row => {
-        const text = row.textContent.toLowerCase();
-        if (status === 'all' || text.includes(status)) {
-          row.style.display = '';
-        } else {
-          row.style.display = 'none';
+    <script>
+        function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+            document.getElementById(sectionId).classList.add('active');
+            document.querySelectorAll('.sidebar ul li').forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('onclick').includes(sectionId)) item.classList.add('active');
+            });
         }
-      });
-    }
 
-    function showSection(sectionId) {
-      document.querySelectorAll('.section').forEach(sec => {
-        sec.classList.remove('active');
-      });
-      document.getElementById(sectionId).classList.add('active');
-    }
-
-    // Add active class to sidebar menu item
-    const sidebarItems = document.querySelectorAll('.sidebar ul li');
-    sidebarItems.forEach(item => {
-      item.addEventListener('click', () => {
-        sidebarItems.forEach(el => el.classList.remove('active'));
-        item.classList.add('active');
-      });
-    });
-  document.addEventListener("DOMContentLoaded", function () {
-    function filterOrders(status) {
-      const rows = document.querySelectorAll('#orderBody tr');
-      rows.forEach(row => {
-        const text = row.textContent.toLowerCase();
-        if (status === 'all' || text.includes(status)) {
-          row.style.display = '';
-        } else {
-          row.style.display = 'none';
+        // Load categories dynamically
+        function fetchCategories() {
+            fetch('/dashboard_handler.php', { method: 'POST', body: new FormData().append('action', 'get_categories') })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        const categorySelect = document.getElementById('productCategory');
+                        data.categories.forEach(category => {
+                            categorySelect.innerHTML += `<option value="${category.category_id}">${category.name}</option>`;
+                        });
+                    }
+                })
+                .catch(error => console.error('Error fetching categories:', error));
         }
-      });
-    }
 
-    function showSection(sectionId) {
-      document.querySelectorAll('.section').forEach(sec => {
-        sec.classList.remove('active');
-      });
-      document.getElementById(sectionId).classList.add('active');
-    }
-
-    const sidebarItems = document.querySelectorAll('.sidebar ul li');
-    sidebarItems.forEach(item => {
-      item.addEventListener('click', () => {
-        sidebarItems.forEach(el => el.classList.remove('active'));
-        item.classList.add('active');
-      });
-    });
-
-    // حذف الطلب
-    const deleteButtons = document.querySelectorAll('.actions button:last-child');
-    deleteButtons.forEach(button => {
-      button.addEventListener('click', function () {
-        const row = this.closest('tr');
-        if (confirm("هل أنت متأكد من حذف هذا الطلب؟")) {
-          row.remove();
+        // Load badges dynamically
+        function fetchBadges() {
+            fetch('/dashboard_handler.php', { method: 'POST', body: new FormData().append('action', 'get_badges') })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        const badgeSelect = document.getElementById('productBadge');
+                        data.badges.forEach(badge => {
+                            badgeSelect.innerHTML += `<option value="${badge.badge_id}">${badge.badge_text}</option>`;
+                        });
+                    }
+                })
+                .catch(error => console.error('Error fetching badges:', error));
         }
-      });
-    });
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      currentRow.children[1].innerText = document.getElementById("editName").value;
-      currentRow.children[2].innerText = document.getElementById("editAddress").value;
-      currentRow.children[4].innerText = document.getElementById("editPrice").value;
-      
-      const statusCell = currentRow.children[5];
-      const status = document.getElementById("editStatus").value;
-      statusCell.innerHTML = `<span class="status ${status}">${status.charAt(0).toUpperCase() + status.slice(1)}</span>`;
 
-      modal.style.display = "none";
-    });
-  });
+        function fetchDashboardStats() {
+            fetch('/dashboard_handler.php', { method: 'POST', body: new FormData().append('action', 'get_dashboard_stats') })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        document.getElementById('productsCount').textContent = data.data.products_count;
+                        document.getElementById('usersCount').textContent = data.data.users_count;
+                        document.getElementById('ordersCount').textContent = data.data.orders_count;
+                        document.getElementById('totalRevenue').textContent = `$${data.data.total_revenue.toFixed(2)}`;
+                        document.getElementById('totalOrdersStats').textContent = data.data.orders_count;
+                        document.getElementById('revenueStats').textContent = `$${data.data.total_revenue.toFixed(2)}`;
+                        document.getElementById('usersStats').textContent = data.data.users_count;
+                        document.getElementById('cartItemsCount').textContent = data.data.cart_items_count;
+                        document.getElementById('wishlistItemsCount').textContent = data.data.wishlist_items_count;
+                        document.getElementById('productsSoldStats').textContent = data.data.products_sold;
 
-  function closeModal() {
-    document.getElementById("editModal").style.display = "none";
-  }
-  // حفظ بيانات الأدمن
-  document.getElementById("adminForm").addEventListener("submit", function (e) {
-    e.preventDefault();
-    const name = document.getElementById("adminName").value;
-    const pass = document.getElementById("adminPassword").value;
-    alert("تم تحديث بيانات الأدمن:\n" + name);
-  });
+                        const completionRate = data.data.orders_count > 0 ? (data.data.completed_orders / data.data.orders_count * 100).toFixed(0) : 0;
+                        document.getElementById('completionRate').style.width = `${completionRate}%`;
+                        document.getElementById('completionRate').textContent = `${completionRate}%`;
 
-  // التحكم في الإشعارات
-  document.getElementById("notificationsToggle").addEventListener("change", function () {
-    if (this.checked) {
-      alert("تم تفعيل الإشعارات ✅");
-    } else {
-      alert("تم إيقاف الإشعارات ❌");
-    }
-  });
-  // إظهار أو إخفاء مربع البحث
-  function toggleSearch() {
-    const input = document.getElementById('searchInput');
-    input.style.display = input.style.display === 'none' ? 'block' : 'none';
-    input.focus();
-  }
+                        const inventoryRate = data.data.products_count > 0 ? (data.data.available_products / data.data.products_count * 100).toFixed(0) : 0;
+                        document.getElementById('inventoryRate').style.width = `${inventoryRate}%`;
+                        document.getElementById('inventoryRate').textContent = `${inventoryRate}%`;
+                    }
+                });
+        }
 
-  // البحث في جدول الطلبات
-  document.getElementById('searchInput').addEventListener('keyup', function () {
-    const searchValue = this.value.toLowerCase();
-    const rows = document.querySelectorAll('#orders table tbody tr');
+        function fetchDailyStats() {
+            fetch('/dashboard_handler.php', { method: 'POST', body: new FormData().append('action', 'get_daily_stats') })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        const dailyStatsBody = document.getElementById('dailyStats');
+                        dailyStatsBody.innerHTML = data.stats.map(stat => `
+                            <tr>
+                                <td>${stat.day}</td>
+                                <td>${stat.orders}</td>
+                                <td>$${stat.revenue.toFixed(2)}</td>
+                            </tr>
+                        `).join('');
+                    }
+                });
+        }
 
-    rows.forEach(row => {
-      const name = row.cells[1].textContent.toLowerCase();
-      const address = row.cells[2].textContent.toLowerCase();
-      if (name.includes(searchValue) || address.includes(searchValue)) {
-        row.style.display = '';
-      } else {
-        row.style.display = 'none';
-      }
-    });
-  });
+        function fetchOrders() {
+            fetch('/dashboard_handler.php', { method: 'POST', body: new FormData().append('action', 'get_orders') })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        const orderBody = document.getElementById('orderBody');
+                        orderBody.innerHTML = data.orders.map((order, index) => `
+                            <tr class="${index === 0 ? 'active' : ''}">
+                                <td>${order.order_number}</td>
+                                <td>${order.name}</td>
+                                <td>${order.address}</td>
+                                <td>${new Date(order.order_date).toLocaleDateString()}</td>
+                                <td>$${order.total_price.toFixed(2)}</td>
+                                <td><span class="status ${order.status}">${order.status.charAt(0).toUpperCase() + order.status.slice(1)}</span></td>
+                                <td class="actions"><button onclick="deleteOrder('${order.order_number}')">🗑️</button></td>
+                            </tr>
+                        `).join('');
+                    }
+                });
+        }
 
-  // إشعار بسيط عند الضغط على التنبيه
-  function showNotification() {
-    alert("🔔 يوجد إشعارات جديدة عن الطلبات والمخزون!");
-  }
-  function addProduct() {
-    const name = document.getElementById("productName").value;
-    const price = document.getElementById("productPrice").value;
-    const status = document.getElementById("productStatus").value;
+        function filterOrders(status) {
+            const rows = document.querySelectorAll('#orderBody tr');
+            const startDate = document.getElementById('startDate').value;
+            const endDate = document.getElementById('endDate').value;
 
-    if (name === "" || price === "") {
-      alert("يرجى إدخال اسم المنتج والسعر");
-      return;
-    }
+            rows.forEach(row => {
+                const rowStatus = row.querySelector('.status').textContent.toLowerCase();
+                const rowDate = new Date(row.cells[3].textContent);
+                let show = true;
 
-    const table = document.getElementById("productTable").getElementsByTagName('tbody')[0];
-    const row = table.insertRow();
-    row.innerHTML = `
-      <td>${table.rows.length}</td>
-      <td>${name}</td>
-      <td>$${price}</td>
-      <td>${status}</td>
-      <td>
-        <button onclick="editProduct(this)">✏️ تعديل</button>
-        <button onclick="deleteProduct(this)">🗑️ حذف</button>
-      </td>
-    `;
+                if (status !== 'all' && rowStatus !== status) show = false;
+                if (startDate && new Date(startDate) > rowDate) show = false;
+                if (endDate && new Date(endDate) < rowDate) show = false;
 
-    // تفريغ الحقول بعد الإضافة
-    document.getElementById("productName").value = '';
-    document.getElementById("productPrice").value = '';
-  }
+                row.style.display = show ? '' : 'none';
+            });
+        }
 
-  function deleteProduct(btn) {
-    const row = btn.parentNode.parentNode;
-    row.remove();
-  }
+        function deleteOrder(orderNumber) {
+            if (!confirm("هل أنت متأكد من حذف هذا الطلب؟")) return;
+            const formData = new FormData();
+            formData.append('action', 'delete_order');
+            formData.append('order_number', orderNumber);
 
-  function editProduct(btn) {
-    const row = btn.parentNode.parentNode;
-    const name = prompt("تعديل اسم المنتج", row.cells[1].textContent);
-    const price = prompt("تعديل السعر", row.cells[2].textContent.replace('$', ''));
-    const status = prompt("تعديل الحالة (متوفر / غير متوفر)", row.cells[3].textContent);
+            fetch('/dashboard_handler.php', { method: 'POST', body: formData })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        showNotification(data.message);
+                        fetchOrders();
+                        fetchDashboardStats();
+                    } else showNotification(data.message || 'Error deleting order', 'error');
+                });
+        }
 
-    if (name && price && status) {
-      row.cells[1].textContent = name;
-      row.cells[2].textContent = `$${price}`;
-      row.cells[3].textContent = status;
-    }
-  }
- function addStockRow() {
-  const productName = prompt("ادخل اسم المنتج:");
-  if (!productName) return;
+        function fetchProducts() {
+            fetch('/dashboard_handler.php', { method: 'POST', body: new FormData().append('action', 'get_products') })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        const productBody = document.getElementById('productTableBody');
+                        productBody.innerHTML = data.products.map(product => `
+                            <tr>
+                                <td>${product.product_id}</td>
+                                <td>${product.name}</td>
+                                <td>${product.category_name}</td>
+                                <td>$${product.price.toFixed(2)}</td>
+                                <td>$${product.old_price?.toFixed(2) || 'N/A'}</td>
+                                <td>${product.stock_quantity}</td>
+                                <td>${product.rating || 'N/A'}</td>
+                                <td>${product.description || 'N/A'}</td>
+                                <td><img src="${product.image_url_default}" alt="${product.name}" style="width: 50px;"></td>
+                                <td>
+                                    <button onclick="deleteProduct(${product.product_id})">🗑️</button>
+                                </td>
+                            </tr>
+                        `).join('');
 
-  const quantity = prompt("ادخل الكمية:");
-  if (!quantity || isNaN(quantity)) {
-    alert("الكمية لازم تكون رقم");
-    return;
-  }
+                        // Populate the product dropdown in Offers section
+                        const offerProductSelect = document.getElementById('offerProduct');
+                        offerProductSelect.innerHTML = '<option value="">Select a Product (optional)</option>';
+                        data.products.forEach(product => {
+                            offerProductSelect.innerHTML += `<option value="${product.product_id}">${product.name}</option>`;
+                        });
 
-  const table = document.getElementById("stockBody");
-  const newRow = document.createElement("tr");
-  newRow.innerHTML = `
-    <td>${productName}</td>
-    <td>${quantity}</td>
-    <td>
-      <button onclick="editRow(this)">✏️</button>
-      <button onclick="deleteRow(this)">🗑️</button>
-      <button onclick="saveRow(this)" style="display:none;">💾</button>
-    </td>
-  `;
-  table.appendChild(newRow);
+                        // Populate the stock section
+                        const stockBody = document.getElementById('stockBody');
+                        stockBody.innerHTML = data.products.map(product => `
+                            <tr>
+                                <td>${product.name}</td>
+                                <td>${product.stock_quantity}</td>
+                                <td>
+                                    <button onclick="editStock(${product.product_id})">✏️</button>
+                                    <button onclick="deleteStock(${product.product_id})">🗑️</button>
+                                </td>
+                                <td><img src="${product.image_url_default}" alt="${product.name}" style="width: 50px;"></td>
+                                <td>${product.description || 'N/A'}</td>
+                            </tr>
+                        `).join('');
+                    }
+                });
+        }
+
+        function addProduct() {
+            const formData = new FormData();
+            formData.append('action', 'add_product');
+            formData.append('name', document.getElementById('productName').value);
+            formData.append('category_id', document.getElementById('productCategory').value);
+            formData.append('price', document.getElementById('productPrice').value);
+            formData.append('old_price', document.getElementById('productOldPrice').value || null);
+            formData.append('stock_quantity', document.getElementById('productStockQuantity').value);
+            formData.append('rating', document.getElementById('productRating').value || 0);
+            formData.append('description', document.getElementById('productDescription').value);
+            formData.append('image', document.getElementById('productImage').files[0]);
+            formData.append('tags', document.getElementById('productTags').value);
+            formData.append('badge_id', document.getElementById('productBadge').value || null);
+            formData.append('is_featured', document.getElementById('productIsFeatured').checked ? 1 : 0);
+            formData.append('is_popular', document.getElementById('productIsPopular').checked ? 1 : 0);
+            formData.append('is_new', document.getElementById('productIsNew').checked ? 1 : 0);
+            formData.append('is_arrival', document.getElementById('productIsArrival').checked ? 1 : 0);
+            formData.append('is_hot', document.getElementById('productIsHot').checked ? 1 : 0);
+            formData.append('is_trendy', document.getElementById('productIsTrendy').checked ? 1 : 0);
+
+            fetch('/dashboard_handler.php', { method: 'POST', body: formData })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        showNotification('Product added successfully');
+                        fetchProducts();
+                        fetchDashboardStats();
+                        document.querySelectorAll('#products input, #products textarea, #products select').forEach(input => input.value = '');
+                        document.querySelectorAll('#products input[type="checkbox"]').forEach(checkbox => checkbox.checked = false);
+                    } else {
+                        showNotification(data.message || 'Error adding product', 'error');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error adding product:', error);
+                    showNotification('Error adding product. Check the console for details.', 'error');
+                });
+        }
+
+        function deleteProduct(productId) {
+            if (!confirm("هل أنت متأكد من حذف هذا المنتج؟")) return;
+            const formData = new FormData();
+            formData.append('action', 'delete_product');
+            formData.append('product_id', productId);
+
+            fetch('/dashboard_handler.php', { method: 'POST', body: formData })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        showNotification('Product deleted successfully');
+                        fetchProducts();
+                        fetchDashboardStats();
+                    } else {
+                        showNotification(data.message || 'Error deleting product', 'error');
+                    }
+                });
+        }
+
+        function addStockRow() {
+            const formData = new FormData();
+            formData.append('action', 'add_stock');
+            formData.append('name', document.getElementById('stockProductName').value);
+            formData.append('stock_quantity', document.getElementById('stockQuantity').value);
+            formData.append('description', document.getElementById('stockDescription').value);
+            formData.append('status', document.getElementById('stockStatus').value);
+            formData.append('image', document.getElementById('stockImage').files[0]);
+            formData.append('category_id', 1); // Default category for stock items
+
+            fetch('/dashboard_handler.php', { method: 'POST', body: formData })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        showNotification('Stock item added successfully');
+                        fetchProducts();
+                        document.querySelectorAll('#stock input, #stock textarea, #stock select').forEach(input => input.value = '');
+                    } else {
+                        showNotification(data.message || 'Error adding stock', 'error');
+                    }
+                });
+        }
+
+        function editStock(productId) {
+            const quantity = prompt("تعديل الكمية:");
+            if (quantity) {
+                const formData = new FormData();
+                formData.append('action', 'update_stock');
+                formData.append('product_id', productId);
+                formData.append('stock_quantity', quantity);
+
+                fetch('/dashboard_handler.php', { method: 'POST', body: formData })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            showNotification('Stock updated successfully');
+                            fetchProducts();
+                        } else {
+                            showNotification(data.message || 'Error updating stock', 'error');
+                        }
+                    });
+            }
+        }
+
+        function deleteStock(productId) {
+            if (!confirm("هل أنت متأكد من حذف هذا المنتج من المخزون؟")) return;
+            const formData = new FormData();
+            formData.append('action', 'delete_product');
+            formData.append('product_id', productId);
+
+            fetch('/dashboard_handler.php', { method: 'POST', body: formData })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        showNotification('Stock item deleted successfully');
+                        fetchProducts();
+                    } else {
+                        showNotification(data.message || 'Error deleting stock', 'error');
+                    }
+                });
+        }
+
+        function fetchAdmins() {
+            fetch('/dashboard_handler.php', { method: 'POST', body: new FormData().append('action', 'get_admins') })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        const adminPermissions = document.getElementById('adminPermissions');
+                        adminPermissions.innerHTML = data.admins.map(admin => `
+                            <tr>
+                                <td>${admin.full_name}</td>
+                                <td>
+                                    <select onchange="updateAdminPermission(${admin.admin_id}, this.value)">
+                                        <option value="complete" ${admin.authority === 'complete' ? 'selected' : ''}>Complete</option>
+                                        <option value="read_only" ${admin.authority === 'read_only' ? 'selected' : ''}>Read only</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        `).join('');
+                    }
+                });
+        }
+
+        function updateAdminPermission(adminId, authority) {
+            const formData = new FormData();
+            formData.append('action', 'update_admin_permission');
+            formData.append('admin_id', adminId);
+            formData.append('authority', authority);
+
+            fetch('/dashboard_handler.php', { method: 'POST', body: formData })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        showNotification('Admin permission updated successfully');
+                    } else {
+                        showNotification(data.message || 'Error updating admin permission', 'error');
+                    }
+                });
+        }
+
+        document.getElementById('adminForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData();
+            formData.append('action', 'add_admin');
+            formData.append('full_name', document.getElementById('adminName').value);
+            formData.append('email', document.getElementById('adminEmail').value);
+            formData.append('password', document.getElementById('adminPassword').value);
+
+            fetch('/dashboard_handler.php', { method: 'POST', body: formData })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        showNotification('Admin added successfully');
+                        fetchAdmins();
+                        this.reset();
+                    } else {
+                        showNotification(data.message || 'Error adding admin', 'error');
+                    }
+                });
+        });
+
+        function fetchOffers() {
+            fetch('/dashboard_handler.php', { method: 'POST', body: new FormData().append('action', 'get_offers') })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        const offersBody = document.getElementById('offersBody');
+                        offersBody.innerHTML = data.offers.map(offer => `
+                            <tr>
+                                <td>${offer.title}</td>
+                                <td>${offer.discount_value}%</td>
+                                <td>${offer.product_name || 'N/A'}</td>
+                                <td><img src="${offer.image_url}" alt="${offer.title}" style="width: 50px;"></td>
+                                <td>${offer.description || 'N/A'}</td>
+                                <td>
+                                    <button onclick="editOffer(${offer.deal_id})">✏️</button>
+                                    <button onclick="deleteOffer(${offer.deal_id})">🗑️</button>
+                                </td>
+                            </tr>
+                        `).join('');
+                    }
+                });
+        }
+
+        function addOffer() {
+    const formData = new FormData();
+    formData.append('action', 'add_offer');
+    formData.append('title', document.getElementById('offerTitle').value);
+    formData.append('discount', document.getElementById('offerDiscount').value);
+    formData.append('product_id', document.getElementById('offerProduct').value || '');
+    formData.append('description', document.getElementById('offerDescription').value);
+    formData.append('start_date', document.getElementById('offerStartDate').value || new Date().toISOString().split('T')[0]);
+    formData.append('end_date', document.getElementById('offerEndDate').value || new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]);
+    formData.append('image', document.getElementById('offerImage').files[0]);
+
+    fetch('/dashboard_handler.php', { method: 'POST', body: formData })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                showNotification('Offer added successfully');
+                fetchOffers();
+                document.querySelectorAll('#offers input, #offers textarea, #offers select').forEach(input => input.value = '');
+            } else {
+                showNotification(data.message || 'Error adding offer', 'error');
+            }
+        });
 }
- 
 
-  function editRow(button) {
-    const row = button.parentElement.parentElement;
-    const cells = row.querySelectorAll("td");
+        function editOffer(dealId) {
+            const title = prompt("تعديل عنوان العرض:");
+            const discount = prompt("تعديل نسبة الخصم:");
+            const description = prompt("تعديل الوصف:");
 
-    cells[0].contentEditable = true;
-    cells[1].contentEditable = true;
+            if (title && discount) {
+                const formData = new FormData();
+                formData.append('action', 'edit_offer');
+                formData.append('deal_id', dealId);
+                formData.append('title', title);
+                formData.append('discount', discount);
+                formData.append('description', description);
 
-    button.style.display = "none";
-    row.querySelector("button[onclick='saveRow(this)']").style.display = "inline-block";
-  }
+                fetch('/dashboard_handler.php', { method: 'POST', body: formData })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            showNotification('Offer updated successfully');
+                            fetchOffers();
+                        } else {
+                            showNotification(data.message || 'Error updating offer', 'error');
+                        }
+                    });
+            }
+        }
 
-  function saveRow(button) {
-    const row = button.parentElement.parentElement;
-    const cells = row.querySelectorAll("td");
+        function deleteOffer(dealId) {
+            if (!confirm("هل أنت متأكد من حذف هذا العرض؟")) return;
+            const formData = new FormData();
+            formData.append('action', 'delete_offer');
+            formData.append('deal_id', dealId);
 
-    cells[0].contentEditable = false;
-    cells[1].contentEditable = false;
+            fetch('/dashboard_handler.php', { method: 'POST', body: formData })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        showNotification('Offer deleted successfully');
+                        fetchOffers();
+                    } else {
+                        showNotification(data.message || 'Error deleting offer', 'error');
+                    }
+                });
+        }
 
-    button.style.display = "none";
-    row.querySelector("button[onclick='editRow(this)']").style.display = "inline-block";
+        function toggleSearch() {
+            const input = document.getElementById('searchInput');
+            input.style.display = input.style.display === 'none' ? 'block' : 'none';
+            input.focus();
+        }
 
-    alert("تم حفظ التعديلات بنجاح ✅");
-  }
+        document.getElementById('searchInput').addEventListener('keyup', function() {
+            const searchValue = this.value.toLowerCase();
+            const rows = document.querySelectorAll('#orderBody tr');
+            rows.forEach(row => {
+                const name = row.cells[1].textContent.toLowerCase();
+                const address = row.cells[2].textContent.toLowerCase();
+                row.style.display = (name.includes(searchValue) || address.includes(searchValue)) ? '' : 'none';
+            });
+        });
 
-  const offerForm = document.getElementById("offerForm");
-  const offersBody = document.getElementById("offersBody");
+        function showNotification(message, type = 'success') {
+            const notification = document.createElement('div');
+            notification.className = `notification alert-${type === 'success' ? 'success' : 'danger'}`;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            setTimeout(() => notification.remove(), 3000);
+        }
 
-  offerForm.addEventListener("submit", function (e) {
-    e.preventDefault();
-    const title = document.getElementById("offerTitle").value.trim();
-    const discount = document.getElementById("offerDiscount").value.trim();
-
-    if (title === "" || discount === "") return alert("من فضلك أدخل كل البيانات");
-
-    const row = document.createElement("tr");
-    row.innerHTML = `
-      <td>${title}</td>
-      <td>${discount}%</td>
-      <td>
-        <button onclick="editOffer(this)">✏️</button>
-        <button onclick="deleteOffer(this)">🗑️</button>
-      </td>
-    `;
-    offersBody.appendChild(row);
-
-    offerForm.reset();
-  });
-
-  function deleteOffer(btn) {
-    const row = btn.closest("tr");
-    row.remove();
-  }
-
-  function editOffer(btn) {
-    const row = btn.closest("tr");
-    const title = row.children[0].textContent;
-    const discount = row.children[1].textContent.replace("%", "");
-
-    const newTitle = prompt("تعديل عنوان العرض:", title);
-    const newDiscount = prompt("تعديل نسبة الخصم:", discount);
-
-    if (newTitle !== null && newDiscount !== null) {
-      row.children[0].textContent = newTitle;
-      row.children[1].textContent = `${newDiscount}%`;
-    }
-  }
-</script>
+        // Initial load
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchCategories();
+            fetchBadges();
+            fetchDashboardStats();
+            fetchDailyStats();
+            fetchOrders();
+            fetchProducts();
+            fetchAdmins();
+            fetchOffers();
+        });
+    </script>
 </body>
 </html>
