@@ -500,6 +500,7 @@ $isLoggedIn = isset($_SESSION['user_id']);
         
         // الحصول على الفئة "Electronics" (category_id = 1)
         $category_id = 1;
+        
 
         // جلب معلومات الفئة
         $category_query = $conn->prepare("SELECT * FROM categories WHERE category_id = ?");
