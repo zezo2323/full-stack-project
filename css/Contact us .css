@@ -119,7 +119,7 @@
      top: 1rem;
      transform: translateY(0);
  }
- .btn {
+ .btn-contact {
      padding: 0.6rem 1.3rem;
      background-color: #fff;
      border: 2px solid #fafafa;
@@ -132,7 +132,7 @@
      transition: 0.3s;
      margin: 0;
  }
- .btn:hover {
+ .btn-contact:hover {
      background-color: transparent;
      color: #fff;
  }

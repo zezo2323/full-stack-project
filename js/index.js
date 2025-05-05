@@ -183,130 +183,135 @@
       });
     });
 
+/*============================================ cart and wishlist =============================================*/
+// Initialize cart and wishlist
+let cart = [];
+let wishlist = [];
+let cartCount = 0;
+let wishlistCount = 0;
 
+// Event Delegation for dynamic elements
+document.body.addEventListener('click', function (e) {
+  // Add to Cart
+  if (e.target.closest('.cart__btn')) {
+    e.preventDefault();
+    const productItem = e.target.closest('.product__item');
+    const product = {
+      id: productItem.dataset.productId, // استخدام data-product-id من HTML
+      title: productItem.querySelector('.product__title').innerText,
+      price: parseFloat(productItem.querySelector('.new__price').innerText.replace('$', '')),
+      image: productItem.querySelector('.product__img').src
+    };
+    addToCart(product);
+  }
 
-    /*============================================ cart and wishlist =============================================*/
-    // Initialize cart and wishlist
-    let cart = [];
-    let wishlist = [];
-    let cartCount = 0;
-    let wishlistCount = 0;
+  // Add to Wishlist
+  if (e.target.closest('.action__btn[aria-label="Add To Wishlist"]')) {
+    e.preventDefault();
+    const productItem = e.target.closest('.product__item');
+    const product = {
+      id: productItem.dataset.productId,
+      title: productItem.querySelector('.product__title').innerText,
+      price: parseFloat(productItem.querySelector('.new__price').innerText.replace('$', '')),
+      image: productItem.querySelector('.product__img').src
+    };
+    addToWishlist(product);
+  }
+});
 
-    // Event Delegation for dynamic elements
-    document.body.addEventListener('click', function (e) {
-      // Add to Cart
-      if (e.target.closest('.cart__btn')) {
-        e.preventDefault();
-        const productItem = e.target.closest('.product__item');
-        const product = {
-          id: Date.now(), // استخدام timestamp كـ ID مؤقت
-          title: productItem.querySelector('.product__title').innerText,
-          price: parseFloat(productItem.querySelector('.new__price').innerText.replace('$', '')),
-          image: productItem.querySelector('.product__img').src
-        };
-        addToCart(product);
-      }
+// Improved Add to Cart function
+function addToCart(product) {
+  const existingItem = cart.find(item => item.id == product.id); // استخدام == للتعامل مع string/number
+  if (existingItem) {
+    existingItem.quantity++;
+  } else {
+    cart.push({ ...product, quantity: 1 });
+  }
+  cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+  updateCartUI();
+  showNotification(`${product.title} added to cart!`);
+}
 
-      // Add to Wishlist
-      if (e.target.closest('.action__btn[aria-label="Add To Wishlist"]')) {
-        e.preventDefault();
-        const productItem = e.target.closest('.product__item');
-        const product = {
-          id: Date.now(),
-          title: productItem.querySelector('.product__title').innerText,
-          price: parseFloat(productItem.querySelector('.new__price').innerText.replace('$', '')),
-          image: productItem.querySelector('.product__img').src
-        };
-        addToWishlist(product);
-      }
-    });
+// Add to Wishlist function
+function addToWishlist(product) {
+  if (!wishlist.some(item => item.id == product.id)) {
+    wishlist.push(product);
+    wishlistCount++;
+    updateWishlistUI();
+    showNotification(`${product.title} added to wishlist!`);
+  }
+}
 
-    // Improved Add to Cart function
-    function addToCart(product) {
-      const existingItem = cart.find(item => item.id === product.id);
-      if (existingItem) {
-        existingItem.quantity++;
-      } else {
-        cart.push({ ...product, quantity: 1 });
-      }
-      cartCount++;
-      updateCartUI();
-      showNotification(`${product.title} added to cart!`);
-    }
+// Update Cart UI
+function updateCartUI() {
+  const cartBadge = document.getElementById('cartBadge');
+  const cartItemsContainer = document.getElementById('cartItems');
+  const cartTotalElement = document.getElementById('cartTotal');
 
-    // Add to Wishlist function
-    function addToWishlist(product) {
-      if (!wishlist.some(item => item.id === product.id)) {
-        wishlist.push(product);
-        wishlistCount++;
-        updateWishlistUI();
-        showNotification(`${product.title} added to wishlist!`);
-      }
-    }
+  // Update Badge
+  cartBadge.textContent = cartCount;
 
-    // Update Cart UI
-    function updateCartUI() {
-      const cartBadge = document.getElementById('cartBadge');
-      const cartItemsContainer = document.getElementById('cartItems');
-      const cartTotalElement = document.getElementById('cartTotal');
-
-      // Update Badge
-      cartBadge.textContent = cartCount;
-
-      // Update Items List
-      cartItemsContainer.innerHTML = cart.map(item => `
+  // Update Items List
+  cartItemsContainer.innerHTML = cart.map(item => `
     <div class="cart-item d-flex align-items-center gap-3 mb-3">
       <img src="${item.image}" width="60" height="60" class="rounded">
       <div class="flex-grow-1">
         <h6 class="mb-0">${item.title}</h6>
         <div class="d-flex align-items-center gap-2">
           <span>$${item.price} x ${item.quantity}</span>
-                </div>
-              </div>
-      <button class="btn btn-danger btn-sm" onclick="removeCartItem(${item.id})">
+        </div>
+      </div>
+      <button class="btn btn-danger btn-sm" onclick="removeCartItem('${item.id}')">
         <i class="fas fa-trash"></i>
       </button>
-                </div>
+    </div>
   `).join('');
 
-      // Update Total
-      const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-      cartTotalElement.textContent = `$${total.toFixed(2)}`;
-    }
+  // Update Total
+  const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+  cartTotalElement.textContent = `$${total.toFixed(2)}`;
+}
 
-    // Update Wishlist UI
-    function updateWishlistUI() {
-      const wishlistBadge = document.getElementById('wishlistBadge');
-      const wishlistItemsContainer = document.getElementById('wishlistItems');
+// Update Wishlist UI
+function updateWishlistUI() {
+  const wishlistBadge = document.getElementById('wishlistBadge');
+  const wishlistItemsContainer = document.getElementById('wishlistItems');
 
-      wishlistBadge.textContent = wishlistCount;
+  wishlistBadge.textContent = wishlistCount;
 
-      wishlistItemsContainer.innerHTML = wishlist.map(item => `
+  wishlistItemsContainer.innerHTML = wishlist.map(item => `
     <div class="wishlist-item d-flex align-items-center gap-3 mb-3">
       <img src="${item.image}" width="60" height="60" class="rounded">
       <div class="flex-grow-1">
         <h6 class="mb-0">${item.title}</h6>
         <div>$${item.price}</div>
-                </div>
-      <button class="btn btn-danger btn-sm" onclick="removeWishlistItem(${item.id})">
+      </div>
+      <button class="btn btn-danger btn-sm" onclick="removeWishlistItem('${item.id}')">
         <i class="fas fa-trash"></i>
       </button>
-              </div>
+    </div>
   `).join('');
-    }
+}
 
-    // Remove item functions
-    function removeCartItem(id) {
-      cart = cart.filter(item => item.id !== id);
-      cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
-      updateCartUI();
+// Remove item functions
+function removeCartItem(id) {
+  const itemIndex = cart.findIndex(item => item.id == id); // استخدام == للتعامل مع string/number
+  if (itemIndex !== -1) {
+    if (cart[itemIndex].quantity > 1) {
+      cart[itemIndex].quantity--;
+    } else {
+      cart.splice(itemIndex, 1);
     }
+    cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+    updateCartUI();
+  }
+}
 
-    function removeWishlistItem(id) {
-      wishlist = wishlist.filter(item => item.id !== id);
-      wishlistCount = wishlist.length;
-      updateWishlistUI();
-    }
+function removeWishlistItem(id) {
+  wishlist = wishlist.filter(item => item.id != id);
+  wishlistCount = wishlist.length;
+  updateWishlistUI();
+}
 
     /*============================================ Notification system =============================================*/
     function showNotification(message) {
@@ -334,3 +339,70 @@
       e.preventDefault();
       document.getElementById('userDropdown').classList.toggle('active');
     });
+
+
+
+
+
+    // check out
+    
+
+function addToCart(product) {
+  const existingItem = cart.find(item => 
+    item.id === product.id && 
+    item.title === product.title && 
+    item.price === product.price
+  );
+
+  if (existingItem) {
+    existingItem.quantity += product.quantity || 1;
+  } else {
+    cart.push({ 
+      ...product, 
+      quantity: product.quantity || 1 
+    });
+  }
+  
+  cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+  updateCartUI();
+  showNotification(`${product.title} added to cart!`);
+}
+
+// Go to Checkout function
+function goToCheckout() {
+  if (cart.length === 0) {
+    showNotification("Your cart is empty!");
+    return;
+  }
+  
+  // Group identical items before saving
+  const groupedCart = groupCartItems(cart);
+  
+  localStorage.setItem('cart', JSON.stringify(groupedCart));
+  localStorage.setItem('cartTotal', calculateCartTotal(groupedCart));
+  window.location.href = 'check_out.html';
+}
+
+// Helper function to group identical items
+function groupCartItems(cartItems) {
+  const grouped = {};
+  
+  cartItems.forEach(item => {
+    const key = `${item.id}-${item.title}-${item.price}`;
+    if (!grouped[key]) {
+      grouped[key] = { ...item };
+    } else {
+      grouped[key].quantity += item.quantity;
+    }
+  });
+  
+  return Object.values(grouped);
+}
+
+// Calculate total
+function calculateCartTotal(cartItems) {
+  return cartItems.reduce((total, item) => 
+    total + (item.price * item.quantity), 0);
+}
+
+// Rest of your existing cart functions...

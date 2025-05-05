@@ -10,7 +10,7 @@ if (isset($_GET['action']) && $_GET['action'] === 'logout') {
     session_unset();
     session_destroy();
     setcookie('session_token', '', time() - 3600, '/', '', false, true);
-    header("Location: /login/auth.php?mode=login");
+    header("Location: ./login/auth.php?mode=login");
     exit;
 }
 
@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if (empty($username) || empty($password)) {
             $error = "All fields are required";
-            header("Location: /login/auth.php?mode=login&error=" . urlencode($error));
+            header("Location: ./login/auth.php?mode=login&error=" . urlencode($error));
             exit;
         }
 
@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             );
 
             setcookie('session_token', $token, time() + 60 * 60 * 24 * 30, '/', '', false, true);
-            header("Location: /index.php");
+            header("Location: ./index.php");
             exit;
         } elseif ($admin && password_verify($password, $admin['password'])) {
             $_SESSION['user_id'] = $admin['admin_id'];
@@ -79,17 +79,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             );
 
             setcookie('session_token', $token, time() + 60 * 60 * 24 * 30, '/', '', false, true);
-            header("Location: /index.php");
+            header("Location: ./index.php");
             exit;
         } else {
             $error = "Invalid username/email or password";
-            header("Location: /login/auth.php?mode=login&error=" . urlencode($error));
+            header("Location: ./login/auth.php?mode=login&error=" . urlencode($error));
             exit;
         }
     } elseif (isset($_POST['register_user_submit'])) {
         if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
             $error = "Invalid CSRF token";
-            header("Location: /login/auth.php?mode=register_user&error=" . urlencode($error));
+            header("Location: ./login/auth.php?mode=register_user&error=" . urlencode($error));
             exit;
         }
 
@@ -100,25 +100,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if (empty($username) || empty($email) || empty($password) || empty($confirmPassword)) {
             $error = "All fields are required";
-            header("Location: /login/auth.php?mode=register_user&error=" . urlencode($error));
+            header("Location: ./login/auth.php?mode=register_user&error=" . urlencode($error));
             exit;
         }
 
         if (!isValidEmail($email)) {
             $error = "Invalid email address";
-            header("Location: /login/auth.php?mode=register_user&error=" . urlencode($error));
+            header("Location: ./login/auth.php?mode=register_user&error=" . urlencode($error));
             exit;
         }
 
         if (strlen($password) < 6) {
             $error = "Password must be at least 6 characters";
-            header("Location: /login/auth.php?mode=register_user&error=" . urlencode($error));
+            header("Location: ./login/auth.php?mode=register_user&error=" . urlencode($error));
             exit;
         }
 
         if ($password !== $confirmPassword) {
             $error = "Passwords do not match";
-            header("Location: /login/auth.php?mode=register_user&error=" . urlencode($error));
+            header("Location: ./login/auth.php?mode=register_user&error=" . urlencode($error));
             exit;
         }
 
@@ -130,7 +130,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($existingUser) {
             $error = "Username or email already in use";
-            header("Location: /login/auth.php?mode=register_user&error=" . urlencode($error));
+            header("Location: ./login/auth.php?mode=register_user&error=" . urlencode($error));
             exit;
         }
 
@@ -145,23 +145,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             if ($userId) {
                 $success = "Registration successful! Please log in.";
-                header("Location: /login/auth.php?mode=login&success=" . urlencode($success));
+                header("Location: ./login/auth.php?mode=login&success=" . urlencode($success));
                 exit;
             } else {
                 $error = "Error creating account. Please try again";
-                header("Location: /login/auth.php?mode=register_user&error=" . urlencode($error));
+                header("Location: ./login/auth.php?mode=register_user&error=" . urlencode($error));
                 exit;
             }
         } catch (Exception $e) {
             error_log("Registration error: " . $e->getMessage());
             $error = "Error creating account. Please try again";
-            header("Location: /login/auth.php?mode=register_user&error=" . urlencode($error));
+            header("Location: ./login/auth.php?mode=register_user&error=" . urlencode($error));
             exit;
         }
     } elseif (isset($_POST['register_admin_submit'])) {
         if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
             $error = "Invalid CSRF token";
-            header("Location: /login/auth.php?mode=register_admin&error=" . urlencode($error));
+            header("Location: ./login/auth.php?mode=register_admin&error=" . urlencode($error));
             exit;
         }
 
@@ -178,25 +178,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if (empty($name) || empty($email) || empty($phone) || empty($birthdate) || $age < 18 || empty($gender) || empty($city) || empty($password) || empty($confirmPassword)) {
             $error = "All fields are required and age must be 18 or older";
-            header("Location: /login/auth.php?mode=register_admin&error=" . urlencode($error));
+            header("Location: ./login/auth.php?mode=register_admin&error=" . urlencode($error));
             exit;
         }
 
         if (!isValidEmail($email)) {
             $error = "Invalid email address";
-            header("Location: /login/auth.php?mode=register_admin&error=" . urlencode($error));
+            header("Location: ./login/auth.php?mode=register_admin&error=" . urlencode($error));
             exit;
         }
 
         if (strlen($password) < 6) {
             $error = "Password must be at least 6 characters";
-            header("Location: /login/auth.php?mode=register_admin&error=" . urlencode($error));
+            header("Location: ./login/auth.php?mode=register_admin&error=" . urlencode($error));
             exit;
         }
 
         if ($password !== $confirmPassword) {
             $error = "Passwords do not match";
-            header("Location: /login/auth.php?mode=register_admin&error=" . urlencode($error));
+            header("Location: ./login/auth.php?mode=register_admin&error=" . urlencode($error));
             exit;
         }
 
@@ -208,7 +208,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($existingAdmin) {
             $error = "Email already in use";
-            header("Location: /login/auth.php?mode=register_admin&error=" . urlencode($error));
+            header("Location: ./login/auth.php?mode=register_admin&error=" . urlencode($error));
             exit;
         }
 
@@ -228,7 +228,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $maxFileSize = 5 * 1024 * 1024; // 5MB
                 if ($profileImage['size'] > $maxFileSize) {
                     $error = "Image file is too large. Maximum size is 5MB.";
-                    header("Location: /login/auth.php?mode=register_admin&error=" . urlencode($error));
+                    header("Location: ./login/auth.php?mode=register_admin&error=" . urlencode($error));
                     exit;
                 }
 
@@ -238,12 +238,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $imagePath = $targetFile;
                 } else {
                     $error = "Error uploading image. Please check folder permissions.";
-                    header("Location: /login/auth.php?mode=register_admin&error=" . urlencode($error));
+                    header("Location: ./login/auth.php?mode=register_admin&error=" . urlencode($error));
                     exit;
                 }
             } else {
                 $error = "Only JPG, JPEG, PNG, and GIF files are allowed";
-                header("Location: /login/auth.php?mode=register_admin&error=" . urlencode($error));
+                header("Location: ./login/auth.php?mode=register_admin&error=" . urlencode($error));
                 exit;
             }
         }
@@ -256,17 +256,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             if ($adminId) {
                 $success = "Admin registration successful! Please log in.";
-                header("Location: /login/auth.php?mode=login&success=" . urlencode($success));
+                header("Location: ./login/auth.php?mode=login&success=" . urlencode($success));
                 exit;
             } else {
                 $error = "Error creating admin account. Please try again";
-                header("Location: /login/auth.php?mode=register_admin&error=" . urlencode($error));
+                header("Location: ./login/auth.php?mode=register_admin&error=" . urlencode($error));
                 exit;
             }
         } catch (Exception $e) {
             error_log("Admin registration error: " . $e->getMessage());
             $error = "Error creating admin account. Please try again";
-            header("Location: /login/auth.php?mode=register_admin&error=" . urlencode($error));
+            header("Location: ./login/auth.php?mode=register_admin&error=" . urlencode($error));
             exit;
         }
     }
@@ -408,7 +408,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <?php if (isset($_SESSION['user_id'])): ?>
             <div class="login-link">
-                <a href="/login/auth.php?action=logout">Logout</a>
+                <a href="./login/auth.php?action=logout">Logout</a>
             </div>
         <?php endif; ?>
 
@@ -523,7 +523,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             else if (mode === 'register_user') document.getElementById('register-user-section').classList.add('active');
             else if (mode === 'register_admin') document.getElementById('register-admin-section').classList.add('active');
 
-            window.history.pushState({}, '', '/login/auth.php?mode=' + mode);
+            window.history.pushState({}, '', './login/auth.php?mode=' + mode);
         }
 
         function validateLogin() {

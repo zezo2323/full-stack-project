@@ -415,36 +415,35 @@ $dealsResult = $conn->query($dealsQuery);
                 <li><a class="dropdown-item" href="./Electronics/Gaming.php">Gaming</a></li>
               </ul>
             </li>
-
             <!-- فئة أخرى -->
             <li class="dropdown-submenu">
               <a class="dropdown-item dropdown-toggle" href="./Fashion.php">Fashion</a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Men's Wear</a></li>
-                <li><a class="dropdown-item" href="#">Women's Wear</a></li>
-                <li><a class="dropdown-item" href="#">Kids</a></li>
+                <li><a class="dropdown-item" href="./Fashions/men's.php">Men's Wear</a></li>
+                <li><a class="dropdown-item" href="./Fashions/women's.php">Women's Wear</a></li>
+                <li><a class="dropdown-item" href="./Fashions/kids.php">Kids</a></li>
               </ul>
             </li>
 
             <!-- باقي الفئات -->
             <li class="dropdown-submenu">
-              <a class="dropdown-item dropdown-toggle" href="#">Home & kitchen</a>
+              <a class="dropdown-item dropdown-toggle" href="./home.php">Home & kitchen</a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Electric-ovens</a></li>
-                <li><a class="dropdown-item" href="#">Microwaves</a></li>
-                <li><a class="dropdown-item" href="#">Refrigerators</a></li>
-                <li><a class="dropdown-item" href="#">Air-conditioners</a></li>
-                <li><a class="dropdown-item" href="#">Water-heaters</a></li>
-                <li><a class="dropdown-item" href="#">Fans</a></li>
+                <li><a class="dropdown-item" href="./home catagory/Stove.php">Stoves</a></li>
+                <li><a class="dropdown-item" href="./home catagory/Freezers.php">Freezers</a></li>
+                <li><a class="dropdown-item" href="./home catagory/Refrigerators.php">Refrigerators</a></li>
+                <li><a class="dropdown-item" href="./home catagory/Kitchen.php">Kitchens</a></li>
+                <li><a class="dropdown-item" href="./home catagory/Washing machines.php">Washing</a></li>
+                <li><a class="dropdown-item" href="./home catagory/Fans.php">Fans</a></li>
               </ul>
             </li>
 
             <li class="dropdown-submenu">
-              <a class="dropdown-item dropdown-toggle" href="#">Vehicles</a>
+              <a class="dropdown-item dropdown-toggle" href="./Vehicles.php">Vehicles</a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">cars</a></li>
-                <li><a class="dropdown-item" href="#">motors</a></li>
-                <li><a class="dropdown-item" href="#">bicycles</a></li>
+                <li><a class="dropdown-item" href="./Vehicles/cars.php">Cars</a></li>
+                <li><a class="dropdown-item" href="./Vehicles/motors.php">motors</a></li>
+                <li><a class="dropdown-item" href="./Vehicles/bicycles.php">bicycles</a></li>
 
               </ul>
             </li>
@@ -474,14 +473,14 @@ $dealsResult = $conn->query($dealsQuery);
             <?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']): ?>
                 <a class="dropdown-item" href="./Admin Dashboard/dash.html">Profile</a>
             <?php else: ?>
-                <a class="dropdown-item" href="/user_profile.php">Profile</a>
+                <a class="dropdown-item" href="./user_profile.php">Profile</a>
             <?php endif; ?>
         </li>
-        <li><a class="dropdown-item" href="/login/auth.php?action=logout">Logout</a></li>
+        <li><a class="dropdown-item" href="./login/auth.php?action=logout">Logout</a></li>
     <?php else: ?>
         <!-- روابط لغير المسجلين دخولهم -->
-        <li><a class="dropdown-item" href="/login/auth.php?mode=login">Login</a></li>
-        <li><a class="dropdown-item" href="/login/auth.php?mode=choose">Signup</a></li>
+        <li><a class="dropdown-item" href="./login/auth.php?mode=login">Login</a></li>
+        <li><a class="dropdown-item" href="./login/auth.php?mode=choose">Signup</a></li>
     <?php endif; ?>
 </ul>
         </div>
@@ -558,7 +557,7 @@ $dealsResult = $conn->query($dealsQuery);
             <img src="./imgs/index/Accessories5.jpeg" alt="" class="category__img" />
             <h3 class="category__title">Accessories</h3>
           </a> -->
-          <a href="./vehicles.php/Motorcycles.php" class="category__item swiper-slide">
+          <a href="./Vehicles/motors.php" class="category__item swiper-slide">
             <img src="./imgs/index/motors.jpg" alt="" class="category__img" />
             <h3 class="category__title">Motorcycles</h3>
           </a>
@@ -578,7 +577,7 @@ $dealsResult = $conn->query($dealsQuery);
             <img src="./imgs/index/100.jpg" alt="" class="category__img" />
             <h3 class="category__title">phones</h3>
           </a>
-          <a href="./Electronics/Screens.php" class="category__item swiper-slide">
+          <a href="./Electronics/Televisions.php" class="category__item swiper-slide">
             <img src="./imgs/index/screens.jpg" alt="" class="category__img" />
             <h3 class="category__title">Screens</h3>
           </a>
@@ -753,7 +752,7 @@ $dealsResult = $conn->query($dealsQuery);
       <div class="new-arrivals__container swiper">
         <div class="swiper-wrapper">
           <?php while ($product = $new_arrivals->fetch_assoc()): ?>
-            <div class="product__item swiper-slide">
+            <div class="product__item swiper-slide" data-product-id="<?= $product['product_id'] ?>">
               <div class="product__banner">
                 <a href="Detils.php?id=<?= $product['product_id'] ?>" class="product__images">
                   <img src="<?= $product['image_url_default'] ?>" class="product__img default" />
@@ -1006,7 +1005,7 @@ $dealsResult = $conn->query($dealsQuery);
           <span>Subtotal:</span>
           <span id="cartTotal">$0.00</span>
         </div>
-        <button class="checkout-btn"><a href="./check_out.html">Proceed to Checkout</a></button>
+        <button class="checkout-btn" onclick="goToCheckout()">Proceed to Checkout</button>
       </div>
     </div>
 

@@ -1,4 +1,9 @@
 <?php
+session_start();
+$isLoggedIn = isset($_SESSION['user_id']);
+
+?>
+<?php
 // إضافة اتصال قاعدة البيانات
 include 'db_connection.php';
 
@@ -70,12 +75,17 @@ $category = $category_result->fetch_assoc();
   <!-- =====================================Promotion Bar ===================================== -->
   <div class="promotion-bar">
     <div class="container d-flex justify-content-between align-items-center">
-      <span>🎁 Get 10% off your first order! Use code: WELCOME10</span>
+      <span>
+        <?php if (isset($_SESSION['user_id']) && isset($_SESSION['username'])): ?>
+         hello <?php echo htmlspecialchars($_SESSION['username']); ?> - 
+        <?php endif; ?>
+        🎁 Get 10% off your first order! Use code: WELCOME10
+      </span>
       <button class="btn btn-link text-white p-0 close-promo">
         <i class="fas fa-times"></i>
       </button>
     </div>
-  </div>
+</div>
 
   <!-- =====================================Main Navigation ===================================== -->
   <nav class="main-nav">
@@ -88,12 +98,15 @@ $category = $category_result->fetch_assoc();
 
         <!-- Search Box -->
         <div class="col-lg-4">
-          <div class="search-box input-group">
-            <input type="text" class="form-control border-0" placeholder="Search products..." />
-            <button class="btn btn-custom">
-              <i class="fas fa-search"></i>
-            </button>
-          </div>
+          <form action="search.php" method="GET" class="w-100 position-relative">
+            <div class="search-box input-group">
+              <input type="text" name="query" id="searchInput" class="form-control border-0" placeholder="Search products..." autocomplete="off" required />
+              <button type="submit" class="btn btn-custom">
+                <i class="fas fa-search"></i>
+              </button>
+            </div>
+            <div id="searchSuggestions" class="position-absolute w-100 bg-white shadow-sm rounded-bottom d-none" style="z-index:99999999 ;"></div>
+          </form>
         </div>
 
         <div class="nav-icons d-flex align-items-center position-relative col-md-1">
@@ -129,7 +142,7 @@ $category = $category_result->fetch_assoc();
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="./Electronics/Smart_phones.php">Mobiles</a></li>
                 <li><a class="dropdown-item" href="./Electronics/Televisions.php">Tvs</a></li>
-                <li><a class="dropdown-item" href="./Electronics/Computers.php"">Computers</a></li>
+                <li><a class="dropdown-item" href="./Electronics/Computers.php">Computers</a></li>
                 <li><a class="dropdown-item" href="./Electronics/Accessories.php">Accessories</a></li>
                 <li><a class="dropdown-item" href="./Electronics/Tablets.php">Tablets</a></li>
                 <li><a class="dropdown-item" href="./Electronics/Cameras.php">Cameras</a></li>
@@ -138,7 +151,6 @@ $category = $category_result->fetch_assoc();
                 <li><a class="dropdown-item" href="./Electronics/Gaming.php">Gaming</a></li>
               </ul>
             </li>
-
             <!-- فئة أخرى -->
             <li class="dropdown-submenu">
               <a class="dropdown-item dropdown-toggle" href="./Fashion.php">Fashion</a>
@@ -177,11 +189,12 @@ $category = $category_result->fetch_assoc();
         <!-- Navigation Links -->
         <div class="d-flex flex-grow-1 justify-content-center">
           <a href="./index.php" class="nav-link">Home</a>
-          <a href="#products" class="nav-link">Products</a>
-          <a href="#" class="nav-link">About</a>
-          <a href="#" class="nav-link">Contact US</a>
-          <a href="#" class="nav-link">Profile</a>
-          <a href="#deals" class="nav-link">Deals</a>
+          <a href="./index.php#products" class="nav-link">Products</a>
+          <a href="./index.php#deals" class="nav-link">Deals</a>
+          <a href="./index.php#About" class="nav-link">About</a>
+          <a href="./Contact us.php" class="nav-link">Contact US</a>
+          <a href="./index.php#NewArrivals" class="nav-link">NewArrivals</a>
+          <a href="./index.php#showcase" class="nav-link">showcase</a>
         </div>
         <!-- Categories Dropdown -->
         <div class="dropdown me-4">
@@ -189,13 +202,23 @@ $category = $category_result->fetch_assoc();
             <i class="far fa-user"></i>
           </button>
 
-          <ul class="dropdown-menu dropdown-menu-end">
-            <!-- فئة مع قائمة فرعية -->
-            <li><a class="dropdown-item" href="#">Login</a></li>
-            <li><a class="dropdown-item" href="#">Signup</a></li>
-            <li><a class="dropdown-item" href="#">Logout</a></li>
-            <li><a class="dropdown-item" href="#">Profile</a></li>
-          </ul>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+    <?php if ($isLoggedIn): ?>
+        <!-- روابط للمستخدمين المسجلين دخولهم -->
+        <li>
+            <?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']): ?>
+                <a class="dropdown-item" href="./Admin Dashboard/dash.html">Profile</a>
+            <?php else: ?>
+                <a class="dropdown-item" href="./user_profile.php">Profile</a>
+            <?php endif; ?>
+        </li>
+        <li><a class="dropdown-item" href="./login/auth.php?action=logout">Logout</a></li>
+    <?php else: ?>
+        <!-- روابط لغير المسجلين دخولهم -->
+        <li><a class="dropdown-item" href="./login/auth.php?mode=login">Login</a></li>
+        <li><a class="dropdown-item" href="./login/auth.php?mode=choose">Signup</a></li>
+    <?php endif; ?>
+</ul>
         </div>
 
 
@@ -225,12 +248,12 @@ $category = $category_result->fetch_assoc();
               <i class="fas fa-chevron-down"></i>
             </div>
             <div class="sub-menu">
-              <a href="#" class="d-block py-2">Home</a>
-              <a href="#" class="d-block py-2">Products</a>
-              <a href="#" class="d-block py-2">Contact us</a>
-              <a href="#" class="d-block py-2">About</a>
-              <a href="#" class="d-block py-2">Profile</a>
-              <a href="#" class="d-block py-2">Deals</a>
+              <a href="./index.php" class="d-block py-2">Home</a>
+              <a href="./index.php#products" class="d-block py-2">Products</a>
+              <a href="./Contact-us.html" class="d-block py-2">Contact us</a>
+              <a href="./index.php#About" class="d-block py-2">About</a>
+              <a href="./index.php#NewArrivals" class="nav-link">NewArrivals</a>
+              <a href="./index.php#deals" class="d-block py-2">Deals</a>
             </div>
           </div>
         </div>
