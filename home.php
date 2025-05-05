@@ -241,16 +241,16 @@ $isLoggedIn = isset($_SESSION['user_id']);
               <!-- روابط للمستخدمين المسجلين دخولهم -->
               <li>
                 <?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']): ?>
-                  <a class="dropdown-item" href="#">Profile</a>
+                  <a class="dropdown-item" href="./Admin Dashboard/dash.html">Profile</a>
                 <?php else: ?>
-                  <a class="dropdown-item" href="/user_profile.php">Profile</a>
+                  <a class="dropdown-item" href="./user_profile.php">Profile</a>
                 <?php endif; ?>
               </li>
-              <li><a class="dropdown-item" href="/login/auth.php?action=logout">Logout</a></li>
+              <li><a class="dropdown-item" href="./login/auth.php?action=logout">Logout</a></li>
             <?php else: ?>
               <!-- روابط لغير المسجلين دخولهم -->
-              <li><a class="dropdown-item" href="/login/auth.php?mode=login">Login</a></li>
-              <li><a class="dropdown-item" href="/login/auth.php?mode=choose">Signup</a></li>
+              <li><a class="dropdown-item" href="./login/auth.php?mode=login">Login</a></li>
+              <li><a class="dropdown-item" href="./login/auth.php?mode=choose">Signup</a></li>
             <?php endif; ?>
           </ul>
         </div>
