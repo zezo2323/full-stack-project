@@ -172,7 +172,7 @@ $isLoggedIn = isset($_SESSION['user_id']);
           <ul class="dropdown-menu dropdown-menu-end">
             <!-- فئة مع قائمة فرعية -->
             <li class="dropdown-submenu">
-              <a class="dropdown-item dropdown-toggle" href="./Electronics.php">Electronics</a>
+              <a class="dropdown-item dropdown-toggle" href="../Electronics.php">Electronics</a>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="../Electronics/Smart_phones.php">Mobiles</a></li>
                 <li><a class="dropdown-item" href="../Electronics/Televisions.php">Tvs</a></li>
